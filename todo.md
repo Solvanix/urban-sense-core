@@ -88,4 +88,6 @@
 - [x] Summarize only reusable high-level themes from the Facebook source and clearly distinguish them from Urban-Sense endorsements, reviews, or outcomes.
 - [x] Convert the accepted themes into review-only content ideas without copying user comments or fabricating testimonials.
 - [x] Verify that the Facebook source review explicitly separates public themes from endorsements and includes review-only content ideas.
-- [ ] Save a checkpoint after verification of the Facebook source review artifact.
+- [x] Save a checkpoint after verification of the Facebook source review artifact.
+- [x] Inspect only publicly visible Facebook comments for non-identifying recurring themes; no comments were accessible without login, and no names, quotes, or personal experiences were copied.
+- [x] Add any verified comment-level themes to the editorial guidance while explicitly recording inaccessible or insufficient data; the documented result was insufficient comment-level data.
