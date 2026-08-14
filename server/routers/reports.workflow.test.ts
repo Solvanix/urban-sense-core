@@ -14,7 +14,6 @@ import {
   municipalities,
   municipalityMemberships,
   reportEvidence,
-  reportRatings,
   reportStatusHistory,
   reports,
 } from "../../drizzle/schema";
@@ -27,7 +26,6 @@ type WorkflowState = {
   evidence: Record<string, any>[];
   history: Record<string, any>[];
   audits: Record<string, any>[];
-  ratings: Record<string, any>[];
   membershipQueue: Record<string, any>[];
   nextId: number;
 };
@@ -69,7 +67,6 @@ function createWorkflowDb(state: WorkflowState) {
       if (table === fieldAssignments) return query(state.assignments);
       if (table === reportEvidence) return query(state.evidence);
       if (table === auditEvents) return query(state.audits.slice(-1));
-      if (table === reportRatings) return query(state.ratings);
       return query([]);
     },
   }));
@@ -82,7 +79,6 @@ function createWorkflowDb(state: WorkflowState) {
       if (table === reportEvidence) state.evidence.push({ id, ...value });
       if (table === reportStatusHistory) state.history.push({ id, ...value });
       if (table === auditEvents) state.audits.push({ id, ...value });
-      if (table === reportRatings) state.ratings.push({ id, ...value });
       const write: any = {
         $returningId: async () => [{ id }],
         then: (resolve: (result: unknown) => unknown) => Promise.resolve({ affectedRows: 1 }).then(resolve),
@@ -96,7 +92,6 @@ function createWorkflowDb(state: WorkflowState) {
       where: async () => {
         if (table === reports && state.report) Object.assign(state.report, values);
         if (table === fieldAssignments && state.assignments[0]) Object.assign(state.assignments[0], values);
-        if (table === reportRatings && state.ratings[0]) Object.assign(state.ratings[0], values);
         return { affectedRows: 1 };
       },
     }),
@@ -109,12 +104,12 @@ describe("reports workflow integration", () => {
   let state: WorkflowState;
 
   beforeEach(() => {
-    state = { report: null, assignments: [], evidence: [], history: [], audits: [], ratings: [], membershipQueue: [], nextId: 1 };
+    state = { report: null, assignments: [], evidence: [], history: [], audits: [], membershipQueue: [], nextId: 1 };
     getDbMock.mockResolvedValue(createWorkflowDb(state));
     storagePutMock.mockResolvedValue({ key: "reports/1/users/30/evidence.jpg", url: "/manus-storage/reports/1/users/30/evidence.jpg" });
   });
 
-  it("creates, reviews, assigns, evidences, verifies, resolves, rates, and audits one report", async () => {
+  it("creates, reviews, assigns, evidences, verifies, resolves, and audits one report", async () => {
     state.membershipQueue.push({ municipalityId: 1, userId: 10, role: "citizen", isActive: true });
     const citizen = reportsRouter.createCaller(createContext("citizen", 10));
     const created = await citizen.create({
@@ -153,8 +148,6 @@ describe("reports workflow integration", () => {
     await reportsRouter.createCaller(createContext("supervisor", 40)).verifyClosure({ reportId: 1, approved: true, reason: "تمت مراجعة الأدلة واعتماد الإغلاق." });
     expect(state.report?.status).toBe("resolved");
 
-    await citizen.rate({ reportId: 1, score: 5, comment: "تمت المعالجة بصورة جيدة." });
-    expect(state.ratings).toHaveLength(1);
     expect(state.history.map(item => item.toStatus)).toEqual(["pending", "under_review", "assigned", "in_progress", "awaiting_verification", "resolved"]);
     expect(state.audits.length).toBeGreaterThanOrEqual(8);
     expect(state.audits.every(item => typeof item.eventHash === "string" && item.eventHash.length === 64)).toBe(true);

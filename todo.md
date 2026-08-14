@@ -15,7 +15,7 @@
 - [x] Add successful authorization tests for membership role and active-scope updates.
 - [x] Document the restriction that only a platform administrator can add a new user to a municipality.
 - [x] Create the internal SENSE test municipality through the authenticated operations interface.
-- [ ] Run the end-to-end browser workflow with an explicitly labeled internal technical test report.
+- [x] Run the internal technical browser workflow through reviewed, assigned, evidenced, verified, and resolved states; verify the rating interface without submitting a synthetic rating.
 - [x] Verify team-management role and active-scope changes in the dashboard with an actual municipality.
 - [x] Add tests for municipality-admin updates, new membership creation, and re-activation.
 - [x] Add security tests for unauthenticated access, ownership, role scope, and invalid report transitions.
@@ -29,3 +29,4 @@
 - [x] Verify the citizen-rating interface becomes available after verified closure without creating a synthetic rating.
 - [x] Verify the live audit ledger links all recorded events through an unbroken SHA-256 hash chain.
 - [ ] Obtain a real citizen rating during a pilot; do not create a synthetic rating for validation.
+- [x] Remove the synthetic rating fixture from the automated workflow test while retaining the real-user rating capability.
