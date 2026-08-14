@@ -43,16 +43,16 @@
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
+  --primary: oklch(0.41 0.08 188);
+  --primary-foreground: oklch(0.99 0.005 180);
+  --sidebar-primary: oklch(0.41 0.08 188);
+  --sidebar-primary-foreground: oklch(0.99 0.005 180);
+  --chart-1: oklch(0.71 0.1 188);
+  --chart-2: oklch(0.56 0.1 188);
+  --chart-3: oklch(0.41 0.08 188);
+  --chart-4: oklch(0.35 0.07 188);
+  --chart-5: oklch(0.29 0.06 188);
+  --radius: 0.8rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.235 0.015 65);
   --card: oklch(1 0 0);
@@ -119,6 +119,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: "Cairo", system-ui, sans-serif;
+    direction: rtl;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
