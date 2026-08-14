@@ -79,3 +79,8 @@
 - [x] Prepare a responsible content strategy and future post concepts derived from the reference analysis without copying third-party wording or fabricating results.
 - [x] Verify that the finalized reference-informed SENSE TECH content strategy document is present and contains the proposed future post concepts.
 - [x] Save a recoverable checkpoint after verifying the finalized content strategy document.
+- [x] Create a four-week SENSE TECH editorial calendar with purpose, format, audience, hook, and approval status for each proposed post.
+- [x] Draft a review-only set of future LinkedIn posts in the approved human-centered Arabic voice, without publishing any of them.
+- [x] Document a lightweight editorial quality checklist that prevents unsupported claims, unverified partnerships, synthetic engagement, and misleading use of local images.
+- [x] Verify that the four-week editorial calendar file contains the calendar table, review-only drafts, and editorial quality checklist.
+- [ ] Save a checkpoint after verification of the editorial calendar artifact.
