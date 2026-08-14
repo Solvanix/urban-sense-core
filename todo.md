@@ -34,3 +34,11 @@
 - [x] Add clear pilot instructions that guide real participants through reporting, evidence, closure, and voluntary genuine feedback.
 - [x] Prepare a concise Arabic invitation message for the user's community channels without fabricating endorsements or ratings.
 - [x] Re-run quality checks and save a release checkpoint for the pilot-launch materials.
+- [ ] Draft an honest professional LinkedIn post for the Urban‑Sense pilot launch using the published platform URL.
+- [ ] Verify LinkedIn access and prepare the post for review without publishing it.
+- [ ] Publish the approved LinkedIn post only after the user explicitly confirms the final text and destination.
+- [x] Analyze the current SENSE TECH LinkedIn page content, positioning, and visible engagement signals.
+- [x] Create a LinkedIn content strategy with post themes, an Arabic editorial calendar, and non-fabricated success measures.
+- [x] Draft a set of promotional LinkedIn posts for SENSE TECH and Urban‑Sense that the user can review before publication.
+- [x] Produce a short video concept and generation-ready script for the Urban‑Sense pilot launch; create media only after the user approves the concept.
+- [ ] Generate the approved Urban‑Sense pilot-launch video after the user confirms the concept, narration, and public platform URL.
