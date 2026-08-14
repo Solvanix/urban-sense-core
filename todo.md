@@ -51,3 +51,4 @@
 - [x] Draft matching Arabic LinkedIn copy and accessibility alt text for the rights-cleared real-photo series.
 - [x] Source a rights-cleared, location-verifiable real photograph specifically covering Al‑Tira; keep Al‑Reihan route wording excluded until an independent lawful source is available.
 - [ ] Present the real-photo LinkedIn series, Arabic captions, alt text, and attribution text to the user for explicit approval before any posting.
+- [x] Complete the first non-public LinkedIn draft from the real-photo series; keep the remaining posts staged outside LinkedIn until the user reviews this draft.
