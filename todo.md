@@ -63,3 +63,9 @@
 - [x] Select geographically verifiable, rights-cleared Ramallah-area photographs from the previously documented licensed source set for the new editorial cards.
 - [x] Create Arabic editorial graphics from the selected real photographs with concise news-style captions, contextual labels, and visible source attribution.
 - [x] Document the source, license, attribution, and non-documentary limitation for every new editorial graphic before presenting it for review.
+- [ ] Publish the approved Irsal Street real-photo LinkedIn post with its Arabic alt text, CC BY-SA attribution, source link, and non-documentary disclosure.
+- [ ] Publish the approved northern Al-Tira real-photo LinkedIn post with its Arabic alt text, CC BY-SA attribution, source link, and non-documentary disclosure.
+- [x] Record the public URLs and publication outcome of the approved real-photo LinkedIn posts without fabricating engagement results.
+- [x] Attempt a LinkedIn publication path that uses the original licensed Wikimedia Commons source link and its real-photo preview when native media upload is unavailable to automation.
+- [ ] Verify whether LinkedIn exposes an Arabic alt-text control for the published Irsal Street link-preview post; if not, document the limitation and retain the Arabic accessible description in the post body.
+- [ ] Record the final publication method for each real-photo post, including whether it uses an uploaded image or a Wikimedia link preview and whether Arabic alt text was set or unsupported.
