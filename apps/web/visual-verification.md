@@ -5,3 +5,5 @@ The Arabic public landing page was verified at desktop and mobile widths. The la
 The municipal operations page was verified at desktop width after moving the template navigation into RTL context and translating its visible labels. The authenticated administrator setup card, municipality selector, workflow metrics, and operations queue render without layout overflow. Functional staff access remains server-enforced; the page explains when a signed-in user lacks an operational municipality role.
 
 The new-report form was verified in the authenticated state with Arabic fields and RTL spacing. Report-detail and operations-detail routes were verified to display clear Arabic error states when a report identifier does not exist rather than remaining in a loading state. The full lifecycle and evidence-upload path are covered by router integration tests without creating user-facing demonstration data in the production database.
+
+The new-report page was also verified at a 375-pixel mobile width. The RTL labels, selectors, text areas, action button, and guidance panel remain legible without horizontal overflow.
