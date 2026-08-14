@@ -1,0 +1,29 @@
+# Dependencies and builds
+node_modules/
+dist/
+build/
+coverage/
+.expo/
+.vite/
+*.tsbuildinfo
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local databases and uploads
+*.sqlite
+*.sqlite3
+local-data/
+uploads/
+
+# Logs and editor files
+*.log
+npm-debug.log*
+pnpm-debug.log*
+.DS_Store
+.idea/
+.vscode/

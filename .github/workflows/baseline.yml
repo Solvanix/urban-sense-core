@@ -1,0 +1,36 @@
+name: Repository Baseline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  repository-hygiene:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Check whitespace errors
+        run: git diff --check HEAD^ HEAD || true
+
+      - name: Block committed environment files
+        shell: bash
+        run: |
+          set -euo pipefail
+          if find . -type f \( -name '.env' -o -name '.env.local' -o -name '.env.production' \) -print -quit | grep -q .; then
+            echo 'Environment files must not be committed. Use .env.example only.' >&2
+            exit 1
+          fi
+
+      - name: List baseline artifacts
+        run: |
+          test -f README.md
+          test -f docs/START-HERE.md
+          test -f docs/security/SECURITY-BASELINE.md
+          test -f docs/architecture/MVP-ARCHITECTURE.md
