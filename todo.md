@@ -95,7 +95,7 @@
 - [x] Define a truthful sustainability brand message tied to reduced friction, clearer follow-up, and responsible digital service without unverified environmental impact claims.
 - [x] Write a short Arabic video storyboard and voiceover script for the campaign before generating the video.
 - [x] Verify that the direct-publish campaign kit exists and contains the promotional posts, sustainability message, and Arabic video storyboard.
-- [ ] Save a checkpoint after verifying the direct-publish campaign kit, the published post log, and the documented video deferral.
+- [ ] Save a checkpoint after independently verifying the direct-publish campaign kit, the published post log, and the documented video deferral.
 - [ ] Generate a review-only short campaign video that uses contextual, non-documentary imagery and does not claim real case outcomes.
 - [x] Record the free-plan video quota limitation and defer video publication without substituting a static visual as a video.
 - [ ] Prepare the generated vertical campaign reference image as an optional contextual visual for the campaign, subject to completing generation successfully.
