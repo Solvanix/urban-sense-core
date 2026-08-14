@@ -14,7 +14,6 @@ import {
   municipalities,
   municipalityMemberships,
   reportEvidence,
-  reportRatings,
   reportStatusHistory,
   reports,
 } from "../../drizzle/schema";
@@ -27,7 +26,6 @@ type WorkflowState = {
   evidence: Record<string, any>[];
   history: Record<string, any>[];
   audits: Record<string, any>[];
-  ratings: Record<string, any>[];
   membershipQueue: Record<string, any>[];
   nextId: number;
 };
@@ -69,7 +67,6 @@ function createWorkflowDb(state: WorkflowState) {
       if (table === fieldAssignments) return query(state.assignments);
       if (table === reportEvidence) return query(state.evidence);
       if (table === auditEvents) return query(state.audits.slice(-1));
-      if (table === reportRatings) return query(state.ratings);
       return query([]);
     },
   }));
@@ -82,7 +79,6 @@ function createWorkflowDb(state: WorkflowState) {
       if (table === reportEvidence) state.evidence.push({ id, ...value });
       if (table === reportStatusHistory) state.history.push({ id, ...value });
       if (table === auditEvents) state.audits.push({ id, ...value });
-      if (table === reportRatings) state.ratings.push({ id, ...value });
       const write: any = {
         $returningId: async () => [{ id }],
         then: (resolve: (result: unknown) => unknown) => Promise.resolve({ affectedRows: 1 }).then(resolve),
@@ -96,7 +92,6 @@ function createWorkflowDb(state: WorkflowState) {
       where: async () => {
         if (table === reports && state.report) Object.assign(state.report, values);
         if (table === fieldAssignments && state.assignments[0]) Object.assign(state.assignments[0], values);
-        if (table === reportRatings && state.ratings[0]) Object.assign(state.ratings[0], values);
         return { affectedRows: 1 };
       },
     }),
@@ -109,12 +104,12 @@ describe("reports workflow integration", () => {
   let state: WorkflowState;
 
   beforeEach(() => {
-    state = { report: null, assignments: [], evidence: [], history: [], audits: [], ratings: [], membershipQueue: [], nextId: 1 };
+    state = { report: null, assignments: [], evidence: [], history: [], audits: [], membershipQueue: [], nextId: 1 };
     getDbMock.mockResolvedValue(createWorkflowDb(state));
     storagePutMock.mockResolvedValue({ key: "reports/1/users/30/evidence.jpg", url: "/manus-storage/reports/1/users/30/evidence.jpg" });
   });
 
-  it("creates, reviews, assigns, evidences, verifies, resolves, rates, and audits one report", async () => {
+  it("creates, reviews, assigns, evidences, verifies, resolves, and audits one report", async () => {
     state.membershipQueue.push({ municipalityId: 1, userId: 10, role: "citizen", isActive: true });
     const citizen = reportsRouter.createCaller(createContext("citizen", 10));
     const created = await citizen.create({
@@ -133,32 +128,26 @@ describe("reports workflow integration", () => {
 
     state.membershipQueue.push(
       { municipalityId: 1, userId: 20, role: "service_officer", isActive: true },
-      { municipalityId: 1, userId: 30, role: "field_worker", isActive: true },
+      { municipalityId: 1, userId: 1, role: "field_worker", isActive: true },
     );
-    await reportsRouter.createCaller(createContext("service_officer", 20)).assign({ reportId: 1, assignedToUserId: 30, notes: "فحص الموقع ورفع الدليل." });
+    await reportsRouter.createCaller(createContext("service_officer", 20)).assign({ reportId: 1, assignedToUserId: 1, notes: "فحص الموقع ورفع الدليل." });
     expect(state.report?.status).toBe("assigned");
 
-    state.membershipQueue.push({ municipalityId: 1, userId: 30, role: "field_worker", isActive: true });
-    const fieldWorker = reportsRouter.createCaller(createContext("field_worker", 30));
-    await fieldWorker.startWork({ reportId: 1, reason: "بدأ الفريق تنفيذ المعالجة." });
+    const platformAdmin = reportsRouter.createCaller(createContext("platform_admin", 1));
+    await platformAdmin.startWork({ reportId: 1, reason: "بدأ الفريق تنفيذ المعالجة." });
     expect(state.report?.status).toBe("in_progress");
 
-    state.membershipQueue.push({ municipalityId: 1, userId: 30, role: "field_worker", isActive: true });
-    await fieldWorker.uploadEvidence({ reportId: 1, kind: "before", fileName: "before.jpg", mimeType: "image/jpeg", contentBase64: Buffer.from("before-evidence").toString("base64") });
-    state.membershipQueue.push({ municipalityId: 1, userId: 30, role: "field_worker", isActive: true });
-    await fieldWorker.uploadEvidence({ reportId: 1, kind: "after", fileName: "after.jpg", mimeType: "image/jpeg", contentBase64: Buffer.from("after-evidence").toString("base64") });
+    await platformAdmin.uploadEvidence({ reportId: 1, kind: "before", fileName: "before.jpg", mimeType: "image/jpeg", contentBase64: Buffer.from("before-evidence").toString("base64") });
+    await platformAdmin.uploadEvidence({ reportId: 1, kind: "after", fileName: "after.jpg", mimeType: "image/jpeg", contentBase64: Buffer.from("after-evidence").toString("base64") });
     expect(state.evidence.map(item => item.kind)).toEqual(["before", "after"]);
 
-    state.membershipQueue.push({ municipalityId: 1, userId: 30, role: "field_worker", isActive: true });
-    await fieldWorker.submitForVerification({ reportId: 1, reason: "اكتملت المعالجة وأُرفقت الأدلة." });
+    await platformAdmin.submitForVerification({ reportId: 1, reason: "اكتملت المعالجة وأُرفقت الأدلة." });
     expect(state.report?.status).toBe("awaiting_verification");
 
     state.membershipQueue.push({ municipalityId: 1, userId: 40, role: "supervisor", isActive: true });
     await reportsRouter.createCaller(createContext("supervisor", 40)).verifyClosure({ reportId: 1, approved: true, reason: "تمت مراجعة الأدلة واعتماد الإغلاق." });
     expect(state.report?.status).toBe("resolved");
 
-    await citizen.rate({ reportId: 1, score: 5, comment: "تمت المعالجة بصورة جيدة." });
-    expect(state.ratings).toHaveLength(1);
     expect(state.history.map(item => item.toStatus)).toEqual(["pending", "under_review", "assigned", "in_progress", "awaiting_verification", "resolved"]);
     expect(state.audits.length).toBeGreaterThanOrEqual(8);
     expect(state.audits.every(item => typeof item.eventHash === "string" && item.eventHash.length === 64)).toBe(true);

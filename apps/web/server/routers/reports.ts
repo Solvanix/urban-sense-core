@@ -474,7 +474,7 @@ export const reportsRouter = router({
       const db = await requireDb();
       const report = await getReportOrThrow(db, input.reportId);
       const membership = await getMembershipOrThrow(db, ctx.user.id, report.municipalityId, ctx.user.role);
-      assertRole(membership.role, ["field_worker"]);
+      assertRole(membership.role, ["field_worker", "platform_admin"]);
       const [assignment] = await db.select().from(fieldAssignments).where(and(eq(fieldAssignments.reportId, report.id), eq(fieldAssignments.assignedToUserId, ctx.user.id), eq(fieldAssignments.status, "assigned"))).limit(1);
       if (!assignment) throw new TRPCError({ code: "FORBIDDEN", message: "ليس لديك إسناد ميداني صالح لهذا البلاغ." });
       await db.update(fieldAssignments).set({ status: "in_progress" }).where(eq(fieldAssignments.id, assignment.id));
@@ -494,7 +494,7 @@ export const reportsRouter = router({
       const db = await requireDb();
       const report = await getReportOrThrow(db, input.reportId);
       const membership = await getMembershipOrThrow(db, ctx.user.id, report.municipalityId, ctx.user.role);
-      assertRole(membership.role, ["field_worker"]);
+      assertRole(membership.role, ["field_worker", "platform_admin"]);
       if (report.status !== "in_progress") throw new TRPCError({ code: "BAD_REQUEST", message: "يمكن رفع الأدلة أثناء التنفيذ الميداني فقط." });
       const [assignment] = await db.select().from(fieldAssignments).where(and(eq(fieldAssignments.reportId, report.id), eq(fieldAssignments.assignedToUserId, ctx.user.id), eq(fieldAssignments.status, "in_progress"))).limit(1);
       if (!assignment) throw new TRPCError({ code: "FORBIDDEN", message: "لا تملك إسنادًا ميدانيًا نشطًا لهذا البلاغ." });
@@ -531,7 +531,7 @@ export const reportsRouter = router({
       const db = await requireDb();
       const report = await getReportOrThrow(db, input.reportId);
       const membership = await getMembershipOrThrow(db, ctx.user.id, report.municipalityId, ctx.user.role);
-      assertRole(membership.role, ["field_worker"]);
+      assertRole(membership.role, ["field_worker", "platform_admin"]);
       const [assignment] = await db.select().from(fieldAssignments).where(and(eq(fieldAssignments.reportId, report.id), eq(fieldAssignments.assignedToUserId, ctx.user.id), eq(fieldAssignments.status, "in_progress"))).limit(1);
       if (!assignment) throw new TRPCError({ code: "FORBIDDEN", message: "لا تملك إسنادًا ميدانيًا نشطًا لهذا البلاغ." });
       const evidence = await db.select({ kind: reportEvidence.kind }).from(reportEvidence).where(eq(reportEvidence.reportId, report.id));

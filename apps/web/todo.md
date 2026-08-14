@@ -14,12 +14,49 @@
 - [x] Add dashboard controls to activate and deactivate municipality memberships.
 - [x] Add successful authorization tests for membership role and active-scope updates.
 - [x] Document the restriction that only a platform administrator can add a new user to a municipality.
-- [ ] Verify team-management role and active-scope changes in the dashboard with an actual municipality.
+- [x] Create the internal SENSE test municipality through the authenticated operations interface.
+- [x] Run the internal technical browser workflow through reviewed, assigned, evidenced, verified, and resolved states; verify the rating interface without submitting a synthetic rating.
+- [x] Verify team-management role and active-scope changes in the dashboard with an actual municipality.
 - [x] Add tests for municipality-admin updates, new membership creation, and re-activation.
 - [x] Add security tests for unauthenticated access, ownership, role scope, and invalid report transitions.
 - [x] Add procedure-level authorization tests for report review, operations access, report ownership, and municipality scope.
 - [x] Add workflow tests for the end-to-end reporting lifecycle and audit history.
-- [ ] Verify browser happy paths and responsive RTL layouts with municipality data created عبر الواجهة.
+- [x] Verify browser happy paths and responsive RTL layouts with municipality data created عبر الواجهة.
 - [x] Add an integration-style router workflow test that asserts state updates and audit-event creation.
-- [ ] Verify critical citizen and operations action states and evidence upload with an actual municipal workflow.
+- [x] Verify critical citizen and operations action states and evidence upload with an actual municipal workflow.
 - [x] Document setup and synchronize the reviewed project baseline to GitHub.
+- [x] Align platform-administrator authorization with rendered field-work actions and add regression coverage for the complete workflow.
+- [x] Verify the citizen-rating interface becomes available after verified closure without creating a synthetic rating.
+- [x] Verify the live audit ledger links all recorded events through an unbroken SHA-256 hash chain.
+- [ ] Obtain a real citizen rating during a pilot; do not create a synthetic rating for validation.
+- [x] Remove the synthetic rating fixture from the automated workflow test while retaining the real-user rating capability.
+- [x] Add a public Arabic pilot-invitation page with an honest scope statement and a shareable participation path.
+- [x] Add clear pilot instructions that guide real participants through reporting, evidence, closure, and voluntary genuine feedback.
+- [x] Prepare a concise Arabic invitation message for the user's community channels without fabricating endorsements or ratings.
+- [x] Re-run quality checks and save a release checkpoint for the pilot-launch materials.
+- [x] Draft an honest professional LinkedIn post for the Urban‑Sense pilot launch without a temporary platform URL.
+- [x] Verify LinkedIn access and prepare the post for review without publishing it.
+- [x] Publish the approved LinkedIn post after the user explicitly confirmed the final text, media, destination, and publication without a platform URL.
+- [x] Analyze the current SENSE TECH LinkedIn page content, positioning, and visible engagement signals.
+- [x] Create a LinkedIn content strategy with post themes, an Arabic editorial calendar, and non-fabricated success measures.
+- [x] Draft a set of promotional LinkedIn posts for SENSE TECH and Urban‑Sense that the user can review before publication.
+- [x] Produce a short video concept and generation-ready script for the Urban‑Sense pilot launch; create media only after the user approves the concept.
+- [x] Deliver the user-approved static visual alternative to the Urban‑Sense pilot-launch video after video generation became unavailable; complete a three-image localized campaign instead.
+- [x] Gather visual references for Ramallah and the route toward Al‑Reihan via Al‑Tira to guide location-inspired promotional imagery.
+- [x] Generate a coherent set of localized Urban‑Sense promotional images inspired by Ramallah without claiming documentary accuracy.
+- [x] Write Arabic LinkedIn captions and alt text for each localized promotional image, then present the complete image-and-copy set for user review.
+- [x] Source authentic, rights-cleared photographs of Ramallah for future LinkedIn posts.
+- [x] Record source links, licenses, attribution requirements, and editorial-use limitations for every selected real photograph.
+- [x] Create editorial photo montages with clearly labeled contextual data and no implication that a photo documents a specific Urban‑Sense report.
+- [x] Draft matching Arabic LinkedIn copy and accessibility alt text for the rights-cleared real-photo series.
+- [x] Source a rights-cleared, location-verifiable real photograph specifically covering Al‑Tira; keep Al‑Reihan route wording excluded until an independent lawful source is available.
+- [x] Present the real-photo LinkedIn series, Arabic captions, alt text, and attribution text to the user for explicit approval before any posting.
+- [x] Complete the first non-public LinkedIn draft from the real-photo series; keep the remaining posts staged outside LinkedIn until the user reviews this draft.
+- [ ] Prepare the Irsal Street real-photo post as a non-public LinkedIn draft with attribution and Arabic alt text.
+- [ ] Prepare the northern Al‑Tira real-photo post as a non-public LinkedIn draft with attribution and Arabic alt text.
+- [x] Diagnose the LinkedIn account-recovery code rejection using only the official recovery flow; document that the generic LinkedIn error occurs before code verification and provide official identity-verification fallback without handling credentials.
+- [x] Inspect the Urban‑Sense project and GitHub repository status against the latest saved checkpoint.
+- [x] Reproduce and diagnose the reported Vite import-resolution error using current project files and fresh logs.
+- [x] Run type checks, tests, and a production build; fix any current project defect revealed by those checks.
+- [ ] Document the verified build and repository state, including remaining operational dependencies that cannot be automated.
+- [ ] Synchronize the verified managed-project source into Solvanix/urban-sense-core and verify the repository quality workflow.
