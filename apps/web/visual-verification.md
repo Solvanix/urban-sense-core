@@ -1,0 +1,5 @@
+# Visual verification — 2026-08-14
+
+The Arabic public landing page was verified at desktop and mobile widths. The layout preserves RTL hierarchy, legible contrast, responsive call-to-action controls, and a documented report-lifecycle illustration. The citizen report list was also verified in its empty state.
+
+The municipal operations page was verified at desktop width after moving the template navigation into RTL context and translating its visible labels. The authenticated administrator setup card, municipality selector, workflow metrics, and operations queue render without layout overflow. Functional staff access remains server-enforced; the page explains when a signed-in user lacks an operational municipality role.
