@@ -60,3 +60,6 @@
 - [x] Run type checks, tests, and a production build; fix any current project defect revealed by those checks.
 - [x] Document the verified build and repository state, including remaining operational dependencies that cannot be automated.
 - [x] Verify the GitHub quality workflow for synchronization commit `c994901`: run `31804499434` completed successfully.
+- [x] Select geographically verifiable, rights-cleared Ramallah-area photographs from the previously documented licensed source set for the new editorial cards.
+- [x] Create Arabic editorial graphics from the selected real photographs with concise news-style captions, contextual labels, and visible source attribution.
+- [x] Document the source, license, attribution, and non-documentary limitation for every new editorial graphic before presenting it for review.
