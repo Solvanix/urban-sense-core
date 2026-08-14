@@ -1,6 +1,6 @@
 import { TRPCError } from "@trpc/server";
 import { and, desc, eq, inArray } from "drizzle-orm";
-import { createHash, randomUUID } from "node:crypto";
+import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import {
   auditEvents,
@@ -16,6 +16,7 @@ import {
   users,
 } from "../../drizzle/schema";
 import { getDb } from "../db";
+import { buildAuditEventHash } from "../auditLedger";
 import { assertReportTransition, assertRole, type MunicipalRole, type ReportStatus } from "../reportPolicy";
 import { storagePut } from "../storage";
 import { protectedProcedure, publicProcedure, router } from "../_core/trpc";
@@ -101,7 +102,7 @@ async function addAuditEvent(
     previousHash: previousEvent?.eventHash ?? null,
     createdAt: createdAt.toISOString(),
   };
-  const eventHash = createHash("sha256").update(JSON.stringify(payload)).digest("hex");
+  const eventHash = buildAuditEventHash(payload);
   await db.insert(auditEvents).values({
     municipalityId: payload.municipalityId,
     actorUserId: payload.actorUserId,
@@ -195,6 +196,67 @@ export const reportsRouter = router({
           nextValue: input,
         });
         return created;
+      }),
+    listMembers: protectedProcedure
+      .input(z.object({ municipalityId: z.number().int().positive() }))
+      .query(async ({ ctx, input }) => {
+        const db = await requireDb();
+        const membership = await getMembershipOrThrow(db, ctx.user.id, input.municipalityId, ctx.user.role);
+        assertRole(membership.role, ["municipality_admin", "platform_admin"]);
+        return db
+          .select({
+            membershipId: municipalityMemberships.id,
+            userId: users.id,
+            name: users.name,
+            email: users.email,
+            role: municipalityMemberships.role,
+            isActive: municipalityMemberships.isActive,
+          })
+          .from(municipalityMemberships)
+          .innerJoin(users, eq(municipalityMemberships.userId, users.id))
+          .where(eq(municipalityMemberships.municipalityId, input.municipalityId));
+      }),
+    listPlatformUsers: protectedProcedure.query(async ({ ctx }) => {
+      if (ctx.user.role !== "platform_admin") {
+        throw new TRPCError({ code: "FORBIDDEN", message: "قائمة المستخدمين مخصصة لمدير المنصة." });
+      }
+      const db = await requireDb();
+      return db.select({ id: users.id, name: users.name, email: users.email }).from(users).orderBy(users.name);
+    }),
+    setMemberRole: protectedProcedure
+      .input(z.object({
+        municipalityId: z.number().int().positive(),
+        userId: z.number().int().positive(),
+        role: z.enum(["citizen", "service_officer", "field_worker", "supervisor", "municipality_admin"]),
+        isActive: z.boolean().default(true),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        const db = await requireDb();
+        const actorMembership = await getMembershipOrThrow(db, ctx.user.id, input.municipalityId, ctx.user.role);
+        assertRole(actorMembership.role, ["municipality_admin", "platform_admin"]);
+        const [targetUser] = await db.select({ id: users.id }).from(users).where(eq(users.id, input.userId)).limit(1);
+        if (!targetUser) throw new TRPCError({ code: "NOT_FOUND", message: "المستخدم المختار غير موجود." });
+        const [existing] = await db
+          .select()
+          .from(municipalityMemberships)
+          .where(and(eq(municipalityMemberships.municipalityId, input.municipalityId), eq(municipalityMemberships.userId, input.userId)))
+          .limit(1);
+        if (existing) {
+          await db.update(municipalityMemberships).set({ role: input.role, isActive: input.isActive }).where(eq(municipalityMemberships.id, existing.id));
+        } else {
+          await db.insert(municipalityMemberships).values({ ...input });
+        }
+        await addAuditEvent(db, {
+          municipalityId: input.municipalityId,
+          actorUserId: ctx.user.id,
+          entityType: "municipality_membership",
+          entityId: `${input.municipalityId}:${input.userId}`,
+          action: "membership.role_updated",
+          previousValue: existing ? { role: existing.role, isActive: existing.isActive } : null,
+          nextValue: { role: input.role, isActive: input.isActive },
+          reason: "تحديث دور ونطاق عضو البلدية.",
+        });
+        return { success: true };
       }),
   }),
 
@@ -412,7 +474,7 @@ export const reportsRouter = router({
       const db = await requireDb();
       const report = await getReportOrThrow(db, input.reportId);
       const membership = await getMembershipOrThrow(db, ctx.user.id, report.municipalityId, ctx.user.role);
-      assertRole(membership.role, ["field_worker"]);
+      assertRole(membership.role, ["field_worker", "platform_admin"]);
       const [assignment] = await db.select().from(fieldAssignments).where(and(eq(fieldAssignments.reportId, report.id), eq(fieldAssignments.assignedToUserId, ctx.user.id), eq(fieldAssignments.status, "assigned"))).limit(1);
       if (!assignment) throw new TRPCError({ code: "FORBIDDEN", message: "ليس لديك إسناد ميداني صالح لهذا البلاغ." });
       await db.update(fieldAssignments).set({ status: "in_progress" }).where(eq(fieldAssignments.id, assignment.id));
@@ -432,7 +494,7 @@ export const reportsRouter = router({
       const db = await requireDb();
       const report = await getReportOrThrow(db, input.reportId);
       const membership = await getMembershipOrThrow(db, ctx.user.id, report.municipalityId, ctx.user.role);
-      assertRole(membership.role, ["field_worker"]);
+      assertRole(membership.role, ["field_worker", "platform_admin"]);
       if (report.status !== "in_progress") throw new TRPCError({ code: "BAD_REQUEST", message: "يمكن رفع الأدلة أثناء التنفيذ الميداني فقط." });
       const [assignment] = await db.select().from(fieldAssignments).where(and(eq(fieldAssignments.reportId, report.id), eq(fieldAssignments.assignedToUserId, ctx.user.id), eq(fieldAssignments.status, "in_progress"))).limit(1);
       if (!assignment) throw new TRPCError({ code: "FORBIDDEN", message: "لا تملك إسنادًا ميدانيًا نشطًا لهذا البلاغ." });
@@ -469,7 +531,7 @@ export const reportsRouter = router({
       const db = await requireDb();
       const report = await getReportOrThrow(db, input.reportId);
       const membership = await getMembershipOrThrow(db, ctx.user.id, report.municipalityId, ctx.user.role);
-      assertRole(membership.role, ["field_worker"]);
+      assertRole(membership.role, ["field_worker", "platform_admin"]);
       const [assignment] = await db.select().from(fieldAssignments).where(and(eq(fieldAssignments.reportId, report.id), eq(fieldAssignments.assignedToUserId, ctx.user.id), eq(fieldAssignments.status, "in_progress"))).limit(1);
       if (!assignment) throw new TRPCError({ code: "FORBIDDEN", message: "لا تملك إسنادًا ميدانيًا نشطًا لهذا البلاغ." });
       const evidence = await db.select({ kind: reportEvidence.kind }).from(reportEvidence).where(eq(reportEvidence.reportId, report.id));

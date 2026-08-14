@@ -74,6 +74,60 @@ describe("reports security boundaries", () => {
     await expect(caller.review({ reportId: 1, decision: "accepted", notes: "تمت المراجعة والتصنيف." })).rejects.toMatchObject({ code: "UNAUTHORIZED" });
   });
 
+  it("rejects municipality role changes without an authenticated actor", async () => {
+    const caller = reportsRouter.createCaller(unauthenticatedContext);
+    await expect(caller.municipalities.setMemberRole({ municipalityId: 1, userId: 22, role: "field_worker", isActive: true })).rejects.toMatchObject({ code: "UNAUTHORIZED" });
+  });
+
+  it("allows a platform administrator to update an existing membership role and active scope", async () => {
+    const select = vi.fn()
+      .mockReturnValueOnce(queryResult([{ id: 31 }]))
+      .mockReturnValueOnce(queryResult([{ id: 8, municipalityId: 1, userId: 31, role: "field_worker", isActive: true }]))
+      .mockReturnValueOnce({ from: () => ({ orderBy: () => ({ limit: async () => [] }) }) });
+    const where = vi.fn(async () => ({ affectedRows: 1 }));
+    const update = vi.fn(() => ({ set: () => ({ where }) }));
+    const insert = vi.fn(() => ({ values: () => ({}) }));
+    getDbMock.mockResolvedValue({ select, update, insert } as never);
+
+    const caller = reportsRouter.createCaller(authenticatedContext("platform_admin", 1));
+    await expect(caller.municipalities.setMemberRole({ municipalityId: 1, userId: 31, role: "field_worker", isActive: false })).resolves.toEqual({ success: true });
+    expect(update).toHaveBeenCalledTimes(1);
+    expect(where).toHaveBeenCalledTimes(1);
+    expect(insert).toHaveBeenCalledTimes(1);
+  });
+
+  it("allows a municipality administrator to reactivate an existing member within the same scope", async () => {
+    const select = vi.fn()
+      .mockReturnValueOnce(queryResult([{ municipalityId: 1, userId: 20, role: "municipality_admin", isActive: true }]))
+      .mockReturnValueOnce(queryResult([{ id: 31 }]))
+      .mockReturnValueOnce(queryResult([{ id: 8, municipalityId: 1, userId: 31, role: "field_worker", isActive: false }]))
+      .mockReturnValueOnce({ from: () => ({ orderBy: () => ({ limit: async () => [] }) }) });
+    const where = vi.fn(async () => ({ affectedRows: 1 }));
+    const update = vi.fn(() => ({ set: () => ({ where }) }));
+    const insert = vi.fn(() => ({ values: () => ({}) }));
+    getDbMock.mockResolvedValue({ select, update, insert } as never);
+
+    const caller = reportsRouter.createCaller(authenticatedContext("municipality_admin", 20));
+    await expect(caller.municipalities.setMemberRole({ municipalityId: 1, userId: 31, role: "field_worker", isActive: true })).resolves.toEqual({ success: true });
+    expect(update).toHaveBeenCalledTimes(1);
+    expect(insert).toHaveBeenCalledTimes(1);
+  });
+
+  it("allows a platform administrator to create a new membership within a municipality", async () => {
+    const select = vi.fn()
+      .mockReturnValueOnce(queryResult([{ id: 44 }]))
+      .mockReturnValueOnce(queryResult([]))
+      .mockReturnValueOnce({ from: () => ({ orderBy: () => ({ limit: async () => [] }) }) });
+    const values = vi.fn(() => ({}));
+    const insert = vi.fn(() => ({ values }));
+    getDbMock.mockResolvedValue({ select, insert, update: vi.fn() } as never);
+
+    const caller = reportsRouter.createCaller(authenticatedContext("platform_admin", 1));
+    await expect(caller.municipalities.setMemberRole({ municipalityId: 1, userId: 44, role: "supervisor", isActive: true })).resolves.toEqual({ success: true });
+    expect(insert).toHaveBeenCalledTimes(2);
+    expect(values).toHaveBeenCalledTimes(2);
+  });
+
   it("limits a field worker to the legal field transition", () => {
     expect(() => assertReportTransition("field_worker", "assigned", "in_progress")).not.toThrow();
     expect(() => assertReportTransition("field_worker", "awaiting_verification", "resolved")).toThrow();

@@ -1,3 +1,4 @@
+import { useAuth } from "@/_core/hooks/useAuth";
 import DashboardLayout from "@/components/DashboardLayout";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -10,24 +11,36 @@ import { formatDate, statusLabels, statusStyles } from "@/lib/report-ui";
 import { trpc } from "@/lib/trpc";
 import { ArrowRight, CheckCircle2, ClipboardCheck, ImagePlus, Loader2, PlayCircle, Send, UploadCloud, XCircle } from "lucide-react";
 import { useState } from "react";
-import { useLocation, useRoute } from "wouter";
 import { toast } from "sonner";
+import { useLocation, useRoute } from "wouter";
 
 function fileToBase64(file: File) {
-  return new Promise<string>((resolve, reject) => { const reader = new FileReader(); reader.onload = () => resolve(String(reader.result).split(",")[1] ?? ""); reader.onerror = reject; reader.readAsDataURL(file); });
+  return new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result).split(",")[1] ?? "");
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
 }
 
 export default function OperationsReport() {
   const [, params] = useRoute("/العمليات/:id");
   const [, setLocation] = useLocation();
+  const { user } = useAuth();
   const reportId = Number(params?.id);
-  const reportQuery = trpc.reports.getById.useQuery({ reportId }, { enabled: Number.isFinite(reportId) });
+  const reportQuery = trpc.reports.getById.useQuery(
+    { reportId },
+    { enabled: Number.isFinite(reportId), retry: false },
+  );
   const utils = trpc.useUtils();
   const [reviewNotes, setReviewNotes] = useState("تمت المراجعة والتأكد من أن البلاغ صالح للمعالجة.");
   const [workerId, setWorkerId] = useState("");
   const [assignmentNotes, setAssignmentNotes] = useState("يرجى فحص الموقع ورفع دليل قبل وبعد المعالجة.");
   const [actionReason, setActionReason] = useState("تم تنفيذ الإجراء وفق خطة المعالجة.");
-  const fieldWorkers = trpc.reports.staff.listFieldWorkers.useQuery({ municipalityId: reportQuery.data?.report.municipalityId ?? 0 }, { enabled: Boolean(reportQuery.data) });
+  const fieldWorkers = trpc.reports.staff.listFieldWorkers.useQuery(
+    { municipalityId: reportQuery.data?.report.municipalityId ?? 0 },
+    { enabled: Boolean(reportQuery.data) },
+  );
   const refresh = () => utils.reports.getById.invalidate({ reportId });
   const review = trpc.reports.review.useMutation({ onSuccess: () => { toast.success("تم توثيق المراجعة."); refresh(); } });
   const assign = trpc.reports.assign.useMutation({ onSuccess: () => { toast.success("تم إسناد البلاغ للفريق الميداني."); refresh(); } });
@@ -35,9 +48,77 @@ export default function OperationsReport() {
   const submitForVerification = trpc.reports.submitForVerification.useMutation({ onSuccess: () => { toast.success("أُرسل البلاغ إلى المشرف للتحقق."); refresh(); } });
   const verify = trpc.reports.verifyClosure.useMutation({ onSuccess: () => { toast.success("تم توثيق قرار المشرف."); refresh(); } });
   const upload = trpc.reports.uploadEvidence.useMutation({ onSuccess: () => { toast.success("تم رفع الدليل الميداني بأمان."); refresh(); } });
-  if (reportQuery.isLoading) return <DashboardLayout><div className="grid min-h-full place-items-center"><Loader2 className="animate-spin text-[#0f5b5b]" /></div></DashboardLayout>;
-  if (reportQuery.error || !reportQuery.data) return <DashboardLayout><div className="p-8"><Card><CardContent className="p-8"><h1 className="text-xl font-extrabold">لا يمكن فتح البلاغ</h1><p className="mt-2 text-slate-600">{reportQuery.error?.message ?? "البلاغ غير متاح."}</p></CardContent></Card></div></DashboardLayout>;
+
+  if (reportQuery.isPending && !reportQuery.error) {
+    return <DashboardLayout><div className="grid min-h-full place-items-center"><Loader2 className="animate-spin text-[#0f5b5b]" /></div></DashboardLayout>;
+  }
+
+  if (reportQuery.error || !reportQuery.data) {
+    return <DashboardLayout><div className="p-8"><Card><CardContent className="p-8"><h1 className="text-xl font-extrabold">لا يمكن فتح البلاغ</h1><p className="mt-2 text-slate-600">{reportQuery.error?.message ?? "البلاغ غير متاح."}</p></CardContent></Card></div></DashboardLayout>;
+  }
+
   const { report, history, evidence, assignments } = reportQuery.data;
   const pending = review.isPending || assign.isPending || startWork.isPending || submitForVerification.isPending || verify.isPending || upload.isPending;
-  return <DashboardLayout><main className="min-h-full bg-[#f6f8f7] p-5 lg:p-8"><div className="mx-auto max-w-6xl"><Button variant="ghost" onClick={() => setLocation("/العمليات")} className="mb-4 gap-2 font-bold text-[#0f5b5b]"><ArrowRight size={18} />العودة إلى العمليات</Button><div className="grid gap-6 xl:grid-cols-[1.2fr_.8fr]"><section className="space-y-6"><Card><CardHeader className="border-b"><div className="flex flex-wrap justify-between gap-3"><div><p className="font-mono text-xs text-slate-500">{report.publicReference}</p><CardTitle className="mt-2 text-2xl font-extrabold">{report.title}</CardTitle></div><Badge className={`h-fit border-0 ring-1 ${statusStyles[report.status]}`}>{statusLabels[report.status]}</Badge></div></CardHeader><CardContent className="space-y-4 p-6"><p className="leading-8 text-slate-700">{report.description}</p><div className="rounded-xl bg-slate-50 p-4 text-sm text-slate-600"><b>الموقع:</b> {report.locationDescription}</div><p className="text-xs text-slate-500">أُنشئ في {formatDate(report.createdAt)}</p></CardContent></Card><Card><CardHeader><CardTitle className="text-lg">سجل الإجراءات</CardTitle></CardHeader><CardContent className="space-y-4">{history.map(item => <div key={item.id} className="border-r-2 border-teal-100 pr-4"><p className="font-bold text-slate-800">{statusLabels[item.toStatus]}</p><p className="mt-1 text-sm text-slate-600">{item.reason}</p><p className="mt-1 text-xs text-slate-400">{formatDate(item.createdAt)}</p></div>)}</CardContent></Card></section><aside className="space-y-6"><Card><CardHeader><CardTitle className="flex items-center gap-2 text-lg"><ClipboardCheck className="text-[#0f5b5b]" size={19} />إجراءات الفريق</CardTitle></CardHeader><CardContent className="space-y-4">{report.status === "pending" && <div className="space-y-3"><p className="text-sm text-slate-600">راجع البلاغ ثم اختر قرار القبول أو الرفض. يتحقق الخادم من دور المنفذ.</p><Textarea value={reviewNotes} onChange={event => setReviewNotes(event.target.value)} /><div className="grid grid-cols-2 gap-2"><Button disabled={pending} onClick={() => review.mutate({ reportId, decision: "accepted", notes: reviewNotes })} className="bg-[#0f5b5b] font-bold">قبول للمراجعة</Button><Button disabled={pending} variant="outline" onClick={() => review.mutate({ reportId, decision: "rejected", notes: reviewNotes })} className="font-bold text-rose-700">رفض موثق</Button></div></div>}{(report.status === "under_review" || report.status === "reopened") && <div className="space-y-3"><p className="text-sm text-slate-600">اختر عاملًا ميدانيًا ضمن نطاق البلدية لإسناد المهمة.</p><Select value={workerId} onValueChange={setWorkerId}><SelectTrigger><SelectValue placeholder="اختر العامل الميداني" /></SelectTrigger><SelectContent>{fieldWorkers.data?.map(worker => <SelectItem key={worker.id} value={String(worker.id)}>{worker.name ?? worker.email ?? `عامل #${worker.id}`}</SelectItem>)}</SelectContent></Select><Textarea value={assignmentNotes} onChange={event => setAssignmentNotes(event.target.value)} /><Button disabled={pending || !workerId} onClick={() => assign.mutate({ reportId, assignedToUserId: Number(workerId), notes: assignmentNotes })} className="w-full bg-[#0f5b5b] font-bold">إسناد المهمة</Button></div>}{report.status === "assigned" && <div className="space-y-3"><p className="text-sm text-slate-600">يظهر هذا الإجراء للعامل الميداني المعيّن فقط.</p><Textarea value={actionReason} onChange={event => setActionReason(event.target.value)} /><Button disabled={pending} onClick={() => startWork.mutate({ reportId, reason: actionReason })} className="w-full bg-[#0f5b5b] font-bold"><PlayCircle size={17} />بدء التنفيذ</Button></div>}{report.status === "in_progress" && <div className="space-y-3"><p className="text-sm text-slate-600">ارفع صورة قبل وبعد. يُرفض أي ملف غير مصرح به أو أكبر من 5 ميغابايت.</p>{(["before", "after"] as const).map(kind => <label key={kind} className="block rounded-xl border border-dashed border-slate-300 p-3 text-sm font-bold text-slate-700"><span className="mb-2 flex items-center gap-2"><ImagePlus size={16} />دليل {kind === "before" ? "قبل المعالجة" : "بعد المعالجة"}</span><Input type="file" accept="image/jpeg,image/png,image/webp" onChange={async event => { const file = event.target.files?.[0]; if (!file) return; if (file.size > 5 * 1024 * 1024) return toast.error("حجم الملف أكبر من الحد المسموح."); const contentBase64 = await fileToBase64(file); upload.mutate({ reportId, kind, fileName: file.name, mimeType: file.type as "image/jpeg" | "image/png" | "image/webp", contentBase64 }); }} /></label>)}<Textarea value={actionReason} onChange={event => setActionReason(event.target.value)} /><Button disabled={pending} onClick={() => submitForVerification.mutate({ reportId, reason: actionReason })} className="w-full bg-[#e3a238] font-extrabold text-[#372308]">إرسال للتحقق</Button></div>}{report.status === "awaiting_verification" && <div className="space-y-3"><p className="text-sm text-slate-600">يعتمد المشرف الإغلاق بعد التحقق من الأدلة، أو يعيد البلاغ إلى التنفيذ.</p><Textarea value={actionReason} onChange={event => setActionReason(event.target.value)} /><div className="grid grid-cols-2 gap-2"><Button disabled={pending} onClick={() => verify.mutate({ reportId, approved: true, reason: actionReason })} className="bg-emerald-700 font-bold"><CheckCircle2 size={17} />اعتماد الإغلاق</Button><Button disabled={pending} variant="outline" onClick={() => verify.mutate({ reportId, approved: false, reason: actionReason })} className="font-bold text-amber-700"><XCircle size={17} />إعادة للتنفيذ</Button></div></div>}{report.status === "resolved" && <div className="rounded-xl bg-emerald-50 p-4 text-sm font-bold leading-7 text-emerald-900">البلاغ مغلق ومُعتمد. يمكن للمواطن الآن إرسال التقييم النهائي.</div>}</CardContent></Card><Card><CardHeader><CardTitle className="flex items-center gap-2 text-lg"><UploadCloud className="text-[#0f5b5b]" size={19} />الأدلة المرفوعة</CardTitle></CardHeader><CardContent className="space-y-2">{evidence.length === 0 ? <p className="text-sm text-slate-500">لا توجد أدلة مرفوعة بعد.</p> : evidence.map(item => <a key={item.id} href={item.storageUrl} target="_blank" rel="noreferrer" className="flex items-center justify-between rounded-xl bg-slate-50 p-3 text-sm font-bold text-[#0f5b5b]"><span>{item.kind === "before" ? "قبل المعالجة" : "بعد المعالجة"}</span><Send size={15} /></a>)}</CardContent></Card><Card><CardHeader><CardTitle className="text-lg">الإسنادات</CardTitle></CardHeader><CardContent className="space-y-2">{assignments.length === 0 ? <p className="text-sm text-slate-500">لم يُسند البلاغ بعد.</p> : assignments.map(item => <div key={item.id} className="rounded-xl bg-slate-50 p-3 text-sm"><b>العامل #{item.assignedToUserId}</b><p className="mt-1 text-slate-500">الحالة: {item.status}</p></div>)}</CardContent></Card></aside></div></div></main></DashboardLayout>;
+  const isAssignedToCurrentUser = assignments.some(item => item.assignedToUserId === user?.id && ["assigned", "in_progress"].includes(item.status));
+  const canPerformFieldWork = user?.role === "platform_admin" || isAssignedToCurrentUser;
+
+  const fieldAccessNotice = (
+    <p className="rounded-xl bg-amber-50 p-3 text-sm leading-7 text-amber-900">
+      المهمة مسندة إلى عامل ميداني آخر. لا تتاح لك إجراءات التنفيذ أو رفع الأدلة في هذا البلاغ.
+    </p>
+  );
+
+  return (
+    <DashboardLayout>
+      <main className="min-h-full bg-[#f6f8f7] p-5 lg:p-8">
+        <div className="mx-auto max-w-6xl">
+          <Button variant="ghost" onClick={() => setLocation("/العمليات")} className="mb-4 gap-2 font-bold text-[#0f5b5b]"><ArrowRight size={18} />العودة إلى العمليات</Button>
+          <div className="grid gap-6 xl:grid-cols-[1.2fr_.8fr]">
+            <section className="space-y-6">
+              <Card>
+                <CardHeader className="border-b">
+                  <div className="flex flex-wrap justify-between gap-3">
+                    <div><p className="font-mono text-xs text-slate-500">{report.publicReference}</p><CardTitle className="mt-2 text-2xl font-extrabold">{report.title}</CardTitle></div>
+                    <Badge className={`h-fit border-0 ring-1 ${statusStyles[report.status]}`}>{statusLabels[report.status]}</Badge>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-4 p-6">
+                  <p className="leading-8 text-slate-700">{report.description}</p>
+                  <div className="rounded-xl bg-slate-50 p-4 text-sm text-slate-600"><b>الموقع:</b> {report.locationDescription}</div>
+                  <p className="text-xs text-slate-500">أُنشئ في {formatDate(report.createdAt)}</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader><CardTitle className="text-lg">سجل الإجراءات</CardTitle></CardHeader>
+                <CardContent className="space-y-4">
+                  {history.map(item => <div key={item.id} className="border-r-2 border-teal-100 pr-4"><p className="font-bold text-slate-800">{statusLabels[item.toStatus]}</p><p className="mt-1 text-sm text-slate-600">{item.reason}</p><p className="mt-1 text-xs text-slate-400">{formatDate(item.createdAt)}</p></div>)}
+                </CardContent>
+              </Card>
+            </section>
+            <aside className="space-y-6">
+              <Card>
+                <CardHeader><CardTitle className="flex items-center gap-2 text-lg"><ClipboardCheck className="text-[#0f5b5b]" size={19} />إجراءات الفريق</CardTitle></CardHeader>
+                <CardContent className="space-y-4">
+                  {report.status === "pending" && <div className="space-y-3"><p className="text-sm text-slate-600">راجع البلاغ ثم اختر قرار القبول أو الرفض. يتحقق الخادم من دور المنفذ.</p><Textarea value={reviewNotes} onChange={event => setReviewNotes(event.target.value)} /><div className="grid grid-cols-2 gap-2"><Button disabled={pending} onClick={() => review.mutate({ reportId, decision: "accepted", notes: reviewNotes })} className="bg-[#0f5b5b] font-bold">قبول للمراجعة</Button><Button disabled={pending} variant="outline" onClick={() => review.mutate({ reportId, decision: "rejected", notes: reviewNotes })} className="font-bold text-rose-700">رفض موثق</Button></div></div>}
+                  {(report.status === "under_review" || report.status === "reopened") && <div className="space-y-3"><p className="text-sm text-slate-600">اختر عاملًا ميدانيًا ضمن نطاق البلدية لإسناد المهمة.</p><Select value={workerId} onValueChange={setWorkerId}><SelectTrigger><SelectValue placeholder="اختر العامل الميداني" /></SelectTrigger><SelectContent>{fieldWorkers.data?.map(worker => <SelectItem key={worker.id} value={String(worker.id)}>{worker.name ?? worker.email ?? `عامل #${worker.id}`}</SelectItem>)}</SelectContent></Select><Textarea value={assignmentNotes} onChange={event => setAssignmentNotes(event.target.value)} /><Button disabled={pending || !workerId} onClick={() => assign.mutate({ reportId, assignedToUserId: Number(workerId), notes: assignmentNotes })} className="w-full bg-[#0f5b5b] font-bold">إسناد المهمة</Button></div>}
+                  {report.status === "assigned" && (canPerformFieldWork ? <div className="space-y-3"><p className="text-sm text-slate-600">ابدأ التنفيذ بعد الإسناد. يبقى الخادم مسؤولًا عن التحقق من الإسناد والصلاحية.</p><Textarea value={actionReason} onChange={event => setActionReason(event.target.value)} /><Button disabled={pending} onClick={() => startWork.mutate({ reportId, reason: actionReason })} className="w-full bg-[#0f5b5b] font-bold"><PlayCircle size={17} />بدء التنفيذ</Button></div> : fieldAccessNotice)}
+                  {report.status === "in_progress" && (canPerformFieldWork ? <div className="space-y-3"><p className="text-sm text-slate-600">ارفع صورة قبل وبعد. يُرفض أي ملف غير مصرح به أو أكبر من 5 ميغابايت.</p>{(["before", "after"] as const).map(kind => <Label key={kind} className="block rounded-xl border border-dashed border-slate-300 p-3 text-sm font-bold text-slate-700"><span className="mb-2 flex items-center gap-2"><ImagePlus size={16} />دليل {kind === "before" ? "قبل المعالجة" : "بعد المعالجة"}</span><Input type="file" accept="image/jpeg,image/png,image/webp" onChange={async event => { const file = event.target.files?.[0]; if (!file) return; if (file.size > 5 * 1024 * 1024) return toast.error("حجم الملف أكبر من الحد المسموح."); const contentBase64 = await fileToBase64(file); upload.mutate({ reportId, kind, fileName: file.name, mimeType: file.type as "image/jpeg" | "image/png" | "image/webp", contentBase64 }); }} /></Label>)}<Textarea value={actionReason} onChange={event => setActionReason(event.target.value)} /><Button disabled={pending} onClick={() => submitForVerification.mutate({ reportId, reason: actionReason })} className="w-full bg-[#e3a238] font-extrabold text-[#372308]">إرسال للتحقق</Button></div> : fieldAccessNotice)}
+                  {report.status === "awaiting_verification" && <div className="space-y-3"><p className="text-sm text-slate-600">يعتمد المشرف الإغلاق بعد التحقق من الأدلة، أو يعيد البلاغ إلى التنفيذ.</p><Textarea value={actionReason} onChange={event => setActionReason(event.target.value)} /><div className="grid grid-cols-2 gap-2"><Button disabled={pending} onClick={() => verify.mutate({ reportId, approved: true, reason: actionReason })} className="bg-emerald-700 font-bold"><CheckCircle2 size={17} />اعتماد الإغلاق</Button><Button disabled={pending} variant="outline" onClick={() => verify.mutate({ reportId, approved: false, reason: actionReason })} className="font-bold text-amber-700"><XCircle size={17} />إعادة للتنفيذ</Button></div></div>}
+                  {report.status === "resolved" && <div className="rounded-xl bg-emerald-50 p-4 text-sm font-bold leading-7 text-emerald-900">البلاغ مغلق ومُعتمد. يمكن للمواطن الآن إرسال التقييم النهائي.</div>}
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader><CardTitle className="flex items-center gap-2 text-lg"><UploadCloud className="text-[#0f5b5b]" size={19} />الأدلة المرفوعة</CardTitle></CardHeader>
+                <CardContent className="space-y-2">{evidence.length === 0 ? <p className="text-sm text-slate-500">لا توجد أدلة مرفوعة بعد.</p> : evidence.map(item => <a key={item.id} href={item.storageUrl} target="_blank" rel="noreferrer" className="flex items-center justify-between rounded-xl bg-slate-50 p-3 text-sm font-bold text-[#0f5b5b]"><span>{item.kind === "before" ? "قبل المعالجة" : "بعد المعالجة"}</span><Send size={15} /></a>)}</CardContent>
+              </Card>
+              <Card>
+                <CardHeader><CardTitle className="text-lg">الإسنادات</CardTitle></CardHeader>
+                <CardContent className="space-y-2">{assignments.length === 0 ? <p className="text-sm text-slate-500">لم يُسند البلاغ بعد.</p> : assignments.map(item => <div key={item.id} className="rounded-xl bg-slate-50 p-3 text-sm"><b>العامل #{item.assignedToUserId}</b><p className="mt-1 text-slate-500">الحالة: {item.status}</p></div>)}</CardContent>
+              </Card>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </DashboardLayout>
+  );
 }
