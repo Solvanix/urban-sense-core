@@ -70,3 +70,6 @@
 - [x] Inspect the published Irsal Street link-preview DOM: the rendered preview image has an empty `alt` attribute, while the Arabic accessible description remains in the post body.
 - [x] Verify the Wikimedia link-preview accessibility path: the Page Posts view exposed no direct post or preview editor, the published Irsal preview rendered with `alt=""`, and LinkedIn’s official guidance limits the Alt text control to uploaded images/photos.
 - [x] Record the final publication method for each real-photo post, including whether it uses an uploaded image or a Wikimedia link preview and whether Arabic alt text was set or unsupported.
+- [x] Rewrite the published Irsal Street post in a concise, human-centered, non-technical Arabic voice without image-licensing or workflow explanations in the body text.
+- [x] Rewrite the published northern Al-Tira post in a concise, human-centered, non-technical Arabic voice without image-licensing or workflow explanations in the body text.
+- [x] Edit both published LinkedIn posts after the user confirmed the final creative wording; retain the visible Wikimedia Commons source-link preview as the non-intrusive route to source and licensing details.
