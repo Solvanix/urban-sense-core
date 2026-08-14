@@ -1,6 +1,6 @@
 # ADR-001: Governed successor repository
 
-**Status:** Accepted  
+**Status:** Accepted
 **Date:** 2026-08-14
 
 ## Context
