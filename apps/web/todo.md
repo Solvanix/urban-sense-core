@@ -10,11 +10,12 @@
 - [x] Implement supervisor verification, documented closure, and hash-chained audit trail creation.
 - [x] Build Arabic RTL citizen pages for submitting and tracking reports.
 - [x] Build Arabic RTL municipal operations dashboard for officers, field staff, supervisors, and administrators.
-- [ ] Add municipal team management controls for assigning roles and active scope memberships.
-- [ ] Add dashboard controls to activate and deactivate municipality memberships.
-- [ ] Add successful authorization tests for membership role and active-scope updates.
+- [x] Add municipal team management controls for assigning roles and active scope memberships.
+- [x] Add dashboard controls to activate and deactivate municipality memberships.
+- [x] Add successful authorization tests for membership role and active-scope updates.
+- [x] Document the restriction that only a platform administrator can add a new user to a municipality.
 - [ ] Verify team-management role and active-scope changes in the dashboard with an actual municipality.
-- [ ] Add tests for municipality-admin updates, new membership creation, and re-activation.
+- [x] Add tests for municipality-admin updates, new membership creation, and re-activation.
 - [x] Add security tests for unauthenticated access, ownership, role scope, and invalid report transitions.
 - [x] Add procedure-level authorization tests for report review, operations access, report ownership, and municipality scope.
 - [x] Add workflow tests for the end-to-end reporting lifecycle and audit history.

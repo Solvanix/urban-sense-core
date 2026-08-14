@@ -119,7 +119,7 @@ export default function OperationsDashboard() {
           {membersQuery.data && municipalityId && (
             <Card className="mt-7 border-slate-200 bg-white">
               <CardContent className="p-5">
-                <div className="flex items-start gap-3"><span className="rounded-xl bg-teal-50 p-2 text-[#0f5b5b]"><UsersRound size={20} /></span><div><h2 className="font-extrabold text-[#143534]">فريق البلدية والصلاحيات</h2><p className="mt-1 text-sm leading-6 text-slate-600">تُطبق الأدوار على مستوى البلدية فقط، وكل تعديل يُسجل في سجل التدقيق.</p></div></div>
+                <div className="flex items-start gap-3"><span className="rounded-xl bg-teal-50 p-2 text-[#0f5b5b]"><UsersRound size={20} /></span><div><h2 className="font-extrabold text-[#143534]">فريق البلدية والصلاحيات</h2><p className="mt-1 text-sm leading-6 text-slate-600">تُطبق الأدوار على مستوى البلدية فقط، وكل تعديل يُسجل في سجل التدقيق.</p>{user?.role !== "platform_admin" && <p className="mt-2 text-xs font-bold leading-6 text-slate-500">يمكنك تحديث أعضاء نطاقك الحاليين. إضافة مستخدم جديد إلى البلدية محفوظة لمدير المنصة لمنع التعيين عبر نطاق غير مصرح.</p>}</div></div>
                 <div className="mt-5 grid gap-3 lg:grid-cols-[1fr_190px_150px_auto]">
                   <Select value={selectedUserId} onValueChange={value => {
                     setSelectedUserId(value);
