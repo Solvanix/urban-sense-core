@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check whitespace errors
-        run: git diff --check HEAD^ HEAD || true
+        run: git diff --check "$(git hash-object -t tree /dev/null)" HEAD
 
       - name: Block committed environment files
         shell: bash
