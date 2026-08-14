@@ -102,3 +102,10 @@
 - [x] Publish the approved campaign text posts from SENSE TECH without waiting for the unavailable video.
 - [x] Document the published campaign posts, public visibility verification, video deferral, and the limits on interpreting engagement or user outcomes.
 - [x] Check the LinkedIn content analytics table after publishing; record that the new posts were listed but post-level metrics were not yet available, without interpreting historic page totals as campaign performance.
+- [x] Verify the public pilot invitation page visually on desktop and mobile; confirm that its non-emergency boundary, participation steps, and route to the report form remain readable and reachable.
+- [x] Test the public Facebook Graph endpoint and official public-page surfaces for non-private Bhimitkom metadata or posts without bypassing authentication.
+- [x] Document exactly what public Graph/page data is available or unavailable, without extracting personal comments or inferred endorsements.
+- [x] Build a review-only community-engagement scenario from verified public organizational information, not from fabricated user experiences.
+- [x] Verify a saved Markdown artifact that records the Graph access failure, visible public-page metadata, and data boundaries without personal data.
+- [x] Verify a separate saved review-only community-engagement scenario based only on the documented public organizational information.
+- [ ] Save a checkpoint after verifying the Graph exploration and community-engagement scenario artifacts.
