@@ -45,3 +45,9 @@
 - [x] Gather visual references for Ramallah and the route toward Al‑Reihan via Al‑Tira to guide location-inspired promotional imagery.
 - [x] Generate a coherent set of localized Urban‑Sense promotional images inspired by Ramallah without claiming documentary accuracy.
 - [x] Write Arabic LinkedIn captions and alt text for each localized promotional image, then present the complete image-and-copy set for user review.
+- [x] Source authentic, rights-cleared photographs of Ramallah for future LinkedIn posts.
+- [x] Record source links, licenses, attribution requirements, and editorial-use limitations for every selected real photograph.
+- [x] Create editorial photo montages with clearly labeled contextual data and no implication that a photo documents a specific Urban‑Sense report.
+- [x] Draft matching Arabic LinkedIn copy and accessibility alt text for the rights-cleared real-photo series.
+- [x] Source a rights-cleared, location-verifiable real photograph specifically covering Al‑Tira; keep Al‑Reihan route wording excluded until an independent lawful source is available.
+- [ ] Present the real-photo LinkedIn series, Arabic captions, alt text, and attribution text to the user for explicit approval before any posting.
