@@ -58,5 +58,5 @@
 - [x] Inspect the Urban‑Sense project and GitHub repository status against the latest saved checkpoint.
 - [x] Reproduce and diagnose the reported Vite import-resolution error using current project files and fresh logs.
 - [x] Run type checks, tests, and a production build; fix any current project defect revealed by those checks.
-- [ ] Document the verified build and repository state, including remaining operational dependencies that cannot be automated.
-- [ ] Synchronize the verified managed-project source into Solvanix/urban-sense-core and verify the repository quality workflow.
+- [x] Document the verified build and repository state, including remaining operational dependencies that cannot be automated.
+- [x] Verify the GitHub quality workflow for synchronization commit `c994901`: run `31804499434` completed successfully.
