@@ -108,4 +108,4 @@
 - [x] Build a review-only community-engagement scenario from verified public organizational information, not from fabricated user experiences.
 - [x] Verify a saved Markdown artifact that records the Graph access failure, visible public-page metadata, and data boundaries without personal data.
 - [x] Verify a separate saved review-only community-engagement scenario based only on the documented public organizational information.
-- [ ] Save a checkpoint after verifying the Graph exploration and community-engagement scenario artifacts.
+- [x] Save a checkpoint after verifying the Graph exploration and community-engagement scenario artifacts.
