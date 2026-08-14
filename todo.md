@@ -42,3 +42,6 @@
 - [x] Draft a set of promotional LinkedIn posts for SENSE TECH and Urban‑Sense that the user can review before publication.
 - [x] Produce a short video concept and generation-ready script for the Urban‑Sense pilot launch; create media only after the user approves the concept.
 - [ ] Generate the approved Urban‑Sense pilot-launch video after the user confirms the concept, narration, and public platform URL.
+- [x] Gather visual references for Ramallah and the route toward Al‑Reihan via Al‑Tira to guide location-inspired promotional imagery.
+- [x] Generate a coherent set of localized Urban‑Sense promotional images inspired by Ramallah without claiming documentary accuracy.
+- [x] Write Arabic LinkedIn captions and alt text for each localized promotional image, then present the complete image-and-copy set for user review.
