@@ -30,7 +30,10 @@ export default function Home() {
               <Button variant="outline" onClick={() => logout()} className="font-bold">تسجيل الخروج</Button>
             </>
           ) : (
-            <Button disabled={loading} onClick={() => startLogin()} className="gap-2 rounded-xl bg-[#0f5b5b] px-5 font-bold hover:bg-[#0a4848]"><LogIn size={17} />تسجيل الدخول</Button>
+            <>
+              <Link href="/التجربة"><Button variant="ghost" className="font-bold text-slate-700">انضم للتجربة</Button></Link>
+              <Button disabled={loading} onClick={() => startLogin()} className="gap-2 rounded-xl bg-[#0f5b5b] px-5 font-bold hover:bg-[#0a4848]"><LogIn size={17} />تسجيل الدخول</Button>
+            </>
           )}
         </nav>
       </header>
@@ -45,6 +48,7 @@ export default function Home() {
               <Button onClick={!isAuthenticated ? () => startLogin() : undefined} className="h-12 gap-2 rounded-xl bg-[#e3a238] px-6 text-base font-extrabold text-[#372308] hover:bg-[#d19126]">ابدأ بلاغًا جديدًا <ArrowLeft size={18} /></Button>
             </Link>
             {isAuthenticated && <Link href="/بلاغاتي"><Button variant="outline" className="h-12 rounded-xl border-slate-300 px-6 font-bold">تتبع بلاغاتي</Button></Link>}
+            {!isAuthenticated && <Link href="/التجربة"><Button variant="outline" className="h-12 rounded-xl border-slate-300 px-6 font-bold">كيف أشارك في التجربة؟</Button></Link>}
           </div>
         </div>
 

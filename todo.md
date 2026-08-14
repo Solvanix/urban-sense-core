@@ -30,3 +30,7 @@
 - [x] Verify the live audit ledger links all recorded events through an unbroken SHA-256 hash chain.
 - [ ] Obtain a real citizen rating during a pilot; do not create a synthetic rating for validation.
 - [x] Remove the synthetic rating fixture from the automated workflow test while retaining the real-user rating capability.
+- [x] Add a public Arabic pilot-invitation page with an honest scope statement and a shareable participation path.
+- [x] Add clear pilot instructions that guide real participants through reporting, evidence, closure, and voluntary genuine feedback.
+- [x] Prepare a concise Arabic invitation message for the user's community channels without fabricating endorsements or ratings.
+- [x] Re-run quality checks and save a release checkpoint for the pilot-launch materials.
