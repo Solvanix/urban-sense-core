@@ -10,10 +10,15 @@
 - [x] Implement supervisor verification, documented closure, and hash-chained audit trail creation.
 - [x] Build Arabic RTL citizen pages for submitting and tracking reports.
 - [x] Build Arabic RTL municipal operations dashboard for officers, field staff, supervisors, and administrators.
+- [ ] Add municipal team management controls for assigning roles and active scope memberships.
+- [ ] Add dashboard controls to activate and deactivate municipality memberships.
+- [ ] Add successful authorization tests for membership role and active-scope updates.
+- [ ] Verify team-management role and active-scope changes in the dashboard with an actual municipality.
+- [ ] Add tests for municipality-admin updates, new membership creation, and re-activation.
 - [x] Add security tests for unauthenticated access, ownership, role scope, and invalid report transitions.
 - [x] Add procedure-level authorization tests for report review, operations access, report ownership, and municipality scope.
-- [ ] Add workflow tests for the end-to-end reporting lifecycle and audit history.
-- [ ] Verify typecheck, tests, migrations, browser UX, and responsive RTL layouts.
-- [ ] Add an integration-style router workflow test that asserts state updates and audit-event creation.
-- [ ] Verify critical citizen and operations pages, including new report, report detail, actions, and evidence-upload states.
-- [ ] Document setup and synchronize the reviewed project baseline to GitHub.
+- [x] Add workflow tests for the end-to-end reporting lifecycle and audit history.
+- [ ] Verify browser happy paths and responsive RTL layouts with municipality data created عبر الواجهة.
+- [x] Add an integration-style router workflow test that asserts state updates and audit-event creation.
+- [ ] Verify critical citizen and operations action states and evidence upload with an actual municipal workflow.
+- [x] Document setup and synchronize the reviewed project baseline to GitHub.
