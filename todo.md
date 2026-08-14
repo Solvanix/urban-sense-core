@@ -101,3 +101,4 @@
 - [x] Prepare the generated vertical campaign reference image as an optional conceptual visual for the campaign; it remains unpublished and is not represented as a real local image or a video.
 - [x] Publish the approved campaign text posts from SENSE TECH without waiting for the unavailable video.
 - [x] Document the published campaign posts, public visibility verification, video deferral, and the limits on interpreting engagement or user outcomes.
+- [x] Check the LinkedIn content analytics table after publishing; record that the new posts were listed but post-level metrics were not yet available, without interpreting historic page totals as campaign performance.
