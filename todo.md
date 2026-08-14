@@ -83,4 +83,9 @@
 - [x] Draft a review-only set of future LinkedIn posts in the approved human-centered Arabic voice, without publishing any of them.
 - [x] Document a lightweight editorial quality checklist that prevents unsupported claims, unverified partnerships, synthetic engagement, and misleading use of local images.
 - [x] Verify that the four-week editorial calendar file contains the calendar table, review-only drafts, and editorial quality checklist.
-- [ ] Save a checkpoint after verification of the editorial calendar artifact.
+- [x] Save a checkpoint after verification of the editorial calendar artifact.
+- [x] Inspect the user-supplied Facebook source for publicly visible experiences or themes while excluding personal data and unverified claims.
+- [x] Summarize only reusable high-level themes from the Facebook source and clearly distinguish them from Urban-Sense endorsements, reviews, or outcomes.
+- [x] Convert the accepted themes into review-only content ideas without copying user comments or fabricating testimonials.
+- [x] Verify that the Facebook source review explicitly separates public themes from endorsements and includes review-only content ideas.
+- [ ] Save a checkpoint after verification of the Facebook source review artifact.
