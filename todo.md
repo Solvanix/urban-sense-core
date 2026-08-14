@@ -54,4 +54,4 @@
 - [x] Complete the first non-public LinkedIn draft from the real-photo series; keep the remaining posts staged outside LinkedIn until the user reviews this draft.
 - [ ] Prepare the Irsal Street real-photo post as a non-public LinkedIn draft with attribution and Arabic alt text.
 - [ ] Prepare the northern Al‑Tira real-photo post as a non-public LinkedIn draft with attribution and Arabic alt text.
-- [ ] Diagnose the LinkedIn account-recovery code rejection using only the official recovery flow; do not request, store, or bypass passwords or verification codes.
+- [x] Diagnose the LinkedIn account-recovery code rejection using only the official recovery flow; document that the generic LinkedIn error occurs before code verification and provide official identity-verification fallback without handling credentials.
