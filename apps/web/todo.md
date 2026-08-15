@@ -67,3 +67,10 @@
 - [x] Review and remediate the GitHub baseline whitespace workflow without weakening checks.
 - [x] Run type checks, tests, production build, and GitHub Actions after the public-site upgrade; commit and push the reviewed changes to main.
 - [x] Define and adopt a GitHub-first product compass covering Urban‑Sense scope, trust controls, delivery gates, and release conditions.
+- [ ] Add a varied Arabic tile system with readable editorial background depth to the public Urban‑Sense pages without copying the archived technical report design.
+- [x] Produce a GitHub-first architecture and migration roadmap that keeps Urban‑Sense municipal reporting separate from a future tourism platform, shared provider network, and general multi-project store.
+- [x] Review the publicly published hackathon challenges and prepare a source-bound solution-story framework for the Birzeit University event without inventing challenge details.
+- [x] Review the public PalTur Interactive dashboard as a bounded UX reference and document reusable patterns separately from unverified workflows or data.
+- [x] Inspect the linked public questionnaire and document a source-bound tourism-provider onboarding and AI-guidance flow without copying personal-data collection or claiming affiliation.
+- [ ] Bootstrap the separate SENSE experience repository with provider onboarding, review boundaries, and independent quality gates while preserving Urban‑Sense separation.
+- [ ] Add a separately deployable tourism experience application inside the central repository, with its own data boundary, provider-review workflow, and quality checks.
