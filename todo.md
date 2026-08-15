@@ -122,3 +122,4 @@
 - [x] Recommend a native-media editorial series as the truthful visual alternative while video generation remains unavailable; do not publish or alter posts until the user approves the exact visuals and edits.
 - [x] Audit the published Urban‑Sense site across public desktop and mobile journeys, then document prioritized product, content, and presentation improvements.
 - [x] Compare the user-shared Manus project with Urban‑Sense, distinguishing verifiable project identity and access status from unverified GitHub or LinkedIn permissions.
+- [x] Distill reusable product, design, technical, and editorial lessons from the two user-designated archives while documenting exclusions and avoiding scope drift in Urban‑Sense.
