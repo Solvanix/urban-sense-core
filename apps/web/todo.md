@@ -52,11 +52,17 @@
 - [x] Source a rights-cleared, location-verifiable real photograph specifically covering Al‑Tira; keep Al‑Reihan route wording excluded until an independent lawful source is available.
 - [x] Present the real-photo LinkedIn series, Arabic captions, alt text, and attribution text to the user for explicit approval before any posting.
 - [x] Complete the first non-public LinkedIn draft from the real-photo series; keep the remaining posts staged outside LinkedIn until the user reviews this draft.
-- [ ] Prepare the Irsal Street real-photo post as a non-public LinkedIn draft with attribution and Arabic alt text.
-- [ ] Prepare the northern Al‑Tira real-photo post as a non-public LinkedIn draft with attribution and Arabic alt text.
+- [x] Prepare the Irsal Street real-photo post as a non-public LinkedIn draft with attribution and Arabic alt text.
+- [x] Prepare the northern Al‑Tira real-photo post as a non-public LinkedIn draft with attribution and Arabic alt text.
 - [x] Diagnose the LinkedIn account-recovery code rejection using only the official recovery flow; document that the generic LinkedIn error occurs before code verification and provide official identity-verification fallback without handling credentials.
 - [x] Inspect the Urban‑Sense project and GitHub repository status against the latest saved checkpoint.
 - [x] Reproduce and diagnose the reported Vite import-resolution error using current project files and fresh logs.
 - [x] Run type checks, tests, and a production build; fix any current project defect revealed by those checks.
 - [x] Document the verified build and repository state, including remaining operational dependencies that cannot be automated.
 - [x] Verify the GitHub quality workflow for synchronization commit `c994901`: run `31804499434` completed successfully.
+- [x] Add public navigation and an Arabic RTL test for the public-information architecture.
+- [x] Add public Arabic "كيف تعمل المنصة؟" and "للبلديات" pages that accurately describe the live report workflow and non-emergency boundary.
+- [x] Upgrade the public landing page with accountable-workflow sections, a clear pilot CTA, and no fabricated metrics or outcomes.
+- [x] Add a shared public header and footer using the Urban‑Sense visual direction.
+- [x] Review and remediate the GitHub baseline whitespace workflow without weakening checks.
+- [ ] Run type checks, tests, production build, and GitHub Actions after the public-site upgrade; commit and push the reviewed changes to main.

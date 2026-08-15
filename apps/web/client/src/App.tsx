@@ -9,6 +9,8 @@ import MyReports from "./pages/MyReports";
 import NewReport from "./pages/NewReport";
 import OperationsDashboard from "./pages/OperationsDashboard";
 import OperationsReport from "./pages/OperationsReport";
+import ForMunicipalities from "./pages/ForMunicipalities";
+import HowItWorks from "./pages/HowItWorks";
 import PilotInvitation from "./pages/PilotInvitation";
 import ReportDetail from "./pages/ReportDetail";
 
@@ -17,6 +19,8 @@ function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/كيف-تعمل"} component={HowItWorks} />
+      <Route path={"/للبلديات"} component={ForMunicipalities} />
       <Route path={"/التجربة"} component={PilotInvitation} />
       <Route path={"/بلاغ-جديد"} component={NewReport} />
       <Route path={"/بلاغاتي"} component={MyReports} />

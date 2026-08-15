@@ -16,8 +16,20 @@ jobs:
       - name: Check out source
         uses: actions/checkout@v4
 
-      - name: Check whitespace errors
-        run: git diff --check "$(git hash-object -t tree /dev/null)" HEAD
+      - name: Check whitespace errors in the submitted change
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git diff --check "${{ github.event.pull_request.base.sha }}"...HEAD
+          else
+            before="${{ github.event.before }}"
+            if [ "$before" = "0000000000000000000000000000000000000000" ]; then
+              git diff --check "$(git hash-object -t tree /dev/null)" HEAD
+            else
+              git diff --check "$before" HEAD
+            fi
+          fi
 
       - name: Block committed environment files
         shell: bash
