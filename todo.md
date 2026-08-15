@@ -128,3 +128,5 @@
 - [ ] Inventory and preserve reusable SENSE Urban product structure, public-page content, and design decisions before any possible project deletion; do not delete or alter the SENSE Urban project.
 - [ ] Audit Solvanix/urban-sense-core as the primary development source, compare it with the published Urban‑Sense visual direction, and prepare a GitHub-first implementation roadmap before code changes.
 - [x] Review the user-designated project-link-access archive and preserve any reusable access or project-ownership guidance before the user deletes it.
+- [x] Reframe Urban‑Sense product scope and produce a complete GitHub-first roadmap covering product, design, security, operations, testing, and publishing from the current repository state.
+- [x] Review the user-supplied technical-report site, preserve any unique Urban‑Sense decisions or risks, and confirm whether it can be deleted safely.
