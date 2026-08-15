@@ -8,6 +8,13 @@
       "when": 1786796293025,
       "tag": "0000_glossy_hemingway",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1786797957503,
+      "tag": "0001_clever_pride",
+      "breakpoints": true
     }
   ]
 }
