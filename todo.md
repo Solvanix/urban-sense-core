@@ -124,3 +124,7 @@
 - [x] Compare the user-shared Manus project with Urban‑Sense, distinguishing verifiable project identity and access status from unverified GitHub or LinkedIn permissions.
 - [x] Distill reusable product, design, technical, and editorial lessons from the two user-designated archives while documenting exclusions and avoiding scope drift in Urban‑Sense.
 - [x] Document verifiable GitHub evidence for Urban‑Sense contributions and propose a unified visual/product direction informed by the approved public identity and archived lessons.
+- [ ] Inspect the two user-designated archives for verifiable links to the live SENSE Urban deployment and document a safe delete-or-retain recommendation before any deletion.
+- [ ] Inventory and preserve reusable SENSE Urban product structure, public-page content, and design decisions before any possible project deletion; do not delete or alter the SENSE Urban project.
+- [ ] Audit Solvanix/urban-sense-core as the primary development source, compare it with the published Urban‑Sense visual direction, and prepare a GitHub-first implementation roadmap before code changes.
+- [x] Review the user-designated project-link-access archive and preserve any reusable access or project-ownership guidance before the user deletes it.
