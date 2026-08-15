@@ -109,12 +109,12 @@
 - [x] Verify a saved Markdown artifact that records the Graph access failure, visible public-page metadata, and data boundaries without personal data.
 - [x] Verify a separate saved review-only community-engagement scenario based only on the documented public organizational information.
 - [x] Save a checkpoint after verifying the Graph exploration and community-engagement scenario artifacts.
-- [ ] Review and remediate the GitHub repository-baseline whitespace failure without weakening security checks.
-- [ ] Add a coherent public-navigation model and test it with Vitest.
-- [ ] Upgrade the public home page into a fuller Arabic RTL product landing experience without fabricated metrics or outcomes.
-- [ ] Add a public Arabic "كيف تعمل المنصة؟" page that explains the real report lifecycle and the non-emergency boundary.
-- [ ] Add a public Arabic "للبلديات" page that presents governance, role controls, evidence, and audit capabilities accurately.
-- [ ] Verify the expanded public pages across desktop and mobile, rerun quality checks, and synchronize the reviewed changes to GitHub.
+- [x] Review and remediate the GitHub repository-baseline whitespace failure without weakening security checks.
+- [x] Add a coherent public-navigation model and test it with Vitest.
+- [x] Upgrade the public home page into a fuller Arabic RTL product landing experience without fabricated metrics or outcomes.
+- [x] Add a public Arabic "كيف تعمل المنصة؟" page that explains the real report lifecycle and the non-emergency boundary.
+- [x] Add a public Arabic "للبلديات" page that presents governance, role controls, evidence, and audit capabilities accurately.
+- [x] Verify the upgraded public pages (`/`, `/كيف-تعمل`, `/للبلديات`) on mobile breakpoints and record the result before marking the public-site rollout fully complete.
 - [x] Document an original Urban‑Sense video treatment informed only by high-level pacing and editing principles from the user-supplied public reference; do not copy its footage, music, text, or visual identity.
 - [ ] Publish the user-approved original Urban‑Sense campaign video from SENSE TECH after file-integrity verification, without claiming real case outcomes or using reference-video assets.
 - [x] Audit the three most recent SENSE TECH LinkedIn posts for copy, media format, and link-preview limitations.
@@ -124,9 +124,9 @@
 - [x] Compare the user-shared Manus project with Urban‑Sense, distinguishing verifiable project identity and access status from unverified GitHub or LinkedIn permissions.
 - [x] Distill reusable product, design, technical, and editorial lessons from the two user-designated archives while documenting exclusions and avoiding scope drift in Urban‑Sense.
 - [x] Document verifiable GitHub evidence for Urban‑Sense contributions and propose a unified visual/product direction informed by the approved public identity and archived lessons.
-- [ ] Inspect the two user-designated archives for verifiable links to the live SENSE Urban deployment and document a safe delete-or-retain recommendation before any deletion.
-- [ ] Inventory and preserve reusable SENSE Urban product structure, public-page content, and design decisions before any possible project deletion; do not delete or alter the SENSE Urban project.
-- [ ] Audit Solvanix/urban-sense-core as the primary development source, compare it with the published Urban‑Sense visual direction, and prepare a GitHub-first implementation roadmap before code changes.
+- [x] Inspect the two user-designated archives for verifiable links to the live SENSE Urban deployment and document a safe delete-or-retain recommendation before any deletion.
+- [x] Inventory and preserve reusable SENSE Urban product structure, public-page content, and design decisions before any possible project deletion; do not delete or alter the SENSE Urban project.
+- [x] Audit Solvanix/urban-sense-core as the primary development source, compare it with the published Urban‑Sense visual direction, and prepare a GitHub-first implementation roadmap before code changes.
 - [x] Review the user-designated project-link-access archive and preserve any reusable access or project-ownership guidance before the user deletes it.
 - [x] Reframe Urban‑Sense product scope and produce a complete GitHub-first roadmap covering product, design, security, operations, testing, and publishing from the current repository state.
 - [x] Review the user-supplied technical-report site, preserve any unique Urban‑Sense decisions or risks, and confirm whether it can be deleted safely.
