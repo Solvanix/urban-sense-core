@@ -1,6 +1,6 @@
 # بوصلة المنتج وخطة الإطلاق — Urban‑Sense
 
-**الحالة:** مرجع قرار معتمد للعمل من مستودع GitHub.  
+**الحالة:** مرجع قرار معتمد للعمل من مستودع GitHub.
 **المصدر التقني الرئيسي:** [`Solvanix/urban-sense-core`](https://github.com/Solvanix/urban-sense-core) على الفرع `main`.
 
 ## 1. تعريف الفكرة بعد تصحيحها
@@ -101,8 +101,8 @@
 
 ## المراجع
 
-[1] [مستودع Urban‑Sense](https://github.com/Solvanix/urban-sense-core)  
-[2] [التزام التحقق الأخير](https://github.com/Solvanix/urban-sense-core/commit/793b27f585582435ef389f87b68412f41f921c5f)  
-[3] [مستكشف التقرير التقني المؤرشف](https://techreport-mv7zafyr.manus.space/)  
-[4] [معمارية الإصدار الأول](architecture/MVP-ARCHITECTURE.md)  
+[1] [مستودع Urban‑Sense](https://github.com/Solvanix/urban-sense-core)
+[2] [التزام التحقق الأخير](https://github.com/Solvanix/urban-sense-core/commit/793b27f585582435ef389f87b68412f41f921c5f)
+[3] [مستكشف التقرير التقني المؤرشف](https://techreport-mv7zafyr.manus.space/)
+[4] [معمارية الإصدار الأول](architecture/MVP-ARCHITECTURE.md)
 [5] [خط الأساس الأمني](security/SECURITY-BASELINE.md)
