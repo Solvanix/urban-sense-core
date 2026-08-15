@@ -66,3 +66,4 @@
 - [x] Add a shared public header and footer using the Urban‑Sense visual direction.
 - [x] Review and remediate the GitHub baseline whitespace workflow without weakening checks.
 - [x] Run type checks, tests, production build, and GitHub Actions after the public-site upgrade; commit and push the reviewed changes to main.
+- [x] Define and adopt a GitHub-first product compass covering Urban‑Sense scope, trust controls, delivery gates, and release conditions.
