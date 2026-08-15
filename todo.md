@@ -52,8 +52,8 @@
 - [x] Source a rights-cleared, location-verifiable real photograph specifically covering Al‑Tira; keep Al‑Reihan route wording excluded until an independent lawful source is available.
 - [x] Present the real-photo LinkedIn series, Arabic captions, alt text, and attribution text to the user for explicit approval before any posting.
 - [x] Complete the first non-public LinkedIn draft from the real-photo series; keep the remaining posts staged outside LinkedIn until the user reviews this draft.
-- [ ] Prepare the Irsal Street real-photo post as a non-public LinkedIn draft with attribution and Arabic alt text.
-- [ ] Prepare the northern Al‑Tira real-photo post as a non-public LinkedIn draft with attribution and Arabic alt text.
+- [x] Prepare the Irsal Street real-photo post as a non-public LinkedIn draft with attribution and Arabic alt text.
+- [x] Prepare the northern Al‑Tira real-photo post as a non-public LinkedIn draft with attribution and Arabic alt text.
 - [x] Diagnose the LinkedIn account-recovery code rejection using only the official recovery flow; document that the generic LinkedIn error occurs before code verification and provide official identity-verification fallback without handling credentials.
 - [x] Inspect the Urban‑Sense project and GitHub repository status against the latest saved checkpoint.
 - [x] Reproduce and diagnose the reported Vite import-resolution error using current project files and fresh logs.
@@ -63,8 +63,8 @@
 - [x] Select geographically verifiable, rights-cleared Ramallah-area photographs from the previously documented licensed source set for the new editorial cards.
 - [x] Create Arabic editorial graphics from the selected real photographs with concise news-style captions, contextual labels, and visible source attribution.
 - [x] Document the source, license, attribution, and non-documentary limitation for every new editorial graphic before presenting it for review.
-- [ ] Publish the approved Irsal Street real-photo LinkedIn post with its Arabic alt text, CC BY-SA attribution, source link, and non-documentary disclosure.
-- [ ] Publish the approved northern Al-Tira real-photo LinkedIn post with its Arabic alt text, CC BY-SA attribution, source link, and non-documentary disclosure.
+- [x] Publish the approved Irsal Street real-photo LinkedIn post with its Arabic alt text, CC BY-SA attribution, source link, and non-documentary disclosure.
+- [x] Publish the approved northern Al-Tira real-photo LinkedIn post with its Arabic alt text, CC BY-SA attribution, source link, and non-documentary disclosure.
 - [x] Record the public URLs and publication outcome of the approved real-photo LinkedIn posts without fabricating engagement results.
 - [x] Attempt a LinkedIn publication path that uses the original licensed Wikimedia Commons source link and its real-photo preview when native media upload is unavailable to automation.
 - [x] Inspect the published Irsal Street link-preview DOM: the rendered preview image has an empty `alt` attribute, while the Arabic accessible description remains in the post body.
@@ -109,3 +109,10 @@
 - [x] Verify a saved Markdown artifact that records the Graph access failure, visible public-page metadata, and data boundaries without personal data.
 - [x] Verify a separate saved review-only community-engagement scenario based only on the documented public organizational information.
 - [x] Save a checkpoint after verifying the Graph exploration and community-engagement scenario artifacts.
+- [ ] Review and remediate the GitHub repository-baseline whitespace failure without weakening security checks.
+- [ ] Add a coherent public-navigation model and test it with Vitest.
+- [ ] Upgrade the public home page into a fuller Arabic RTL product landing experience without fabricated metrics or outcomes.
+- [ ] Add a public Arabic "كيف تعمل المنصة؟" page that explains the real report lifecycle and the non-emergency boundary.
+- [ ] Add a public Arabic "للبلديات" page that presents governance, role controls, evidence, and audit capabilities accurately.
+- [ ] Verify the expanded public pages across desktop and mobile, rerun quality checks, and synchronize the reviewed changes to GitHub.
+- [x] Document an original Urban‑Sense video treatment informed only by high-level pacing and editing principles from the user-supplied public reference; do not copy its footage, music, text, or visual identity.

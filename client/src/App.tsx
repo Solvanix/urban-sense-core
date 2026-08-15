@@ -5,6 +5,8 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import HowItWorks from "./pages/HowItWorks";
+import ForMunicipalities from "./pages/ForMunicipalities";
 import MyReports from "./pages/MyReports";
 import NewReport from "./pages/NewReport";
 import OperationsDashboard from "./pages/OperationsDashboard";
@@ -17,6 +19,8 @@ function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/كيف-تعمل"} component={HowItWorks} />
+      <Route path={"/للبلديات"} component={ForMunicipalities} />
       <Route path={"/التجربة"} component={PilotInvitation} />
       <Route path={"/بلاغ-جديد"} component={NewReport} />
       <Route path={"/بلاغاتي"} component={MyReports} />
