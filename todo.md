@@ -116,3 +116,7 @@
 - [ ] Add a public Arabic "للبلديات" page that presents governance, role controls, evidence, and audit capabilities accurately.
 - [ ] Verify the expanded public pages across desktop and mobile, rerun quality checks, and synchronize the reviewed changes to GitHub.
 - [x] Document an original Urban‑Sense video treatment informed only by high-level pacing and editing principles from the user-supplied public reference; do not copy its footage, music, text, or visual identity.
+- [ ] Publish the user-approved original Urban‑Sense campaign video from SENSE TECH after file-integrity verification, without claiming real case outcomes or using reference-video assets.
+- [x] Audit the three most recent SENSE TECH LinkedIn posts for copy, media format, and link-preview limitations.
+- [x] Design original native-upload editorial visual alternatives for the two real-photo link-preview posts, with clearer lighting and optional conceptual human presence that is not presented as documentary photography.
+- [x] Recommend a native-media editorial series as the truthful visual alternative while video generation remains unavailable; do not publish or alter posts until the user approves the exact visuals and edits.
