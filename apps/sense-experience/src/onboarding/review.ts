@@ -30,7 +30,16 @@ export function recordInterestReview(
   if (reason.trim().length < 8) throw new Error("A clear interest-review reason is required.");
 
   return {
-    interest: { ...interest, status: outcome },
+    interest: {
+      ...interest,
+      status: outcome,
+      reviewDecision: {
+        reviewerId: actor.id,
+        outcome,
+        reason: reason.trim(),
+        decidedAt: now.toISOString()
+      }
+    },
     decision: {
       reviewerId: actor.id,
       outcome,

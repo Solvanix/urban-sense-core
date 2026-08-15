@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
+import type { InterestReviewDecision, ProviderInterest, ProviderInterestInput } from "../onboarding/contracts.js";
+import { createBrowserInterestRepository } from "../onboarding/interestRepository.js";
 import { ProviderInvitationPage } from "./ProviderInvitationPage.js";
 
 type Draft = {
@@ -38,9 +40,10 @@ function updateField<K extends keyof Draft>(draft: Draft, field: K, value: Draft
 
 export function ProviderOnboardingApp() {
   const [step, setStep] = useState(0);
-  const [mode, setMode] = useState<"provider" | "reviewer">("provider");
-  const [screen, setScreen] = useState<"invite" | "onboarding">("invite");
+  const [screen, setScreen] = useState<"invite" | "onboarding" | "reviewer">("invite");
   const [saved, setSaved] = useState(false);
+  const interestRepository = useMemo(() => createBrowserInterestRepository(window.localStorage), []);
+  const [interests, setInterests] = useState<ProviderInterest[]>(() => interestRepository.list());
   const [draft, setDraft] = useState<Draft>(() => {
     const stored = window.localStorage.getItem(storageKey);
     if (!stored) return emptyDraft;
@@ -83,6 +86,16 @@ export function ProviderOnboardingApp() {
     setStep(0);
   }
 
+  function saveInterest(input: ProviderInterestInput) {
+    interestRepository.submit(input);
+    setInterests(interestRepository.list());
+  }
+
+  function decideInterest(interestId: string, outcome: InterestReviewDecision["outcome"], reason: string) {
+    interestRepository.decide(interestId, { id: "local-reviewer", role: "reviewer" }, outcome, reason);
+    setInterests(interestRepository.list());
+  }
+
   return (
     <main className="app-shell">
       <section className="topbar">
@@ -96,6 +109,7 @@ export function ProviderOnboardingApp() {
         <div className="mode-control" aria-label="التنقل داخل المعاينة">
           <button className={screen === "invite" ? "active" : ""} onClick={() => setScreen("invite")}>الدعوة</button>
           <button className={screen === "onboarding" ? "active" : ""} onClick={() => setScreen("onboarding")}>مسار الملف</button>
+          <button className={screen === "reviewer" ? "active" : ""} onClick={() => setScreen("reviewer")}>المراجعة المحلية</button>
         </div>
       </section>
 
@@ -104,16 +118,13 @@ export function ProviderOnboardingApp() {
         <button onClick={() => setScreen("invite")}>أبدِ اهتمامك</button>
       </section>
 
-      {screen === "invite" ? <ProviderInvitationPage onOpenOnboarding={() => setScreen("onboarding")} /> : (
+      {screen === "invite" ? <ProviderInvitationPage onOpenOnboarding={() => setScreen("onboarding")} onSubmitInterest={saveInterest} /> : screen === "reviewer" ? (
+        <ReviewerQueue interests={interests} onDecide={decideInterest} />
+      ) : (
         <>
           <section className="notice" role="note">
             <strong>معاينة محلية للنواة:</strong> لا يوجد نشر عام أو حجز أو دفع في هذه المرحلة. تحفظ المسودة في هذا المتصفح فقط.
           </section>
-          <div className="mode-control inline-mode" aria-label="عرض الواجهة">
-            <button className={mode === "provider" ? "active" : ""} onClick={() => setMode("provider")}>وضع المزود</button>
-            <button className={mode === "reviewer" ? "active" : ""} onClick={() => setMode("reviewer")}>وضع المراجع</button>
-          </div>
-      {mode === "provider" ? (
         <div className="workspace">
           <section className="form-panel">
             <div className="progress" aria-label={`الخطوة ${step + 1} من ${steps.length}`}>
@@ -153,7 +164,6 @@ export function ProviderOnboardingApp() {
             <div className="trust-note"><b>قاعدة الثقة</b><br />سيظهر للمراجع الفرق بين ما أفدت به وما تم التحقق منه.</div>
           </aside>
         </div>
-      ) : <ReviewerPreview draft={draft} />}
         </>
       )}
     </main>
@@ -177,9 +187,40 @@ function ReviewStep({ draft }: { draft: Draft }) {
   return <div className="step-content"><p className="eyebrow">04 — ما الذي سيراجعه الإنسان؟</p><h2>راجع المسودة قبل إرسالها.</h2><div className="summary-card"><div><span>العلامة</span><b>{draft.brandName || "لم تكتب بعد"}</b></div><div><span>الفئة</span><b>{draft.serviceCategory || "لم تحدد بعد"}</b></div><div><span>المنطقة</span><b>{draft.area || "لم تحدد بعد"}</b></div><div><span>النشر العام</span><b>{draft.publicListing ? "موافقة مبدئية للمراجعة" : "لم تمنح موافقة نشر"}</b></div></div><article className="review-explainer"><b>ماذا يحدث بعد الحفظ؟</b><p>يرى المراجع بيانات الاتصال داخل مساحة خاصة، ويتحقق من ادعاءات الخدمة قبل ظهورها. لا يعني حفظ المسودة أن الملف أو أي ادعاء أصبح عامًا.</p></article></div>;
 }
 
-function ReviewerPreview({ draft }: { draft: Draft }) {
-  const complete = Boolean(draft.brandName && draft.providerType && draft.area && draft.serviceCategory && draft.guestJourney.length >= 20);
-  return <section className="reviewer-view"><div><p className="eyebrow">مساحة مراجعة منفصلة</p><h2>قرار النشر لا يختلط مع كتابة المزود.</h2><p className="lead">هذه معاينة للحد الأدنى الذي يراه المراجع. بيانات الاتصال لا تظهر في الملف العام.</p></div><div className="review-grid"><article><span>حالة الملف</span><strong>{complete ? "جاهز لمراجعة أولية" : "يحتاج استكمالًا"}</strong><p>{complete ? "المعلومات الأساسية موجودة؛ راجع الادعاءات قبل أي نشر." : "لا يمكن اتخاذ قرار قبل استكمال الحقول الأساسية."}</p></article><article><span>الملف العام المقترح</span><strong>{draft.brandName || "اسم العلامة"}</strong><p>{draft.serviceCategory || "الفئة غير محددة"} · {draft.area || "المنطقة غير محددة"}</p></article><article><span>الادعاءات</span><strong>لا توجد ادعاءات متحققة بعد</strong><p>أي وصول أو سلامة أو استدامة يوضع أولًا بحالة «أفاد به المزود».</p></article></div><div className="review-actions"><button className="secondary">طلب استكمال</button><button className="primary" disabled={!complete || !draft.publicListing}>اعتماد بعد التحقق</button></div></section>;
+function ReviewerQueue({ interests, onDecide }: { interests: ProviderInterest[]; onDecide: (interestId: string, outcome: InterestReviewDecision["outcome"], reason: string) => void }) {
+  return <section className="reviewer-view">
+    <div>
+      <p className="eyebrow">مساحة مراجعة منفصلة</p>
+      <h2>كل اهتمام ينتظر قرارًا واضحًا ومسببًا.</h2>
+      <p className="lead">هذه لوحة محلية على جهاز واحد لا تمثل تسجيل دخول أو صلاحية تشغيلية. بيانات الاتصال لا تظهر في أي ملف عام، ولا يتحول طلب الاهتمام إلى ملف مزود إلا بعد دعوة صريحة.</p>
+    </div>
+    <div className="reviewer-notice" role="note"><b>حد المعاينة:</b> القرارات هنا تحفظ محليًا في هذا المتصفح فقط. لا تستخدمها مع بيانات مزودين حقيقيين قبل إضافة خدمة مستقلة وحسابات مراجعين.</div>
+    {interests.length === 0 ? <div className="empty-queue"><p className="eyebrow">لا توجد طلبات محفوظة</p><h3>سجل اهتمامًا من صفحة الدعوة لتظهر بطاقته هنا.</h3><p>لن ينشئ النظام سجلات تجريبية أو مزودين وهميين لملء هذه القائمة.</p></div> : (
+      <div className="queue-list">{interests.map((interest) => <InterestReviewCard key={interest.id} interest={interest} onDecide={onDecide} />)}</div>
+    )}
+  </section>;
+}
+
+function InterestReviewCard({ interest, onDecide }: { interest: ProviderInterest; onDecide: (interestId: string, outcome: InterestReviewDecision["outcome"], reason: string) => void }) {
+  const [reason, setReason] = useState(interest.reviewDecision?.reason ?? "");
+  const [error, setError] = useState("");
+  const decided = Boolean(interest.reviewDecision);
+
+  function submitDecision(outcome: InterestReviewDecision["outcome"]) {
+    try {
+      onDecide(interest.id, outcome, reason);
+      setError("");
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "تعذر حفظ قرار المراجعة.");
+    }
+  }
+
+  return <article className="interest-card">
+    <header><div><span>طلب اهتمام خاص</span><h3>{interest.brandName}</h3><p>{interest.area} · {interest.providerType}</p></div><b className={`status status-${interest.status}`}>{interest.status === "interest_submitted" ? "بانتظار المراجعة" : interest.status === "invited_to_onboard" ? "دُعي للمسار" : "خارج نطاق التجربة"}</b></header>
+    <p className="interest-description">{interest.shortDescription}</p>
+    <dl className="private-details"><div><dt>المسؤول</dt><dd>{interest.contactName}</dd></div><div><dt>قناة الاتصال الخاصة</dt><dd>{interest.contactChannel}</dd></div><div><dt>وقت التسجيل</dt><dd>{new Date(interest.createdAt).toLocaleString("ar")}</dd></div></dl>
+    {decided ? <div className="decision-record"><b>قرار المراجع: {interest.reviewDecision?.outcome === "invited_to_onboard" ? "دعوة لاستكمال الملف" : "ليس ضمن التجربة الحالية"}</b><p>{interest.reviewDecision?.reason}</p></div> : <div className="decision-form"><label className="field full"><span>سبب القرار</span><textarea value={reason} onChange={(event) => setReason(event.target.value)} placeholder="اكتب سببًا واضحًا لصاحب الطلب، بثمانية أحرف على الأقل." rows={3} /></label>{error && <p className="form-error" role="alert">{error}</p>}<div className="review-actions"><button className="secondary" onClick={() => submitDecision("not_in_current_pilot")}>ليس ضمن التجربة</button><button className="primary" onClick={() => submitDecision("invited_to_onboard")}>دعوة لاستكمال الملف</button></div></div>}
+  </article>;
 }
 
 function Field({ label, value, onChange, placeholder }: { label: string; value: string; onChange: (value: string) => void; placeholder: string }) {

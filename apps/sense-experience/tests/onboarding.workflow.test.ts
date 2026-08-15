@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { createProviderInterest } from "../src/onboarding/interest.js";
+import { createMemoryInterestRepository } from "../src/onboarding/interestRepository.js";
 import { recordInterestReview, recordReviewDecision, verifyClaim } from "../src/onboarding/review.js";
 import { addClaim, approveForPublication, createProviderApplication, requestCompletion, toPublicProfile } from "../src/onboarding/workflow.js";
 
@@ -95,5 +96,19 @@ describe("provider onboarding workflow", () => {
     const result = recordInterestReview(interest, { id: "reviewer-1", role: "reviewer" }, "invited_to_onboard", "الملف مناسب للتجربة الأولى.");
     expect(result.interest.status).toBe("invited_to_onboard");
     expect(result.decision.outcome).toBe("invited_to_onboard");
+  });
+
+  it("keeps interest in a reviewer-only local queue and persists the recorded decision", () => {
+    const repository = createMemoryInterestRepository();
+    const interest = repository.submit(interestInput, new Date("2026-08-15T11:00:00.000Z"));
+
+    expect(repository.list()).toHaveLength(1);
+    expect(repository.list()[0]).not.toHaveProperty("publicProfile");
+    expect(() => repository.decide(interest.id, { id: "provider-1", role: "provider" }, "invited_to_onboard", "الملف ضمن نطاق التجربة الأولى.")).toThrow("Only a reviewer");
+
+    const decided = repository.decide(interest.id, { id: "reviewer-1", role: "reviewer" }, "invited_to_onboard", "الملف ضمن نطاق التجربة الأولى.", new Date("2026-08-15T12:00:00.000Z"));
+    expect(decided.status).toBe("invited_to_onboard");
+    expect(decided.reviewDecision).toMatchObject({ reviewerId: "reviewer-1", outcome: "invited_to_onboard" });
+    expect(repository.list()[0]?.reviewDecision?.decidedAt).toBe("2026-08-15T12:00:00.000Z");
   });
 });

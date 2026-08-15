@@ -77,3 +77,5 @@
 - [x] Establish a central portfolio architecture for the public site, tourism experience, future commerce, and accessibility tools, with independent deployments and explicit integration contracts.
 - [x] Add a provider invitation path for SENSE Experience: transparent invitation copy, interest form, manual review, and no-publication-before-approval rules.
 - [x] Produce a source-bound visitor analysis of the official AINAC page, including its challenges, forms, organizations, published promises, and open questions without submitting any request.
+- [x] Add independently scoped local persistence and a reviewer queue for SENSE Experience provider-interest records, preserving no-publication-before-review rules and separation from Urban‑Sense data.
+- [ ] Replace browser-only interest storage with an independently deployed service, database migration, authenticated reviewer roles, and retention controls before accepting any real provider data.

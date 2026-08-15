@@ -86,15 +86,16 @@ export const providerInterestInputSchema = z.object({
 
 export type ProviderInterestInput = z.infer<typeof providerInterestInputSchema>;
 
-export type ProviderInterest = ProviderInterestInput & {
-  id: string;
-  status: (typeof interestStatuses)[number];
-  createdAt: string;
-};
-
 export type InterestReviewDecision = {
   reviewerId: string;
   outcome: "invited_to_onboard" | "not_in_current_pilot";
   reason: string;
   decidedAt: string;
+};
+
+export type ProviderInterest = ProviderInterestInput & {
+  id: string;
+  status: (typeof interestStatuses)[number];
+  createdAt: string;
+  reviewDecision?: InterestReviewDecision;
 };
