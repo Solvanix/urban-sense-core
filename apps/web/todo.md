@@ -76,3 +76,4 @@
 - [ ] Add a separately deployable tourism experience application inside the central repository, with its own data boundary, provider-review workflow, and quality checks.
 - [x] Establish a central portfolio architecture for the public site, tourism experience, future commerce, and accessibility tools, with independent deployments and explicit integration contracts.
 - [x] Add a provider invitation path for SENSE Experience: transparent invitation copy, interest form, manual review, and no-publication-before-approval rules.
+- [x] Produce a source-bound visitor analysis of the official AINAC page, including its challenges, forms, organizations, published promises, and open questions without submitting any request.
