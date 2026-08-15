@@ -75,3 +75,4 @@
 - [x] Superseded: use the central repository for SENSE Experience rather than a separate execution repository, while preserving independent application boundaries.
 - [ ] Add a separately deployable tourism experience application inside the central repository, with its own data boundary, provider-review workflow, and quality checks.
 - [x] Establish a central portfolio architecture for the public site, tourism experience, future commerce, and accessibility tools, with independent deployments and explicit integration contracts.
+- [x] Add a provider invitation path for SENSE Experience: transparent invitation copy, interest form, manual review, and no-publication-before-approval rules.

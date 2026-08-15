@@ -1,6 +1,6 @@
-import type { ProviderApplication, ProviderClaim, ReviewDecision, ReviewerActor } from "./contracts.js";
+import type { InterestReviewDecision, ProviderApplication, ProviderClaim, ProviderInterest, ReviewDecision, ReviewerActor } from "./contracts.js";
 
-function assertReviewer(actor: ReviewerActor): void {
+export function assertReviewer(actor: ReviewerActor): void {
   if (actor.role !== "reviewer" && actor.role !== "administrator") {
     throw new Error("Only a reviewer or administrator can decide an application.");
   }
@@ -16,6 +16,28 @@ export function verifyClaim(application: ProviderApplication, actor: ReviewerAct
     index === claimIndex ? { ...item, verificationStatus: "verified" } : item
   );
   return { ...application, claims };
+}
+
+export function recordInterestReview(
+  interest: ProviderInterest,
+  actor: ReviewerActor,
+  outcome: InterestReviewDecision["outcome"],
+  reason: string,
+  now = new Date()
+): { interest: ProviderInterest; decision: InterestReviewDecision } {
+  assertReviewer(actor);
+  if (interest.status !== "interest_submitted") throw new Error("Only submitted interest can receive a review decision.");
+  if (reason.trim().length < 8) throw new Error("A clear interest-review reason is required.");
+
+  return {
+    interest: { ...interest, status: outcome },
+    decision: {
+      reviewerId: actor.id,
+      outcome,
+      reason: reason.trim(),
+      decidedAt: now.toISOString()
+    }
+  };
 }
 
 export function recordReviewDecision(

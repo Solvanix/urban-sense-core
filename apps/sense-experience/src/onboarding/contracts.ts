@@ -13,6 +13,7 @@ export const providerTypes = [
 export const reviewStatuses = ["draft", "submitted", "needs_completion", "approved", "rejected"] as const;
 export const verificationStatuses = ["provider_stated", "verified", "needs_verification"] as const;
 export const consentKinds = ["data_processing", "human_review", "public_listing"] as const;
+export const interestStatuses = ["interest_submitted", "invited_to_onboard", "not_in_current_pilot"] as const;
 
 export const providerApplicationInputSchema = z.object({
   providerType: z.enum(providerTypes),
@@ -69,6 +70,31 @@ export type ReviewerActor = {
 export type ReviewDecision = {
   reviewerId: string;
   outcome: "needs_completion" | "approved" | "rejected";
+  reason: string;
+  decidedAt: string;
+};
+
+export const providerInterestInputSchema = z.object({
+  brandName: z.string().trim().min(2).max(120),
+  providerType: z.enum(providerTypes),
+  area: z.string().trim().min(2).max(120),
+  contactName: z.string().trim().min(2).max(120),
+  contactChannel: z.string().trim().min(3).max(160),
+  shortDescription: z.string().trim().min(20).max(600),
+  reviewConsent: z.literal(true)
+});
+
+export type ProviderInterestInput = z.infer<typeof providerInterestInputSchema>;
+
+export type ProviderInterest = ProviderInterestInput & {
+  id: string;
+  status: (typeof interestStatuses)[number];
+  createdAt: string;
+};
+
+export type InterestReviewDecision = {
+  reviewerId: string;
+  outcome: "invited_to_onboard" | "not_in_current_pilot";
   reason: string;
   decidedAt: string;
 };

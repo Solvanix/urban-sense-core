@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { ProviderInvitationPage } from "./ProviderInvitationPage.js";
 
 type Draft = {
   dataProcessing: boolean;
@@ -38,6 +39,7 @@ function updateField<K extends keyof Draft>(draft: Draft, field: K, value: Draft
 export function ProviderOnboardingApp() {
   const [step, setStep] = useState(0);
   const [mode, setMode] = useState<"provider" | "reviewer">("provider");
+  const [screen, setScreen] = useState<"invite" | "onboarding">("invite");
   const [saved, setSaved] = useState(false);
   const [draft, setDraft] = useState<Draft>(() => {
     const stored = window.localStorage.getItem(storageKey);
@@ -91,16 +93,26 @@ export function ProviderOnboardingApp() {
             <h1>ملف مزود الخدمة</h1>
           </div>
         </div>
-        <div className="mode-control" aria-label="عرض الواجهة">
-          <button className={mode === "provider" ? "active" : ""} onClick={() => setMode("provider")}>وضع المزود</button>
-          <button className={mode === "reviewer" ? "active" : ""} onClick={() => setMode("reviewer")}>وضع المراجع</button>
+        <div className="mode-control" aria-label="التنقل داخل المعاينة">
+          <button className={screen === "invite" ? "active" : ""} onClick={() => setScreen("invite")}>الدعوة</button>
+          <button className={screen === "onboarding" ? "active" : ""} onClick={() => setScreen("onboarding")}>مسار الملف</button>
         </div>
       </section>
 
-      <section className="notice" role="note">
-        <strong>معاينة محلية للنواة:</strong> لا يوجد نشر عام أو حجز أو دفع في هذه المرحلة. تحفظ المسودة في هذا المتصفح فقط.
+      <section className="invite-banner" role="status">
+        <p><strong>تجربة مزودين محدودة:</strong> هل تقدم خدمة أو تجربة؟ ابدأ بتسجيل اهتمامك، وسنراجع ملاءمة الملف قبل أي نشر.</p>
+        <button onClick={() => setScreen("invite")}>أبدِ اهتمامك</button>
       </section>
 
+      {screen === "invite" ? <ProviderInvitationPage onOpenOnboarding={() => setScreen("onboarding")} /> : (
+        <>
+          <section className="notice" role="note">
+            <strong>معاينة محلية للنواة:</strong> لا يوجد نشر عام أو حجز أو دفع في هذه المرحلة. تحفظ المسودة في هذا المتصفح فقط.
+          </section>
+          <div className="mode-control inline-mode" aria-label="عرض الواجهة">
+            <button className={mode === "provider" ? "active" : ""} onClick={() => setMode("provider")}>وضع المزود</button>
+            <button className={mode === "reviewer" ? "active" : ""} onClick={() => setMode("reviewer")}>وضع المراجع</button>
+          </div>
       {mode === "provider" ? (
         <div className="workspace">
           <section className="form-panel">
@@ -142,6 +154,8 @@ export function ProviderOnboardingApp() {
           </aside>
         </div>
       ) : <ReviewerPreview draft={draft} />}
+        </>
+      )}
     </main>
   );
 }

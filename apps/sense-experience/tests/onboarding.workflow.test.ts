@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { recordReviewDecision, verifyClaim } from "../src/onboarding/review.js";
+import { createProviderInterest } from "../src/onboarding/interest.js";
+import { recordInterestReview, recordReviewDecision, verifyClaim } from "../src/onboarding/review.js";
 import { addClaim, approveForPublication, createProviderApplication, requestCompletion, toPublicProfile } from "../src/onboarding/workflow.js";
 
 const input = {
@@ -22,6 +23,16 @@ const input = {
     languages: ["ar" as const],
     inquiryMethod: "contact_request" as const
   }
+};
+
+const interestInput = {
+  brandName: "مطبخ التلال",
+  providerType: "restaurant" as const,
+  area: "رام الله",
+  contactName: "مسؤول الملف",
+  contactChannel: "provider@example.test",
+  shortDescription: "تجربة طعام محلية تعتمد على الحجز والاستفسار المسبق قبل الزيارة.",
+  reviewConsent: true as const
 };
 
 describe("provider onboarding workflow", () => {
@@ -69,5 +80,20 @@ describe("provider onboarding workflow", () => {
     expect(result.application.status).toBe("needs_completion");
     expect(result.decision).toMatchObject({ reviewerId: "reviewer-1", outcome: "needs_completion" });
     expect(result.decision.decidedAt).toBe("2026-08-15T09:00:00.000Z");
+  });
+
+  it("records interest without creating a public provider profile", () => {
+    const interest = createProviderInterest(interestInput, new Date("2026-08-15T10:00:00.000Z"));
+    expect(interest.status).toBe("interest_submitted");
+    expect(interest.createdAt).toBe("2026-08-15T10:00:00.000Z");
+    expect(interest).not.toHaveProperty("publicListing");
+  });
+
+  it("requires a reviewer and a clear reason before inviting interest to onboarding", () => {
+    const interest = createProviderInterest(interestInput);
+    expect(() => recordInterestReview(interest, { id: "provider-1", role: "provider" }, "invited_to_onboard", "الملف مناسب للتجربة الأولى.")).toThrow("Only a reviewer");
+    const result = recordInterestReview(interest, { id: "reviewer-1", role: "reviewer" }, "invited_to_onboard", "الملف مناسب للتجربة الأولى.");
+    expect(result.interest.status).toBe("invited_to_onboard");
+    expect(result.decision.outcome).toBe("invited_to_onboard");
   });
 });
