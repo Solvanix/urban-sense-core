@@ -64,5 +64,5 @@
 - [x] Add public Arabic "كيف تعمل المنصة؟" and "للبلديات" pages that accurately describe the live report workflow and non-emergency boundary.
 - [x] Upgrade the public landing page with accountable-workflow sections, a clear pilot CTA, and no fabricated metrics or outcomes.
 - [x] Add a shared public header and footer using the Urban‑Sense visual direction.
-- [ ] Review and remediate the GitHub baseline whitespace workflow without weakening checks.
-- [ ] Run type checks, tests, production build, and GitHub Actions after the public-site upgrade; commit and push the reviewed changes to main.
+- [x] Review and remediate the GitHub baseline whitespace workflow without weakening checks.
+- [x] Run type checks, tests, production build, and GitHub Actions after the public-site upgrade; commit and push the reviewed changes to main.
