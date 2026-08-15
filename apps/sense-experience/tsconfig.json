@@ -10,5 +10,5 @@
     "types": ["node", "vitest/globals"],
     "noEmit": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "tests/**/*.ts", "vitest.config.ts", "vite.config.ts"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "server/**/*.ts", "drizzle/**/*.ts", "tests/**/*.ts", "vitest.config.ts", "vite.config.ts", "drizzle.config.ts"]
 }

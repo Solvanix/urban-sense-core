@@ -79,3 +79,5 @@
 - [x] Produce a source-bound visitor analysis of the official AINAC page, including its challenges, forms, organizations, published promises, and open questions without submitting any request.
 - [x] Add independently scoped local persistence and a reviewer queue for SENSE Experience provider-interest records, preserving no-publication-before-review rules and separation from Urban‑Sense data.
 - [ ] Replace browser-only interest storage with an independently deployed service, database migration, authenticated reviewer roles, and retention controls before accepting any real provider data.
+- [x] Add the separately deployable SENSE Experience API, database schema, migrations, and protected reviewer procedures without sharing Urban‑Sense infrastructure or data.
+- [ ] Bind SENSE Experience reviewer procedures to independent authenticated identities and role assignments before any production API exposure.
