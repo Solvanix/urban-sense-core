@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { recordReviewDecision, verifyClaim } from "../src/onboarding/review.js";
 import { addClaim, approveForPublication, createProviderApplication, requestCompletion, toPublicProfile } from "../src/onboarding/workflow.js";
 
 const input = {
@@ -48,5 +49,25 @@ describe("provider onboarding workflow", () => {
   it("does not allow a completion request to be approved directly", () => {
     const needsCompletion = requestCompletion(createProviderApplication(input));
     expect(() => approveForPublication(needsCompletion)).toThrow("Only submitted applications");
+  });
+
+  it("allows only reviewers to verify a provider-stated claim", () => {
+    const withClaim = addClaim(createProviderApplication(input), { type: "sustainability", value: "نستخدم موردين محليين" });
+    expect(() => verifyClaim(withClaim, { id: "provider-1", role: "provider" }, 0)).toThrow("Only a reviewer");
+    const verified = verifyClaim(withClaim, { id: "reviewer-1", role: "reviewer" }, 0);
+    expect(verified.claims[0]?.verificationStatus).toBe("verified");
+  });
+
+  it("records a reviewer decision with a reason and no hidden approval", () => {
+    const result = recordReviewDecision(
+      createProviderApplication(input),
+      { id: "reviewer-1", role: "reviewer" },
+      "needs_completion",
+      "يرجى توضيح طريقة الاستفسار للزائر.",
+      new Date("2026-08-15T09:00:00.000Z")
+    );
+    expect(result.application.status).toBe("needs_completion");
+    expect(result.decision).toMatchObject({ reviewerId: "reviewer-1", outcome: "needs_completion" });
+    expect(result.decision.decidedAt).toBe("2026-08-15T09:00:00.000Z");
   });
 });

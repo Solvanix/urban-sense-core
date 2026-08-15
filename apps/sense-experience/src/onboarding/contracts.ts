@@ -60,3 +60,15 @@ export type PublicProviderProfile = {
   firstOffer: Pick<ProviderApplicationInput["firstOffer"], "category" | "guestJourney" | "languages" | "inquiryMethod" | "availabilityNote">;
   verifiedClaims: ProviderClaim[];
 };
+
+export type ReviewerActor = {
+  id: string;
+  role: string;
+};
+
+export type ReviewDecision = {
+  reviewerId: string;
+  outcome: "needs_completion" | "approved" | "rejected";
+  reason: string;
+  decidedAt: string;
+};
