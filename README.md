@@ -40,6 +40,8 @@ SENSE Experience is developed as a separate application within this same reposit
 | [`docs/LEGACY-SOURCE-REGISTER.md`](docs/LEGACY-SOURCE-REGISTER.md) | Handling rules for the inspected legacy archive. |
 | [`docs/decision-records/ADR-001-source-strategy.md`](docs/decision-records/ADR-001-source-strategy.md) | Decision record for the new governed baseline. |
 | [`docs/sense-experience/`](docs/sense-experience/) | Scope, provider onboarding, and quality boundaries for the separate tourism application. |
+| [`docs/PORTFOLIO-ARCHITECTURE.md`](docs/PORTFOLIO-ARCHITECTURE.md) | Central-repository map for civic reporting, tourism, public site, commerce, and accessibility tools. |
+| [`docs/shared/ACCESSIBILITY-BASELINE.md`](docs/shared/ACCESSIBILITY-BASELINE.md) | Shared accessibility baseline for every new application. |
 
 ## Rules of engagement
 

@@ -4,16 +4,23 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "vite",
     "check": "tsc --noEmit",
     "test": "vitest run",
-    "build": "tsc -p tsconfig.build.json"
+    "build": "tsc --noEmit && vite build"
   },
   "dependencies": {
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
     "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@types/react": "^19.2.1",
+    "@types/react-dom": "^19.2.1",
+    "@vitejs/plugin-react": "^5.0.4",
     "@types/node": "^24.7.0",
     "typescript": "5.9.3",
+    "vite": "^7.1.7",
     "vitest": "^2.1.4"
   },
   "packageManager": "pnpm@10.4.1"

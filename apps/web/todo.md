@@ -72,5 +72,6 @@
 - [x] Review the publicly published hackathon challenges and prepare a source-bound solution-story framework for the Birzeit University event without inventing challenge details.
 - [x] Review the public PalTur Interactive dashboard as a bounded UX reference and document reusable patterns separately from unverified workflows or data.
 - [x] Inspect the linked public questionnaire and document a source-bound tourism-provider onboarding and AI-guidance flow without copying personal-data collection or claiming affiliation.
-- [ ] Bootstrap the separate SENSE experience repository with provider onboarding, review boundaries, and independent quality gates while preserving Urban‑Sense separation.
+- [x] Superseded: use the central repository for SENSE Experience rather than a separate execution repository, while preserving independent application boundaries.
 - [ ] Add a separately deployable tourism experience application inside the central repository, with its own data boundary, provider-review workflow, and quality checks.
+- [x] Establish a central portfolio architecture for the public site, tourism experience, future commerce, and accessibility tools, with independent deployments and explicit integration contracts.
