@@ -82,3 +82,4 @@
 - [x] Add the separately deployable SENSE Experience API, database schema, migrations, and protected reviewer procedures without sharing Urban‑Sense infrastructure or data.
 - [ ] Bind SENSE Experience reviewer procedures to independent authenticated identities and role assignments before any production API exposure.
 - [ ] Add independent reviewer identity and role records for SENSE Experience, including assignment audit events and API context validation separate from Urban‑Sense.
+- [x] Audit the Manus live project against GitHub main, classify any unsynchronized implementation, and prepare a safe migration sequence without copying environment secrets or live data.

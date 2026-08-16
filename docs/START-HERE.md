@@ -4,6 +4,8 @@
 
 This document is the operational entry point for Urban‑Sense Core. It turns the prior technical audit into a safe, testable delivery sequence.
 
+The current code-parity decision is recorded in [تدقيق تطابق Urban‑Sense بين Manus وGitHub](./MANUS-GITHUB-PARITY-AUDIT.md): the central repository is the source of truth for code, while Manus remains the active operating environment.
+
 > **Do not begin feature expansion before the foundation gate is complete.**
 
 ## The first outcome
