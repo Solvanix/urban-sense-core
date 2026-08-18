@@ -90,3 +90,4 @@
 - [ ] Reconcile the Sense meeting transcript with the digital-manufacturing workplan, distinguishing documented partner roles and legal status from proposed platforms, store, and graduate pathways.
 - [ ] Propose a phased administrative and legal-governance framework for Sense, including partner boundaries, decision rights, role ownership, and registration readiness.
 - [x] Build and visually verify an initial public SENSE Experience tourism-page prototype in GitHub, clearly separating live workflows from planned catalog, store, and accessibility capabilities.
+- [x] Audit Solvanix/sense-experience-platform against the central repository, classify unique files by migration need, and recommend archival or deletion only after confirming replacement coverage.
