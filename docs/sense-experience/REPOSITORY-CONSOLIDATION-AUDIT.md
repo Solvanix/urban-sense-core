@@ -1,6 +1,6 @@
 # تدقيق توحيد مستودعات SENSE Experience
 
-**تاريخ الفحص:** 18 أغسطس 2026  
+**تاريخ الفحص:** 18 أغسطس 2026
 **المقارنة:** `Solvanix/sense-experience-platform` مقابل `Solvanix/urban-sense-core`
 
 ## القرار المختصر
