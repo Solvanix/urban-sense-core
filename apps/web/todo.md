@@ -106,3 +106,5 @@
 - [ ] Reassess the parent-domain decision against wsenses and the temporary store domain, then choose the tourism TLD and durable team-site/email domain before any registration.
 - [x] Audit the outdated temporary store at sense.runasp.net as a legacy reference, then define its migration or retirement path without using its host name as the ecosystem brand.
 - [ ] Obtain explicit owner confirmation of the selected parent domain, then recheck registrar availability and trademark risk immediately before any registration.
+- [ ] Develop and review a parent-brand logo direction that combines software-system thinking with editorial-media expression, without replacing the existing Urban‑Sense product identity before approval.
+- [ ] Prototype a simplified S-shaped camera mark with a triangular lens, balancing media storytelling with the parent brand's technology and multi-product scope.
