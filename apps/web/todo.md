@@ -92,3 +92,10 @@
 - [x] Build and visually verify an initial public SENSE Experience tourism-page prototype in GitHub, clearly separating live workflows from planned catalog, store, and accessibility capabilities.
 - [x] Audit Solvanix/sense-experience-platform against the central repository, classify unique files by migration need, and recommend archival or deletion only after confirming replacement coverage.
 - [x] Produce a central operating and product blueprint covering applications, pages, deployment links, data boundaries, accounting, objectives, impact measurement, and launch decisions.
+- [x] Draft a review-only Leaders International feature article about Ali and Sense, distinguishing verified work from partnerships and products still under development.
+- [x] Prepare a concise, fact-checked reply to Nadine’s Digiwork questions, including the correct training-field wording and the team-formation/structure story.
+- [x] Revise the Sense/MABA origin narrative to reflect the shift from sourcing freelancers for MABA projects to building a freelance agency that originates opportunities for strategic partners.
+- [x] Draft a review-only Sense feature article connecting the Digiwork story to documented municipal-service challenges and the verified Urban‑Sense workflow without claiming a municipal partnership or measured impact.
+- [x] Draft a proposed Leaders International article focused on municipal-service challenges and the bridge between traditional craft markets and advanced digital work, with verified work separated from planned initiatives.
+- [x] Inventory and analyze the uploaded SENSE/Urban‑Sense archive, compare it to the central repository, and document safe migration, archival, and exclusion decisions without executing imported code.
+- [x] Analyze the uploaded Fun & Learn / Canaan Academy HTML materials and challenge file, identify reusable learning, assessment, and operations patterns, and preserve ownership and consent boundaries before any product integration.
