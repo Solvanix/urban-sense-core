@@ -108,3 +108,4 @@
 - [ ] Obtain explicit owner confirmation of the selected parent domain, then recheck registrar availability and trademark risk immediately before any registration.
 - [ ] Develop and review a parent-brand logo direction that combines software-system thinking with editorial-media expression, without replacing the existing Urban‑Sense product identity before approval.
 - [ ] Prototype a simplified S-shaped camera mark with a triangular lens, balancing media storytelling with the parent brand's technology and multi-product scope.
+- [ ] Refine the S-camera concept into a proportioned geometric system with a modular grid, disciplined angles, and an agency-specific character rather than a generic media mark.
