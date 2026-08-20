@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ecosystemExplorerHref, municipalOperationsHref } from "@/lib/sensePortalRoute";
+import { ecosystemExplorerHref, municipalOperationsHref, urbanSenseHref } from "@/lib/sensePortalRoute";
 import {
   Accessibility,
   ArrowLeft,
@@ -68,7 +68,7 @@ export const ecosystemRoutes: EcosystemRoute[] = [
     description: "منصة بلاغات بلدية عربية: تقديم، مراجعة، إسناد، أدلة، تحقق وإغلاق.",
     detail: "له قاعدة بيانات وهوية وصلاحيات خاصة به. لا يحتوي سياحة أو متجرًا.",
     actionLabel: "افتح المنصة البلدية",
-    href: "/",
+    href: urbanSenseHref,
     internal: true,
     icon: Building2,
     tone: "teal",
@@ -111,7 +111,7 @@ export const ecosystemRoutes: EcosystemRoute[] = [
 ];
 
 export const ecosystemAccessGates: EcosystemAccessGate[] = [
-  { id: "public", label: "زائر أو مواطن", status: "متاح بلا حساب", description: "تعرف على المنتجات العامة أو ابدأ بلاغًا ضمن نطاق البلدية المشاركة.", action: "افتح Urban‑Sense", href: "/", internal: true, icon: UsersRound, tone: "teal" },
+  { id: "public", label: "زائر أو مواطن", status: "متاح بلا حساب", description: "تعرف على المنتجات العامة أو ابدأ بلاغًا ضمن نطاق البلدية المشاركة.", action: "افتح Urban‑Sense", href: urbanSenseHref, internal: true, icon: UsersRound, tone: "teal" },
   { id: "municipality", label: "بلدية أو راعٍ تجريبي", status: "دخول محمي", description: "تدخل جهة البلدية إلى العمليات فقط عبر حساب ودور ونطاق بلدي فعّال.", action: "دخول العمليات", href: municipalOperationsHref, internal: true, icon: Building2, tone: "blue" },
   { id: "provider", label: "مزود تجربة أو خدمة", status: "ينتظر النشر المستقل", description: "مسار جاهزية وتعلم قصير ثم مراجعة بشرية؛ لا تسجيل مزودين أو نشر ملفات حقيقية الآن.", action: "لا يوجد تسجيل مفتوح", icon: UserRoundCheck, tone: "amber" },
   { id: "sponsor", label: "شريك أو راعٍ", status: "مسار حوار", description: "نقاش نطاق تجربة أو دعم أو شراكة مقترحة، من دون وعود أثر أو وصول إلى بيانات تشغيلية.", action: "ليس حسابًا ذاتيًا", icon: BriefcaseBusiness, tone: "slate" },
@@ -231,7 +231,7 @@ export default function SensePortal() {
           <article className="rounded-[1.55rem] border border-white/10 bg-white/[.035] p-6"><ShieldCheck className="text-[#e3a238]" size={22} /><h2 className="mt-5 text-xl font-extrabold">الخطوة الصحيحة التالية</h2><p className="mt-3 leading-7 text-white/60">تشغيل SENSE Experience مستقلًا وبهوية مراجعين حقيقية، أو اختيار كيان ودفتر مالي قبل فتح المتجر أو تحصيل أي أموال.</p><a className="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-[#f7cc71]" href="https://github.com/Solvanix/urban-sense-core/blob/main/docs/OPERATING-PRODUCT-BLUEPRINT.md" target="_blank" rel="noreferrer">افتح خارطة التشغيل <ArrowLeft size={16} /></a></article>
         </section>
 
-        <footer className="flex flex-col justify-between gap-4 border-t border-white/10 pt-7 text-sm text-white/50 sm:flex-row sm:items-center"><p>البوابة توجّه إلى مسارات مستقلة؛ لا تنقل بيانات مواطن أو مزود أو مال بين التطبيقات.</p><Link href="/" className="inline-flex items-center gap-2 font-extrabold text-[#f7cc71]">العودة إلى Urban‑Sense <ArrowLeft size={16} /></Link></footer>
+        <footer className="flex flex-col justify-between gap-4 border-t border-white/10 pt-7 text-sm text-white/50 sm:flex-row sm:items-center"><p>البوابة توجّه إلى مسارات مستقلة؛ لا تنقل بيانات مواطن أو مزود أو مال بين التطبيقات.</p><Link href="/" className="inline-flex items-center gap-2 font-extrabold text-[#f7cc71]">العودة إلى بوابة SENSE <ArrowLeft size={16} /></Link></footer>
       </div>
     </main>
   );

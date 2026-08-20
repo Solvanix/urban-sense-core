@@ -154,6 +154,16 @@
 - [ ] Choose one primary ecosystem-domain candidate and one fallback only, based on email readability, multi-product fit, domain availability, and visible-conflict checks; do not register either without explicit owner approval.
 - [x] Screen the primary domain direction for a clear commercial and studio-like impression in contracts, email, and product naming; exclude candidates that read as a nonprofit, community initiative, charity, or public campaign.
 - [x] Select a 4–6-character parent-domain candidate with a commercial product-like sound, clear pronunciation in Arabic and English, and no direct SENSE or nonprofit connotation.
+- [ ] Derive and screen a concise commercial parent-domain direction from the Arabic plumb-line concept «الشاقول», emphasizing precision, alignment, and direction without limiting the brand to construction or implying an adopted name before owner approval.
+- [ ] Generate an original Arabic/Latin shortlist inspired by the plumb-line principles of axis, true alignment, and stable direction; explicitly avoid literal imitation, construction-only language, and generic precision terms.
+- [ ] Generate and screen a short name in the SENSE sound family that preserves the plumb-line idea of clear direction and alignment without copying SENSE or adopting the rejected SAMTIO candidate.
+- [ ] Refine the SENSE-sound-family naming direction so the parent identity credibly covers tourism discovery, empowerment of people and ventures, and smart decision-making alongside direction and alignment.
+- [ ] Derive and screen a SENSE-adjacent parent-name direction from the Arabic idea of Mansour: earned support, empowerment, and constructive victory, without using a personal name as the brand.
+- [ ] Select one short, clear parent-brand candidate that covers tourism, empowerment, and smart services, then subject it to owner review, registrar validation, and trademark screening before adoption.
+- [ ] Exclude conventional generic parent-brand words such as «مسار» and derive a more distinctive, short Arabic-rooted naming direction before any brand decision.
+- [x] Keep the private source repository separate from public viewing links; do not expose the repository or enable GitHub Pages solely to render INDEX.html without explicit owner approval.
+- [x] Document and maintain one explicit public entry-page URL for the published ecosystem, distinct from the private root INDEX.html source index.
+- [x] Make the public site root `/` the live ecosystem entry page, with a clear published Urban-Sense route and truthful links to every available public path.
 - [x] Build a repository-root HTML exploration index and a linked live explorer view so visitors can navigate all ecosystem levels visually, not through README text only.
 - [x] Add a public, honest domain-and-email readiness page that shows the dependency order and candidate status without buying, registering, or binding an unapproved domain.
 - [x] Improve visible cross-navigation between the live explorer, the root HTML index, and the relevant source/document destinations without claiming GitHub Pages is active.

@@ -29,7 +29,7 @@ import { Button } from "./ui/button";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "لوحة العمليات", path: "/العمليات" },
-  { icon: Users, label: "بوابة المواطن", path: "/" },
+  { icon: Users, label: "بوابة المواطن", path: "/?view=urban" },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";

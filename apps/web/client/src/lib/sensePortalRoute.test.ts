@@ -1,9 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { domainReadinessHref, ecosystemExplorerHref, getRootView, isSensePortalSearch, municipalOperationsHref, progressDashboardHref, sensePortalHref } from "./sensePortalRoute";
+import { domainReadinessHref, ecosystemExplorerHref, getRootView, isSensePortalSearch, municipalOperationsHref, progressDashboardHref, sensePortalHref, urbanSenseHref } from "./sensePortalRoute";
 
 describe("SENSE portal public entry", () => {
   it("uses a root URL query that survives hosts without SPA subpath fallback", () => {
     expect(sensePortalHref).toBe("/?view=sense");
+    expect(urbanSenseHref).toBe("/?view=urban");
     expect(municipalOperationsHref).toBe("/?view=operations");
     expect(ecosystemExplorerHref).toBe("/?view=explore");
     expect(domainReadinessHref).toBe("/?view=domain");
@@ -14,6 +15,7 @@ describe("SENSE portal public entry", () => {
   });
 
   it("routes the municipal admin entry through the served root without making it a public dashboard", () => {
+    expect(getRootView("?view=urban")).toBe("urban");
     expect(getRootView("?view=operations")).toBe("operations");
     expect(getRootView("?view=sense")).toBe("sense");
     expect(getRootView("?view=explore")).toBe("explore");
