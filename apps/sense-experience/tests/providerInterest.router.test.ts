@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { createMemoryProviderInterestStore } from "../server/providerInterestService.js";
+import { createMemoryReviewerIdentityStore } from "../server/reviewerIdentityService.js";
 import { appRouter } from "../server/router.js";
 
 const input = {
@@ -15,7 +16,7 @@ const input = {
 describe("provider interest API contract", () => {
   it("accepts a public interest submission without returning private contact details", async () => {
     const store = createMemoryProviderInterestStore();
-    const caller = appRouter.createCaller({ store, reviewer: null });
+    const caller = appRouter.createCaller({ store, reviewerStore: createMemoryReviewerIdentityStore(), reviewer: null });
     const result = await caller.providerInterest.submit(input);
 
     expect(result.status).toBe("interest_submitted");
@@ -25,15 +26,16 @@ describe("provider interest API contract", () => {
 
   it("blocks reviewer routes without a reviewer context", async () => {
     const store = createMemoryProviderInterestStore();
-    const caller = appRouter.createCaller({ store, reviewer: null });
+    const caller = appRouter.createCaller({ store, reviewerStore: createMemoryReviewerIdentityStore(), reviewer: null });
     await expect(caller.providerInterest.listForReview()).rejects.toMatchObject({ code: "FORBIDDEN" });
   });
 
   it("records a reasoned reviewer decision only in a reviewer context", async () => {
     const store = createMemoryProviderInterestStore();
-    const publicCaller = appRouter.createCaller({ store, reviewer: null });
+    const reviewerStore = createMemoryReviewerIdentityStore();
+    const publicCaller = appRouter.createCaller({ store, reviewerStore, reviewer: null });
     const submitted = await publicCaller.providerInterest.submit(input);
-    const reviewerCaller = appRouter.createCaller({ store, reviewer: { id: "reviewer-test", role: "reviewer" } });
+    const reviewerCaller = appRouter.createCaller({ store, reviewerStore, reviewer: { id: "reviewer-test", role: "reviewer" } });
 
     const decision = await reviewerCaller.providerInterest.decide({
       interestId: submitted.id,

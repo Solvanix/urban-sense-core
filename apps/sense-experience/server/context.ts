@@ -11,6 +11,7 @@ export async function createSenseContext<Request>(
 ): Promise<SenseContext> {
   return {
     store,
+    reviewerStore,
     reviewer: await resolveReviewerActor(request, reviewerResolver, reviewerStore)
   };
 }

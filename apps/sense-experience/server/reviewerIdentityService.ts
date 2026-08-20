@@ -18,10 +18,28 @@ export type StoredReviewerRoleAssignment = {
   state: "active" | "revoked";
 };
 
+export type ReviewerRoleAssignmentInput = {
+  provider: ValidatedReviewerSubject["provider"];
+  subject: string;
+  displayName?: string;
+  role: "reviewer" | "administrator";
+  reason: string;
+  assignedByIdentityId: string;
+  assignedAt: string;
+};
+
+export type ReviewerRoleAssignmentResult = {
+  reviewerIdentityId: string;
+  role: "reviewer" | "administrator";
+  eventType: "reviewer_role_assigned";
+  occurredAt: string;
+};
+
 export interface ReviewerIdentityStore {
   findIdentity(subject: ValidatedReviewerSubject): Promise<StoredReviewerIdentity | undefined>;
   findActiveRole(identityId: string): Promise<StoredReviewerRoleAssignment | undefined>;
   hasActiveReviewer(): Promise<boolean>;
+  assignActiveRole(input: ReviewerRoleAssignmentInput): Promise<ReviewerRoleAssignmentResult>;
 }
 
 export interface ReviewerSubjectResolver<Request> {
@@ -56,16 +74,37 @@ export async function resolveReviewerActor<Request>(
 export function createMemoryReviewerIdentityStore(
   identities: StoredReviewerIdentity[] = [],
   assignments: StoredReviewerRoleAssignment[] = []
-): ReviewerIdentityStore {
+): ReviewerIdentityStore & { listAuditEvents(): ReviewerRoleAssignmentResult[] } {
+  let records = identities.map((identity) => ({ ...identity }));
+  let roleAssignments = assignments.map((assignment) => ({ ...assignment }));
+  let auditEvents: ReviewerRoleAssignmentResult[] = [];
   return {
     async findIdentity(subject) {
-      return identities.find((identity) => identity.provider === subject.provider && identity.subject === subject.subject);
+      const identity = records.find((record) => record.provider === subject.provider && record.subject === subject.subject);
+      return identity ? { ...identity } : undefined;
     },
     async findActiveRole(identityId) {
-      return assignments.find((assignment) => assignment.reviewerIdentityId === identityId && assignment.state === "active");
+      const assignment = roleAssignments.find((record) => record.reviewerIdentityId === identityId && record.state === "active");
+      return assignment ? { ...assignment } : undefined;
     },
     async hasActiveReviewer() {
-      return identities.some((identity) => identity.state === "active" && assignments.some((assignment) => assignment.reviewerIdentityId === identity.id && assignment.state === "active"));
+      return records.some((identity) => identity.state === "active" && roleAssignments.some((assignment) => assignment.reviewerIdentityId === identity.id && assignment.state === "active"));
+    },
+    async assignActiveRole(input) {
+      const existing = records.find((identity) => identity.provider === input.provider && identity.subject === input.subject);
+      if (existing?.state === "revoked") throw new Error("Reviewer identity is revoked.");
+      const identity = existing ?? { id: `memory-reviewer-${records.length + 1}`, provider: input.provider, subject: input.subject, state: "active" as const };
+      if (!existing) records = [...records, identity];
+      if (roleAssignments.some((assignment) => assignment.reviewerIdentityId === identity.id && assignment.state === "active")) {
+        throw new Error("Reviewer identity already has an active role.");
+      }
+      roleAssignments = [...roleAssignments, { reviewerIdentityId: identity.id, role: input.role, state: "active" }];
+      const event: ReviewerRoleAssignmentResult = { reviewerIdentityId: identity.id, role: input.role, eventType: "reviewer_role_assigned", occurredAt: input.assignedAt };
+      auditEvents = [...auditEvents, event];
+      return { ...event };
+    },
+    listAuditEvents() {
+      return auditEvents.map((event) => ({ ...event }));
     }
   };
 }
