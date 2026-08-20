@@ -138,3 +138,4 @@
 - [x] Add a live visual ecosystem explorer at `/?view=explore` that routes visitors by intent to published pages, independent code, GitHub guides, and explicit readiness states.
 - [x] Add a live domain-and-email readiness page at `/?view=domain` that makes the decision order visible without purchasing, registering, or binding an unapproved domain.
 - [x] Clarify inside the live explorer that the interactive public route is the published experience and `INDEX.html` is a repository source index rather than an enabled GitHub Pages site.
+- [x] Add a live operating-progress page that distinguishes published capabilities, independently coded but gated capabilities, and decisions still awaiting owner or operational approval.

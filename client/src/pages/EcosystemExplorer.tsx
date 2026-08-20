@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 import { ecosystemRoutes } from "./SensePortal";
-import { domainReadinessHref, sensePortalHref } from "@/lib/sensePortalRoute";
+import { domainReadinessHref, progressDashboardHref, sensePortalHref } from "@/lib/sensePortalRoute";
 
 const liveUrl = "https://urbansense-dzfbcdz5.manus.space";
 const repositoryUrl = "https://github.com/Solvanix/urban-sense-core";
@@ -47,6 +47,7 @@ export default function EcosystemExplorer() {
           </Link>
           <div className="flex flex-wrap gap-2 text-sm font-extrabold">
             <a href={rootIndexUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 text-white/80 hover:border-white/35">فهرس HTML في GitHub <ArrowUpLeft size={15} /></a>
+            <Link href={progressDashboardHref} className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-sky-300/25 bg-sky-300/10 px-3 text-sky-50">لوحة التقدم <Route size={15} /></Link>
             <Link href={domainReadinessHref} className="inline-flex min-h-10 items-center gap-2 rounded-xl bg-[#e3a238] px-3 text-[#15272a]">جاهزية الدومين <Globe2 size={15} /></Link>
           </div>
         </header>
