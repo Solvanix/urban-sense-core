@@ -15,6 +15,7 @@
 | تشغيل SENSE Experience بأمان | [بوابة جاهزية البيانات الحقيقية](sense-experience/REAL-DATA-READINESS.md) |
 | مراجعة حوكمة SENSE المرحلية | [إطار الحوكمة](SENSE-PHASED-GOVERNANCE-FRAMEWORK-2026-08-20.md) |
 | مراجعة اسم «عَنان | ANAN» المقترح | [حزمة الرسائل](ANAN-PROPOSED-BRAND-MESSAGING-2026-08-20.md) |
+| مراجعة فحص اسم نطاق قصير | [مسودة فحص الدومين](DOMAIN-SHORT-NAME-RESEARCH-2026-08-20.md) |
 
 ## مجموعات الوثائق
 
@@ -42,6 +43,7 @@
 - [`ANAN-PROPOSED-BRAND-MESSAGING-2026-08-20.md`](ANAN-PROPOSED-BRAND-MESSAGING-2026-08-20.md)
 - [`BRAND-LOGO-DIRECTIONS-2026-08-20.md`](BRAND-LOGO-DIRECTIONS-2026-08-20.md)
 - [`DOMAIN-REASSESSMENT-2026-08-20.md`](DOMAIN-REASSESSMENT-2026-08-20.md)
+- [`DOMAIN-SHORT-NAME-RESEARCH-2026-08-20.md`](DOMAIN-SHORT-NAME-RESEARCH-2026-08-20.md): فحص أولي غير ملزم لأسماء قصيرة وحدود قرار النطاق والبريد.
 
 اسم «عَنان | ANAN» ورسائله ومونوغرامات الهوية المقترحة مواد مراجعة فقط حتى يصدر قرار المالك ويُفحص النطاق والعلامة. لا تمثل هذه الملفات تسجيلًا أو اعتمادًا قانونيًا.
 
