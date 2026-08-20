@@ -8,6 +8,8 @@
 
 [**افتح فهرس HTML المرئي من جذر المستودع**](INDEX.html) — صفحة مستقلة قابلة للفتح محليًا أو عبر GitHub Pages عند تفعيلها، وتربط الرحلات والصفحات والوثائق بلغة مرئية.
 
+[**افتح لوحة التقدم التشغيلية الحية**](https://urbansense-dzfbcdz5.manus.space/?view=progress) — تفصل بين ما هو منشور، وما هو نواة مستقلة مقيدة، وما يتطلب قرارًا أو تشغيلًا حقيقيًا.
+
 ## ابدأ من هنا
 
 [**افتح بوابة SENSE الموحدة**](https://urbansense-dzfbcdz5.manus.space/?view=sense)
@@ -17,9 +19,10 @@
 | إذا كنت تبحث عن | الحالة الحالية | نقطة الدخول |
 |---|---|---|
 | **بوابة المنظومة** | منشورة | [بوابة SENSE الموحدة](https://urbansense-dzfbcdz5.manus.space/?view=sense) |
+| **خريطة الوصول والتقدم** | منشورة | [المستكشف المرئي](https://urbansense-dzfbcdz5.manus.space/?view=explore) · [لوحة التقدم](https://urbansense-dzfbcdz5.manus.space/?view=progress) |
 | **Urban‑Sense**: بلاغات بلدية عربية | منشور ضمن نطاق تجريبي محكوم | [افتح Urban‑Sense](https://urbansense-dzfbcdz5.manus.space/) |
 | **SENSE Experience**: مزودو الخدمات والتجارب | نواة مستقلة في الكود؛ لا رابط إنتاج ولا استقبال بيانات حقيقية بعد | [استعرض التطبيق المستقل](apps/sense-experience/) |
-| **السوق والمتجر** | مقترح، غير مشغّل | [خارطة التشغيل والمنتج](docs/OPERATING-PRODUCT-BLUEPRINT.md) |
+| **السوق والمتجر** | مقترح، غير مشغّل | [راجع حالة التشغيل](https://urbansense-dzfbcdz5.manus.space/?view=progress) |
 | **التمكين والتصنيع** | مقترح يحتاج قرارًا قانونيًا وتجربة حقيقية | [تحليل الأدلة والبوابات](docs/research/SENSE-DIGITAL-MANUFACTURING-CENTER-EVIDENCE-ANALYSIS-2026-08-20.md) |
 
 ## أين توجد الصفحة المدخلية في الكود؟
