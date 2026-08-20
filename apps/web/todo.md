@@ -124,3 +124,4 @@
 - [x] Audit Nawaf-Rayhan585/YOLO_Projects for scope, license, data handling, dependencies, and maturity before proposing any reuse or integration.
 - [x] Design a consent-based computer-vision research track and repository contract informed by the YOLO audit and the public smart-city/telecom archive, without adding surveillance or production inference to Urban-Sense.
 - [ ] Obtain written reuse permission or a clear license for any third-party YOLO example code, then separately resolve model licensing before starting a closed vision-lab experiment.
+- [x] Create a leadership slide deck explaining the YOLO, smart-city, and SENSE integration roadmap, including current-state boundaries, legal/consent gates, repository architecture, and decision options.
