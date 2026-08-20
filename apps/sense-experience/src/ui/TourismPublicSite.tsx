@@ -1,9 +1,10 @@
-type PublicPage = "home" | "discover" | "partners";
+type PublicPage = "home" | "discover" | "partners" | "vision";
 
 export function getPublicPage(pathname: string): PublicPage {
   const decodedPath = decodeURIComponent(pathname);
   if (decodedPath === "/اكتشف" || decodedPath === "/discover") return "discover";
   if (decodedPath === "/للشركاء" || decodedPath === "/partners") return "partners";
+  if (decodedPath === "/رؤية-مسؤولة" || decodedPath === "/responsible-vision") return "vision";
   return "home";
 }
 
@@ -11,6 +12,7 @@ const publicLinks = [
   { href: "/", label: "البوابة" },
   { href: "/اكتشف", label: "اكتشف" },
   { href: "/للشركاء", label: "الثقة والشراكة" },
+  { href: "/رؤية-مسؤولة", label: "الرؤية المسؤولة" },
   { href: "/انضم", label: "انضم كمزود" }
 ];
 
@@ -44,7 +46,7 @@ export function TourismPublicSite({
         </nav>
       </header>
 
-      {page === "home" ? <GatewayPage onNavigate={onNavigate} /> : page === "discover" ? <DiscoverPage onNavigate={onNavigate} /> : <PartnerPage onNavigate={onNavigate} />}
+      {page === "home" ? <GatewayPage onNavigate={onNavigate} /> : page === "discover" ? <DiscoverPage onNavigate={onNavigate} /> : page === "partners" ? <PartnerPage onNavigate={onNavigate} /> : <ResponsibleVisionPage onNavigate={onNavigate} />}
 
       <footer className="tourism-footer">
         <div><span className="eyebrow">SENSE EXPERIENCE</span><p>طبقة تعريف وثقة للمكان، تُبنى مع مزودي الخدمة لا بدلًا عنهم.</p></div>
@@ -130,6 +132,41 @@ function PartnerPage({ onNavigate }: { onNavigate: (href: string) => void }) {
         <article><span>04</span><h2>التوسع لا يسبق الأمان</h2><p>الحجز والدفع والتقييمات والمتجر ليست مفتوحة الآن، ولن تُضاف قبل وجود البيانات والحوكمة المناسبة.</p></article>
       </section>
       <section className="partner-callout"><div><p className="eyebrow">للمزودين والجهات</p><h2>إن كانت خدمتك حقيقية، نريد أن نسمعها كما هي.</h2></div><button className="primary tourism-action" onClick={() => onNavigate("/انضم")}>تسجيل اهتمام خاص</button></section>
+    </>
+  );
+}
+
+function ResponsibleVisionPage({ onNavigate }: { onNavigate: (href: string) => void }) {
+  return (
+    <>
+      <style>{`.vision-hero{display:grid;grid-template-columns:1fr .92fr;gap:46px;align-items:center;min-height:540px;padding:clamp(28px,6vw,74px);border:1px solid rgba(18,58,53,.15);border-radius:30px;background:linear-gradient(135deg,#f7fbf8,#e7f0eb 60%,#f4e7c2);overflow:hidden}.vision-hero h1{max-width:650px;margin:9px 0 18px;font-size:clamp(40px,5vw,70px);line-height:1.08;letter-spacing:-.055em}.vision-hero h1 em{color:#bd8424;font-style:normal}.vision-hero>div>p:not(.eyebrow){max-width:610px;color:#526e66;line-height:2;font-size:16px}.vision-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}.vision-signal{display:grid;grid-template-columns:1fr 34px 1fr 34px 1fr;align-items:center;color:#eef8f3;background:#143f3d;padding:34px}.vision-signal div{min-height:186px;padding:16px 12px;border-top:4px solid #e4bd5b;background:rgba(255,255,255,.06)}.vision-signal span,.vision-signal b,.vision-signal small{display:block}.vision-signal span{color:#e7c875;font-family:'DM Mono',monospace;font-size:11px}.vision-signal b{margin-top:34px;font-size:19px;line-height:1.35}.vision-signal small{margin-top:10px;color:#c5ddd6;font-size:11px;line-height:1.7}.vision-signal i{height:2px;background:#e4bd5b;position:relative}.vision-signal i:after{position:absolute;right:0;top:-6px;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:10px solid #e4bd5b;content:''}.vision-tiles{display:grid;grid-template-columns:1.05fr .9fr 1.05fr;gap:14px;margin:18px 0}.vision-tile{min-height:270px;padding:26px;border-radius:18px}.vision-tile span{font-family:'DM Mono',monospace;font-size:11px;font-weight:700}.vision-tile h2{margin:58px 0 10px;font-size:27px;line-height:1.25}.vision-tile p{margin:0;line-height:1.9;font-size:13px}.vision-teal{color:#ecf7f2;background:#174943}.vision-teal span{color:#e8c878}.vision-teal p{color:#c8dfd8}.vision-paper{color:#21433d;background:#f4f1e7}.vision-paper p{color:#60746e}.vision-gold{color:#3a2e10;background:#e8c26e}.vision-gold p{color:#66501b}.vision-bridge{display:grid;grid-template-columns:.95fr 1.05fr;gap:50px;align-items:start;margin:44px 0 72px;padding:38px;border-top:1px solid rgba(19,54,50,.2);border-bottom:1px solid rgba(19,54,50,.2)}.vision-bridge h2{max-width:560px;margin:7px 0 0;font-size:31px;line-height:1.3}.vision-bridge p:last-child{margin:0;color:#5a726b;line-height:2;font-size:14px}@media(max-width:900px){.vision-hero,.vision-bridge{grid-template-columns:1fr}.vision-hero{min-height:0}.vision-signal{max-width:620px}.vision-tiles{grid-template-columns:1fr 1fr}.vision-tile:last-child{grid-column:span 2}}@media(max-width:560px){.vision-hero{padding:32px 21px}.vision-hero h1{font-size:46px}.vision-signal{grid-template-columns:1fr}.vision-signal i{width:2px;height:20px;justify-self:center}.vision-signal i:after{top:auto;bottom:-1px;right:-4px;border-right:6px solid transparent;border-left:6px solid transparent;border-top:8px solid #e4bd5b;border-bottom:0}.vision-tiles{grid-template-columns:1fr}.vision-tile:last-child{grid-column:auto}.vision-tile{min-height:0}.vision-tile h2{margin-top:35px}}`}</style>
+      <section className="vision-hero">
+        <div>
+          <p className="eyebrow">إشارة · إنسان · أثر</p>
+          <h1>نرى ما يكفي للفهم، ولا نحوّل المكان إلى <em>مراقبة.</em></h1>
+          <p>هذه صفحة تعريف لمسار بحثي مقترح داخل منظومة SENSE. لا يوجد نموذج رؤية حاسوبية أو بث كاميرات أو بيانات حية في هذه الواجهة أو في منصة Urban‑Sense.</p>
+          <div className="vision-actions">
+            <button className="primary tourism-action" onClick={() => onNavigate("/للشركاء")}>اقرأ مبدأ الثقة</button>
+            <button className="secondary tourism-action" onClick={() => onNavigate("/انضم")}>انضم كمزود خدمة</button>
+          </div>
+        </div>
+        <div className="vision-signal" aria-label="مخطط مفاهيمي لمسار الرؤية المسؤولة">
+          <div><span>01</span><b>غرض محدد</b><small>وسيط مصرح به فقط</small></div>
+          <i />
+          <div><span>02</span><b>مراجعة بشرية</b><small>الاقتراح ليس قرارًا</small></div>
+          <i />
+          <div><span>03</span><b>أثر محدود</b><small>ملخص لا مراقبة</small></div>
+        </div>
+      </section>
+      <section className="vision-tiles">
+        <article className="vision-tile vision-teal"><span>ليس الآن</span><h2>لا كاميرات عامة.<br />لا بث حي.</h2><p>لا تبدأ المنظومة من الحسّاسات أو التتبع أو تصنيف الأشخاص، ولا تعد بأي منها.</p></article>
+        <article className="vision-tile vision-paper"><span>عند الموافقة فقط</span><h2>تجربة واحدة<br />بغرض واحد.</h2><p>أي بحث لاحق يحتاج حق استخدام، مالك موقع، موافقة، سياسة حذف، ومراجعًا بشريًا.</p></article>
+        <article className="vision-tile vision-gold"><span>القاعدة</span><h2>التكامل عقد<br />لا شعار.</h2><p>لا تنتقل سوى ملاحظة ضيقة مراجعَة؛ لا وجوه أو لوحات أو فيديو خام أو قرار آلي.</p></article>
+      </section>
+      <section className="vision-bridge">
+        <div><p className="eyebrow">المدينة المتصلة</p><h2>الاتصال والبيانات والرؤية طبقات تمكين، لا بديل عن الحوكمة.</h2></div>
+        <p>تتعلم SENSE من مسارات التقنية والمدينة الذكية كيف تبني التدرج: بيانات موثوقة، تشغيل واضح، تكامل محدود، وحوكمة قابلة للمراجعة. وتبقى هذه الصفحة تعريفًا بالمسار لا إعلانًا عن خدمة منشورة.</p>
+      </section>
     </>
   );
 }

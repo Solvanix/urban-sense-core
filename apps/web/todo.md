@@ -119,6 +119,9 @@
 - [ ] Replace the dashed-road direction with an original folder-backed camera monogram: a folder tab as the camera's rear body, a restrained S-shaped ribbon/path, and a compact geometric lens.
 - [ ] Prepare a private Leaders International article proposal and corrected Digiwork narrative that distinguishes verified team formation and Urban-Sense work from proposed tourism, commerce, manufacturing, and strategic-partner pathways.
 - [ ] Preserve the selected white camera-with-S-negative-space monogram as the current logo reference; make no visual changes until a new explicit direction is received.
+- [x] Add a varied Arabic tile system to the public Urban-Sense pages that reinforces the existing identity without changing the municipal-reporting scope.
+- [x] Add a public SENSE Experience page that explains the consent-based vision and smart-city roadmap as a non-operational research direction.
+- [x] Produce and verify public or temporary preview links for the updated Urban-Sense and SENSE Experience pages before presenting them to the user.
 - [x] Analyze the public My Communication Academy channel for its positioning, content formats, and visual communication practices, then document transferable lessons for SENSE without copying content or implying affiliation.
 - [x] Audit the publicly previewable older My Communication Academy archive for smart-city, IoT, 5G, infrastructure, field-technology, and digital-transformation posts; document full-archive limits and SENSE/Urban-Sense implications.
 - [x] Audit Nawaf-Rayhan585/YOLO_Projects for scope, license, data handling, dependencies, and maturity before proposing any reuse or integration.
