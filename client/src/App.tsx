@@ -20,6 +20,7 @@ function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/sense"} component={SensePortal} />
       <Route path={"/منظومة-sense"} component={SensePortal} />
       <Route path={"/كيف-تعمل"} component={HowItWorks} />
       <Route path={"/للبلديات"} component={ForMunicipalities} />
