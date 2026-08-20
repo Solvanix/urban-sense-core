@@ -170,3 +170,4 @@
 - [x] Draft two professional, encouraging collaboration replies for the supplied LinkedIn screenshots without publishing them or attributing details that are not readable in the images.
 - [x] Add a live operating-progress page that distinguishes published capabilities, independently coded but gated capabilities, and decisions still awaiting owner or operational approval.
 - [x] Verify the reported all-black mobile state against the root entry, explorer, progress, and domain views at 375px; it was not reproducible after the resolved routing build error, and all reviewed views rendered readable content.
+- [x] Publish a standalone public `/INDEX.html` page that mirrors the repository-root index purpose without exposing the private GitHub repository.
