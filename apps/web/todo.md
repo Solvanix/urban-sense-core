@@ -80,7 +80,7 @@
 - [x] Add independently scoped local persistence and a reviewer queue for SENSE Experience provider-interest records, preserving no-publication-before-review rules and separation from Urban‑Sense data.
 - [ ] Configure and deploy the independent SENSE Experience service with its own database, complete OIDC client, active reviewer role, retention controls, and written readiness approval before accepting any real provider data.
 - [x] Add the separately deployable SENSE Experience API, database schema, migrations, and protected reviewer procedures without sharing Urban‑Sense infrastructure or data.
-- [ ] Bind SENSE Experience reviewer procedures to independent authenticated identities and role assignments before any production API exposure.
+- [x] Bind SENSE Experience reviewer procedures to independent authenticated identities and role assignments in code; production exposure remains gated by independent deployment, a real reviewer identity, retention controls, and readiness approval.
 - [ ] Add independent reviewer identity and role records for SENSE Experience, including assignment audit events and API context validation separate from Urban‑Sense.
 - [x] Audit the Manus live project against GitHub main, classify any unsynchronized implementation, and prepare a safe migration sequence without copying environment secrets or live data.
 - [x] Analyze the user-provided Ard Kanaan materials and public evidence, separating verified facts from assumptions and unresolved questions without fabricating endorsements or commercial claims.
