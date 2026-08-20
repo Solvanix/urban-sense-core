@@ -169,3 +169,4 @@
 - [x] Improve visible cross-navigation between the live explorer, the root HTML index, and the relevant source/document destinations without claiming GitHub Pages is active.
 - [x] Draft two professional, encouraging collaboration replies for the supplied LinkedIn screenshots without publishing them or attributing details that are not readable in the images.
 - [x] Add a live operating-progress page that distinguishes published capabilities, independently coded but gated capabilities, and decisions still awaiting owner or operational approval.
+- [x] Verify the reported all-black mobile state against the root entry, explorer, progress, and domain views at 375px; it was not reproducible after the resolved routing build error, and all reviewed views rendered readable content.
