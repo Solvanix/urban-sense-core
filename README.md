@@ -1,65 +1,77 @@
-# Urban‑Sense Core
+# SENSE Ecosystem / Urban‑Sense Core
 
-> **A secure civic-reporting MVP for the SENSE / Urban‑Sense / Tibyan initiative.**
+> **هذا هو المستودع المركزي الحاكم لمنظومة SENSE.** وهو يجمع تطبيقات مستقلة في الكود والحوكمة، لا تطبيقًا واحدًا يخلط الهويات أو الصلاحيات أو قواعد البيانات.
 
-## Status
+## ابدأ من هنا
 
-This repository is the **governed central source of truth** for the SENSE product portfolio. Its first application, Urban‑Sense, remains a secure civic-reporting core. A second, independently deployable SENSE Experience application will support verified tourism-service providers and visitor-facing discovery. The two applications share repository governance and quality standards, but never share operational databases, municipal-report data, or authorization boundaries.
+[**افتح بوابة SENSE الموحدة**](https://urbansense-dzfbcdz5.manus.space/?view=sense)
 
-The first delivery is deliberately narrow: one end-to-end, secure municipal reporting workflow. It will support a citizen submitting a report, an authorized service officer reviewing and assigning it, a field team attaching evidence, a supervisor verifying closure, and the citizen rating the completed service.
+بوابة SENSE هي الصفحة المدخلية العامة للمنظومة. تعرض المسارات المتاحة الآن، وتبيّن بوضوح ما يحتاج حسابًا محميًا أو نشرًا مستقلًا أو قرارًا تشغيليًا قبل فتحه. استُخدم المسار `/?view=sense` عمدًا لأن النشر العام يخدم جذر الموقع باستقرار، ولا يعتمد على إعادة توجيه لمسار فرعي.
 
-## Scope of the first MVP
+| إذا كنت تبحث عن | الحالة الحالية | نقطة الدخول |
+|---|---|---|
+| **بوابة المنظومة** | منشورة | [بوابة SENSE الموحدة](https://urbansense-dzfbcdz5.manus.space/?view=sense) |
+| **Urban‑Sense**: بلاغات بلدية عربية | منشور ضمن نطاق تجريبي محكوم | [افتح Urban‑Sense](https://urbansense-dzfbcdz5.manus.space/) |
+| **SENSE Experience**: مزودو الخدمات والتجارب | نواة مستقلة في الكود؛ لا رابط إنتاج ولا استقبال بيانات حقيقية بعد | [استعرض التطبيق المستقل](apps/sense-experience/) |
+| **السوق والمتجر** | مقترح، غير مشغّل | [خارطة التشغيل والمنتج](docs/OPERATING-PRODUCT-BLUEPRINT.md) |
+| **التمكين والتصنيع** | مقترح يحتاج قرارًا قانونيًا وتجربة حقيقية | [تحليل الأدلة والبوابات](docs/research/SENSE-DIGITAL-MANUFACTURING-CENTER-EVIDENCE-ANALYSIS-2026-08-20.md) |
 
-```text
-Authenticated citizen
-→ create report
-→ staff review and classification
-→ assignment to a field team
-→ field evidence (before/after)
-→ supervisor verification
-→ controlled closure
-→ citizen rating
-→ immutable audit trail
+## أين توجد الصفحة المدخلية في الكود؟
+
+الصفحة ليست مشروعًا منفصلًا مخفيًا خارج هذا المستودع؛ إنها جزء من التطبيق المنشور في هذا المسار:
+
+| المورد | المسار أو الرابط |
+|---|---|
+| مكوّن البوابة | [`apps/web/client/src/pages/SensePortal.tsx`](apps/web/client/src/pages/SensePortal.tsx) |
+| منطق الرابط المنشور | [`apps/web/client/src/lib/sensePortalRoute.ts`](apps/web/client/src/lib/sensePortalRoute.ts) |
+| اختبارات قرار التوجيه | [`apps/web/client/src/lib/sensePortalRoute.test.ts`](apps/web/client/src/lib/sensePortalRoute.test.ts) |
+| اختبارات أبواب البوابة | [`apps/web/client/src/pages/SensePortal.test.ts`](apps/web/client/src/pages/SensePortal.test.ts) |
+
+> **حد مهم:** بوابة SENSE فهرس لمسارات مستقلة، وليست حسابًا موحدًا ولا قاعدة بيانات موحدة. الدخول من البوابة لا يمنح أي شخص صلاحيات بلدية أو مزود أو مراجع أو وصولًا تقنيًا تلقائيًا.
+
+## ما هو منشور وما هو مقترح؟
+
+### Urban‑Sense: التطبيق البلدي المنشور
+
+Urban‑Sense منصة بلاغات بلدية فقط. يغطي المسار: تقديم بلاغ، مراجعة وتصنيف، إسناد إلى فريق ميداني، أدلة قبل/بعد، تحقق مشرف، إغلاق مضبوط، وتقييم مواطن حقيقي بعد الإغلاق. يدعم العربية RTL، والأدوار والصلاحيات، وسجل تدقيق. لا يحتوي السياحة أو متجرًا أو دفعًا أو كاميرات حية.
+
+### SENSE Experience: التطبيق السياحي المستقل
+
+SENSE Experience تطبيق مستقل داخل المستودع لمسار جاهزية مزودي الخدمات، مراجعة بشرية، وهوية مراجع مستقلة. لا يشارك Urban‑Sense قاعدة البيانات أو الصلاحيات أو بيانات البلاغات. لا يبدأ استقبال بيانات مزودين حقيقية قبل نشر مستقل، وهوية مراجع نشطة، ضوابط احتفاظ، وموافقة جاهزية مكتوبة.
+
+### المسارات المستقبلية
+
+التجارة، المحاسبة، المدفوعات، كتالوجات المنتجات، الدعم الذكي المتصل، قياس الأثر الشامل، ومركز التصنيع الرقمي ليست خدمات حية في هذه اللحظة. تُعرض في البوابة بصفة **مقترح** كي لا يتحول التصميم إلى وعد تشغيلي غير موجود.
+
+## بنية المستودع
+
+| المسار | الغرض |
+|---|---|
+| [`apps/web/`](apps/web/) | تطبيق Urban‑Sense العام والعمليات والبوابة الموحدة المنشورة. |
+| [`apps/sense-experience/`](apps/sense-experience/) | تطبيق SENSE Experience المستقل، بحدود بيانات وهوية مراجعين منفصلة. |
+| [`docs/`](docs/) | قرارات الحوكمة، خارطة المنتج، الحدود، الأدلة، ومذكرات التصميم. |
+| [`docs/ANAN-PROPOSED-BRAND-MESSAGING-2026-08-20.md`](docs/ANAN-PROPOSED-BRAND-MESSAGING-2026-08-20.md) | حزمة رسائل مقترحة لاسم «عَنان | ANAN»؛ الاسم غير معتمد قانونيًا ولا نطاقًا. |
+| [`docs/START-HERE.md`](docs/START-HERE.md) | تسلسل التسليم والقرارات التالية. |
+| [`docs/PORTFOLIO-ARCHITECTURE.md`](docs/PORTFOLIO-ARCHITECTURE.md) | خريطة التطبيقات المستقلة وعقود التكامل بينها. |
+| [`docs/shared/ACCESSIBILITY-BASELINE.md`](docs/shared/ACCESSIBILITY-BASELINE.md) | خط الأساس للإتاحة لكل تطبيق جديد. |
+
+## قواعد غير قابلة للتجاوز
+
+1. لا تشترك Urban‑Sense وSENSE Experience في قاعدة بيانات أو صلاحيات أو بيانات تشغيلية.
+2. لا تُنشأ مزودات أو تقييمات أو شهادات أو شراكات اصطناعية لأغراض العرض أو الاختبار.
+3. لا يُفتح تسجيل عام لمزودي SENSE Experience قبل تحقيق بوابات النشر والمراجعة المستقلة.
+4. لا يُطلق متجر أو دفع أو محاسبة قبل كيان قانوني ونظام مالي وسياسات تشغيلية واضحة.
+5. لا تُعاد استخدام شيفرة طرف ثالث أو نماذج رؤية حاسوبية قبل تحقق الرخصة أو إذن مكتوب.
+6. لا يغيَّر مونوغرام SENSE المرجعي أو تستبدل هوية المنتج بقرار اسم العلامة الأم قبل اعتماد صريح من المالك.
+
+## جودة التطوير
+
+كل تغيير تقني في التطبيقين يمر بفحص النوع والاختبارات والبناء من مسار التطبيق نفسه:
+
+```bash
+cd apps/web && pnpm check && pnpm test && pnpm build
+cd ../sense-experience && pnpm check && pnpm test && pnpm build
 ```
 
-The MVP will include Arabic RTL support, role-based access control, PostgreSQL migrations, a controlled object-storage upload path, tests, CI, and a staging-only pilot configuration.
-
-## Product boundaries
-
-Marketplace features, wallet or payment logic, points redemption, AI-driven operational decisions, advanced tourism features, hardware integrations, and multi-municipality operation remain out of scope for the **Urban‑Sense application** until the reporting core passes security, testing, and pilot-readiness gates.
-
-SENSE Experience is developed as a separate application within this same repository. It begins with consented provider onboarding, human review, and source-bound public profiles. It does not publish unverified claims, synthetic providers, ratings, availability, or tourism-service data.
-
-## Repository structure
-
-| Path | Purpose |
-|---|---|
-| [`docs/START-HERE.md`](docs/START-HERE.md) | Delivery sequence and immediate decisions. |
-| [`docs/architecture/MVP-ARCHITECTURE.md`](docs/architecture/MVP-ARCHITECTURE.md) | Target technical architecture and domain model. |
-| [`docs/security/SECURITY-BASELINE.md`](docs/security/SECURITY-BASELINE.md) | Security controls required before a pilot. |
-| [`docs/LEGACY-SOURCE-REGISTER.md`](docs/LEGACY-SOURCE-REGISTER.md) | Handling rules for the inspected legacy archive. |
-| [`docs/decision-records/ADR-001-source-strategy.md`](docs/decision-records/ADR-001-source-strategy.md) | Decision record for the new governed baseline. |
-| [`docs/sense-experience/`](docs/sense-experience/) | Scope, provider onboarding, and quality boundaries for the separate tourism application. |
-| [`docs/PORTFOLIO-ARCHITECTURE.md`](docs/PORTFOLIO-ARCHITECTURE.md) | Central-repository map for civic reporting, tourism, public site, commerce, and accessibility tools. |
-| [`docs/shared/ACCESSIBILITY-BASELINE.md`](docs/shared/ACCESSIBILITY-BASELINE.md) | Shared accessibility baseline for every new application. |
-
-## Rules of engagement
-
-1. Do not copy legacy code into this repository without a file-by-file review and a passing test.
-2. Do not use production data, production secrets, or a production database in development or tests.
-3. Do not implement public report-writing, report-reading, or report-state transitions without server-enforced authentication, authorization, ownership, and audit logging.
-4. Do not merge to `main` until CI, code review, and security acceptance checks are in place.
-5. Keep application databases, public APIs, deployment environments, and roles separated even when applications live in this repository.
-
-## Next milestone
-
-The next work item is **Foundation Phase A**: choose the canonical runtime stack, create a reproducible local environment, define schema migrations, and implement an automated security test that proves an unauthenticated caller cannot create, view, or modify a private report.
-
-## Reference
-
-The legacy technical validation found that the old archive contains useful UI, API, mobile, and schema assets, but is not ready for production: authorization gaps exist in report routes; report workflow steps are incomplete; no automated application tests or reviewable SQL migrations were present; and parts of build/typecheck did not pass. See the project documentation before importing any legacy asset.
-
----
-
-**Project owner:** SENSE / Urban‑Sense / Tibyan
-**Repository visibility:** Private
+**المالك:** SENSE / Urban‑Sense
+**رؤية المستودع:** خاص
