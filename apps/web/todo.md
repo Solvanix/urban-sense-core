@@ -119,3 +119,4 @@
 - [ ] Replace the dashed-road direction with an original folder-backed camera monogram: a folder tab as the camera's rear body, a restrained S-shaped ribbon/path, and a compact geometric lens.
 - [ ] Prepare a private Leaders International article proposal and corrected Digiwork narrative that distinguishes verified team formation and Urban-Sense work from proposed tourism, commerce, manufacturing, and strategic-partner pathways.
 - [ ] Preserve the selected white camera-with-S-negative-space monogram as the current logo reference; make no visual changes until a new explicit direction is received.
+- [ ] Analyze the public My Communication Academy channel for its positioning, content formats, and visual communication practices, then document transferable lessons for SENSE without copying content or implying affiliation.
