@@ -121,3 +121,6 @@
 - [ ] Preserve the selected white camera-with-S-negative-space monogram as the current logo reference; make no visual changes until a new explicit direction is received.
 - [x] Analyze the public My Communication Academy channel for its positioning, content formats, and visual communication practices, then document transferable lessons for SENSE without copying content or implying affiliation.
 - [x] Audit the publicly previewable older My Communication Academy archive for smart-city, IoT, 5G, infrastructure, field-technology, and digital-transformation posts; document full-archive limits and SENSE/Urban-Sense implications.
+- [x] Audit Nawaf-Rayhan585/YOLO_Projects for scope, license, data handling, dependencies, and maturity before proposing any reuse or integration.
+- [x] Design a consent-based computer-vision research track and repository contract informed by the YOLO audit and the public smart-city/telecom archive, without adding surveillance or production inference to Urban-Sense.
+- [ ] Obtain written reuse permission or a clear license for any third-party YOLO example code, then separately resolve model licensing before starting a closed vision-lab experiment.
