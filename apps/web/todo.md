@@ -104,6 +104,8 @@
 - [x] Select a durable parent domain and professional email structure for the Sense ecosystem, including availability and brand-risk checks before any purchase.
 - [x] Create and validate a new creative parent-domain shortlist independent of Senseivo for the full ecosystem, including domain availability and brand-confusion checks before any purchase.
 - [x] Reassess the parent-domain decision against wsenses and the temporary store domain, then choose the tourism TLD and durable team-site/email domain before any registration.
+- [ ] Propose and screen a new shortlist of clear, easy-to-pronounce Arabic parent-brand names for the integrated SENSE ecosystem, excluding unclear candidates before any domain or trademark decision.
+- [ ] Evaluate Arabic parent-brand candidates based on the clear «فارس/الخيّال» meaning while avoiding unintended association with an individual, equestrian-only services, transport, or a live tourism offering.
 - [x] Audit the outdated temporary store at sense.runasp.net as a legacy reference, then define its migration or retirement path without using its host name as the ecosystem brand.
 - [ ] Obtain explicit owner confirmation of the selected parent domain, then recheck registrar availability and trademark risk immediately before any registration.
 - [ ] Develop and review a parent-brand logo direction that combines software-system thinking with editorial-media expression, without replacing the existing Urban‑Sense product identity before approval.
@@ -133,3 +135,4 @@
 - [x] Fix direct public access to the SENSE portal after verifying that the deployment returns a 404 for both Arabic and Latin SPA subpaths; route public navigation through `/?view=sense` on the always-served root URL.
 - [x] Expand the SENSE entry portal into an ecosystem index with a clearly separated public entry, municipality administration entry, technical-team entry, provider journey, sponsor-facing route, and truthful readiness boundaries.
 - [x] Analyze the user-linked Maharat learning space and translate only permission-safe, publicly verifiable learning-flow patterns into an applied SENSE Experience provider-readiness journey without copying course content or implying affiliation.
+- [x] Prepare and review the public messaging foundation for the proposed «عَنان / ANAN» parent brand: slogan, public narrative, and three operating values; keep the founders' personal naming context private and make no domain or legal-identity change before owner confirmation.
