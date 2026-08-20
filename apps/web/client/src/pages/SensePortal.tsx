@@ -1,13 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { municipalOperationsHref } from "@/lib/sensePortalRoute";
 import {
   Accessibility,
   ArrowLeft,
   Bot,
   Building2,
+  BriefcaseBusiness,
   ChevronLeft,
   CircleDollarSign,
   ClipboardList,
+  Code2,
   Database,
   Eye,
   Gauge,
@@ -18,8 +21,8 @@ import {
   Radio,
   Route,
   ShieldCheck,
-  Sparkles,
   Store,
+  UserRoundCheck,
   UsersRound,
   Wrench,
 } from "lucide-react";
@@ -27,6 +30,7 @@ import { useState } from "react";
 import { Link } from "wouter";
 
 type Readiness = "منشور" | "نواة مستقلة" | "مقترح";
+type PortalTone = "teal" | "blue" | "amber" | "slate";
 
 export type EcosystemRoute = {
   id: string;
@@ -39,7 +43,19 @@ export type EcosystemRoute = {
   href?: string;
   internal?: boolean;
   icon: typeof Building2;
-  tone: "teal" | "blue" | "amber" | "slate";
+  tone: PortalTone;
+};
+
+type EcosystemAccessGate = {
+  id: string;
+  label: string;
+  status: string;
+  description: string;
+  action: string;
+  href?: string;
+  internal?: boolean;
+  icon: typeof Building2;
+  tone: PortalTone;
 };
 
 export const ecosystemRoutes: EcosystemRoute[] = [
@@ -93,13 +109,21 @@ export const ecosystemRoutes: EcosystemRoute[] = [
   },
 ];
 
+export const ecosystemAccessGates: EcosystemAccessGate[] = [
+  { id: "public", label: "زائر أو مواطن", status: "متاح بلا حساب", description: "تعرف على المنتجات العامة أو ابدأ بلاغًا ضمن نطاق البلدية المشاركة.", action: "افتح Urban‑Sense", href: "/", internal: true, icon: UsersRound, tone: "teal" },
+  { id: "municipality", label: "بلدية أو راعٍ تجريبي", status: "دخول محمي", description: "تدخل جهة البلدية إلى العمليات فقط عبر حساب ودور ونطاق بلدي فعّال.", action: "دخول العمليات", href: municipalOperationsHref, internal: true, icon: Building2, tone: "blue" },
+  { id: "provider", label: "مزود تجربة أو خدمة", status: "ينتظر النشر المستقل", description: "مسار جاهزية وتعلم قصير ثم مراجعة بشرية؛ لا تسجيل مزودين أو نشر ملفات حقيقية الآن.", action: "لا يوجد تسجيل مفتوح", icon: UserRoundCheck, tone: "amber" },
+  { id: "sponsor", label: "شريك أو راعٍ", status: "مسار حوار", description: "نقاش نطاق تجربة أو دعم أو شراكة مقترحة، من دون وعود أثر أو وصول إلى بيانات تشغيلية.", action: "ليس حسابًا ذاتيًا", icon: BriefcaseBusiness, tone: "slate" },
+  { id: "technical", label: "الفريق التقني", status: "GitHub حسب الدور", description: "الوصول إلى المستودع يحدد بالقراءة أو الكتابة أو الإدارة، ولا يمنح صلاحيات إنتاج تلقائيًا.", action: "افتح المستودع", href: "https://github.com/Solvanix/urban-sense-core", icon: Code2, tone: "slate" },
+];
+
 const readinessClass: Record<Readiness, string> = {
   "منشور": "bg-emerald-400/15 text-emerald-100 ring-1 ring-emerald-300/30",
   "نواة مستقلة": "bg-sky-400/15 text-sky-100 ring-1 ring-sky-300/30",
   "مقترح": "bg-amber-300/15 text-amber-100 ring-1 ring-amber-200/30",
 };
 
-const toneClass: Record<EcosystemRoute["tone"], string> = {
+const toneClass: Record<PortalTone, string> = {
   teal: "from-[#0f5b5b] via-[#144b4a] to-[#0c2428]",
   blue: "from-[#163d6a] via-[#1e4f88] to-[#102743]",
   amber: "from-[#74501f] via-[#6a421a] to-[#281c12]",
@@ -111,6 +135,13 @@ function PortalLink({ route }: { route: EcosystemRoute }) {
   if (!route.href) return <span className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/20 px-4 py-2 text-sm font-extrabold text-white/70">{route.actionLabel}<LockKeyhole size={16} /></span>;
   if (route.internal) return <Link href={route.href} className={className}>{route.actionLabel}<ArrowLeft size={16} /></Link>;
   return <a href={route.href} target="_blank" rel="noreferrer" className={className}>{route.actionLabel}<ArrowLeft size={16} /></a>;
+}
+
+function AccessLink({ gate }: { gate: EcosystemAccessGate }) {
+  const className = "mt-5 inline-flex min-h-10 items-center gap-2 rounded-xl border border-white/20 px-3 py-2 text-sm font-extrabold text-white transition-transform duration-150 hover:border-[#f7cc71] active:scale-[.97]";
+  if (!gate.href) return <span className="mt-5 inline-flex min-h-10 items-center gap-2 rounded-xl border border-white/10 px-3 py-2 text-sm font-extrabold text-white/55">{gate.action}<LockKeyhole size={15} /></span>;
+  if (gate.internal) return <Link href={gate.href} className={className}>{gate.action}<ArrowLeft size={15} /></Link>;
+  return <a href={gate.href} target="_blank" rel="noreferrer" className={className}>{gate.action}<ArrowLeft size={15} /></a>;
 }
 
 export default function SensePortal() {
@@ -135,7 +166,7 @@ export default function SensePortal() {
             <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#e3a238] text-[#142729]"><Layers3 size={22} /></span>
             <div>
               <p className="text-lg font-extrabold tracking-tight">SENSE</p>
-              <p className="text-xs font-bold text-white/55">بوابة المسارات — نسخة توجيهية</p>
+              <p className="text-xs font-bold text-white/55">صفحة رئيسية لمسارات مستقلة</p>
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-2" aria-label="تفضيلات العرض">
@@ -146,9 +177,9 @@ export default function SensePortal() {
 
         <section className="grid gap-8 py-10 lg:grid-cols-[.83fr_1.17fr] lg:items-end lg:py-16">
           <div>
-            <p className="inline-flex items-center gap-2 rounded-full border border-[#e3a238]/35 bg-[#e3a238]/10 px-3 py-1.5 text-xs font-extrabold text-[#ffd881]"><Radio size={14} />لوحة توجيه لا حساب موحّد</p>
-            <h1 className="mt-5 max-w-xl text-4xl font-extrabold leading-[1.17] tracking-tight sm:text-5xl">كل مسار له <span className="text-[#e3a238]">محطته</span> وحدوده.</h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-white/65">هذه ليست صفحة تدّعي أن كل شيء جاهز أو موصول في قاعدة واحدة. إنها مدخل واحد يوضح أين يبدأ كل منتج، وما الذي يعمل الآن، وما الذي ينتظر قرارًا أو تشغيلًا مستقلًا.</p>
+            <p className="inline-flex items-center gap-2 rounded-full border border-[#e3a238]/35 bg-[#e3a238]/10 px-3 py-1.5 text-xs font-extrabold text-[#ffd881]"><Radio size={14} />فهرس منظومة لا حساب موحّد</p>
+            <h1 className="mt-5 max-w-xl text-4xl font-extrabold leading-[1.17] tracking-tight sm:text-5xl">كل دور له <span className="text-[#e3a238]">بابه</span> وحدوده.</h1>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-white/65">هذه صفحة رئيسية للمنظومة: تُظهر المنتج أو المسار المناسب، ثم تشرح من يحتاج حسابًا ومن يحتاج دعوة أو تشغيلًا مستقلاً. لا تجمع هويات البلديات والمزودين والفريق في لوحة واحدة.</p>
             <div className="mt-8 flex flex-wrap gap-3 text-sm font-bold text-white/70">
               <span className="inline-flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-emerald-300" />منشور</span>
               <span className="inline-flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-sky-300" />نواة مستقلة</span>
@@ -180,6 +211,11 @@ export default function SensePortal() {
               </button>;
             })}
           </div>
+        </section>
+
+        <section className="border-y border-white/10 py-12" aria-labelledby="access-title">
+          <div className="flex flex-wrap items-end justify-between gap-4"><div><p className="text-sm font-extrabold text-[#e3a238]">مفاتيح الدخول</p><h2 id="access-title" className="mt-1 text-2xl font-extrabold">ابدأ من دورك، لا من صلاحية واسعة.</h2></div><p className="max-w-lg text-sm leading-6 text-white/55">كل باب يوضح ما يتيحه الآن وما لا يتيحه. «دخول العمليات» يبقى محميًا حتى إن وصل إليه الرابط، ولا يعني منح وصول إلى المستودع أو المنتجات الأخرى.</p></div>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">{ecosystemAccessGates.map((gate) => { const Icon = gate.icon; return <article key={gate.id} className={cn("min-h-60 rounded-[1.5rem] border border-white/10 bg-gradient-to-br p-5", toneClass[gate.tone])}><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10"><Icon size={20} /></span><p className="mt-5 text-xs font-extrabold text-[#f7cc71]">{gate.status}</p><h3 className="mt-1 text-lg font-extrabold">{gate.label}</h3><p className="mt-3 text-sm leading-6 text-white/65">{gate.description}</p><AccessLink gate={gate} /></article>; })}</div>
         </section>
 
         <section className="grid gap-5 border-y border-white/10 py-12 lg:grid-cols-[1.05fr_.95fr]">

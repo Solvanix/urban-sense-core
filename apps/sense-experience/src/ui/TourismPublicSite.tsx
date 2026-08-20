@@ -1,10 +1,11 @@
-type PublicPage = "home" | "discover" | "partners" | "vision";
+type PublicPage = "home" | "discover" | "partners" | "vision" | "readiness";
 
 export function getPublicPage(pathname: string): PublicPage {
   const decodedPath = decodeURIComponent(pathname);
   if (decodedPath === "/اكتشف" || decodedPath === "/discover") return "discover";
   if (decodedPath === "/للشركاء" || decodedPath === "/partners") return "partners";
   if (decodedPath === "/رؤية-مسؤولة" || decodedPath === "/responsible-vision") return "vision";
+  if (decodedPath === "/جاهزية-المزود" || decodedPath === "/provider-readiness") return "readiness";
   return "home";
 }
 
@@ -13,7 +14,7 @@ const publicLinks = [
   { href: "/اكتشف", label: "اكتشف" },
   { href: "/للشركاء", label: "الثقة والشراكة" },
   { href: "/رؤية-مسؤولة", label: "الرؤية المسؤولة" },
-  { href: "/انضم", label: "انضم كمزود" }
+  { href: "/جاهزية-المزود", label: "مسار المزود" }
 ];
 
 export function TourismPublicSite({
@@ -46,7 +47,7 @@ export function TourismPublicSite({
         </nav>
       </header>
 
-      {page === "home" ? <GatewayPage onNavigate={onNavigate} /> : page === "discover" ? <DiscoverPage onNavigate={onNavigate} /> : page === "partners" ? <PartnerPage onNavigate={onNavigate} /> : <ResponsibleVisionPage onNavigate={onNavigate} />}
+      {page === "home" ? <GatewayPage onNavigate={onNavigate} /> : page === "discover" ? <DiscoverPage onNavigate={onNavigate} /> : page === "partners" ? <PartnerPage onNavigate={onNavigate} /> : page === "vision" ? <ResponsibleVisionPage onNavigate={onNavigate} /> : <ProviderReadinessPage onNavigate={onNavigate} />}
 
       <footer className="tourism-footer">
         <div><span className="eyebrow">SENSE EXPERIENCE</span><p>طبقة تعريف وثقة للمكان، تُبنى مع مزودي الخدمة لا بدلًا عنهم.</p></div>
@@ -66,7 +67,7 @@ function GatewayPage({ onNavigate }: { onNavigate: (href: string) => void }) {
           <p>بوابة عربية هادئة لتجارب فلسطين المحلية: تساعد الزائر على الوصول إلى سياق المكان، وتساعد المزود على تقديم خدمته بلغته وبصورة يمكن مراجعتها.</p>
           <div className="gateway-actions">
             <button className="primary tourism-action" onClick={() => onNavigate("/اكتشف")}>شاهد تصور الدليل</button>
-            <button className="secondary tourism-action" onClick={() => onNavigate("/انضم")}>أنا مزود خدمة</button>
+            <button className="secondary tourism-action" onClick={() => onNavigate("/جاهزية-المزود")}>أنا مزود خدمة</button>
           </div>
           <p className="status-line"><span />الواجهة العامة قيد التكوين — لا توجد قوائم أو حجوزات منشورة بعد.</p>
         </div>
@@ -107,11 +108,11 @@ function DiscoverPage({ onNavigate }: { onNavigate: (href: string) => void }) {
         <p>هذه ليست نتائج بحث حية ولا توصيات لمزودين؛ إنها بنية صفحة الاكتشاف التي ستستقبل ملفات موثقة بعد فتح برنامج المزودين.</p>
       </section>
       <section className="discovery-board" aria-label="تصنيفات الدليل المستقبلية">
-        {lenses.map((lens, index) => <article key={lens.number} className={`lens-card lens-${index + 1}`}><span>{lens.number}</span><h2>{lens.title}</h2><p>{lens.body}</p><button onClick={() => onNavigate("/انضم")}>اقتراح جهة لهذه الفئة</button></article>)}
+        {lenses.map((lens, index) => <article key={lens.number} className={`lens-card lens-${index + 1}`}><span>{lens.number}</span><h2>{lens.title}</h2><p>{lens.body}</p><button onClick={() => onNavigate("/جاهزية-المزود")}>اعرف مسار الجاهزية</button></article>)}
       </section>
       <section className="empty-discovery">
         <div className="empty-map" aria-hidden="true"><span>مناطق وتجارب<br />تظهر بعد التحقق</span></div>
-        <div><p className="eyebrow">قائمة الانتظار المعلنة</p><h2>الدليل لا يزال يتلقى ملفات، لذلك لا نخفي هذه الحقيقة خلف بطاقات مزيفة.</h2><p>يمكن لمزود خدمة أو جهة ثقافية أن يسجل اهتمامه؛ وبعد المراجعة المستقلة والموافقة على ما ينشر، يصبح الملف مؤهلًا للظهور في دليل فعلي.</p><button className="primary tourism-action" onClick={() => onNavigate("/انضم")}>ابدأ ملف مزود</button></div>
+        <div><p className="eyebrow">قائمة الانتظار المعلنة</p><h2>الدليل لا يزال يتلقى ملفات، لذلك لا نخفي هذه الحقيقة خلف بطاقات مزيفة.</h2><p>يمكن لمزود خدمة أو جهة ثقافية أن يتعرف على متطلبات الجاهزية؛ وعند تشغيل الخدمة المستقلة، تمر الملفات بمراجعة مستقلة وموافقة قبل أي ظهور عام.</p><button className="primary tourism-action" onClick={() => onNavigate("/جاهزية-المزود")}>اعرف قبل أن تبدأ</button></div>
       </section>
     </>
   );
@@ -131,9 +132,25 @@ function PartnerPage({ onNavigate }: { onNavigate: (href: string) => void }) {
         <article><span>03</span><h2>النشر موافقة منفصلة</h2><p>بيانات الاتصال والوصف لا تصبح عامة بمجرد التسجيل؛ للنشر قرار وموافقة منفصلان.</p></article>
         <article><span>04</span><h2>التوسع لا يسبق الأمان</h2><p>الحجز والدفع والتقييمات والمتجر ليست مفتوحة الآن، ولن تُضاف قبل وجود البيانات والحوكمة المناسبة.</p></article>
       </section>
-      <section className="partner-callout"><div><p className="eyebrow">للمزودين والجهات</p><h2>إن كانت خدمتك حقيقية، نريد أن نسمعها كما هي.</h2></div><button className="primary tourism-action" onClick={() => onNavigate("/انضم")}>تسجيل اهتمام خاص</button></section>
+      <section className="partner-callout"><div><p className="eyebrow">للمزودين والجهات</p><h2>إن كانت خدمتك حقيقية، نريد أن نسمعها كما هي.</h2></div><button className="primary tourism-action" onClick={() => onNavigate("/جاهزية-المزود")}>اعرف شروط الجاهزية</button></section>
     </>
   );
+}
+
+function ProviderReadinessPage({ onNavigate }: { onNavigate: (href: string) => void }) {
+  const steps = [
+    { number: "01", title: "حدد دورك الحقيقي", body: "هل تقدم تجربة أو حرفة أو ضيافة أو خدمة ثقافية؟ نبدأ من ما تقدمه فعلًا، لا من وصف تسويقي جاهز." },
+    { number: "02", title: "أكمل بطاقات الجاهزية", body: "عرض الخدمة، ما يتوقعه الزائر، أساسيات الوصول والسلامة، وموافقة مستقلة على التواصل." },
+    { number: "03", title: "مراجعة بشرية مستقلة", body: "لا تنتج الإجابات ملفًا عامًا تلقائيًا. المراجع المخوّل يطلب إيضاحًا أو يقرر ملاءمة التجربة المحدودة." },
+    { number: "04", title: "إطلاق مقيد ومراجع", body: "أي ظهور لاحق يحتاج قرار نشر مستقل. الحجز والدفع والتقييمات والمتجر ليست جزءًا من هذه المرحلة." }
+  ];
+
+  return <>
+    <style>{`.readiness-hero{padding:clamp(32px,7vw,88px);border-radius:30px;background:linear-gradient(135deg,#143f3d,#1f665b 62%,#d5a94d);color:#f7fbf8}.readiness-hero h1{max-width:760px;margin:10px 0 18px;font-size:clamp(38px,5vw,68px);line-height:1.1;letter-spacing:-.05em}.readiness-hero h1 em{color:#ffe29a;font-style:normal}.readiness-hero p:not(.eyebrow){max-width:700px;margin:0;color:#d6ebe3;font-size:16px;line-height:2}.readiness-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0 44px}.readiness-step{min-height:290px;padding:25px;border:1px solid rgba(20,63,61,.14);border-radius:18px;background:#f7f5ed}.readiness-step span{display:block;color:#b68425;font-family:'DM Mono',monospace;font-weight:800}.readiness-step h2{margin:50px 0 9px;color:#173f3c;font-size:25px;line-height:1.25}.readiness-step p{margin:0;color:#5c726a;font-size:13px;line-height:1.9}.readiness-boundary{display:grid;grid-template-columns:.95fr 1.05fr;gap:34px;align-items:start;margin-bottom:66px;padding:36px;border-top:1px solid rgba(20,63,61,.18);border-bottom:1px solid rgba(20,63,61,.18)}.readiness-boundary h2{margin:8px 0 0;font-size:30px;line-height:1.35}.readiness-boundary p:last-child{margin:0;color:#5a726b;line-height:2;font-size:14px}@media(max-width:900px){.readiness-grid{grid-template-columns:1fr 1fr}.readiness-boundary{grid-template-columns:1fr}}@media(max-width:560px){.readiness-hero{padding:33px 22px}.readiness-grid{grid-template-columns:1fr}.readiness-step{min-height:0}.readiness-step h2{margin-top:30px}}`}</style>
+    <section className="readiness-hero"><p className="eyebrow">مسار المزود</p><h1>لا نطلب ملفك قبل أن تعرف ما تعنيه <em>الجاهزية.</em></h1><p>هذه تجربة تعلم مصغرة أصلية لـSENSE Experience: تهيئ المزود لتقديم وصف مسؤول وقابل للمراجعة. ليست دورة Maharat، ولا تمنح شهادة، ولا تحفظ أو تنشر بياناتك في هذه المعاينة.</p></section>
+    <section className="readiness-grid" aria-label="خطوات جاهزية المزود">{steps.map((step) => <article className="readiness-step" key={step.number}><span>{step.number}</span><h2>{step.title}</h2><p>{step.body}</p></article>)}</section>
+    <section className="readiness-boundary"><div><p className="eyebrow">الحد الذي نحميه</p><h2>الاستعداد ليس قبولًا، والقبول ليس نشرًا.</h2></div><div><p>الخدمة المستقلة وهوية المراجعين لم تُنشرا بعد، لذلك لا نفتح نموذج تسجيل فعليًا ولا نعد بظهور في الدليل. حين تصبح الخدمة جاهزة، يكون هذا المسار مدخلًا اختياريًا قبل مراجعة بشرية، لا بديلًا عنها.</p><button className="secondary tourism-action" onClick={() => onNavigate("/للشركاء")}>راجع مبادئ الثقة</button></div></section>
+  </>;
 }
 
 function ResponsibleVisionPage({ onNavigate }: { onNavigate: (href: string) => void }) {
