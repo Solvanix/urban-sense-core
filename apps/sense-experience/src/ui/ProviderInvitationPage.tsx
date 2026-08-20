@@ -26,7 +26,7 @@ const emptyInterest: InterestDraft = {
   reviewConsent: false
 };
 
-export function ProviderInvitationPage({ onOpenOnboarding, onSubmitInterest }: { onOpenOnboarding: () => void; onSubmitInterest: (input: ProviderInterestInput) => void }) {
+export function ProviderInvitationPage({ onOpenOnboarding, onSubmitInterest }: { onOpenOnboarding: () => void; onSubmitInterest: (input: ProviderInterestInput) => Promise<void> }) {
   const [formOpen, setFormOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
@@ -46,14 +46,14 @@ export function ProviderInvitationPage({ onOpenOnboarding, onSubmitInterest }: {
     setInterest((current) => ({ ...current, [key]: value }));
   }
 
-  function submitInterest() {
+  async function submitInterest() {
     if (!valid || !interest.providerType) return;
     try {
-      onSubmitInterest({ ...interest, providerType: interest.providerType, reviewConsent: true });
+      await onSubmitInterest({ ...interest, providerType: interest.providerType, reviewConsent: true });
       setSubmitError("");
       setSubmitted(true);
-    } catch {
-      setSubmitError("تعذر حفظ طلب الاهتمام في هذه المعاينة. راجع الحقول وحاول مجددًا.");
+    } catch (caught) {
+      setSubmitError(caught instanceof Error ? caught.message : "تعذر إرسال طلب الاهتمام إلى الخدمة المستقلة. راجع الحقول وحاول مجددًا.");
     }
   }
 
@@ -89,7 +89,7 @@ export function ProviderInvitationPage({ onOpenOnboarding, onSubmitInterest }: {
             <div className="interest-success">
               <p className="eyebrow">وصل الاهتمام</p>
               <h2>شكرًا. هذه الخطوة ليست نشرًا عامًا.</h2>
-              <p>حُفظ الطلب داخل هذه المعاينة على جهازك فقط، ولا يظهر للعامة. في النسخة التشغيلية سيصل إلى مراجع مستقل، ويُدعى المزود لاستكمال الملف فقط إذا كان ضمن نطاق التجربة.</p>
+              <p>أُرسل الطلب إلى مساحة مراجعة مستقلة، ولا يظهر للعامة. يُدعى المزود لاستكمال الملف فقط إذا كان ضمن نطاق التجربة وبعد قرار مسبب من مراجع مخوّل.</p>
               <button className="secondary" onClick={() => { setSubmitted(false); setFormOpen(false); setInterest(emptyInterest); }}>إغلاق</button>
             </div>
           ) : (

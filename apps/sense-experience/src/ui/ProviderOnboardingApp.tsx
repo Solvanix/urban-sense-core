@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type { InterestReviewDecision, ProviderInterest, ProviderInterestInput } from "../onboarding/contracts.js";
-import { createBrowserInterestRepository } from "../onboarding/interestRepository.js";
+import { configuredSenseExperienceApiBaseUrl, createProviderInterestApi } from "../onboarding/interestApi.js";
 import { ProviderInvitationPage } from "./ProviderInvitationPage.js";
 
 type Draft = {
@@ -38,12 +38,21 @@ function updateField<K extends keyof Draft>(draft: Draft, field: K, value: Draft
   return { ...draft, [field]: value };
 }
 
-export function ProviderOnboardingApp() {
+export function ProviderOnboardingApp({ initialScreen = "invite" }: { initialScreen?: "invite" | "onboarding" | "reviewer" }) {
   const [step, setStep] = useState(0);
-  const [screen, setScreen] = useState<"invite" | "onboarding" | "reviewer">("invite");
+  const [screen, setScreen] = useState<"invite" | "onboarding" | "reviewer">(initialScreen);
   const [saved, setSaved] = useState(false);
-  const interestRepository = useMemo(() => createBrowserInterestRepository(window.localStorage), []);
-  const [interests, setInterests] = useState<ProviderInterest[]>(() => interestRepository.list());
+  const [interests, setInterests] = useState<ProviderInterest[]>([]);
+  const [reviewerMessage, setReviewerMessage] = useState("");
+  const apiConfiguration = useMemo(() => {
+    try {
+      return { api: createProviderInterestApi(), error: "" };
+    } catch (caught) {
+      return { api: null, error: caught instanceof Error ? caught.message : "تعذر تهيئة خدمة المراجعة المستقلة." };
+    }
+  }, []);
+  const interestApi = apiConfiguration.api;
+  const reviewerLoginUrl = interestApi ? `${configuredSenseExperienceApiBaseUrl()}/auth/reviewer/start` : undefined;
   const [draft, setDraft] = useState<Draft>(() => {
     const stored = window.localStorage.getItem(storageKey);
     if (!stored) return emptyDraft;
@@ -86,14 +95,38 @@ export function ProviderOnboardingApp() {
     setStep(0);
   }
 
-  function saveInterest(input: ProviderInterestInput) {
-    interestRepository.submit(input);
-    setInterests(interestRepository.list());
+  useEffect(() => {
+    if (screen !== "reviewer") return;
+    if (!interestApi) {
+      setInterests([]);
+      setReviewerMessage(apiConfiguration.error);
+      return;
+    }
+    let active = true;
+    interestApi.providerInterest.listForReview.query().then((records) => {
+      if (active) {
+        setInterests(records);
+        setReviewerMessage("");
+      }
+    }).catch(() => {
+      if (active) {
+        setInterests([]);
+        setReviewerMessage("هذه المساحة لا تعرض أي بيانات قبل التحقق من جلسة المراجع المستقلة ودوره الفعّال.");
+      }
+    });
+    return () => { active = false; };
+  }, [screen, interestApi, apiConfiguration.error]);
+
+  async function saveInterest(input: ProviderInterestInput) {
+    if (!interestApi) throw new Error("خدمة SENSE Experience المستقلة غير مفعلة؛ لا تُرسل بيانات مزود حقيقية في هذه المعاينة.");
+    await interestApi.providerInterest.submit.mutate(input);
   }
 
-  function decideInterest(interestId: string, outcome: InterestReviewDecision["outcome"], reason: string) {
-    interestRepository.decide(interestId, { id: "local-reviewer", role: "reviewer" }, outcome, reason);
-    setInterests(interestRepository.list());
+  async function decideInterest(interestId: string, outcome: InterestReviewDecision["outcome"], reason: string) {
+    if (!interestApi) throw new Error("خدمة المراجعة المستقلة غير مفعلة.");
+    await interestApi.providerInterest.decide.mutate({ interestId, outcome, reason });
+    const records = await interestApi.providerInterest.listForReview.query();
+    setInterests(records);
   }
 
   return (
@@ -109,7 +142,7 @@ export function ProviderOnboardingApp() {
         <div className="mode-control" aria-label="التنقل داخل المعاينة">
           <button className={screen === "invite" ? "active" : ""} onClick={() => setScreen("invite")}>الدعوة</button>
           <button className={screen === "onboarding" ? "active" : ""} onClick={() => setScreen("onboarding")}>مسار الملف</button>
-          <button className={screen === "reviewer" ? "active" : ""} onClick={() => setScreen("reviewer")}>المراجعة المحلية</button>
+          <button className={screen === "reviewer" ? "active" : ""} onClick={() => setScreen("reviewer")}>المراجعة المقيدة</button>
         </div>
       </section>
 
@@ -119,11 +152,11 @@ export function ProviderOnboardingApp() {
       </section>
 
       {screen === "invite" ? <ProviderInvitationPage onOpenOnboarding={() => setScreen("onboarding")} onSubmitInterest={saveInterest} /> : screen === "reviewer" ? (
-        <ReviewerQueue interests={interests} onDecide={decideInterest} />
+        <ReviewerQueue interests={interests} message={reviewerMessage} reviewerLoginUrl={reviewerLoginUrl} onDecide={decideInterest} />
       ) : (
         <>
           <section className="notice" role="note">
-            <strong>معاينة محلية للنواة:</strong> لا يوجد نشر عام أو حجز أو دفع في هذه المرحلة. تحفظ المسودة في هذا المتصفح فقط.
+            <strong>معاينة للنواة:</strong> لا يوجد نشر عام أو حجز أو دفع في هذه المرحلة. تُحفظ مسودة الملف على جهازك، أما طلب الاهتمام فلا يرسل إلا إلى الخدمة المستقلة بعد تفعيلها.
           </section>
         <div className="workspace">
           <section className="form-panel">
@@ -187,15 +220,15 @@ function ReviewStep({ draft }: { draft: Draft }) {
   return <div className="step-content"><p className="eyebrow">04 — ما الذي سيراجعه الإنسان؟</p><h2>راجع المسودة قبل إرسالها.</h2><div className="summary-card"><div><span>العلامة</span><b>{draft.brandName || "لم تكتب بعد"}</b></div><div><span>الفئة</span><b>{draft.serviceCategory || "لم تحدد بعد"}</b></div><div><span>المنطقة</span><b>{draft.area || "لم تحدد بعد"}</b></div><div><span>النشر العام</span><b>{draft.publicListing ? "موافقة مبدئية للمراجعة" : "لم تمنح موافقة نشر"}</b></div></div><article className="review-explainer"><b>ماذا يحدث بعد الحفظ؟</b><p>يرى المراجع بيانات الاتصال داخل مساحة خاصة، ويتحقق من ادعاءات الخدمة قبل ظهورها. لا يعني حفظ المسودة أن الملف أو أي ادعاء أصبح عامًا.</p></article></div>;
 }
 
-function ReviewerQueue({ interests, onDecide }: { interests: ProviderInterest[]; onDecide: (interestId: string, outcome: InterestReviewDecision["outcome"], reason: string) => void }) {
+function ReviewerQueue({ interests, message, reviewerLoginUrl, onDecide }: { interests: ProviderInterest[]; message: string; reviewerLoginUrl?: string; onDecide: (interestId: string, outcome: InterestReviewDecision["outcome"], reason: string) => Promise<void> }) {
   return <section className="reviewer-view">
     <div>
       <p className="eyebrow">مساحة مراجعة منفصلة</p>
       <h2>كل اهتمام ينتظر قرارًا واضحًا ومسببًا.</h2>
-      <p className="lead">هذه لوحة محلية على جهاز واحد لا تمثل تسجيل دخول أو صلاحية تشغيلية. بيانات الاتصال لا تظهر في أي ملف عام، ولا يتحول طلب الاهتمام إلى ملف مزود إلا بعد دعوة صريحة.</p>
+      <p className="lead">لا تظهر هذه المساحة بيانات الاتصال إلا بعد جلسة مراجع مستقلة ودور فعّال مسجل في SENSE Experience. ولا يتحول طلب الاهتمام إلى ملف مزود إلا بعد دعوة صريحة.</p>
     </div>
-    <div className="reviewer-notice" role="note"><b>حد المعاينة:</b> القرارات هنا تحفظ محليًا في هذا المتصفح فقط. لا تستخدمها مع بيانات مزودين حقيقيين قبل إضافة خدمة مستقلة وحسابات مراجعين.</div>
-    {interests.length === 0 ? <div className="empty-queue"><p className="eyebrow">لا توجد طلبات محفوظة</p><h3>سجل اهتمامًا من صفحة الدعوة لتظهر بطاقته هنا.</h3><p>لن ينشئ النظام سجلات تجريبية أو مزودين وهميين لملء هذه القائمة.</p></div> : (
+    <div className="reviewer-notice" role="note"><b>قاعدة الحماية:</b> لا توجد صلاحية مراجعة بمجرد فتح الصفحة. يلزم دخول مستقل وهوية فعّالة ودور مراجع مسجل، وتظل بيانات الاتصال خارج أي واجهة عامة.</div>
+    {message ? <div className="empty-queue"><p className="eyebrow">وصول مقيّد</p><h3>{message}</h3>{reviewerLoginUrl && <button className="primary" onClick={() => { window.location.assign(reviewerLoginUrl); }}>دخول المراجع المستقل</button>}<p>لن ينشئ النظام سجلات تجريبية أو مزودين وهميين لملء هذه القائمة.</p></div> : interests.length === 0 ? <div className="empty-queue"><p className="eyebrow">لا توجد طلبات محفوظة</p><h3>لا تُعرض السجلات إلا من الخدمة المستقلة بعد تحقق الهوية.</h3><p>لن ينشئ النظام سجلات تجريبية أو مزودين وهميين لملء هذه القائمة.</p></div> : (
       <div className="queue-list">{interests.map((interest) => <InterestReviewCard key={interest.id} interest={interest} onDecide={onDecide} />)}</div>
     )}
   </section>;
@@ -206,9 +239,9 @@ function InterestReviewCard({ interest, onDecide }: { interest: ProviderInterest
   const [error, setError] = useState("");
   const decided = Boolean(interest.reviewDecision);
 
-  function submitDecision(outcome: InterestReviewDecision["outcome"]) {
+  async function submitDecision(outcome: InterestReviewDecision["outcome"]) {
     try {
-      onDecide(interest.id, outcome, reason);
+      await onDecide(interest.id, outcome, reason);
       setError("");
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "تعذر حفظ قرار المراجعة.");

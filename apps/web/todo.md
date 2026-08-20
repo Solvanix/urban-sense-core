@@ -78,7 +78,7 @@
 - [x] Add a provider invitation path for SENSE Experience: transparent invitation copy, interest form, manual review, and no-publication-before-approval rules.
 - [x] Produce a source-bound visitor analysis of the official AINAC page, including its challenges, forms, organizations, published promises, and open questions without submitting any request.
 - [x] Add independently scoped local persistence and a reviewer queue for SENSE Experience provider-interest records, preserving no-publication-before-review rules and separation from Urban‑Sense data.
-- [ ] Replace browser-only interest storage with an independently deployed service, database migration, authenticated reviewer roles, and retention controls before accepting any real provider data.
+- [ ] Configure and deploy the independent SENSE Experience service with its own database, complete OIDC client, active reviewer role, retention controls, and written readiness approval before accepting any real provider data.
 - [x] Add the separately deployable SENSE Experience API, database schema, migrations, and protected reviewer procedures without sharing Urban‑Sense infrastructure or data.
 - [ ] Bind SENSE Experience reviewer procedures to independent authenticated identities and role assignments before any production API exposure.
 - [ ] Add independent reviewer identity and role records for SENSE Experience, including assignment audit events and API context validation separate from Urban‑Sense.

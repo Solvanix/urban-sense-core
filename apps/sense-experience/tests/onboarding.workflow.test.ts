@@ -98,7 +98,7 @@ describe("provider onboarding workflow", () => {
     expect(result.decision.outcome).toBe("invited_to_onboard");
   });
 
-  it("keeps interest in a reviewer-only local queue and persists the recorded decision", () => {
+  it("keeps interest in a reviewer-only in-memory test adapter and persists the recorded decision", () => {
     const repository = createMemoryInterestRepository();
     const interest = repository.submit(interestInput, new Date("2026-08-15T11:00:00.000Z"));
 

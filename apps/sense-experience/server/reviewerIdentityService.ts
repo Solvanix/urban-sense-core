@@ -21,6 +21,7 @@ export type StoredReviewerRoleAssignment = {
 export interface ReviewerIdentityStore {
   findIdentity(subject: ValidatedReviewerSubject): Promise<StoredReviewerIdentity | undefined>;
   findActiveRole(identityId: string): Promise<StoredReviewerRoleAssignment | undefined>;
+  hasActiveReviewer(): Promise<boolean>;
 }
 
 export interface ReviewerSubjectResolver<Request> {
@@ -62,6 +63,9 @@ export function createMemoryReviewerIdentityStore(
     },
     async findActiveRole(identityId) {
       return assignments.find((assignment) => assignment.reviewerIdentityId === identityId && assignment.state === "active");
+    },
+    async hasActiveReviewer() {
+      return identities.some((identity) => identity.state === "active" && assignments.some((assignment) => assignment.reviewerIdentityId === identity.id && assignment.state === "active"));
     }
   };
 }

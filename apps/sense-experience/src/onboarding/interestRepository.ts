@@ -2,9 +2,12 @@ import type { InterestReviewDecision, ProviderInterest, ProviderInterestInput, R
 import { createProviderInterest } from "./interest.js";
 import { recordInterestReview } from "./review.js";
 
-export const interestRepositoryKey = "sense-experience-provider-interest-v1";
-
-export interface ProviderInterestRepository {
+/**
+ * Test-only in-memory adapter for domain tests. Production interest records
+ * are written through the independent SENSE Experience API; this module has
+ * no browser, cookie, or local-storage implementation.
+ */
+export interface MemoryInterestRepository {
   list(): ProviderInterest[];
   submit(input: ProviderInterestInput, now?: Date): ProviderInterest;
   decide(
@@ -16,49 +19,27 @@ export interface ProviderInterestRepository {
   ): ProviderInterest;
 }
 
-type KeyValueStore = Pick<Storage, "getItem" | "setItem">;
-
-function normalizeStoredInterests(value: string | null): ProviderInterest[] {
-  if (!value) return [];
-  try {
-    const parsed: unknown = JSON.parse(value);
-    return Array.isArray(parsed) ? parsed as ProviderInterest[] : [];
-  } catch {
-    return [];
-  }
+function copyInterest(interest: ProviderInterest): ProviderInterest {
+  return { ...interest, reviewDecision: interest.reviewDecision ? { ...interest.reviewDecision } : undefined };
 }
 
-function createRepository(read: () => ProviderInterest[], write: (items: ProviderInterest[]) => void): ProviderInterestRepository {
+export function createMemoryInterestRepository(initial: ProviderInterest[] = []): MemoryInterestRepository {
+  let records = initial.map(copyInterest);
   return {
-    list: () => read().sort((a, b) => b.createdAt.localeCompare(a.createdAt)),
+    list() {
+      return records.map(copyInterest);
+    },
     submit(input, now = new Date()) {
       const interest = createProviderInterest(input, now);
-      write([...read(), interest]);
-      return interest;
+      records = [...records, copyInterest(interest)];
+      return copyInterest(interest);
     },
     decide(interestId, actor, outcome, reason, now = new Date()) {
-      const current = read();
-      const existing = current.find((item) => item.id === interestId);
-      if (!existing) throw new Error("Interest record not found.");
-
-      const { interest } = recordInterestReview(existing, actor, outcome, reason, now);
-      write(current.map((item) => item.id === interestId ? interest : item));
-      return interest;
+      const interest = records.find((record) => record.id === interestId);
+      if (!interest) throw new Error("Interest record not found.");
+      const result = recordInterestReview(interest, actor, outcome, reason, now);
+      records = records.map((record) => record.id === interestId ? copyInterest(result.interest) : record);
+      return copyInterest(result.interest);
     }
   };
-}
-
-export function createBrowserInterestRepository(storage: KeyValueStore): ProviderInterestRepository {
-  return createRepository(
-    () => normalizeStoredInterests(storage.getItem(interestRepositoryKey)),
-    (items) => storage.setItem(interestRepositoryKey, JSON.stringify(items))
-  );
-}
-
-export function createMemoryInterestRepository(initial: ProviderInterest[] = []): ProviderInterestRepository {
-  let records = [...initial];
-  return createRepository(
-    () => [...records],
-    (items) => { records = [...items]; }
-  );
 }

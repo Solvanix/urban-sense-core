@@ -27,6 +27,15 @@ export function createMysqlReviewerIdentityStore(): ReviewerIdentityStore {
         role: assignment.role,
         state: assignment.state
       } : undefined;
+    },
+    async hasActiveReviewer(): Promise<boolean> {
+      const db = getSenseExperienceDb();
+      const [record] = await db.select({ identityId: sxReviewerIdentity.id })
+        .from(sxReviewerIdentity)
+        .innerJoin(sxReviewerRoleAssignment, eq(sxReviewerRoleAssignment.reviewerIdentityId, sxReviewerIdentity.id))
+        .where(and(eq(sxReviewerIdentity.state, "active"), eq(sxReviewerRoleAssignment.state, "active")))
+        .limit(1);
+      return Boolean(record);
     }
   };
 }
