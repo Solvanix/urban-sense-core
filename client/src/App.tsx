@@ -14,10 +14,13 @@ import OperationsReport from "./pages/OperationsReport";
 import PilotInvitation from "./pages/PilotInvitation";
 import ReportDetail from "./pages/ReportDetail";
 import SensePortal from "./pages/SensePortal";
-import { isSensePortalSearch } from "./lib/sensePortalRoute";
+import { getRootView } from "./lib/sensePortalRoute";
 
 function RootPage() {
-  return isSensePortalSearch(window.location.search) ? <SensePortal /> : <Home />;
+  const rootView = getRootView(window.location.search);
+  if (rootView === "sense") return <SensePortal />;
+  if (rootView === "operations") return <OperationsDashboard />;
+  return <Home />;
 }
 
 function Router() {

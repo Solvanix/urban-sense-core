@@ -134,3 +134,4 @@
 - [x] Sync the unified SENSE entry portal, its honest route states, and accessible layered route cards from the central repository to the live Urban‑Sense project without altering the municipal-reporting workflow.
 - [x] Fix the deployed SENSE portal entry route after verifying that the encoded Arabic path returns a public 404 despite working in the local preview; use the stable `/sense` route in public navigation and retain the Arabic path as an in-app fallback.
 - [x] Fix direct public access to the SENSE portal after verifying that the deployment returns a 404 for both Arabic and Latin SPA subpaths; route public navigation through `/?view=sense` on the always-served root URL.
+- [x] Expand the SENSE entry portal into an ecosystem index with a clearly separated public entry, municipality administration entry, technical-team entry, provider journey, sponsor-facing route, and truthful readiness boundaries.
