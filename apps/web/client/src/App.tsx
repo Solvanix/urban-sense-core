@@ -16,6 +16,7 @@ import ReportDetail from "./pages/ReportDetail";
 import SensePortal from "./pages/SensePortal";
 import EcosystemExplorer from "./pages/EcosystemExplorer";
 import DomainReadiness from "./pages/DomainReadiness";
+import ProgressDashboard from "./pages/ProgressDashboard";
 import { getRootView } from "./lib/sensePortalRoute";
 
 function RootPage() {
@@ -23,6 +24,7 @@ function RootPage() {
   if (rootView === "sense") return <SensePortal />;
   if (rootView === "explore") return <EcosystemExplorer />;
   if (rootView === "domain") return <DomainReadiness />;
+  if (rootView === "progress") return <ProgressDashboard />;
   if (rootView === "operations") return <OperationsDashboard />;
   return <Home />;
 }

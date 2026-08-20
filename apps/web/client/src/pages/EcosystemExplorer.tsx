@@ -1,7 +1,7 @@
 import { ArrowLeft, ArrowUpLeft, Building2, CheckCircle2, Code2, Compass, ExternalLink, FileText, Globe2, Layers3, LockKeyhole, Map, Route, ShieldCheck, Sparkles, Store, UsersRound, Wrench } from "lucide-react";
 import { Link } from "wouter";
 import { ecosystemAccessGates, ecosystemRoutes } from "./SensePortal";
-import { domainReadinessHref, sensePortalHref } from "@/lib/sensePortalRoute";
+import { domainReadinessHref, progressDashboardHref, sensePortalHref } from "@/lib/sensePortalRoute";
 
 const liveUrl = "https://urbansense-dzfbcdz5.manus.space";
 const repositoryUrl = "https://github.com/Solvanix/urban-sense-core";
@@ -31,6 +31,7 @@ export default function EcosystemExplorer() {
           </Link>
           <div className="flex flex-wrap gap-2 text-sm font-extrabold">
             <a href={rootIndexUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 text-white/80 hover:border-white/35">فهرس HTML في GitHub <ArrowUpLeft size={15} /></a>
+            <Link href={progressDashboardHref} className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-sky-300/25 bg-sky-300/10 px-3 text-sky-50">لوحة التقدم <Route size={15} /></Link>
             <Link href={domainReadinessHref} className="inline-flex min-h-10 items-center gap-2 rounded-xl bg-[#e3a238] px-3 text-[#15272a]">جاهزية الدومين <Globe2 size={15} /></Link>
           </div>
         </header>
@@ -45,6 +46,21 @@ export default function EcosystemExplorer() {
             <div className="flex items-center justify-between gap-4"><div><p className="text-sm font-extrabold text-[#ffd881]">المدخل المنشور</p><h2 className="mt-1 text-2xl font-extrabold">بوابة SENSE</h2></div><Route className="text-[#e3a238]" size={28} /></div>
             <p className="mt-5 leading-7 text-white/65">البوابة هي نقطة الوصول الحية. لا توحّد الهويات أو البيانات؛ بل توجهك إلى مسار مستقل وتعلن حدوده بوضوح.</p>
             <a href={`${liveUrl}${sensePortalHref}`} className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-extrabold text-[#12272b]">افتح الصفحة الحية <ArrowLeft size={16} /></a>
+          </article>
+        </section>
+
+        <section className="mb-12 grid gap-4 md:grid-cols-2" aria-label="طريقة استخدام المداخل">
+          <article className="rounded-[1.5rem] border border-emerald-300/20 bg-emerald-300/[.06] p-5">
+            <p className="text-xs font-extrabold text-emerald-100">للمشاهدة والتجربة</p>
+            <h2 className="mt-2 text-xl font-extrabold">استخدم المستكشف الحي.</h2>
+            <p className="mt-3 leading-7 text-white/65">هذا العرض التفاعلي هو الصفحة المنشورة فعلًا. منه تنتقل إلى البوابة ومسارات التطبيق، وتعرف ما الذي يمكن زيارته الآن.</p>
+            <a href={`${liveUrl}/?view=explore`} className="mt-4 inline-flex items-center gap-2 text-sm font-extrabold text-emerald-100">افتح المستكشف الحي <ExternalLink size={16} /></a>
+          </article>
+          <article className="rounded-[1.5rem] border border-sky-300/20 bg-sky-300/[.06] p-5">
+            <p className="text-xs font-extrabold text-sky-100">للكود والوثائق</p>
+            <h2 className="mt-2 text-xl font-extrabold">استخدم فهرس HTML في GitHub.</h2>
+            <p className="mt-3 leading-7 text-white/65">`INDEX.html` ملف فهرسة في جذر المستودع، وليس موقع GitHub Pages مفعّلًا. يفتح زائر المستودع منه مسارات الكود والوثائق بحسب صلاحياته.</p>
+            <a href={rootIndexUrl} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-extrabold text-sky-100">افتح ملف الفهرس <ArrowUpLeft size={16} /></a>
           </article>
         </section>
 

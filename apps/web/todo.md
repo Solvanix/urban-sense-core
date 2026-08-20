@@ -156,3 +156,6 @@
 - [ ] Select a 4–6-character parent-domain candidate with a commercial product-like sound, clear pronunciation in Arabic and English, and no direct SENSE or nonprofit connotation.
 - [x] Build a repository-root HTML exploration index and a linked live explorer view so visitors can navigate all ecosystem levels visually, not through README text only.
 - [x] Add a public, honest domain-and-email readiness page that shows the dependency order and candidate status without buying, registering, or binding an unapproved domain.
+- [x] Improve visible cross-navigation between the live explorer, the root HTML index, and the relevant source/document destinations without claiming GitHub Pages is active.
+- [x] Draft two professional, encouraging collaboration replies for the supplied LinkedIn screenshots without publishing them or attributing details that are not readable in the images.
+- [x] Add a live operating-progress page that distinguishes published capabilities, independently coded but gated capabilities, and decisions still awaiting owner or operational approval.
