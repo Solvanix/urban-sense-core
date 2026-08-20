@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SENSE — فهرس المنظومة</title>
+    <style>
+      :root { --ink:#071216; --panel:#102126; --muted:#aebcc0; --gold:#e3a238; --line:rgba(255,255,255,.12); }
+      * { box-sizing:border-box; } body { margin:0; background:var(--ink); color:#f7f8f1; font-family:Tahoma, Arial, sans-serif; line-height:1.7; }
+      a { color:inherit; text-decoration:none; } .shell { width:min(1180px, calc(100% - 32px)); margin:auto; }
+      header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; border-bottom:1px solid var(--line); padding:22px 0; }
+      .brand { display:flex; align-items:center; gap:12px; font-weight:800; } .mark { width:42px; height:42px; display:grid; place-items:center; border-radius:14px; background:var(--gold); color:var(--ink); font-size:20px; }
+      .eyebrow { color:#ffd881; font-size:.82rem; font-weight:800; letter-spacing:.04em; } h1 { max-width:800px; font-size:clamp(2.4rem, 7vw, 5.2rem); line-height:1.12; margin:18px 0; } h1 span { color:var(--gold); }
+      .lead { max-width:760px; font-size:1.15rem; color:var(--muted); } .hero { padding:72px 0 48px; }
+      .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }.button { display:inline-flex; align-items:center; gap:8px; min-height:46px; padding:10px 16px; border-radius:13px; border:1px solid var(--line); font-weight:800; }.button.primary { background:var(--gold); color:var(--ink); border-color:var(--gold); }
+      .section { border-top:1px solid var(--line); padding:44px 0; } h2 { font-size:1.75rem; margin:5px 0 20px; }.grid { display:grid; gap:14px; grid-template-columns:repeat(4,minmax(0,1fr)); }.card { min-height:250px; display:flex; flex-direction:column; padding:22px; border:1px solid var(--line); border-radius:24px; background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025)); }.card h3 { font-size:1.25rem; margin:20px 0 8px; }.card p { color:var(--muted); margin:0; }.card a { margin-top:auto; padding-top:20px; color:#ffd881; font-weight:800; }
+      .status { display:inline-block; margin-top:8px; padding:3px 10px; border:1px solid var(--line); border-radius:20px; font-size:.75rem; font-weight:800; }.live { color:#b9f7d4; background:rgba(52,211,153,.1); }.code { color:#bce9ff; background:rgba(56,189,248,.1); }.planned { color:#fde3a7; background:rgba(251,191,36,.1); }
+      .map { display:grid; gap:12px; grid-template-columns:1fr 1fr; }.row { padding:18px; border-radius:18px; background:var(--panel); border:1px solid var(--line); }.row strong { display:block; }.row span { color:var(--muted); font-size:.9rem; }
+      footer { padding:26px 0 44px; color:var(--muted); font-size:.9rem; border-top:1px solid var(--line); } @media (max-width:880px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}} @media (max-width:560px){.grid,.map{grid-template-columns:1fr;}.hero{padding-top:48px;}}
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header><a class="brand" href="README.md"><span class="mark">S</span><span>SENSE / Explorer</span></a><a class="button" href="https://github.com/Solvanix/urban-sense-core">افتح المستودع ↗</a></header>
+      <main>
+        <section class="hero"><p class="eyebrow">فهرس HTML من جذر المستودع</p><h1>كل ما هو <span>مرئي</span>، في طريق واحد.</h1><p class="lead">ابدأ من دورك أو نيتك. هذا الفهرس يميّز بين ما هو منشور، وما هو نواة مستقلة في الكود، وما لا يزال مقترحًا يحتاج قرارًا وتشغيلًا.</p><div class="actions"><a class="button primary" href="https://urbansense-dzfbcdz5.manus.space/?view=explore">افتح المستكشف الحي ←</a><a class="button" href="https://urbansense-dzfbcdz5.manus.space/?view=sense">افتح بوابة SENSE ←</a></div></section>
+        <section class="section"><p class="eyebrow">اختر رحلة</p><h2>لا تبدأ من مجلد؛ ابدأ مما تريد فعله.</h2><div class="grid"><article class="card"><span>01</span><h3>زائر أو مواطن</h3><p>تعرف على المسارات أو ابدأ بلاغًا في Urban‑Sense ضمن النطاق المتاح.</p><a href="https://urbansense-dzfbcdz5.manus.space/">افتح Urban‑Sense ←</a></article><article class="card"><span>02</span><h3>بلدية أو فريق عمليات</h3><p>راجع نطاق المنتج ثم ادخل العمليات فقط بحساب ودور بلدي فعّال.</p><a href="https://urbansense-dzfbcdz5.manus.space/?view=operations">دخول محمي ←</a></article><article class="card"><span>03</span><h3>مزود تجربة أو خدمة</h3><p>راجع نواة SENSE Experience المستقلة؛ لا تسجيل عام أو استقبال بيانات حقيقية الآن.</p><a href="apps/sense-experience/">استعرض النواة ←</a></article><article class="card"><span>04</span><h3>فريق تقني أو شريك</h3><p>انتقل بين التطبيق والوثيقة وقرار الجاهزية وفق صلاحيتك في GitHub.</p><a href="INDEX.md">افتح فهرس الرحلة ←</a></article></div></section>
+        <section class="section"><p class="eyebrow">محطات المنظومة</p><h2>الحالة قبل الوعد.</h2><div class="map"><a class="row" href="https://urbansense-dzfbcdz5.manus.space/"><strong>Urban‑Sense <span class="status live">منشور</span></strong><span>بلاغات بلدية عربية بدورة عمل وصلاحيات وسجل تدقيق.</span></a><a class="row" href="apps/sense-experience/"><strong>SENSE Experience <span class="status code">نواة مستقلة</span></strong><span>كود وهوية مراجع منفصلة؛ لا إنتاج مستقل أو بيانات مزودين بعد.</span></a><a class="row" href="docs/OPERATING-PRODUCT-BLUEPRINT.md"><strong>السوق والمتجر <span class="status planned">مقترح</span></strong><span>لا مدفوعات أو كتالوج حي أو حسابات تجارية الآن.</span></a><a class="row" href="https://urbansense-dzfbcdz5.manus.space/?view=domain"><strong>الدومين والبريد <span class="status planned">قيد قرار</span></strong><span>لا نطاق أم أو بريد مهني جديد مربوط قبل اعتماد المالك وفحصه.</span></a></div></section>
+        <section class="section"><p class="eyebrow">مداخل المستويات</p><h2>كل مستوى يشرح نفسه.</h2><div class="grid"><article class="card"><h3>جذر المستودع</h3><p>الرؤية، الروابط، وقواعد الفصل.</p><a href="README.md">README الجذري ←</a></article><article class="card"><h3>التطبيقات</h3><p>حدود التشغيل، الجودة، ونقاط الدخول.</p><a href="apps/README.md">apps/README ←</a></article><article class="card"><h3>الوثائق</h3><p>الحوكمة، التشغيل، البحث، وقرارات المنتج.</p><a href="docs/README.md">docs/README ←</a></article><article class="card"><h3>الفهرس النصي</h3><p>خريطة الدور والنية ومسارات القرار.</p><a href="INDEX.md">INDEX.md ←</a></article></div></section>
+      </main>
+      <footer>هذا الفهرس لا يمنح صلاحيات ولا يربط قواعد بيانات أو هوية أو دفعات بين التطبيقات. يتغير وضع الدومين والبريد فقط بعد اعتماد صريح.</footer>
+    </div>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { municipalOperationsHref } from "@/lib/sensePortalRoute";
+import { ecosystemExplorerHref, municipalOperationsHref } from "@/lib/sensePortalRoute";
 import {
   Accessibility,
   ArrowLeft,
@@ -11,6 +11,7 @@ import {
   CircleDollarSign,
   ClipboardList,
   Code2,
+  Compass,
   Database,
   Eye,
   Gauge,
@@ -170,6 +171,7 @@ export default function SensePortal() {
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-2" aria-label="تفضيلات العرض">
+            <Link href={ecosystemExplorerHref} className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 text-sm font-bold text-white/80 hover:border-white/35"><Compass size={16} />خريطة الوصول</Link>
             <button aria-pressed={highContrast} onClick={() => setHighContrast((value) => !value)} className={cn("inline-flex min-h-10 items-center gap-2 rounded-xl border px-3 text-sm font-bold", highContrast ? "border-[#e3a238] bg-[#e3a238] text-[#17272a]" : "border-white/15 bg-white/5 text-white/80")}><Eye size={16} />تباين أعلى</button>
             <button aria-pressed={reducedMotion} onClick={() => setReducedMotion((value) => !value)} className={cn("inline-flex min-h-10 items-center gap-2 rounded-xl border px-3 text-sm font-bold", reducedMotion ? "border-[#e3a238] bg-[#e3a238] text-[#17272a]" : "border-white/15 bg-white/5 text-white/80")}><Accessibility size={16} />تقليل الحركة</button>
           </div>

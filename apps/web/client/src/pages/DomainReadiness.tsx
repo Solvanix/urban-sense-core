@@ -1,0 +1,29 @@
+import { ArrowLeft, Check, Circle, Globe2, Mail, ShieldAlert } from "lucide-react";
+import { Link } from "wouter";
+import { ecosystemExplorerHref, sensePortalHref } from "@/lib/sensePortalRoute";
+
+const steps = [
+  { title: "اعتماد الاسم", description: "اختيار اسم واحد يوافق عليه المالك ويصلح للعلامة والبريد والعقود.", done: false },
+  { title: "فحص المسجل والعلامة", description: "فحص لحظي عند مسجل نطاق وفحص تعارض العلامة في أسواق الاستخدام المقصودة.", done: false },
+  { title: "شراء النطاق", description: "قرار شراء منفصل وصريح؛ لا يتم من داخل هذه الصفحة ولا من المستودع.", done: false },
+  { title: "إعداد DNS والبريد", description: "ربط الموقع وإثبات الملكية ثم إنشاء عناوين البريد المهنية وسياسات الوصول.", done: false },
+  { title: "ترحيل تدريجي", description: "إضافة النطاق إلى المواقع والوثائق والروابط بعد الاختبار، مع إبقاء العناوين القديمة كتحويلات فقط عند الحاجة.", done: false },
+];
+
+export default function DomainReadiness() {
+  return (
+    <main dir="rtl" className="min-h-screen bg-[#071216] text-[#f7f8f1]">
+      <div className="mx-auto max-w-5xl px-5 pb-16 pt-5 lg:px-8">
+        <header className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5"><Link href={ecosystemExplorerHref} className="inline-flex items-center gap-2 text-sm font-extrabold text-[#f7cc71]"><ArrowLeft size={16} />العودة إلى خريطة الوصول</Link><Link href={sensePortalHref} className="inline-flex items-center gap-2 rounded-xl border border-white/15 px-3 py-2 text-sm font-extrabold text-white/80">بوابة SENSE <Globe2 size={16} /></Link></header>
+
+        <section className="py-12"><p className="inline-flex items-center gap-2 rounded-full border border-amber-300/35 bg-amber-300/10 px-3 py-1.5 text-xs font-extrabold text-amber-100"><ShieldAlert size={14} />لا يوجد نطاق أم معتمد أو بريد مهني مربوط حتى الآن</p><h1 className="mt-5 text-4xl font-extrabold leading-tight sm:text-5xl">تغيير الدومين: <span className="text-[#e3a238]">قرار تشغيلي</span> لا زر إعداد.</h1><p className="mt-5 max-w-3xl text-lg leading-8 text-white/65">هذه الصفحة تجعل الموضوع مرئيًا: توجد أسماء قيد البحث، لكن لا شراء، ولا DNS، ولا بريد رسمي، ولا ادعاء أن الكيان القانوني أو الدومين حُسم. لا ننقل الواجهات إلى اسم جديد قبل اعتماد المالك وفحصه.</p></section>
+
+        <section className="grid gap-4 md:grid-cols-3"><article className="rounded-[1.5rem] border border-white/10 bg-white/[.045] p-5"><p className="text-xs font-extrabold text-white/45">الاسم الأم</p><p className="mt-2 text-xl font-extrabold">قيد النقاش</p><p className="mt-3 text-sm leading-6 text-white/60">لا يوجد اسم أو علامة قانونية معتمدة لهذه المنظومة بعد.</p></article><article className="rounded-[1.5rem] border border-white/10 bg-white/[.045] p-5"><p className="text-xs font-extrabold text-white/45">النطاق والبريد</p><p className="mt-2 text-xl font-extrabold">غير مربوطين</p><p className="mt-3 text-sm leading-6 text-white/60">لا يوجد شراء أو ربط DNS أو عناوين بريد مبنية على اسم جديد.</p></article><article className="rounded-[1.5rem] border border-white/10 bg-white/[.045] p-5"><p className="text-xs font-extrabold text-white/45">الحالة الحالية</p><p className="mt-2 text-xl font-extrabold">النشر يعمل</p><p className="mt-3 text-sm leading-6 text-white/60">Urban‑Sense منشور على نطاق Manus المؤقت، مع بقاء المستودع المصدر المركزي.</p></article></section>
+
+        <section className="mt-8 rounded-[1.8rem] border border-white/10 bg-[#102126] p-6 sm:p-8"><div className="flex items-center gap-3"><span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#e3a238]/15 text-[#f5ca70]"><Mail size={21} /></span><div><p className="text-sm font-extrabold text-[#e3a238]">ترتيب التنفيذ</p><h2 className="text-2xl font-extrabold">بعد اعتماد الاسم، لا قبله.</h2></div></div><ol className="mt-7 space-y-0">{steps.map((step, index) => <li key={step.title} className="grid grid-cols-[auto_1fr] gap-4"><div className="flex flex-col items-center"><span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/[.04] text-white/45">{step.done ? <Check size={16} /> : <Circle size={14} />}</span>{index < steps.length - 1 && <span className="h-10 w-px bg-white/10" />}</div><div className="pb-5"><h3 className="font-extrabold">{step.title}</h3><p className="mt-1 max-w-2xl text-sm leading-6 text-white/60">{step.description}</p></div></li>)}</ol></section>
+
+        <section className="mt-8 rounded-[1.8rem] border border-sky-300/20 bg-sky-300/[.06] p-6 sm:p-8"><h2 className="text-xl font-extrabold">ما الذي يصبح مرئيًا عند الاعتماد؟</h2><p className="mt-3 max-w-3xl leading-7 text-white/65">الموقع الأم، عناوين البريد، سياسة التحويل، وتسمية الكيان ستظهر هنا بعد موافقة صريحة على اسم واحد. حتى ذلك الحين، لا تُستخدم أسماء مرشحة في العقود أو الرسائل أو صفحات المنتج.</p></section>
+      </div>
+    </main>
+  );
+}
