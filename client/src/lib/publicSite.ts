@@ -1,5 +1,6 @@
 export const publicNavigation = [
   { href: "/", label: "الرئيسية" },
+  { href: "/منظومة-sense", label: "بوابة SENSE" },
   { href: "/كيف-تعمل", label: "كيف تعمل؟" },
   { href: "/للبلديات", label: "للبلديات" },
   { href: "/التجربة", label: "التجربة" },
