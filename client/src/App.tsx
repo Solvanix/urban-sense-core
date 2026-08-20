@@ -21,12 +21,13 @@ import { getRootView } from "./lib/sensePortalRoute";
 
 function RootPage() {
   const rootView = getRootView(window.location.search);
+  if (rootView === "urban") return <Home />;
   if (rootView === "sense") return <SensePortal />;
   if (rootView === "explore") return <EcosystemExplorer />;
   if (rootView === "domain") return <DomainReadiness />;
   if (rootView === "progress") return <ProgressDashboard />;
   if (rootView === "operations") return <OperationsDashboard />;
-  return <Home />;
+  return <SensePortal />;
 }
 
 function Router() {

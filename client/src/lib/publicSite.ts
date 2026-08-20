@@ -1,7 +1,7 @@
 import { sensePortalHref } from "./sensePortalRoute";
 
 export const publicNavigation = [
-  { href: "/", label: "الرئيسية" },
+  { href: "/?view=urban", label: "الرئيسية" },
   { href: sensePortalHref, label: "بوابة SENSE" },
   { href: "/كيف-تعمل", label: "كيف تعمل؟" },
   { href: "/للبلديات", label: "للبلديات" },

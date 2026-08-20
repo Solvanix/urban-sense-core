@@ -139,3 +139,5 @@
 - [x] Add a live domain-and-email readiness page at `/?view=domain` that makes the decision order visible without purchasing, registering, or binding an unapproved domain.
 - [x] Clarify inside the live explorer that the interactive public route is the published experience and `INDEX.html` is a repository source index rather than an enabled GitHub Pages site.
 - [x] Add a live operating-progress page that distinguishes published capabilities, independently coded but gated capabilities, and decisions still awaiting owner or operational approval.
+- [ ] Diagnose the reported all-black mobile screenshot against the published explorer, progress, domain, and portal views; fix any reproducible loading, contrast, routing, or mobile-rendering defect without masking real failures.
+- [x] Make the public root `/` the live SENSE ecosystem entry page and move the published Urban‑Sense landing page behind an explicit root query path that works on the deployed domain.

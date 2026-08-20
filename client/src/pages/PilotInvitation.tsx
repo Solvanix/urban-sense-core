@@ -33,11 +33,11 @@ export default function PilotInvitation() {
   return (
     <main className="min-h-screen bg-[#f6f8f7]" dir="rtl">
       <header className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 lg:px-8">
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/?view=urban" className="flex items-center gap-3">
           <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#0f5b5b] text-white shadow-lg shadow-teal-900/15"><Building2 size={23} /></span>
           <span><span className="block text-lg font-extrabold tracking-tight text-[#143534]">Urban‑Sense</span><span className="block text-xs font-semibold text-slate-500">منصة البلاغات البلدية</span></span>
         </Link>
-        <Link href="/" className="inline-flex items-center gap-2 text-sm font-bold text-[#0f5b5b]"><ArrowLeft size={17} />العودة للرئيسية</Link>
+        <Link href="/?view=urban" className="inline-flex items-center gap-2 text-sm font-bold text-[#0f5b5b]"><ArrowLeft size={17} />العودة للرئيسية</Link>
       </header>
 
       <section className="mx-auto max-w-6xl px-5 pb-14 pt-8 lg:px-8 lg:pt-14">
