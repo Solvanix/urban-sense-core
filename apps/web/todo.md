@@ -129,3 +129,5 @@
 - [ ] Obtain written reuse permission or a clear license for any third-party YOLO example code, then separately resolve model licensing before starting a closed vision-lab experiment.
 - [x] Create a leadership slide deck explaining the YOLO, smart-city, and SENSE integration roadmap, including current-state boundaries, legal/consent gates, repository architecture, and decision options.
 - [x] Build a unified SENSE entry portal with layered, dashboard-inspired route cards, clear readiness states, and honest links across the ecosystem without merging Urban‑Sense, SENSE Experience, commerce, support, accounting, or impact systems prematurely.
+- [x] Fix the deployed SENSE portal entry route after verifying that the encoded Arabic path returns a public 404 despite working in the local preview; use the stable `/sense` route in public navigation and retain the Arabic path as an in-app fallback.
+- [x] Fix direct public access to the SENSE portal after verifying that the deployment returns a 404 for both Arabic and Latin SPA subpaths; route public navigation through `/?view=sense` on the always-served root URL.
