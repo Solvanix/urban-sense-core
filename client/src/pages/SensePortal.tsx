@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-import { municipalOperationsHref } from "@/lib/sensePortalRoute";
-import { Accessibility, ArrowLeft, Bot, Building2, BriefcaseBusiness, ChevronLeft, CircleDollarSign, ClipboardList, Code2, Database, Eye, Gauge, Layers3, LockKeyhole, Map, MessageCircle, Radio, Route, ShieldCheck, Store, UserRoundCheck, UsersRound, Wrench } from "lucide-react";
+import { ecosystemExplorerHref, municipalOperationsHref } from "@/lib/sensePortalRoute";
+import { Accessibility, ArrowLeft, Bot, Building2, BriefcaseBusiness, ChevronLeft, CircleDollarSign, ClipboardList, Code2, Compass, Database, Eye, Gauge, Layers3, LockKeyhole, Map, MessageCircle, Radio, Route, ShieldCheck, Store, UserRoundCheck, UsersRound, Wrench } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";
 
@@ -87,7 +87,7 @@ export default function SensePortal() {
     <div className="mx-auto max-w-7xl px-5 pb-16 pt-5 lg:px-8">
       <header className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5">
         <div className="flex items-center gap-3"><span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#e3a238] text-[#142729]"><Layers3 size={22} /></span><div><p className="text-lg font-extrabold tracking-tight">SENSE</p><p className="text-xs font-bold text-white/55">صفحة رئيسية لمسارات مستقلة</p></div></div>
-        <div className="flex flex-wrap items-center gap-2" aria-label="تفضيلات العرض"><button aria-pressed={highContrast} onClick={() => setHighContrast((value) => !value)} className={cn("inline-flex min-h-10 items-center gap-2 rounded-xl border px-3 text-sm font-bold", highContrast ? "border-[#e3a238] bg-[#e3a238] text-[#17272a]" : "border-white/15 bg-white/5 text-white/80")}><Eye size={16} />تباين أعلى</button><button aria-pressed={reducedMotion} onClick={() => setReducedMotion((value) => !value)} className={cn("inline-flex min-h-10 items-center gap-2 rounded-xl border px-3 text-sm font-bold", reducedMotion ? "border-[#e3a238] bg-[#e3a238] text-[#17272a]" : "border-white/15 bg-white/5 text-white/80")}><Accessibility size={16} />تقليل الحركة</button></div>
+        <div className="flex flex-wrap items-center gap-2" aria-label="تفضيلات العرض"><Link href={ecosystemExplorerHref} className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 text-sm font-bold text-white/80 hover:border-white/35"><Compass size={16} />خريطة الوصول</Link><button aria-pressed={highContrast} onClick={() => setHighContrast((value) => !value)} className={cn("inline-flex min-h-10 items-center gap-2 rounded-xl border px-3 text-sm font-bold", highContrast ? "border-[#e3a238] bg-[#e3a238] text-[#17272a]" : "border-white/15 bg-white/5 text-white/80")}><Eye size={16} />تباين أعلى</button><button aria-pressed={reducedMotion} onClick={() => setReducedMotion((value) => !value)} className={cn("inline-flex min-h-10 items-center gap-2 rounded-xl border px-3 text-sm font-bold", reducedMotion ? "border-[#e3a238] bg-[#e3a238] text-[#17272a]" : "border-white/15 bg-white/5 text-white/80")}><Accessibility size={16} />تقليل الحركة</button></div>
       </header>
 
       <section className="grid gap-8 py-10 lg:grid-cols-[.83fr_1.17fr] lg:items-end lg:py-16">

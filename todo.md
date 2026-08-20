@@ -135,3 +135,5 @@
 - [x] Fix the deployed SENSE portal entry route after verifying that the encoded Arabic path returns a public 404 despite working in the local preview; use the stable `/sense` route in public navigation and retain the Arabic path as an in-app fallback.
 - [x] Fix direct public access to the SENSE portal after verifying that the deployment returns a 404 for both Arabic and Latin SPA subpaths; route public navigation through `/?view=sense` on the always-served root URL.
 - [x] Expand the SENSE entry portal into an ecosystem index with a clearly separated public entry, municipality administration entry, technical-team entry, provider journey, sponsor-facing route, and truthful readiness boundaries.
+- [x] Add a live visual ecosystem explorer at `/?view=explore` that routes visitors by intent to published pages, independent code, GitHub guides, and explicit readiness states.
+- [x] Add a live domain-and-email readiness page at `/?view=domain` that makes the decision order visible without purchasing, registering, or binding an unapproved domain.

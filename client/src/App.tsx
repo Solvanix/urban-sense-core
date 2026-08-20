@@ -14,11 +14,15 @@ import OperationsReport from "./pages/OperationsReport";
 import PilotInvitation from "./pages/PilotInvitation";
 import ReportDetail from "./pages/ReportDetail";
 import SensePortal from "./pages/SensePortal";
+import EcosystemExplorer from "./pages/EcosystemExplorer";
+import DomainReadiness from "./pages/DomainReadiness";
 import { getRootView } from "./lib/sensePortalRoute";
 
 function RootPage() {
   const rootView = getRootView(window.location.search);
   if (rootView === "sense") return <SensePortal />;
+  if (rootView === "explore") return <EcosystemExplorer />;
+  if (rootView === "domain") return <DomainReadiness />;
   if (rootView === "operations") return <OperationsDashboard />;
   return <Home />;
 }
