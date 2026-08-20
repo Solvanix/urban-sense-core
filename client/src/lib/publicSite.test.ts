@@ -8,6 +8,6 @@ describe("public site navigation", () => {
     expect(publicNavigation).toHaveLength(5);
     expect(hrefs).toEqual([...new Set(hrefs)]);
     expect(publicNavigation.every(item => item.label.trim().length > 0)).toBe(true);
-    expect(publicNavigation.map(item => item.href)).toEqual(["/", "/sense", "/كيف-تعمل", "/للبلديات", "/التجربة"]);
+    expect(publicNavigation.map(item => item.href)).toEqual(["/", "/?view=sense", "/كيف-تعمل", "/للبلديات", "/التجربة"]);
   });
 });

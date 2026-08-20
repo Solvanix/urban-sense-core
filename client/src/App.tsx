@@ -14,12 +14,17 @@ import OperationsReport from "./pages/OperationsReport";
 import PilotInvitation from "./pages/PilotInvitation";
 import ReportDetail from "./pages/ReportDetail";
 import SensePortal from "./pages/SensePortal";
+import { isSensePortalSearch } from "./lib/sensePortalRoute";
+
+function RootPage() {
+  return isSensePortalSearch(window.location.search) ? <SensePortal /> : <Home />;
+}
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
+      <Route path={"/"} component={RootPage} />
       <Route path={"/sense"} component={SensePortal} />
       <Route path={"/منظومة-sense"} component={SensePortal} />
       <Route path={"/كيف-تعمل"} component={HowItWorks} />
