@@ -115,3 +115,4 @@
 - [ ] Rebuild the ribbon mark so the S unambiguously reads as the camera body and the triangular lens is visibly connected on the right, rather than an internal play-like accent.
 - [ ] Reject the arrow-like S-camera draft and prototype a recognisable geometric camera silhouette with an S-inspired body, a small connected triangular lens, a lens aperture, and a rear body cue.
 - [ ] Replace the illustrative S-plus-camera approach with a single high-contrast block monogram whose negative space simultaneously implies S and a camera, inspired only by the reference's disciplined abstraction.
+- [ ] Refine the selected camera monogram so its S-shaped negative space also reads as a road through a restrained lane or centreline cue that remains legible at small sizes.
