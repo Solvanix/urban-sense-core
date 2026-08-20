@@ -13,12 +13,14 @@ import ForMunicipalities from "./pages/ForMunicipalities";
 import HowItWorks from "./pages/HowItWorks";
 import PilotInvitation from "./pages/PilotInvitation";
 import ReportDetail from "./pages/ReportDetail";
+import SensePortal from "./pages/SensePortal";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/منظومة-sense"} component={SensePortal} />
       <Route path={"/كيف-تعمل"} component={HowItWorks} />
       <Route path={"/للبلديات"} component={ForMunicipalities} />
       <Route path={"/التجربة"} component={PilotInvitation} />

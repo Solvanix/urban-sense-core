@@ -86,7 +86,7 @@
 - [x] Analyze the user-provided Ard Kanaan materials and public evidence, separating verified facts from assumptions and unresolved questions without fabricating endorsements or commercial claims.
 - [x] Analyze the Sense digital-manufacturing-center proposal, its Ard Kanaan partnership concept, and attached grant-workplan files; separate verified evidence from assumptions before recommending next steps.
 - [x] Draft an evidence-aware Sense origin story for the Digiwork interview, covering the founding-partnership pivot, Ard Kanaan enablement, graduate pathways, and product roadmap without presenting planned offerings as live services.
-- [ ] Review the linked Digiwork form, map its stated requirements to verified Sense information, and prepare only a private completion checklist without submitting responses.
+- [x] Review the linked Digiwork form, map its stated requirements to verified Sense information, and prepare only a private completion checklist without submitting responses; it is a self-reported training evaluation rather than a Sense profile or interview form.
 - [ ] Reconcile the Sense meeting transcript with the digital-manufacturing workplan, distinguishing documented partner roles and legal status from proposed platforms, store, and graduate pathways.
 - [ ] Propose a phased administrative and legal-governance framework for Sense, including partner boundaries, decision rights, role ownership, and registration readiness.
 - [x] Build and visually verify an initial public SENSE Experience tourism-page prototype in GitHub, clearly separating live workflows from planned catalog, store, and accessibility capabilities.
@@ -128,3 +128,4 @@
 - [x] Design a consent-based computer-vision research track and repository contract informed by the YOLO audit and the public smart-city/telecom archive, without adding surveillance or production inference to Urban-Sense.
 - [ ] Obtain written reuse permission or a clear license for any third-party YOLO example code, then separately resolve model licensing before starting a closed vision-lab experiment.
 - [x] Create a leadership slide deck explaining the YOLO, smart-city, and SENSE integration roadmap, including current-state boundaries, legal/consent gates, repository architecture, and decision options.
+- [x] Build a unified SENSE entry portal with layered, dashboard-inspired route cards, clear readiness states, and honest links across the ecosystem without merging Urban‑Sense, SENSE Experience, commerce, support, accounting, or impact systems prematurely.
