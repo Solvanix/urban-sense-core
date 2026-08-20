@@ -25,7 +25,7 @@ const lanes = [
     icon: CircleDashed,
     items: [
       { title: "SENSE Experience", text: "نواة مستقلة لمسار مزودي الخدمات والمراجعة البشرية، بلا نشر مستقل أو تسجيل عام للبيانات الحقيقية حتى الآن.", href: `${repositoryUrl}/tree/main/apps/sense-experience`, action: "استعرض المصدر" },
-      { title: "الرؤية الحاسوبية", text: "مسار بحثي مقيد بالموافقة والرخصة؛ لا توجد كاميرات حية أو مراقبة مفعلة داخل Urban‑Sense.", href: `${repositoryUrl}/blob/main/docs/research/YOLO-SMART-CITY-RESEARCH-TRACK.md`, action: "راجع المسار" },
+      { title: "الرؤية الحاسوبية", text: "مسار بحثي مقيد بالموافقة والرخصة؛ لا توجد كاميرات حية أو مراقبة مفعلة داخل Urban‑Sense.", href: `${repositoryUrl}/blob/main/docs/research/YOLO-SMART-CITY-INTEGRATION-BLUEPRINT-2026-08-20.md`, action: "راجع المسار" },
     ],
   },
   {
@@ -75,7 +75,7 @@ export default function ProgressDashboard() {
 
         <section className="mt-8 grid gap-4 md:grid-cols-2">
           <article className="rounded-[1.7rem] border border-white/10 bg-white/[.04] p-6"><Globe2 className="text-sky-200" size={23} /><h2 className="mt-5 text-xl font-extrabold">الدومين ليس خطوة تجميلية</h2><p className="mt-3 leading-7 text-white/65">عندما يعتمد الاسم، تتبع الخطوات بالترتيب: فحص علامة ومسجل، شراء صريح، DNS وبريد، ثم ترحيل متدرج. صفحة الجاهزية توثق ذلك.</p><Link href={domainReadinessHref} className="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-sky-100">راجع ترتيب الدومين <ArrowLeft size={16} /></Link></article>
-          <article className="rounded-[1.7rem] border border-white/10 bg-white/[.04] p-6"><Wrench className="text-[#f3c86e]" size={23} /><h2 className="mt-5 text-xl font-extrabold">ما الذي يجب أن يأتي من الواقع؟</h2><p className="mt-3 leading-7 text-white/65">مراجعون فعليون، موافقة تشغيلية، مزودون حقيقيون، وشركاء بعقود معلنة عند وجودها. لا تنشئ الواجهة هذه الأشياء بدل أصحابها.</p><a href={`${repositoryUrl}/blob/main/docs/OPERATING-PRODUCT-BLUEPRINT.md`} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-[#f7cc71]">افتح خارطة التشغيل <ExternalLink size={16} /></a></article>
+          <article className="rounded-[1.7rem] border border-white/10 bg-white/[.04] p-6"><Wrench className="text-[#f3c86e]" size={23} /><h2 className="mt-5 text-xl font-extrabold">ما الذي يجب أن يأتي من الواقع؟</h2><p className="mt-3 leading-7 text-white/65">مراجعون فعليون، موافقة تشغيلية، مزودون حقيقيون، وشركاء بعقود معلنة عند وجودها. لا تنشئ الواجهة هذه الأشياء بدل أصحابها.</p><a href={`${repositoryUrl}/blob/main/docs/architecture/MVP-ARCHITECTURE.md`} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-[#f7cc71]">افتح معمارية التشغيل <ExternalLink size={16} /></a></article>
         </section>
       </div>
     </main>
