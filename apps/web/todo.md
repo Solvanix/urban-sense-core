@@ -88,7 +88,7 @@
 - [x] Draft an evidence-aware Sense origin story for the Digiwork interview, covering the founding-partnership pivot, Ard Kanaan enablement, graduate pathways, and product roadmap without presenting planned offerings as live services.
 - [x] Review the linked Digiwork form, map its stated requirements to verified Sense information, and prepare only a private completion checklist without submitting responses; it is a self-reported training evaluation rather than a Sense profile or interview form.
 - [ ] Reconcile the Sense meeting transcript with the digital-manufacturing workplan, distinguishing documented partner roles and legal status from proposed platforms, store, and graduate pathways.
-- [ ] Propose a phased administrative and legal-governance framework for Sense, including partner boundaries, decision rights, role ownership, and registration readiness.
+- [x] Propose a phased administrative and legal-governance framework for Sense, including partner boundaries, decision rights, role ownership, and registration readiness.
 - [x] Build and visually verify an initial public SENSE Experience tourism-page prototype in GitHub, clearly separating live workflows from planned catalog, store, and accessibility capabilities.
 - [x] Audit Solvanix/sense-experience-platform against the central repository, classify unique files by migration need, and recommend archival or deletion only after confirming replacement coverage.
 - [x] Produce a central operating and product blueprint covering applications, pages, deployment links, data boundaries, accounting, objectives, impact measurement, and launch decisions.
