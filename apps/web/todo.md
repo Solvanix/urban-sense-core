@@ -111,3 +111,7 @@
 - [ ] Refine the S-camera concept into a proportioned geometric system with a modular grid, disciplined angles, and an agency-specific character rather than a generic media mark.
 - [ ] Create an original high-contrast monogram-and-container direction inspired only by the uploaded reference's design principles, without reproducing its circular badge, blue/yellow palette, typography, or camera motif.
 - [ ] Refine the approved high-contrast S mark by integrating the triangular lens into the monogram and creating a frameless companion mark for email, UI, and small-scale use.
+- [ ] Explore an original ribbon-style S with controlled negative space and a subtle integrated lens, inspired only by the latest reference's structural principles rather than its contour, 3D treatment, wordmark, or tagline.
+- [ ] Rebuild the ribbon mark so the S unambiguously reads as the camera body and the triangular lens is visibly connected on the right, rather than an internal play-like accent.
+- [ ] Reject the arrow-like S-camera draft and prototype a recognisable geometric camera silhouette with an S-inspired body, a small connected triangular lens, a lens aperture, and a rear body cue.
+- [ ] Replace the illustrative S-plus-camera approach with a single high-contrast block monogram whose negative space simultaneously implies S and a camera, inspired only by the reference's disciplined abstraction.
