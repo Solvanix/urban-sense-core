@@ -130,3 +130,4 @@
 - [x] Review the user-designated project-link-access archive and preserve any reusable access or project-ownership guidance before the user deletes it.
 - [x] Reframe Urban‑Sense product scope and produce a complete GitHub-first roadmap covering product, design, security, operations, testing, and publishing from the current repository state.
 - [x] Review the user-supplied technical-report site, preserve any unique Urban‑Sense decisions or risks, and confirm whether it can be deleted safely.
+- [x] Sync and publish the reviewed Arabic public-tile system from the central repository to the live Urban‑Sense project, then verify the public pages on the production domain.
