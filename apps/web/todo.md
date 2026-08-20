@@ -116,3 +116,6 @@
 - [ ] Reject the arrow-like S-camera draft and prototype a recognisable geometric camera silhouette with an S-inspired body, a small connected triangular lens, a lens aperture, and a rear body cue.
 - [ ] Replace the illustrative S-plus-camera approach with a single high-contrast block monogram whose negative space simultaneously implies S and a camera, inspired only by the reference's disciplined abstraction.
 - [ ] Refine the selected camera monogram so its S-shaped negative space also reads as a road through a restrained lane or centreline cue that remains legible at small sizes.
+- [ ] Replace the dashed-road direction with an original folder-backed camera monogram: a folder tab as the camera's rear body, a restrained S-shaped ribbon/path, and a compact geometric lens.
+- [ ] Prepare a private Leaders International article proposal and corrected Digiwork narrative that distinguishes verified team formation and Urban-Sense work from proposed tourism, commerce, manufacturing, and strategic-partner pathways.
+- [ ] Preserve the selected white camera-with-S-negative-space monogram as the current logo reference; make no visual changes until a new explicit direction is received.
