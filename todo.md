@@ -145,3 +145,10 @@
 - [ ] Publish the public root index through GitHub Pages without exposing private source, operational documents, or unapproved assets.
 - [x] Add a sourced regional currency-reference module covering USD, EUR, ILS, and JOD with explicit base currency, as-of date, and non-advisory wording.
 - [x] Define and enforce individual account roles for owner/admin, developer, and standard user without shared or default passwords, keeping role changes auditable.
+- [ ] Prepare a production-independent deployment path from the private GitHub repository to an owner-controlled application server, database, identity provider, and domain without storing secrets or citizen data in Git.
+- [ ] Make the application portable between an owner-controlled local demonstration environment and an independent production server using environment-specific configuration, reproducible database setup, and no shared credentials.
+- [ ] Package the application for reproducible container-based local demonstration and independent production deployment, with configuration and secrets supplied only at runtime.
+- [ ] Document which deployment files belong in the private repository and which runtime values, services, and data must remain outside Git.
+- [ ] Deliver a one-command server bootstrap contract: a developer with repository access, Docker, and a complete runtime environment file can bring up the application, database schema, and supporting services without code rewrites.
+- [ ] Implement the container-based bootstrap bundle, including a Docker build, local service composition, health checks, and a production handoff guide.
+- [x] Resolve the duplicate `sensePortalHref` export and the missing access-router import in the live Urban-Sense project, then verify the deployed public entry routes.
