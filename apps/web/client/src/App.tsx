@@ -5,18 +5,19 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import HowItWorks from "./pages/HowItWorks";
+import ForMunicipalities from "./pages/ForMunicipalities";
 import MyReports from "./pages/MyReports";
 import NewReport from "./pages/NewReport";
 import OperationsDashboard from "./pages/OperationsDashboard";
 import OperationsReport from "./pages/OperationsReport";
-import ForMunicipalities from "./pages/ForMunicipalities";
-import HowItWorks from "./pages/HowItWorks";
 import PilotInvitation from "./pages/PilotInvitation";
 import ReportDetail from "./pages/ReportDetail";
 import SensePortal from "./pages/SensePortal";
 import EcosystemExplorer from "./pages/EcosystemExplorer";
 import DomainReadiness from "./pages/DomainReadiness";
 import ProgressDashboard from "./pages/ProgressDashboard";
+import AccessControl from "./pages/AccessControl";
 import { getRootView } from "./lib/sensePortalRoute";
 
 function RootPage() {
@@ -27,6 +28,7 @@ function RootPage() {
   if (rootView === "domain") return <DomainReadiness />;
   if (rootView === "progress") return <ProgressDashboard />;
   if (rootView === "operations") return <OperationsDashboard />;
+  if (rootView === "access") return <AccessControl />;
   return <SensePortal />;
 }
 

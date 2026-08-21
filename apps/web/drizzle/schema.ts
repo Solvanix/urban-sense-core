@@ -2,6 +2,7 @@ import { boolean, index, int, mysqlEnum, mysqlTable, text, timestamp, uniqueInde
 
 export const municipalRoleValues = [
   "citizen",
+  "developer",
   "service_officer",
   "field_worker",
   "supervisor",
@@ -38,6 +39,7 @@ export const users = mysqlTable("users", {
   email: varchar("email", { length: 320 }),
   loginMethod: varchar("loginMethod", { length: 64 }),
   role: mysqlEnum("role", municipalRoleValues).default("citizen").notNull(),
+  isActive: boolean("isActive").default(true).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(),

@@ -1,0 +1,3 @@
+ALTER TABLE `municipality_memberships` MODIFY COLUMN `role` enum('citizen','developer','service_officer','field_worker','supervisor','municipality_admin','platform_admin') NOT NULL;--> statement-breakpoint
+ALTER TABLE `users` MODIFY COLUMN `role` enum('citizen','developer','service_officer','field_worker','supervisor','municipality_admin','platform_admin') NOT NULL DEFAULT 'citizen';--> statement-breakpoint
+ALTER TABLE `users` ADD `isActive` boolean DEFAULT true NOT NULL;
