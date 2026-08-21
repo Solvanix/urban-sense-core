@@ -186,3 +186,4 @@
 - [x] Audit and reconcile the distinction between central GitHub source, the current Manus live deployment, and the owner-controlled Docker deployment path; publish only a truthful execution-status register.
 - [x] Change the central repository visibility to public by the owner’s explicit request, then enable GitHub Pages from the reviewed static index workflow and verify the public URL.
 - [x] Create a team handoff map that identifies the GitHub source files, the one-time server runtime file, data ownership, role-specific access, and the exact first-run steps without exposing any real secret.
+- [x] Publish a single truthful access-status register for visitors, stakeholders, municipalities, administrators, service providers, strategic projects, and accessibility needs, including one canonical entrance link.
