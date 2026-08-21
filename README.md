@@ -18,6 +18,8 @@
 
 [**افتح خريطة الوصول والإطلاق**](docs/ACCESS-STATUS-2026-08-21.md) — جواب واحد يبيّن ما يراه كل مستخدم، وما هو منشور أو مقيد أو غير مبني، وما هو رابط المدخل الأساسي.
 
+[**اقرأ قرار توحيد المشروع المرجعي**](docs/REFERENCE-PROJECT-ALIGNMENT-2026-08-21.md) — يثبت أن «نبض السوق» جزء من الفهرس المركزي نفسه، ويحدد حدوده ومكانه بين بوابة SENSE والتطبيقات المستقلة.
+
 ## ابدأ من هنا
 
 [**افتح بوابة SENSE الموحدة**](https://urbansense-dzfbcdz5.manus.space/?view=sense)
@@ -72,6 +74,7 @@ SENSE Experience تطبيق مستقل داخل المستودع لمسار جا
 | [`docs/EXECUTION-STATUS-2026-08-21.md`](docs/EXECUTION-STATUS-2026-08-21.md) | سجل يميّز المصدر المركزي عن العرض الحي ومسار الخادم المستقل والفجوات التشغيلية. |
 | [`docs/TEAM-HANDOFF-2026-08-21.md`](docs/TEAM-HANDOFF-2026-08-21.md) | دليل عملي لتجهيز الفريق وملفات النظام وإعداد خادم عرض مستقل. |
 | [`docs/ACCESS-STATUS-2026-08-21.md`](docs/ACCESS-STATUS-2026-08-21.md) | سجل موحد لمداخل الزوار وأصحاب المصلحة والبلديات والإدارة والمزودين والإتاحة وحالة الإطلاق. |
+| [`docs/REFERENCE-PROJECT-ALIGNMENT-2026-08-21.md`](docs/REFERENCE-PROJECT-ALIGNMENT-2026-08-21.md) | قرار توحيد مرجعي يثبت موقع «نبض السوق» وحدوده وخطي التركيز التنفيذيين. |
 | [`docs/ANAN-PROPOSED-BRAND-MESSAGING-2026-08-20.md`](docs/ANAN-PROPOSED-BRAND-MESSAGING-2026-08-20.md) | حزمة رسائل مقترحة لاسم «عَنان | ANAN»؛ الاسم غير معتمد قانونيًا ولا نطاقًا. |
 | [`docs/START-HERE.md`](docs/START-HERE.md) | تسلسل التسليم والقرارات التالية. |
 | [`docs/PORTFOLIO-ARCHITECTURE.md`](docs/PORTFOLIO-ARCHITECTURE.md) | خريطة التطبيقات المستقلة وعقود التكامل بينها. |
