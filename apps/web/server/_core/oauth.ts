@@ -93,7 +93,7 @@ export function registerOAuthRoutes(app: Express) {
         return;
       }
 
-      const loginUrl = new URL(`${ENV.oAuthServerUrl.replace(/\/$/, "")}/app-auth`);
+      const loginUrl = new URL(`${ENV.oAuthPortalUrl.replace(/\/$/, "")}/app-auth`);
       loginUrl.searchParams.set("appId", ENV.appId);
       loginUrl.searchParams.set("redirectUri", callbackUrl(req));
       loginUrl.searchParams.set("state", state);

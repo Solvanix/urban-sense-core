@@ -4,6 +4,7 @@ export const ENV = {
   databaseUrl: process.env.DATABASE_URL ?? "",
   appBaseUrl: process.env.APP_BASE_URL ?? "",
   oAuthServerUrl: process.env.OAUTH_SERVER_URL ?? "",
+  oAuthPortalUrl: process.env.OAUTH_PORTAL_URL ?? process.env.VITE_OAUTH_PORTAL_URL ?? "",
   authMode: process.env.AUTH_MODE === "oidc" ? "oidc" : "manus",
   oidcIssuerUrl: process.env.OIDC_ISSUER_URL ?? "",
   oidcClientId: process.env.OIDC_CLIENT_ID ?? "",
