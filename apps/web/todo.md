@@ -174,3 +174,11 @@
 - [ ] Publish the public root index through GitHub Pages without exposing private source, operational documents, or unapproved assets.
 - [x] Add a sourced regional currency-reference module covering USD, EUR, ILS, and JOD with explicit base currency, as-of date, and non-advisory wording.
 - [x] Define and enforce individual account roles for owner/admin, developer, and standard user without shared or default passwords, keeping role changes auditable.
+- [ ] Prepare a production-independent deployment path from the private GitHub repository to an owner-controlled application server, database, identity provider, and domain without storing secrets or citizen data in Git.
+- [ ] Make the application portable between an owner-controlled local demonstration environment and an independent production server using environment-specific configuration, reproducible database setup, and no shared credentials.
+- [x] Package the application for reproducible container-based local demonstration and independent production deployment, with configuration and secrets supplied only at runtime.
+- [x] Document which deployment files belong in the private repository and which runtime values, services, and data must remain outside Git.
+- [x] Deliver a one-command server bootstrap contract: a developer with repository access, Docker, and a complete runtime environment file can bring up the application, database schema, and supporting services without code rewrites.
+- [x] Implement the container-based bootstrap bundle, including a Docker build, local service composition, health checks, and a production handoff guide.
+- [x] Add an optional owner-controlled OIDC authentication path selected at runtime while retaining current preview compatibility.
+- [ ] Run a live Docker Compose bootstrap on an owner-controlled Docker host and record the result before treating the independent deployment path as production-ready.
