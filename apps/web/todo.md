@@ -184,3 +184,5 @@
 - [ ] Run a live Docker Compose bootstrap on an owner-controlled Docker host and record the result before treating the independent deployment path as production-ready.
 - [x] Reconfirm the published project’s SENSE route helper and access router match the central source after stale duplicate-export and missing-module log entries; verify successful type check, tests, build, and public-route rendering.
 - [x] Audit and reconcile the distinction between central GitHub source, the current Manus live deployment, and the owner-controlled Docker deployment path; publish only a truthful execution-status register.
+- [ ] Change the central repository visibility to public by the owner’s explicit request, then enable GitHub Pages from the reviewed static index workflow and verify the public URL.
+- [x] Create a team handoff map that identifies the GitHub source files, the one-time server runtime file, data ownership, role-specific access, and the exact first-run steps without exposing any real secret.
