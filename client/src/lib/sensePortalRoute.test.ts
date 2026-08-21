@@ -15,6 +15,7 @@ describe("SENSE portal public entry", () => {
     expect(getRootView("?view=urban")).toBe("urban");
     expect(getRootView("?view=operations")).toBe("operations");
     expect(getRootView("?view=sense")).toBe("sense");
+    expect(getRootView("?view=access")).toBe("access");
     expect(getRootView("?view=provider")).toBeNull();
   });
 });

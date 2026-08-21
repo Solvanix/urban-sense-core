@@ -142,3 +142,6 @@
 - [x] Diagnose the reported all-black mobile screenshot against the published explorer, progress, domain, and portal views; the defect was not reproducible at 375px after the resolved routing build error, and all reviewed views rendered readable content.
 - [x] Make the public root `/` the live SENSE ecosystem entry page and move the published Urban‑Sense landing page behind an explicit root query path that works on the deployed domain.
 - [x] Publish a standalone public `/INDEX.html` page that mirrors the repository-root index purpose without exposing the private GitHub repository.
+- [ ] Publish the public root index through GitHub Pages without exposing private source, operational documents, or unapproved assets.
+- [ ] Add a sourced regional currency-reference module covering USD, EUR, ILS, and JOD with explicit base currency, as-of date, and non-advisory wording.
+- [x] Define and enforce individual account roles for owner/admin, developer, and standard user without shared or default passwords, keeping role changes auditable.

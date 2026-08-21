@@ -2,6 +2,7 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
+import { accessRouter } from "./routers/access.ts";
 import { reportsRouter } from "./routers/reports.ts";
 
 export const appRouter = router({
@@ -17,6 +18,7 @@ export const appRouter = router({
       } as const;
     }),
   }),
+  access: accessRouter,
   reports: reportsRouter,
 });
 
