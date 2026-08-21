@@ -183,3 +183,4 @@
 - [x] Add an optional owner-controlled OIDC authentication path selected at runtime while retaining current preview compatibility.
 - [ ] Run a live Docker Compose bootstrap on an owner-controlled Docker host and record the result before treating the independent deployment path as production-ready.
 - [x] Reconfirm the published project’s SENSE route helper and access router match the central source after stale duplicate-export and missing-module log entries; verify successful type check, tests, build, and public-route rendering.
+- [x] Audit and reconcile the distinction between central GitHub source, the current Manus live deployment, and the owner-controlled Docker deployment path; publish only a truthful execution-status register.

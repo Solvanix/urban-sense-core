@@ -10,6 +10,8 @@
 
 [**افتح لوحة التقدم التشغيلية الحية**](https://urbansense-dzfbcdz5.manus.space/?view=progress) — تفصل بين ما هو منشور، وما هو نواة مستقلة مقيدة، وما يتطلب قرارًا أو تشغيلًا حقيقيًا.
 
+[**اقرأ سجل التنفيذ الفعلي**](docs/EXECUTION-STATUS-2026-08-21.md) — يوضح بدقة ما هو مصدر في GitHub، وما هو معروض حاليًا من Manus، وما هو قابل للتشغيل المستقل على خادم تملكه الجهة.
+
 ## ابدأ من هنا
 
 [**افتح بوابة SENSE الموحدة**](https://urbansense-dzfbcdz5.manus.space/?view=sense)
@@ -20,7 +22,7 @@
 |---|---|---|
 | **بوابة المنظومة** | منشورة | [بوابة SENSE الموحدة](https://urbansense-dzfbcdz5.manus.space/?view=sense) |
 | **خريطة الوصول والتقدم** | منشورة | [المستكشف المرئي](https://urbansense-dzfbcdz5.manus.space/?view=explore) · [لوحة التقدم](https://urbansense-dzfbcdz5.manus.space/?view=progress) |
-| **Urban‑Sense**: بلاغات بلدية عربية | منشور ضمن نطاق تجريبي محكوم | [افتح Urban‑Sense](https://urbansense-dzfbcdz5.manus.space/) |
+| **Urban‑Sense**: بلاغات بلدية عربية | منشور ضمن نطاق تجريبي محكوم | [افتح Urban‑Sense](https://urbansense-dzfbcdz5.manus.space/?view=urban) |
 | **SENSE Experience**: مزودو الخدمات والتجارب | نواة مستقلة في الكود؛ لا رابط إنتاج ولا استقبال بيانات حقيقية بعد | [استعرض التطبيق المستقل](apps/sense-experience/) |
 | **السوق والمتجر** | مقترح، غير مشغّل | [راجع حالة التشغيل](https://urbansense-dzfbcdz5.manus.space/?view=progress) |
 | **التمكين والتصنيع** | مقترح يحتاج قرارًا قانونيًا وتجربة حقيقية | [تحليل الأدلة والبوابات](docs/research/SENSE-DIGITAL-MANUFACTURING-CENTER-EVIDENCE-ANALYSIS-2026-08-20.md) |
@@ -61,6 +63,7 @@ SENSE Experience تطبيق مستقل داخل المستودع لمسار جا
 | [`apps/README.md`](apps/README.md) | مدخل التطبيقات: الروابط، حالات الجاهزية، وقاعدة الفصل. |
 | [`docs/`](docs/) | قرارات الحوكمة، خارطة المنتج، الحدود، الأدلة، ومذكرات التصميم. |
 | [`docs/README.md`](docs/README.md) | مدخل الوثائق: خريطة القرار، التشغيل، الحوكمة، والبحث. |
+| [`docs/EXECUTION-STATUS-2026-08-21.md`](docs/EXECUTION-STATUS-2026-08-21.md) | سجل يميّز المصدر المركزي عن العرض الحي ومسار الخادم المستقل والفجوات التشغيلية. |
 | [`docs/ANAN-PROPOSED-BRAND-MESSAGING-2026-08-20.md`](docs/ANAN-PROPOSED-BRAND-MESSAGING-2026-08-20.md) | حزمة رسائل مقترحة لاسم «عَنان | ANAN»؛ الاسم غير معتمد قانونيًا ولا نطاقًا. |
 | [`docs/START-HERE.md`](docs/START-HERE.md) | تسلسل التسليم والقرارات التالية. |
 | [`docs/PORTFOLIO-ARCHITECTURE.md`](docs/PORTFOLIO-ARCHITECTURE.md) | خريطة التطبيقات المستقلة وعقود التكامل بينها. |
