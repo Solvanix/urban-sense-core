@@ -1,95 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="فهرس عام لمنظومة SENSE يوضح المسارات المنشورة وحالة المسارات المقيدة." />
-    <title>SENSE — فهرس المنظومة</title>
+    <meta name="description" content="SENSE: اختر ما تريد زيارته الآن، من منصة البلاغات إلى تجربة البلدية ومسارات الشراكة." />
+    <title>SENSE | ابدأ هنا</title>
     <style>
-      :root { --ink:#071216; --panel:#102126; --muted:#aebcc0; --gold:#e3a238; --line:rgba(255,255,255,.12); }
-      * { box-sizing:border-box; } body { margin:0; background:var(--ink); color:#f7f8f1; font-family:Tahoma, Arial, sans-serif; line-height:1.7; }
-      a { color:inherit; text-decoration:none; } .shell { width:min(1180px, calc(100% - 32px)); margin:auto; }
-      header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; border-bottom:1px solid var(--line); padding:22px 0; }
-      .brand { display:flex; align-items:center; gap:12px; font-weight:800; } .mark { width:42px; height:42px; display:grid; place-items:center; border-radius:14px; background:var(--gold); color:var(--ink); font-size:20px; }
-      .eyebrow { color:#ffd881; font-size:.82rem; font-weight:800; letter-spacing:.04em; } h1 { max-width:800px; font-size:clamp(2.4rem, 7vw, 5.2rem); line-height:1.12; margin:18px 0; } h1 span { color:var(--gold); }
-      .lead { max-width:760px; font-size:1.15rem; color:var(--muted); } .hero { padding:72px 0 48px; }
-      .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }.button { display:inline-flex; align-items:center; gap:8px; min-height:46px; padding:10px 16px; border-radius:13px; border:1px solid var(--line); font-weight:800; }.button.primary { background:var(--gold); color:var(--ink); border-color:var(--gold); }
-      .section { border-top:1px solid var(--line); padding:44px 0; } h2 { font-size:1.75rem; margin:5px 0 20px; }.grid { display:grid; gap:14px; grid-template-columns:repeat(4,minmax(0,1fr)); }.card { min-height:250px; display:flex; flex-direction:column; padding:22px; border:1px solid var(--line); border-radius:24px; background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025)); }.card h3 { font-size:1.25rem; margin:20px 0 8px; }.card p { color:var(--muted); margin:0; }.card a { margin-top:auto; padding-top:20px; color:#ffd881; font-weight:800; }
-      .status { display:inline-block; margin-top:8px; padding:3px 10px; border:1px solid var(--line); border-radius:20px; font-size:.75rem; font-weight:800; }.live { color:#b9f7d4; background:rgba(52,211,153,.1); }.code { color:#bce9ff; background:rgba(56,189,248,.1); }.planned { color:#fde3a7; background:rgba(251,191,36,.1); }
-      .map { display:grid; gap:12px; grid-template-columns:1fr 1fr; }.row { padding:18px; border-radius:18px; background:var(--panel); border:1px solid var(--line); }.row strong { display:block; }.row span { color:var(--muted); font-size:.9rem; }
-      footer { padding:26px 0 44px; color:var(--muted); font-size:.9rem; border-top:1px solid var(--line); }
-      .market { display:grid; gap:14px; grid-template-columns:1.2fr .8fr; align-items:stretch; }
-      .market-card { padding:24px; border:1px solid var(--line); border-radius:24px; background:linear-gradient(145deg,rgba(227,162,56,.16),rgba(255,255,255,.04)); }
-      .market-card h3 { margin:8px 0 4px; font-size:1.5rem; } .market-card p { color:var(--muted); margin:0; }
-      .rate { display:flex; align-items:baseline; gap:8px; margin:12px 0 8px; } .rate strong { font-size:clamp(2.4rem,6vw,4rem); line-height:1; color:var(--gold); } .rate span { color:var(--muted); }
-      .market-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; } .button.small { min-height:40px; padding:8px 12px; cursor:pointer; font:inherit; }
-      .market-grid { display:grid; gap:12px; grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:14px; } .metric { padding:18px; border:1px solid var(--line); border-radius:18px; background:var(--panel); } .metric strong { display:block; font-size:1.3rem; color:#f7f8f1; } .metric span { color:var(--muted); font-size:.88rem; }
-      .market-tools { display:grid; gap:12px; grid-template-columns:1fr 1fr; margin-top:14px; } .tool-card { padding:22px; border:1px solid var(--line); border-radius:22px; background:rgba(255,255,255,.04); } .tool-card h3 { margin:0 0 6px; } .tool-card p { color:var(--muted); margin:0 0 16px; font-size:.92rem; }
-      label { display:block; color:#dce6e6; font-size:.86rem; font-weight:800; margin-bottom:6px; } input, select { width:100%; min-height:44px; border:1px solid var(--line); border-radius:12px; padding:8px 11px; color:#f7f8f1; background:#0b191d; font:inherit; } .form-row { display:grid; gap:10px; grid-template-columns:1fr 1fr; } .result { margin-top:14px; padding:12px 14px; border-radius:12px; background:rgba(52,211,153,.1); color:#b9f7d4; font-weight:800; }
-      .comparison { width:100%; border-collapse:collapse; margin-top:12px; } .comparison th,.comparison td { text-align:right; padding:11px 8px; border-bottom:1px solid var(--line); } .comparison th { color:#ffd881; font-size:.84rem; } .comparison td { color:#dfe8e7; } .comparison td:last-child { color:#b9f7d4; font-weight:800; }
-      .notice { margin-top:14px; color:var(--muted); font-size:.84rem; } .pulse { display:inline-flex; align-items:center; gap:7px; color:#b9f7d4; font-size:.86rem; } .pulse::before { content:''; width:8px; height:8px; border-radius:50%; background:#34d399; box-shadow:0 0 0 5px rgba(52,211,153,.12); }
-      @media (max-width:880px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}.market{grid-template-columns:1fr;}} @media (max-width:560px){.grid,.map,.market-tools{grid-template-columns:1fr;}.market-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}.hero{padding-top:48px;}}
+      :root { --ink:#092022; --teal:#0f5b5b; --teal-deep:#0a4042; --gold:#e3a238; --paper:#f7f8f4; --muted:#5c6b6b; --line:#dce5e1; --white:#fff; }
+      * { box-sizing:border-box; } body { margin:0; color:var(--ink); background:var(--paper); font-family:Tahoma, Arial, sans-serif; line-height:1.75; } a { color:inherit; text-decoration:none; } .shell { width:min(1160px,calc(100% - 32px)); margin:auto; }
+      header { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:20px 0; } .brand { display:flex; align-items:center; gap:11px; font-weight:900; letter-spacing:.02em; } .mark { display:grid; place-items:center; width:42px; height:42px; color:var(--ink); background:var(--gold); border-radius:14px; font-size:1.1rem; } .header-link { font-weight:800; color:var(--teal); }
+      .hero { position:relative; overflow:hidden; min-height:490px; padding:70px 0; color:var(--white); background:linear-gradient(130deg,var(--teal-deep),var(--teal) 55%,#16676a); } .hero::after { content:""; position:absolute; width:420px; height:420px; left:-130px; bottom:-170px; border:65px solid rgba(227,162,56,.17); border-radius:50%; } .hero .shell { position:relative; z-index:1; } .eyebrow { display:inline-flex; padding:5px 11px; border:1px solid rgba(255,255,255,.32); border-radius:999px; font-size:.82rem; font-weight:800; } h1 { max-width:760px; margin:20px 0 16px; font-size:clamp(2.65rem,7vw,5.7rem); line-height:1.1; letter-spacing:-.04em; } h1 span { color:#ffd981; } .lead { max-width:680px; margin:0; color:#e3efed; font-size:1.17rem; } .actions { display:flex; flex-wrap:wrap; gap:11px; margin-top:32px; }.button { display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:10px 17px; border-radius:14px; font-weight:900; }.primary { color:var(--ink); background:var(--gold); }.secondary { border:1px solid rgba(255,255,255,.35); color:var(--white); }
+      main { padding:56px 0 72px; } .section-head { display:flex; justify-content:space-between; align-items:end; gap:22px; margin-bottom:22px; }.kicker { margin:0 0 4px; color:var(--teal); font-size:.88rem; font-weight:900; }.section-head h2 { margin:0; font-size:clamp(1.7rem,3vw,2.35rem); line-height:1.25; }.section-head p { max-width:490px; margin:0; color:var(--muted); }
+      .journeys { display:grid; gap:16px; grid-template-columns:1.15fr 1fr 1fr; }.journey { display:flex; flex-direction:column; min-height:310px; padding:27px; border:1px solid var(--line); border-radius:25px; background:var(--white); }.journey.featured { color:var(--white); border-color:var(--teal); background:var(--teal); }.number { color:var(--gold); font-weight:900; }.journey h3 { margin:48px 0 8px; font-size:1.5rem; line-height:1.35; }.journey p { margin:0; color:var(--muted); }.journey.featured p { color:#d9eeee; }.journey a { display:inline-flex; width:max-content; margin-top:auto; padding-top:24px; color:var(--teal); font-weight:900; }.journey.featured a { color:#ffd981; }
+      .visit-grid { display:grid; gap:14px; grid-template-columns:repeat(4,1fr); margin-top:14px; }.visit { display:flex; flex-direction:column; min-height:215px; padding:21px; border-radius:20px; background:var(--white); border:1px solid var(--line); }.visit h3 { margin:0 0 8px; font-size:1.06rem; }.visit p { margin:0; color:var(--muted); font-size:.92rem; }.visit a { margin-top:auto; padding-top:18px; color:var(--teal); font-size:.92rem; font-weight:900; }
+      .not-yet { margin-top:58px; padding:29px; border-radius:25px; color:var(--white); background:var(--ink); }.not-yet h2 { margin:0 0 9px; font-size:1.55rem; }.not-yet > p { margin:0; color:#c6d4d2; }.not-yet-grid { display:grid; gap:12px; grid-template-columns:repeat(3,1fr); margin-top:21px; }.not-yet article { padding:17px; border:1px solid rgba(255,255,255,.13); border-radius:17px; background:rgba(255,255,255,.05); }.not-yet h3 { margin:0 0 6px; color:#ffd981; font-size:1rem; }.not-yet article p { margin:0; color:#c6d4d2; font-size:.9rem; }
+      footer { padding:26px 0 42px; color:var(--muted); font-size:.88rem; } footer a { color:var(--teal); font-weight:900; }
+      @media (max-width:900px) { .journeys { grid-template-columns:1fr 1fr; }.journey.featured { grid-column:span 2; min-height:270px; }.visit-grid { grid-template-columns:repeat(2,1fr); } } @media (max-width:580px) { header { align-items:flex-start; }.hero { min-height:auto; padding:55px 0; }.journeys,.visit-grid,.not-yet-grid { grid-template-columns:1fr; }.journey.featured { grid-column:auto; }.section-head { display:block; }.section-head p { margin-top:10px; } }
     </style>
   </head>
   <body>
-    <div class="shell">
-      <header><a class="brand" href="https://urbansense-dzfbcdz5.manus.space/"><span class="mark">S</span><span>SENSE / Explorer</span></a><a class="button" href="https://urbansense-dzfbcdz5.manus.space/"><span>افتح البوابة العامة ←</span></a></header>
-      <main>
-        <section class="hero"><p class="eyebrow">INDEX.html — فهرس عام من جذر المنظومة</p><h1>كل ما هو <span>مرئي</span>، في طريق واحد.</h1><p class="lead">ابدأ من دورك أو نيتك. هذا الفهرس يميّز بين ما هو منشور، وما هو نواة مستقلة في الكود، وما لا يزال مقترحًا يحتاج قرارًا وتشغيلًا.</p><div class="actions"><a class="button primary" href="https://urbansense-dzfbcdz5.manus.space/?view=explore">افتح المستكشف الحي ←</a><a class="button" href="https://urbansense-dzfbcdz5.manus.space/?view=progress">افتح لوحة التقدم ←</a><a class="button" href="https://urbansense-dzfbcdz5.manus.space/">افتح بوابة SENSE ←</a></div></section>
-        <section class="section"><p class="eyebrow">اختر رحلة</p><h2>لا تبدأ من مجلد؛ ابدأ مما تريد فعله.</h2><div class="grid"><article class="card"><span>01</span><h3>زائر أو مواطن</h3><p>تعرف على المسارات أو ابدأ بلاغًا في Urban‑Sense ضمن النطاق المتاح.</p><a href="https://urbansense-dzfbcdz5.manus.space/?view=urban">افتح Urban‑Sense ←</a></article><article class="card"><span>02</span><h3>بلدية أو فريق عمليات</h3><p>راجع نطاق المنتج ثم ادخل العمليات فقط بحساب ودور بلدي فعّال.</p><a href="https://urbansense-dzfbcdz5.manus.space/?view=operations">دخول محمي ←</a></article><article class="card"><span>03</span><h3>مزود تجربة أو خدمة</h3><p>راجع حالة SENSE Experience المستقلة؛ لا تسجيل عام أو استقبال بيانات حقيقية الآن.</p><a href="https://urbansense-dzfbcdz5.manus.space/?view=sense">اعرض حالة المسار ←</a></article><article class="card"><span>04</span><h3>فريق تقني أو شريك</h3><p>المستودع والوثائق محكومة بصلاحية GitHub؛ لا يمنح هذا الفهرس أي وصول إضافي.</p><a href="https://urbansense-dzfbcdz5.manus.space/?view=explore">اعرض خريطة الوصول ←</a></article></div></section>
-        <section class="section"><p class="eyebrow">محطات المنظومة</p><h2>الحالة قبل الوعد.</h2><div class="map"><a class="row" href="https://urbansense-dzfbcdz5.manus.space/?view=urban"><strong>Urban‑Sense <span class="status live">منشور</span></strong><span>بلاغات بلدية عربية بدورة عمل وصلاحيات وسجل تدقيق.</span></a><a class="row" href="https://urbansense-dzfbcdz5.manus.space/?view=sense"><strong>SENSE Experience <span class="status code">نواة مستقلة</span></strong><span>كود وهوية مراجع منفصلة؛ لا إنتاج مستقل أو بيانات مزودين بعد.</span></a><a class="row" href="https://urbansense-dzfbcdz5.manus.space/?view=progress"><strong>السوق والمتجر <span class="status planned">مقترح</span></strong><span>لا مدفوعات أو كتالوج حي أو حسابات تجارية الآن؛ راجع لوحة التقدم قبل افتراض الجاهزية.</span></a><a class="row" href="https://urbansense-dzfbcdz5.manus.space/?view=domain"><strong>الدومين والبريد <span class="status planned">قيد قرار</span></strong><span>لا نطاق أم أو بريد مهني جديد مربوط قبل اعتماد المالك وفحصه.</span></a></div></section>
-        <section class="section" id="market"><p class="eyebrow">ميزة جديدة — نبض السوق</p><h2>افهم السعر قبل اتخاذ القرار.</h2><p class="lead">لوحة أولية لمتابعة الدولار مقابل الشيقل، مقارنة القنوات، وحساب قيمة المعاملة. البيانات الإرشادية لا تُعد عرضًا ماليًا أو استشارة استثمارية.</p><div class="market"><div class="market-card"><span class="pulse" id="rate-status">جاري تحميل السعر المرجعي</span><h3>السعر المرجعي العام</h3><div class="rate"><strong id="live-rate">—</strong><span>شيقل / دولار</span></div><p id="rate-time">آخر تحديث: —</p><div class="market-actions"><button class="button primary small" id="refresh-rate" type="button">تحديث السعر ↻</button><a class="button small" href="#calculator">احسب معاملتك ↓</a></div></div><div class="market-card"><h3>مؤشر القرار</h3><p>قارن السعر الرقمي بالقنوات الأخرى قبل تنفيذ المعاملة.</p><div class="market-grid"><div class="metric"><strong>3.01</strong><span>قناة رقمية</span></div><div class="metric"><strong>3.04</strong><span>فرع نقدي</span></div><div class="metric"><strong>3.00</strong><span>صرافة إرشادية</span></div></div><p class="notice">القيم المعروضة نموذج أولي ويمكن ربطها لاحقًا بمصادر موثوقة خاصة بالمنصة.</p></div></div><div class="market-tools"><div class="tool-card"><h3>مقارنة القنوات</h3><p>عرض مبسط للفارق بين الأسعار الإرشادية.</p><table class="comparison"><thead><tr><th>القناة</th><th>السعر</th><th>المؤشر</th></tr></thead><tbody><tr><td>تطبيق بنكي</td><td>3.01</td><td>الأفضل حاليًا</td></tr><tr><td>صرافة محلية</td><td>3.00</td><td>بديل للمقارنة</td></tr><tr><td>فرع نقدي</td><td>3.04</td><td>أعلى هامشًا</td></tr></tbody></table></div><div class="tool-card" id="calculator"><h3>حاسبة تحويل العملات</h3><p>احسب القيمة التقريبية قبل الذهاب إلى البنك أو الصراف.</p><div class="form-row"><div><label for="amount">المبلغ بالدولار</label><input id="amount" type="number" min="0" step="0.01" value="100" /></div><div><label for="source">مصدر السعر</label><select id="source"><option value="3.01">تطبيق بنكي — 3.01</option><option value="3.00">صرافة محلية — 3.00</option><option value="3.04">فرع نقدي — 3.04</option><option value="live">السعر المرجعي المباشر</option></select></div></div><div class="result" id="calc-result">100 دولار ≈ 301.00 شيقل</div></div></div><div class="market-tools"><div class="tool-card"><h3>تنبيه سعري</h3><p>احفظ مستوى مستهدفًا على هذا الجهاز لتتذكر مراجعته.</p><div class="form-row"><div><label for="target-rate">السعر المستهدف</label><input id="target-rate" type="number" min="0" step="0.001" placeholder="مثال: 3.00" /></div><div><label for="alert-type">نوع التنبيه</label><select id="alert-type"><option value="below">عند الانخفاض إلى أو أقل</option><option value="above">عند الارتفاع إلى أو أكثر</option></select></div></div><div class="market-actions"><button class="button small" id="save-alert" type="button">حفظ التنبيه</button><span class="notice" id="alert-status">لا يوجد تنبيه محفوظ.</span></div></div><div class="tool-card"><h3>ما الذي نطوره لاحقًا؟</h3><p>ربط مصادر محلية موثقة، إضافة مخطط تاريخي، وإرسال إشعارات عند تحقق الشرط.</p><div class="grid"><article class="card"><span>01</span><h3>سجل الأسعار</h3><p>مخطط يومي وأسبوعي لفهم الاتجاه بدل الاعتماد على لقطة واحدة.</p></article><article class="card"><span>02</span><h3>مصادر موثقة</h3><p>إظهار المصدر ووقت التحديث لكل رقم مع معالجة تعطل المصدر.</p></article></div></div></div><p class="notice">تنبيه: الأسعار في هذه الواجهة لأغراض العرض الأولي فقط، ويجب التحقق من السعر النهائي لدى الجهة المنفذة للمعاملة.</p></section>
-        <section class="section"><p class="eyebrow">مداخل المستويات</p><h2>كل مستوى يشرح نفسه.</h2><div class="grid"><article class="card"><h3>بوابة SENSE</h3><p>المدخل العام للمنظومة ومساراتها وحدودها.</p><a href="https://urbansense-dzfbcdz5.manus.space/">افتح البوابة ←</a></article><article class="card"><h3>المستكشف المرئي</h3><p>خريطة بين المنشور والنواة المستقلة والمقترح.</p><a href="https://urbansense-dzfbcdz5.manus.space/?view=explore">افتح المستكشف ←</a></article><article class="card"><h3>لوحة التقدم</h3><p>حالة تشغيلية تميّز بين ما يعمل وما ينتظر قرارًا.</p><a href="https://urbansense-dzfbcdz5.manus.space/?view=progress">افتح اللوحة ←</a></article><article class="card"><h3>جاهزية الدومين</h3><p>ترتيب قرار الاسم والبريد دون أي شراء أو ربط صامت.</p><a href="https://urbansense-dzfbcdz5.manus.space/?view=domain">افتح صفحة القرار ←</a></article></div></section>
-      </main>
-      <footer>هذه النسخة العامة من فهرس الجذر لا تمنح صلاحيات ولا تكشف ملفات المصدر الخاصة أو تربط قواعد بيانات أو هوية أو دفعات بين التطبيقات.</footer>
-    </div>
-      <script>
-        const fallbackRate = 2.992;
-        let liveRate = fallbackRate;
-        const rateEl = document.getElementById('live-rate');
-        const timeEl = document.getElementById('rate-time');
-        const statusEl = document.getElementById('rate-status');
-        const amountEl = document.getElementById('amount');
-        const sourceEl = document.getElementById('source');
-        const resultEl = document.getElementById('calc-result');
-        const formatRate = value => Number(value).toFixed(3);
-        const updateCalculator = () => {
-          const amount = Number(amountEl.value) || 0;
-          const selected = sourceEl.value === 'live' ? liveRate : Number(sourceEl.value);
-          resultEl.textContent = `${amount.toLocaleString('ar-EG')} دولار ≈ ${(amount * selected).toLocaleString('ar-EG', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} شيقل`;
-        };
-        const renderRate = (value, sourceLabel) => {
-          liveRate = Number(value) || fallbackRate;
-          rateEl.textContent = formatRate(liveRate);
-          timeEl.textContent = `آخر تحديث: ${new Date().toLocaleString('ar-EG', { dateStyle: 'medium', timeStyle: 'short' })}`;
-          statusEl.textContent = sourceLabel;
-          updateCalculator();
-        };
-        const loadRate = async () => {
-          statusEl.textContent = 'جاري تحديث السعر المرجعي';
-          try {
-            const response = await fetch('https://api.frankfurter.app/latest?from=USD&to=ILS', { cache: 'no-store' });
-            if (!response.ok) throw new Error('rate unavailable');
-            const data = await response.json();
-            renderRate(data.rates.ILS, 'محدّث من مصدر عام');
-          } catch (error) {
-            renderRate(fallbackRate, 'بيانات احتياطية للعرض');
-          }
-        };
-        document.getElementById('refresh-rate').addEventListener('click', loadRate);
-        amountEl.addEventListener('input', updateCalculator);
-        sourceEl.addEventListener('change', updateCalculator);
-        document.getElementById('save-alert').addEventListener('click', () => {
-          const target = document.getElementById('target-rate').value;
-          const type = document.getElementById('alert-type').value;
-          const alertStatus = document.getElementById('alert-status');
-          if (!target || Number(target) <= 0) { alertStatus.textContent = 'أدخل سعرًا مستهدفًا أولًا.'; return; }
-          localStorage.setItem('sense-rate-alert', JSON.stringify({ target, type }));
-          alertStatus.textContent = `تم حفظ التنبيه عند ${target} شيقل للدولار على هذا الجهاز.`;
-        });
-        const savedAlert = JSON.parse(localStorage.getItem('sense-rate-alert') || 'null');
-        if (savedAlert) { document.getElementById('target-rate').value = savedAlert.target; document.getElementById('alert-type').value = savedAlert.type; document.getElementById('alert-status').textContent = `تنبيه محفوظ عند ${savedAlert.target} شيقل للدولار.`; }
-        loadRate();
-      </script>
-      </body>
+    <header class="shell">
+      <a class="brand" href="https://urbansense-dzfbcdz5.manus.space/"><span class="mark">S</span><span>SENSE</span></a>
+      <a class="header-link" href="https://github.com/Solvanix/urban-sense-core">للفريق التقني ←</a>
+    </header>
+    <section class="hero">
+      <div class="shell">
+        <span class="eyebrow">ابدأ بزيارة، لا بقراءة مصطلحات</span>
+        <h1>ماذا تريد أن <span>تزور</span> اليوم؟</h1>
+        <p class="lead">SENSE تجمع تجارب مستقلة. اختر وجهتك الآن: منصة بلاغات، تجربة بلدية، خريطة للمنظومة، أو مصدر العمل للفريق.</p>
+        <div class="actions">
+          <a class="button primary" href="https://urbansense-dzfbcdz5.manus.space/?view=urban">زيارة منصة البلاغات ←</a>
+          <a class="button secondary" href="https://urbansense-dzfbcdz5.manus.space/">زيارة بوابة SENSE ←</a>
+        </div>
+      </div>
+    </section>
+    <main class="shell">
+      <section aria-labelledby="journeys-title">
+        <div class="section-head"><div><p class="kicker">اختر رحلتك</p><h2 id="journeys-title">ثلاث زيارات يمكنك البدء بها الآن.</h2></div><p>كل بطاقة أدناه تفتح مكانًا حقيقيًا يمكن زيارته، لا صفحة تشرح لك ما قد نفعله يومًا ما.</p></div>
+        <div class="journeys">
+          <article class="journey featured"><span class="number">01</span><h3>لدي بلاغ أو أريد رؤية تجربة المواطن</h3><p>زر منصة Urban‑Sense يفتح التجربة العربية للبلاغات: وصف المشكلة، متابعة المسار، وفهم كيف تنتقل إلى المراجعة والتنفيذ والتحقق.</p><a href="https://urbansense-dzfbcdz5.manus.space/?view=urban">افتح Urban‑Sense ←</a></article>
+          <article class="journey"><span class="number">02</span><h3>أمثل بلدية أو جهة تريد التجربة</h3><p>شاهد أولًا كيف تنظم المنصة دور المواطن وموظف الخدمة والفريق الميداني والمشرف قبل الحديث عن حسابات أو نطاق تشغيل.</p><a href="https://urbansense-dzfbcdz5.manus.space/%D9%84%D9%84%D8%A8%D9%84%D8%AF%D9%8A%D8%A7%D8%AA">زيارة صفحة البلديات ←</a></article>
+          <article class="journey"><span class="number">03</span><h3>أريد فهم المنظومة أو التعاون معها</h3><p>بوابة SENSE تشرح أين تبدأ كل تجربة: البلديات، الشراكات، الفريق، والمسارات التي تحتاج قرارًا قبل فتحها.</p><a href="https://urbansense-dzfbcdz5.manus.space/">افتح بوابة SENSE ←</a></article>
+        </div>
+      </section>
+      <section style="margin-top:58px" aria-labelledby="visit-title">
+        <div class="section-head"><div><p class="kicker">زيارات إضافية</p><h2 id="visit-title">ادخل من هدفك، لا من اسم تقني.</h2></div><p>هذه المداخل تساعدك على رؤية العمل أو المشاركة فيه بقدر ما هو متاح فعليًا اليوم.</p></div>
+        <div class="visit-grid">
+          <article class="visit"><h3>أريد رؤية الخطة كاملة</h3><p>استكشف ما تعمل عليه المنظومة وما ينتظر مرحلة تشغيل لاحقة.</p><a href="https://urbansense-dzfbcdz5.manus.space/?view=explore">استكشف المنظومة ←</a></article>
+          <article class="visit"><h3>أريد متابعة ما يتم الآن</h3><p>راجع لوحة التقدم لفهم ما يمكن زيارته وما يحتاج قرارًا أو تجهيزًا.</p><a href="https://urbansense-dzfbcdz5.manus.space/?view=progress">افتح لوحة التقدم ←</a></article>
+          <article class="visit"><h3>أنا مطور أو عضو فريق</h3><p>اطلع على الكود والوثائق والاختبارات وطريقة تجهيز نسخة مستقلة للفريق.</p><a href="https://github.com/Solvanix/urban-sense-core">افتح مصدر العمل ←</a></article>
+          <article class="visit"><h3>أحتاج إتاحة أفضل</h3><p>في البوابة يمكنك تفعيل تباين أعلى وتقليل الحركة قبل بدء الزيارة.</p><a href="https://urbansense-dzfbcdz5.manus.space/">افتح خيارات الإتاحة ←</a></article>
+        </div>
+      </section>
+      <section class="not-yet" aria-labelledby="future-title">
+        <h2 id="future-title">أين المتجر، والمزودون، والخدمات المتخصصة؟</h2>
+        <p>لن نضع أمامك نموذج تسجيل أو صفحة بيع فارغة لتبدو المنظومة أكبر مما هي عليه. هذه المسارات تحتاج تشغيلًا حقيقيًا قبل فتحها للناس.</p>
+        <div class="not-yet-grid">
+          <article><h3>مزودو التجارب والخدمات</h3><p>ستفتح لهم تجربة SENSE Experience مستقلة عند جاهزية التسجيل والمراجعة البشرية.</p></article>
+          <article><h3>المتجر والمنتجات</h3><p>لا متجر أو دفع أو كتالوج فعلي الآن؛ لن نعرض منتجات أو تقييمات مصطنعة.</p></article>
+          <article><h3>خدمات إتاحة متخصصة</h3><p>أساس الإتاحة موجود، أما الأدوات المتخصصة فتحتاج بحثًا ومشاركة من المستخدمين قبل بنائها.</p></article>
+        </div>
+      </section>
+    </main>
+    <footer class="shell">هذه صفحة البداية العامة لـSENSE. <a href="https://github.com/Solvanix/urban-sense-core">اطلع على مصدر العمل والوثائق ←</a></footer>
+  </body>
 </html>

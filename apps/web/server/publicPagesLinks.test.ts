@@ -7,7 +7,11 @@ describe("GitHub Pages public index", () => {
 
     expect(indexHtml).toContain('href="https://urbansense-dzfbcdz5.manus.space/?view=urban"');
     expect(indexHtml).toContain('href="https://urbansense-dzfbcdz5.manus.space/?view=explore"');
-    expect(indexHtml).toContain('href="https://urbansense-dzfbcdz5.manus.space/?view=operations"');
+    expect(indexHtml).toContain('href="https://urbansense-dzfbcdz5.manus.space/%D9%84%D9%84%D8%A8%D9%84%D8%AF%D9%8A%D8%A7%D8%AA"');
+    expect(indexHtml).toContain("ماذا تريد أن <span>تزور</span> اليوم؟");
+    expect(indexHtml).toContain("زيارة منصة البلاغات");
+    expect(indexHtml).toContain("زيارة صفحة البلديات");
+    expect(indexHtml).not.toContain("نبض السوق");
     expect(indexHtml).not.toMatch(/href="\/\?view=/);
   });
 });
