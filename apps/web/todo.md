@@ -192,3 +192,4 @@
 - [x] Redesign the public SENSE entrance from technical status language into visitor journeys with concrete destination labels, while keeping unavailable services honestly framed as invitations rather than pretend products.
 - [x] Rebuild the public SENSE entrance as an interactive, visually led product guide inspired by the supplied campaign references, clearly separating the live municipal platform from the future provider experience, commerce, and accessibility tracks.
 - [x] Add short exploratory user-journey scenes to the public SENSE entrance so visitors can understand the citizen, municipality, and provider experience before following an action link, without collecting real data or pretending unavailable services are live.
+- [x] Analyze the Entreviable reference experience and translate only its applicable journey, visual hierarchy, and interaction principles into an actionable SENSE UX plan without copying its content or brand.
