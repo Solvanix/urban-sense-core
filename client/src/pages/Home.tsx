@@ -32,7 +32,7 @@ export default function Home() {
           <h1 className="mt-6 max-w-2xl text-4xl font-extrabold leading-[1.28] tracking-tight text-[#143534] sm:text-5xl lg:text-6xl">من بلاغ واضح إلى متابعة يمكن فهمها.</h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">Urban‑Sense منصة عربية لتنظيم البلاغات الخدمية البلدية: من التقديم والمراجعة إلى العمل الميداني والتحقق، قبل إتاحة التقييم لصاحب البلاغ.</p>
           <div className="mt-9 flex flex-wrap gap-3">
-            {isAuthenticated ? <Link href="/بلاغ-جديد"><Button className="h-12 gap-2 rounded-xl bg-[#e3a238] px-6 text-base font-extrabold text-[#372308] hover:bg-[#d19126]">ابدأ بلاغًا جديدًا <ArrowLeft size={18} /></Button></Link> : <Button disabled={loading} onClick={() => startLogin()} className="h-12 gap-2 rounded-xl bg-[#e3a238] px-6 text-base font-extrabold text-[#372308] hover:bg-[#d19126]">ابدأ المشاركة <ArrowLeft size={18} /></Button>}
+            <Link href="/ابدأ-بلاغ"><Button className="h-12 gap-2 rounded-xl bg-[#e3a238] px-6 text-base font-extrabold text-[#372308] hover:bg-[#d19126]">ابدأ بلاغًا <ArrowLeft size={18} /></Button></Link>
             <Link href="/كيف-تعمل" className="inline-flex h-12 items-center rounded-xl border border-slate-300 bg-white px-6 font-bold text-slate-700 transition-colors hover:bg-slate-50">كيف تعمل المنصة؟</Link>
           </div>
           <p className="mt-5 flex items-center gap-2 text-sm font-semibold text-slate-500"><ShieldCheck size={17} className="text-[#0f5b5b]" />ليست قناة طوارئ، وتعتمد المشاركة على البلدية التي فعّلت التجربة.</p>

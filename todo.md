@@ -152,3 +152,4 @@
 - [ ] Deliver a one-command server bootstrap contract: a developer with repository access, Docker, and a complete runtime environment file can bring up the application, database schema, and supporting services without code rewrites.
 - [ ] Implement the container-based bootstrap bundle, including a Docker build, local service composition, health checks, and a production handoff guide.
 - [x] Resolve the duplicate `sensePortalHref` export and the missing access-router import in the live Urban-Sense project, then verify the deployed public entry routes.
+- [x] Sync the guided citizen entry route from the central source into the live Urban‑Sense deployment and verify the public GitHub Pages citizen link reaches a working experience.
