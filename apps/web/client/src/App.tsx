@@ -18,6 +18,7 @@ import EcosystemExplorer from "./pages/EcosystemExplorer";
 import DomainReadiness from "./pages/DomainReadiness";
 import ProgressDashboard from "./pages/ProgressDashboard";
 import AccessControl from "./pages/AccessControl";
+import CitizenStart from "./pages/CitizenStart";
 import { getRootView } from "./lib/sensePortalRoute";
 
 function RootPage() {
@@ -29,6 +30,7 @@ function RootPage() {
   if (rootView === "progress") return <ProgressDashboard />;
   if (rootView === "operations") return <OperationsDashboard />;
   if (rootView === "access") return <AccessControl />;
+  if (rootView === "citizen") return <CitizenStart />;
   return <SensePortal />;
 }
 
@@ -42,6 +44,7 @@ function Router() {
       <Route path={"/كيف-تعمل"} component={HowItWorks} />
       <Route path={"/للبلديات"} component={ForMunicipalities} />
       <Route path={"/التجربة"} component={PilotInvitation} />
+      <Route path={"/ابدأ-بلاغ"} component={CitizenStart} />
       <Route path={"/بلاغ-جديد"} component={NewReport} />
       <Route path={"/بلاغاتي"} component={MyReports} />
       <Route path={"/بلاغاتي/:id"} component={ReportDetail} />
