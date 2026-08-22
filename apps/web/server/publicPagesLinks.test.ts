@@ -6,11 +6,13 @@ describe("GitHub Pages public index", () => {
     const indexHtml = readFileSync(new URL("../../../public-index/index.html", import.meta.url), "utf8");
 
     expect(indexHtml).toContain('href="https://urbansense-dzfbcdz5.manus.space/?view=urban"');
-    expect(indexHtml).toContain('href="https://urbansense-dzfbcdz5.manus.space/?view=explore"');
-    expect(indexHtml).toContain('href="https://urbansense-dzfbcdz5.manus.space/%D9%84%D9%84%D8%A8%D9%84%D8%AF%D9%8A%D8%A7%D8%AA"');
-    expect(indexHtml).toContain("ماذا تريد أن <span>تزور</span> اليوم؟");
-    expect(indexHtml).toContain("زيارة منصة البلاغات");
-    expect(indexHtml).toContain("زيارة صفحة البلديات");
+    expect(indexHtml).toContain('href="https://urbansense-dzfbcdz5.manus.space/?view=progress"');
+    expect(indexHtml).toContain('href:"https://urbansense-dzfbcdz5.manus.space/%D9%84%D9%84%D8%A8%D9%84%D8%AF%D9%8A%D8%A7%D8%AA"');
+    expect(indexHtml).toContain("اختر هدفك.<br /><strong>نفتح لك الطريق.</strong>");
+    expect(indexHtml).toContain('data-goal="citizen"');
+    expect(indexHtml).toContain('data-goal="municipality"');
+    expect(indexHtml).toContain('id="contrast-toggle"');
+    expect(indexHtml).toContain('id="motion-toggle"');
     expect(indexHtml).not.toContain("نبض السوق");
     expect(indexHtml).not.toMatch(/href="\/\?view=/);
   });

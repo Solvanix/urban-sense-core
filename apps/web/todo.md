@@ -190,3 +190,4 @@
 - [x] Review the attached reference project and record which product, access, and delivery decisions should unify with SENSE, remain separate, or be deferred.
 - [x] Publish a session-aligned navigation and role map covering visitors, users, administrators, developers, municipalities, stakeholders, providers, strategic projects, and accessibility needs from one published entrance.
 - [x] Redesign the public SENSE entrance from technical status language into visitor journeys with concrete destination labels, while keeping unavailable services honestly framed as invitations rather than pretend products.
+- [x] Rebuild the public SENSE entrance as an interactive, visually led product guide inspired by the supplied campaign references, clearly separating the live municipal platform from the future provider experience, commerce, and accessibility tracks.
