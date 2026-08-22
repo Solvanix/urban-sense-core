@@ -195,3 +195,5 @@
 - [x] Analyze the Entreviable reference experience and translate only its applicable journey, visual hierarchy, and interaction principles into an actionable SENSE UX plan without copying its content or brand.
 - [x] Review Entreviable’s existing-business, investor, service, and knowledge paths and decide which concepts map to real SENSE journeys, which remain out of scope, and which are deferred.
 - [x] Build a guided citizen entry that explains the real report flow and privacy boundary, then routes authenticated users to the existing new-report form and unauthenticated users through sign-in without creating a parallel report system.
+- [ ] Translate the supplied tourism-provider survey and learning path into a reviewable SENSE Experience data contract, provider journey, and quality criteria without creating providers, credentials, or endorsements from the source material.
+- [x] Publish a source-bound provisional SENSE Experience provider-data contract that maps the accessible consent/contact section and the public CReSInMed assessment context, while explicitly holding all hidden survey questions and the unsupplied learning path open.
