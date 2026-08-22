@@ -205,3 +205,5 @@
 - [x] Add a direct projects entry from the repository index and the public GitHub Pages index without presenting planning-only products as live services.
 - [x] Deliver and verify an end-to-end SENSE Experience provider-interest vertical slice: validated submission, durable server-side record, reviewer-only queue and reasoned decision, and a provider-safe status lookup with no public listing or fabricated data.
 - [x] Prepare a revised, review-only Leaders International response set that truthfully frames SENSE as a distributed Gaza–West Bank freelance team pursuing integration between traditional/industrial work and digital technology, while distinguishing current work from proposed products.
+- [ ] Prepare concise WhatsApp-ready Leaders International answers that frame SENSE through its value, integration, and distinctive approach rather than internal obstacles; do not publish or commit the revised wording without explicit user instruction.
+- [x] Remove the unrequested public Leaders International response draft from GitHub through a corrective commit, while preserving no revised response text in the repository unless explicitly requested.
