@@ -11,6 +11,9 @@ describe("GitHub Pages public index", () => {
     expect(indexHtml).toContain("اختر هدفك.<br /><strong>نفتح لك الطريق.</strong>");
     expect(indexHtml).toContain('data-goal="citizen"');
     expect(indexHtml).toContain('data-goal="municipality"');
+    expect(indexHtml).toContain('id="scene-play"');
+    expect(indexHtml).toContain("شاهد الرحلة في ثلاث لقطات.");
+    expect(indexHtml).toContain("لا نطلب منك بيانات هنا");
     expect(indexHtml).toContain('id="contrast-toggle"');
     expect(indexHtml).toContain('id="motion-toggle"');
     expect(indexHtml).not.toContain("نبض السوق");
