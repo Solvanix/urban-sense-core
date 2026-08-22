@@ -7,6 +7,8 @@ describe("SENSE Experience public navigation", () => {
     expect(getPublicPage("/اكتشف")).toBe("discover");
     expect(getPublicPage("/discover")).toBe("discover");
     expect(getPublicPage("/للشركاء")).toBe("partners");
+    expect(getPublicPage("/دليل-الميزات")).toBe("survey-guide");
+    expect(getPublicPage("/feature-guide")).toBe("survey-guide");
   });
 
   it("keeps unknown paths on the public gateway rather than inventing a listing", () => {

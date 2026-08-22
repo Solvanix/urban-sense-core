@@ -1,4 +1,6 @@
-type PublicPage = "home" | "discover" | "partners" | "vision" | "readiness";
+import { SurveyFeatureGuidePage } from "./SurveyFeatureGuidePage.js";
+
+type PublicPage = "home" | "discover" | "partners" | "vision" | "readiness" | "survey-guide";
 
 export function getPublicPage(pathname: string): PublicPage {
   const decodedPath = decodeURIComponent(pathname);
@@ -6,6 +8,7 @@ export function getPublicPage(pathname: string): PublicPage {
   if (decodedPath === "/للشركاء" || decodedPath === "/partners") return "partners";
   if (decodedPath === "/رؤية-مسؤولة" || decodedPath === "/responsible-vision") return "vision";
   if (decodedPath === "/جاهزية-المزود" || decodedPath === "/provider-readiness") return "readiness";
+  if (decodedPath === "/دليل-الميزات" || decodedPath === "/feature-guide") return "survey-guide";
   return "home";
 }
 
@@ -14,7 +17,8 @@ const publicLinks = [
   { href: "/اكتشف", label: "اكتشف" },
   { href: "/للشركاء", label: "الثقة والشراكة" },
   { href: "/رؤية-مسؤولة", label: "الرؤية المسؤولة" },
-  { href: "/جاهزية-المزود", label: "مسار المزود" }
+  { href: "/جاهزية-المزود", label: "مسار المزود" },
+  { href: "/دليل-الميزات", label: "دليل الميزات" }
 ];
 
 export function TourismPublicSite({
@@ -47,7 +51,7 @@ export function TourismPublicSite({
         </nav>
       </header>
 
-      {page === "home" ? <GatewayPage onNavigate={onNavigate} /> : page === "discover" ? <DiscoverPage onNavigate={onNavigate} /> : page === "partners" ? <PartnerPage onNavigate={onNavigate} /> : page === "vision" ? <ResponsibleVisionPage onNavigate={onNavigate} /> : <ProviderReadinessPage onNavigate={onNavigate} />}
+      {page === "home" ? <GatewayPage onNavigate={onNavigate} /> : page === "discover" ? <DiscoverPage onNavigate={onNavigate} /> : page === "partners" ? <PartnerPage onNavigate={onNavigate} /> : page === "vision" ? <ResponsibleVisionPage onNavigate={onNavigate} /> : page === "readiness" ? <ProviderReadinessPage onNavigate={onNavigate} /> : <SurveyFeatureGuidePage onNavigate={onNavigate} />}
 
       <footer className="tourism-footer">
         <div><span className="eyebrow">SENSE EXPERIENCE</span><p>طبقة تعريف وثقة للمكان، تُبنى مع مزودي الخدمة لا بدلًا عنهم.</p></div>
@@ -68,6 +72,7 @@ function GatewayPage({ onNavigate }: { onNavigate: (href: string) => void }) {
           <div className="gateway-actions">
             <button className="primary tourism-action" onClick={() => onNavigate("/اكتشف")}>شاهد تصور الدليل</button>
             <button className="secondary tourism-action" onClick={() => onNavigate("/جاهزية-المزود")}>أنا مزود خدمة</button>
+            <button className="secondary tourism-action" onClick={() => onNavigate("/دليل-الميزات")}>كيف تتحول المعلومات إلى تجربة؟</button>
           </div>
           <p className="status-line"><span />الواجهة العامة قيد التكوين — لا توجد قوائم أو حجوزات منشورة بعد.</p>
         </div>
