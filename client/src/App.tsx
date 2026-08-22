@@ -30,6 +30,7 @@ function RootPage() {
   if (rootView === "progress") return <ProgressDashboard />;
   if (rootView === "operations") return <OperationsDashboard />;
   if (rootView === "access") return <AccessControl />;
+  if (rootView === "citizen") return <CitizenStart />;
   return <SensePortal />;
 }
 
