@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import type { InterestReviewDecision, ProviderInterest, ProviderInterestInput } from "../onboarding/contracts.js";
+import type { InterestReviewDecision, ProviderInterest, ProviderInterestInput, ProviderInterestStatusLookup } from "../onboarding/contracts.js";
 import { configuredSenseExperienceApiBaseUrl, createProviderInterestApi } from "../onboarding/interestApi.js";
 import { ProviderInvitationPage } from "./ProviderInvitationPage.js";
 
@@ -119,7 +119,12 @@ export function ProviderOnboardingApp({ initialScreen = "invite" }: { initialScr
 
   async function saveInterest(input: ProviderInterestInput) {
     if (!interestApi) throw new Error("خدمة SENSE Experience المستقلة غير مفعلة؛ لا تُرسل بيانات مزود حقيقية في هذه المعاينة.");
-    await interestApi.providerInterest.submit.mutate(input);
+    return interestApi.providerInterest.submit.mutate(input);
+  }
+
+  async function lookupInterestStatus(input: ProviderInterestStatusLookup) {
+    if (!interestApi) throw new Error("خدمة SENSE Experience المستقلة غير مفعلة؛ لا يمكن التحقق من حالة طلب حقيقي في هذه المعاينة.");
+    return interestApi.providerInterest.lookupStatus.query(input);
   }
 
   async function decideInterest(interestId: string, outcome: InterestReviewDecision["outcome"], reason: string) {
@@ -151,7 +156,7 @@ export function ProviderOnboardingApp({ initialScreen = "invite" }: { initialScr
         <button onClick={() => setScreen("invite")}>أبدِ اهتمامك</button>
       </section>
 
-      {screen === "invite" ? <ProviderInvitationPage onOpenOnboarding={() => setScreen("onboarding")} onSubmitInterest={saveInterest} /> : screen === "reviewer" ? (
+      {screen === "invite" ? <ProviderInvitationPage onOpenOnboarding={() => setScreen("onboarding")} onSubmitInterest={saveInterest} onLookupStatus={lookupInterestStatus} /> : screen === "reviewer" ? (
         <ReviewerQueue interests={interests} message={reviewerMessage} reviewerLoginUrl={reviewerLoginUrl} onDecide={decideInterest} />
       ) : (
         <>

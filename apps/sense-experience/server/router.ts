@@ -1,6 +1,7 @@
 import { z } from "zod";
-import { providerInterestInputSchema } from "../src/onboarding/contracts.js";
-import { decideProviderInterest, submitProviderInterest } from "./providerInterestService.js";
+import { TRPCError } from "@trpc/server";
+import { providerInterestInputSchema, providerInterestStatusLookupSchema } from "../src/onboarding/contracts.js";
+import { decideProviderInterest, lookupProviderInterestStatus, submitProviderInterest } from "./providerInterestService.js";
 import { administratorProcedure, publicProcedure, reviewerProcedure, router } from "./trpc.js";
 
 const interestDecisionInput = z.object({
@@ -20,8 +21,12 @@ const reviewerRoleAssignmentInput = z.object({
 export const appRouter = router({
   providerInterest: router({
     submit: publicProcedure.input(providerInterestInputSchema).mutation(async ({ ctx, input }) => {
-      const interest = await submitProviderInterest(ctx.store, input);
-      return { id: interest.id, status: interest.status, createdAt: interest.createdAt };
+      return submitProviderInterest(ctx.store, input);
+    }),
+    lookupStatus: publicProcedure.input(providerInterestStatusLookupSchema).query(async ({ ctx, input }) => {
+      const status = await lookupProviderInterestStatus(ctx.store, input);
+      if (!status) throw new TRPCError({ code: "NOT_FOUND", message: "لم نجد طلبًا بهذه بيانات المتابعة." });
+      return status;
     }),
     listForReview: reviewerProcedure.query(async ({ ctx }) => ctx.store.listForReview()),
     decide: reviewerProcedure.input(interestDecisionInput).mutation(async ({ ctx, input }) =>

@@ -8,6 +8,8 @@ import { getSenseExperienceDb } from "./db.js";
 function toInterest(row: typeof sxProviderInterest.$inferSelect, decision?: typeof sxInterestReviewDecision.$inferSelect): ProviderInterest {
   return {
     id: row.id,
+    reference: row.publicReference,
+    statusAccessHash: row.statusAccessHash,
     brandName: row.brandName,
     providerType: row.providerType as ProviderInterest["providerType"],
     area: row.area,
@@ -42,11 +44,20 @@ export function createMysqlProviderInterestStore(): ProviderInterestStore {
       const [decision] = await db.select().from(sxInterestReviewDecision).where(eq(sxInterestReviewDecision.interestId, id)).limit(1);
       return toInterest(row, decision);
     },
+    async findByReference(reference) {
+      const db = getSenseExperienceDb();
+      const [row] = await db.select().from(sxProviderInterest).where(eq(sxProviderInterest.publicReference, reference)).limit(1);
+      if (!row) return undefined;
+      const [decision] = await db.select().from(sxInterestReviewDecision).where(eq(sxInterestReviewDecision.interestId, row.id)).limit(1);
+      return toInterest(row, decision);
+    },
     async insert(interest) {
       const db = getSenseExperienceDb();
       await db.transaction(async (transaction) => {
         await transaction.insert(sxProviderInterest).values({
           id: interest.id,
+          publicReference: interest.reference,
+          statusAccessHash: interest.statusAccessHash,
           brandName: interest.brandName,
           providerType: interest.providerType,
           area: interest.area,

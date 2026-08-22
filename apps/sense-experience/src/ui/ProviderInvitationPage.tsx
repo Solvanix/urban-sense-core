@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { ProviderInterestInput } from "../onboarding/contracts.js";
+import type { ProviderInterestInput, ProviderInterestStatusLookup, ProviderInterestStatusView, ProviderInterestSubmissionReceipt } from "../onboarding/contracts.js";
 
 type InterestDraft = Omit<ProviderInterestInput, "providerType" | "reviewConsent"> & {
   providerType: ProviderInterestInput["providerType"] | "";
@@ -26,10 +26,11 @@ const emptyInterest: InterestDraft = {
   reviewConsent: false
 };
 
-export function ProviderInvitationPage({ onOpenOnboarding, onSubmitInterest }: { onOpenOnboarding: () => void; onSubmitInterest: (input: ProviderInterestInput) => Promise<void> }) {
+export function ProviderInvitationPage({ onOpenOnboarding, onSubmitInterest, onLookupStatus }: { onOpenOnboarding: () => void; onSubmitInterest: (input: ProviderInterestInput) => Promise<ProviderInterestSubmissionReceipt>; onLookupStatus: (input: ProviderInterestStatusLookup) => Promise<ProviderInterestStatusView> }) {
   const [formOpen, setFormOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [receipt, setReceipt] = useState<ProviderInterestSubmissionReceipt | null>(null);
   const [interest, setInterest] = useState<InterestDraft>(emptyInterest);
 
   const valid = Boolean(
@@ -49,8 +50,9 @@ export function ProviderInvitationPage({ onOpenOnboarding, onSubmitInterest }: {
   async function submitInterest() {
     if (!valid || !interest.providerType) return;
     try {
-      await onSubmitInterest({ ...interest, providerType: interest.providerType, reviewConsent: true });
+      const submittedReceipt = await onSubmitInterest({ ...interest, providerType: interest.providerType, reviewConsent: true });
       setSubmitError("");
+      setReceipt(submittedReceipt);
       setSubmitted(true);
     } catch (caught) {
       setSubmitError(caught instanceof Error ? caught.message : "تعذر إرسال طلب الاهتمام إلى الخدمة المستقلة. راجع الحقول وحاول مجددًا.");
@@ -90,7 +92,8 @@ export function ProviderInvitationPage({ onOpenOnboarding, onSubmitInterest }: {
               <p className="eyebrow">وصل الاهتمام</p>
               <h2>شكرًا. هذه الخطوة ليست نشرًا عامًا.</h2>
               <p>أُرسل الطلب إلى مساحة مراجعة مستقلة، ولا يظهر للعامة. يُدعى المزود لاستكمال الملف فقط إذا كان ضمن نطاق التجربة وبعد قرار مسبب من مراجع مخوّل.</p>
-              <button className="secondary" onClick={() => { setSubmitted(false); setFormOpen(false); setInterest(emptyInterest); }}>إغلاق</button>
+              {receipt && <div className="decision-record"><b>مرجع المتابعة: {receipt.reference}</b><p>مفتاح المتابعة: <code>{receipt.accessCode}</code></p><p>احفظ المرجع والمفتاح الآن في مكان آمن. لا نحفظ المفتاح في المتصفح ولا يمكن استعادته لاحقًا.</p></div>}
+              <button className="secondary" onClick={() => { setSubmitted(false); setFormOpen(false); setInterest(emptyInterest); setReceipt(null); }}>إغلاق</button>
             </div>
           ) : (
             <>
@@ -111,8 +114,36 @@ export function ProviderInvitationPage({ onOpenOnboarding, onSubmitInterest }: {
           )}
         </section>
       )}
+      <InterestStatusLookup onLookupStatus={onLookupStatus} />
     </>
   );
+}
+
+function InterestStatusLookup({ onLookupStatus }: { onLookupStatus: (input: ProviderInterestStatusLookup) => Promise<ProviderInterestStatusView> }) {
+  const [reference, setReference] = useState("");
+  const [accessCode, setAccessCode] = useState("");
+  const [result, setResult] = useState<ProviderInterestStatusView | null>(null);
+  const [error, setError] = useState("");
+
+  async function lookup() {
+    try {
+      const status = await onLookupStatus({ reference: reference.trim().toUpperCase(), accessCode: accessCode.trim() });
+      setResult(status);
+      setError("");
+    } catch {
+      setResult(null);
+      setError("تعذر العثور على طلب بهذه بيانات المتابعة. راجع المرجع والمفتاح.");
+    }
+  }
+
+  return <section className="interest-form" aria-labelledby="status-lookup-title">
+    <div className="form-heading"><div><p className="eyebrow">متابعة خاصة</p><h2 id="status-lookup-title">تحقق من حالة طلبك.</h2></div></div>
+    <p className="lead">لا تحتاج إلى حساب عام. أدخل مرجع الطلب ومفتاح المتابعة اللذين ظهرا لك عند الإرسال. لا يعرض هذا الاستعلام بيانات الاتصال أو اسم المراجع.</p>
+    <div className="field-grid"><InputField label="مرجع الطلب" value={reference} onChange={setReference} placeholder="SX-XXXXXXXXXX" /><InputField label="مفتاح المتابعة" value={accessCode} onChange={setAccessCode} placeholder="المفتاح الذي ظهر مرة واحدة" /></div>
+    {error && <p className="form-error" role="alert">{error}</p>}
+    {result && <div className="decision-record"><b>الحالة: {result.status === "interest_submitted" ? "بانتظار المراجعة" : result.status === "invited_to_onboard" ? "دُعيت لاستكمال الملف" : "ليست ضمن التجربة الحالية"}</b>{result.decision && <><p>{result.decision.reason}</p><p>آخر قرار: {new Date(result.decision.decidedAt).toLocaleString("ar")}</p></>}</div>}
+    <div className="form-actions"><span className="microcopy">لا تعرض هذه الشاشة ملفات مزودين أو بيانات أعمال أو قرارات داخلية غير موجهة لصاحب الطلب.</span><button className="primary" disabled={!reference.trim() || !accessCode.trim()} onClick={lookup}>تحقق من الحالة</button></div>
+  </section>;
 }
 
 function InputField({ label, value, onChange, placeholder }: { label: string; value: string; onChange: (value: string) => void; placeholder: string }) {

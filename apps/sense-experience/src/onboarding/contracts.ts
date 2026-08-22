@@ -95,7 +95,30 @@ export type InterestReviewDecision = {
 
 export type ProviderInterest = ProviderInterestInput & {
   id: string;
+  reference: string;
+  statusAccessHash: string;
   status: (typeof interestStatuses)[number];
   createdAt: string;
   reviewDecision?: InterestReviewDecision;
+};
+
+export const providerInterestStatusLookupSchema = z.object({
+  reference: z.string().trim().regex(/^SX-[A-Z0-9]{10}$/),
+  accessCode: z.string().trim().regex(/^[A-Za-z0-9_-]{20,128}$/)
+});
+
+export type ProviderInterestStatusLookup = z.infer<typeof providerInterestStatusLookupSchema>;
+
+export type ProviderInterestSubmissionReceipt = {
+  reference: string;
+  accessCode: string;
+  status: (typeof interestStatuses)[number];
+  createdAt: string;
+};
+
+export type ProviderInterestStatusView = {
+  reference: string;
+  status: (typeof interestStatuses)[number];
+  createdAt: string;
+  decision?: Pick<InterestReviewDecision, "outcome" | "reason" | "decidedAt">;
 };

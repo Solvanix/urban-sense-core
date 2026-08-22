@@ -1,18 +1,61 @@
-import type { InterestReviewDecision, ProviderInterest, ProviderInterestInput, ReviewerActor } from "../src/onboarding/contracts.js";
+import { createHash, randomBytes, timingSafeEqual } from "node:crypto";
+import type { InterestReviewDecision, ProviderInterest, ProviderInterestInput, ProviderInterestStatusLookup, ProviderInterestStatusView, ProviderInterestSubmissionReceipt, ReviewerActor } from "../src/onboarding/contracts.js";
 import { createProviderInterest } from "../src/onboarding/interest.js";
 import { recordInterestReview } from "../src/onboarding/review.js";
 
 export interface ProviderInterestStore {
   listForReview(): Promise<ProviderInterest[]>;
   findById(id: string): Promise<ProviderInterest | undefined>;
+  findByReference(reference: string): Promise<ProviderInterest | undefined>;
   insert(interest: ProviderInterest): Promise<void>;
   replace(interest: ProviderInterest): Promise<void>;
 }
 
-export async function submitProviderInterest(store: ProviderInterestStore, input: ProviderInterestInput, now = new Date()): Promise<ProviderInterest> {
-  const interest = createProviderInterest(input, now);
+function createReference() {
+  return `SX-${randomBytes(5).toString("hex").toUpperCase()}`;
+}
+
+function createAccessCode() {
+  return randomBytes(24).toString("base64url");
+}
+
+function hashAccessCode(accessCode: string) {
+  return createHash("sha256").update(accessCode).digest("hex");
+}
+
+function hasMatchingAccessCode(expectedHash: string, accessCode: string) {
+  const receivedHash = hashAccessCode(accessCode);
+  return expectedHash.length === receivedHash.length && timingSafeEqual(Buffer.from(expectedHash), Buffer.from(receivedHash));
+}
+
+function toStatusView(interest: ProviderInterest): ProviderInterestStatusView {
+  return {
+    reference: interest.reference,
+    status: interest.status,
+    createdAt: interest.createdAt,
+    decision: interest.reviewDecision ? {
+      outcome: interest.reviewDecision.outcome,
+      reason: interest.reviewDecision.reason,
+      decidedAt: interest.reviewDecision.decidedAt
+    } : undefined
+  };
+}
+
+export async function submitProviderInterest(store: ProviderInterestStore, input: ProviderInterestInput, now = new Date()): Promise<ProviderInterestSubmissionReceipt> {
+  const accessCode = createAccessCode();
+  const interest = createProviderInterest(input, now, {
+    id: randomBytes(16).toString("hex"),
+    reference: createReference(),
+    statusAccessHash: hashAccessCode(accessCode)
+  });
   await store.insert(interest);
-  return interest;
+  return { reference: interest.reference, accessCode, status: interest.status, createdAt: interest.createdAt };
+}
+
+export async function lookupProviderInterestStatus(store: ProviderInterestStore, input: ProviderInterestStatusLookup): Promise<ProviderInterestStatusView | undefined> {
+  const interest = await store.findByReference(input.reference);
+  if (!interest || !hasMatchingAccessCode(interest.statusAccessHash, input.accessCode)) return undefined;
+  return toStatusView(interest);
 }
 
 export async function decideProviderInterest(
@@ -43,6 +86,10 @@ export function createMemoryProviderInterestStore(initial: ProviderInterest[] = 
     },
     async findById(id) {
       const record = records.find((item) => item.id === id);
+      return record ? copyInterest(record) : undefined;
+    },
+    async findByReference(reference) {
+      const record = records.find((item) => item.reference === reference);
       return record ? copyInterest(record) : undefined;
     },
     async insert(interest) {

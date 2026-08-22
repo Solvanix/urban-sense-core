@@ -10,6 +10,8 @@ export const reviewerRoleAssignmentState = ["active", "revoked"] as const;
 
 export const sxProviderInterest = mysqlTable("sx_provider_interest", {
   id: varchar("id", { length: 64 }).primaryKey(),
+  publicReference: varchar("public_reference", { length: 32 }).notNull(),
+  statusAccessHash: varchar("status_access_hash", { length: 128 }).notNull(),
   brandName: varchar("brand_name", { length: 120 }).notNull(),
   providerType: varchar("provider_type", { length: 64 }).notNull(),
   area: varchar("area", { length: 120 }).notNull(),
@@ -20,7 +22,10 @@ export const sxProviderInterest = mysqlTable("sx_provider_interest", {
   status: mysqlEnum("status", providerInterestStatus).notNull(),
   createdAt: timestamp("created_at").notNull(),
   updatedAt: timestamp("updated_at").notNull()
-}, (table) => [index("sx_provider_interest_status_created_idx").on(table.status, table.createdAt)]);
+}, (table) => [
+  uniqueIndex("sx_provider_interest_public_reference_unique").on(table.publicReference),
+  index("sx_provider_interest_status_created_idx").on(table.status, table.createdAt)
+]);
 
 export const sxInterestReviewDecision = mysqlTable("sx_interest_review_decision", {
   id: varchar("id", { length: 64 }).primaryKey(),
