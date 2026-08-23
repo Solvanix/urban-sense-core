@@ -18,7 +18,9 @@ const publicLinks = [
   { href: "/للشركاء", label: "الثقة والشراكة" },
   { href: "/رؤية-مسؤولة", label: "الرؤية المسؤولة" },
   { href: "/جاهزية-المزود", label: "مسار المزود" },
-  { href: "/دليل-الميزات", label: "دليل الميزات" }
+  { href: "/دليل-الميزات", label: "دليل الميزات" },
+  { href: "/استديو-التجربة", label: "استديو التجربة" },
+  { href: "/خطة-الوصول", label: "خطة الوصول" }
 ];
 
 export function TourismPublicSite({
@@ -31,7 +33,7 @@ export function TourismPublicSite({
   const page = getPublicPage(pathname);
 
   return (
-    <main className="tourism-site" dir="rtl">
+    <main id="main-content" tabIndex={-1} className="tourism-site" dir="rtl">
       <header className="tourism-nav">
         <button className="tourism-brand" onClick={() => onNavigate("/")} aria-label="العودة إلى بوابة SENSE Experience">
           <span className="tourism-brand-mark">س</span>

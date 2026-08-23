@@ -1,0 +1,12 @@
+{
+  "name": "SENSE Experience",
+  "short_name": "SENSE",
+  "description": "تجارب ومزوّدون بمراجعة بشرية ووصول شامل.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#edf3ee",
+  "theme_color": "#143f3d",
+  "icons": []
+}

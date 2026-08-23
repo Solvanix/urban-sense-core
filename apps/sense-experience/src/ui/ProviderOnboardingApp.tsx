@@ -135,7 +135,7 @@ export function ProviderOnboardingApp({ initialScreen = "invite" }: { initialScr
   }
 
   return (
-    <main className="app-shell">
+    <main id="main-content" tabIndex={-1} className="app-shell">
       <section className="topbar">
         <div className="brand-lockup">
           <span className="brand-mark" aria-hidden="true">س</span>

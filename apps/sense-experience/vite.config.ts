@@ -5,6 +5,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: "0.0.0.0",
-    allowedHosts: ["4173-iq4ewmll2w3a4ojqet5tc-9e32b7d4.us4.manus.computer", "5173-iq4ewmll2w3a4ojqet5tc-9e32b7d4.us4.manus.computer", "5174-iq4ewmll2w3a4ojqet5tc-9e32b7d4.us4.manus.computer"]
+    allowedHosts: ["4173-iq4ewmll2w3a4ojqet5tc-9e32b7d4.us4.manus.computer", "5173-iq4ewmll2w3a4ojqet5tc-9e32b7d4.us4.manus.computer", "5174-iq4ewmll2w3a4ojqet5tc-9e32b7d4.us4.manus.computer", "5173-ix09ae12f9x6ky0w07bjp-8d192e51.us4.manus.computer"]
   }
 });
