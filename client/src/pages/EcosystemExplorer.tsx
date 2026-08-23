@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 import { ecosystemRoutes } from "./SensePortal";
-import { domainReadinessHref, progressDashboardHref, sensePortalHref } from "@/lib/sensePortalRoute";
+import { domainReadinessHref, growthJourneyHref, progressDashboardHref, sensePortalHref } from "@/lib/sensePortalRoute";
 
 const liveUrl = "https://urbansense-dzfbcdz5.manus.space";
 const repositoryUrl = "https://github.com/Solvanix/urban-sense-core";
@@ -33,6 +33,7 @@ const journeys = [
   { id: "visitor", icon: UsersRound, title: "أريد رؤية ما هو متاح الآن", text: "ابدأ بالبوابة ثم افتح Urban‑Sense؛ لا تحتاج البوابة إلى حساب.", href: sensePortalHref, action: "افتح البوابة" },
   { id: "municipality", icon: Building2, title: "أعمل مع بلدية", text: "راجع المسار العام أولًا، ثم انتقل إلى العمليات فقط بحساب ودور بلدي فعّال.", href: "/?view=operations", action: "دخول العمليات" },
   { id: "provider", icon: Map, title: "أقدّم تجربة أو خدمة", text: "المسار مستقل في الكود؛ لا يوجد تسجيل مزودين أو جمع بيانات عامة الآن.", href: `${repositoryUrl}/tree/main/apps/sense-experience`, action: "استعرض النواة" },
+  { id: "learner", icon: Compass, title: "أريد تطوير مسار فردي", text: "ابدأ بهدف ومخرج صغير، ثم قرر لاحقًا إن كان التحدي يحتاج فريقًا؛ لا توجد دورة أو تسجيل مفترض.", href: growthJourneyHref, action: "ابدأ الرحلة" },
   { id: "technical", icon: Code2, title: "أريد فهم البنية أو المساهمة", text: "ابدأ بفهرس HTML ثم انتقل إلى التطبيق والوثيقة المناسبة وفق صلاحيتك في GitHub.", href: rootIndexUrl, action: "افتح فهرس الجذر" },
 ];
 
@@ -82,7 +83,7 @@ export default function EcosystemExplorer() {
 
         <section aria-labelledby="journeys" className="pb-14">
           <div className="mb-5"><p className="text-sm font-extrabold text-[#e3a238]">رحلات لا قوائم ملفات</p><h2 id="journeys" className="mt-1 text-2xl font-extrabold">اختر نيتك، ثم انتقل إلى المستوى الصحيح.</h2></div>
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {journeys.map((journey) => { const Icon = journey.icon; return <article key={journey.id} className="flex min-h-64 flex-col rounded-[1.55rem] border border-white/10 bg-white/[.045] p-5"><span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-[#f4c86d]"><Icon size={21} /></span><h3 className="mt-6 text-xl font-extrabold">{journey.title}</h3><p className="mt-3 flex-1 text-sm leading-6 text-white/60">{journey.text}</p><a href={journey.href} target={journey.href.startsWith("http") ? "_blank" : undefined} rel={journey.href.startsWith("http") ? "noreferrer" : undefined} className="mt-6 inline-flex items-center gap-2 text-sm font-extrabold text-[#f7cc71]">{journey.action}<ArrowLeft size={16} /></a></article>; })}
           </div>
         </section>

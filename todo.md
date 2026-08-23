@@ -1,5 +1,10 @@
 # Project TODO
 
+- [x] Add a public interactive individual-growth journey that branches by a learner's goal and keeps team formation optional rather than assumed.
+- [x] Link the individual journey to truthful SENSE Experience provider-readiness and future training-program states without collecting enrollment data or claiming a partnership, course, credential, or operating academy.
+- [x] Expose and test a single public source of truth for the unavailable SENSE Experience provider-readiness route and documented future training-program state, rather than linking to a generic repository directory.
+- [x] Add unit coverage for the individual-versus-team journey decisions and verify the public portal route visually on desktop and mobile.
+
 - [x] Define the Arabic RTL visual system and application information architecture.
 - [x] Model municipal scopes, roles, report states, assignments, evidence, ratings, and append-only audit events in Drizzle.
 - [x] Generate and apply reviewable SQL migrations for the civic-reporting schema.
