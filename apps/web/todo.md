@@ -235,3 +235,5 @@
 - [x] Research Reflect, PalPay, and the intended Ibraq provider from official sources to establish whether phone-linked loyalty, voucher, wallet, or credit APIs exist and what contractual, privacy, and technical gates apply.
 - [x] Define a SENSE-earned-value ledger that separates non-cash points, merchant-funded vouchers, and regulated monetary value; prohibit cash-out, balance transfer, or external credit delivery until an approved provider integration and operating policy exist.
 - [x] Build and test a public non-enrollment prototype explaining how a promoter or provider could opt in to points and link a phone number only after consent and verification, without persisting phone data or sending value externally.
+- [x] Define and test an earned-value destination preference model with a default preference and a per-redemption temporary override, allowing only approved partner routes and never collecting card, account, wallet, or phone details in the public prototype.
+- [x] Publish an evidence register that links each live loyalty and tourism-survey function to its exact GitHub source path, commit, test, and operational boundary.
