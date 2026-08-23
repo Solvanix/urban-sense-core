@@ -20,6 +20,7 @@ import ProgressDashboard from "./pages/ProgressDashboard";
 import AccessControl from "./pages/AccessControl";
 import CitizenStart from "./pages/CitizenStart";
 import GrowthJourney from "./pages/GrowthJourney";
+import LoyaltyExplainer from "./pages/LoyaltyExplainer";
 import { getRootView } from "./lib/sensePortalRoute";
 
 function RootPage() {
@@ -33,6 +34,7 @@ function RootPage() {
   if (rootView === "access") return <AccessControl />;
   if (rootView === "citizen") return <CitizenStart />;
   if (rootView === "growth") return <GrowthJourney />;
+  if (rootView === "loyalty") return <LoyaltyExplainer />;
   return <SensePortal />;
 }
 
