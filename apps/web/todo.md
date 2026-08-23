@@ -223,6 +223,7 @@
 - [x] Replace planning-oriented project entries with source-linked operational slices, feature acceptance criteria, backend dependencies, and explicit launch gates; keep uploaded raw materials outside the public repository until approved for publication.
 - [x] Package SENSE Experience as a single deployable web/API service with an independent MySQL compose path, production static serving, and a health endpoint while preserving the real-data/OIDC reviewer gate.
 - [x] Scan the repository and recent Git history for committed credentials, distinguish real secrets from placeholders, and remove or rotate any exposure before reporting the result.
+- [x] Audit the CReSInMed tourism-provider survey against SENSE Experience code, UX, and operating records to distinguish implemented features, internal criteria, and deferred capabilities.
 - [ ] Replace defensive contrast phrasing in the Leaders response set with scene, action, and decision-based wording; do not commit or publish the rewritten wording without explicit instruction.
 - [ ] Define and apply a source-safe editorial standard for repository interfaces and documentation that replaces generic self-description and defensive contrast phrasing with concrete actors, actions, and readiness states.
 - [ ] Inventory and analyze the newly supplied Tibyan, UrbanUP, Ard Kanaan, needs-assessment, training, quality, and official-correspondence source bundle; record provenance, confirmed content, use constraints, and project relevance before copying or operationalizing any material.
