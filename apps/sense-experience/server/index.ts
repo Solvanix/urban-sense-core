@@ -2,6 +2,7 @@ import express from "express";
 import path from "node:path";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { createMysqlProviderInterestStore } from "./mysqlProviderInterestStore.js";
+import { createMysqlClaimRegistryStore } from "./mysqlClaimRegistryStore.js";
 import { createMysqlReviewerIdentityStore } from "./mysqlReviewerIdentityStore.js";
 import { createSignedReviewerSessionResolver } from "./reviewerSession.js";
 import { readReviewerOidcConfig, registerReviewerOidcRoutes } from "./reviewerOidcAuth.js";
@@ -36,11 +37,12 @@ async function start() {
 
   if (readiness.acceptsProviderData && reviewerOidcConfig && reviewerStore) {
     const store = createMysqlProviderInterestStore();
+    const claimStore = createMysqlClaimRegistryStore();
     const reviewerResolver = createSignedReviewerSessionResolver<express.Request>(reviewerOidcConfig.reviewerSessionSecret);
     registerReviewerOidcRoutes(app, reviewerOidcConfig);
     app.use("/api/trpc", createExpressMiddleware({
       router: appRouter,
-      createContext: ({ req }) => createSenseContext(req, store, reviewerResolver, reviewerStore)
+      createContext: ({ req }) => createSenseContext(req, store, reviewerResolver, reviewerStore, claimStore)
     }));
   } else {
     app.use("/api/trpc", (_req, res) => res.status(503).json({

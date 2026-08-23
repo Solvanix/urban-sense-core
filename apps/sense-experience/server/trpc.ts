@@ -2,9 +2,11 @@ import { TRPCError, initTRPC } from "@trpc/server";
 import type { ReviewerActor } from "../src/onboarding/contracts.js";
 import type { ProviderInterestStore } from "./providerInterestService.js";
 import type { ReviewerIdentityStore } from "./reviewerIdentityService.js";
+import type { ClaimRegistryStore } from "./claimRegistryService.js";
 
 export type SenseContext = {
   store: ProviderInterestStore;
+  claimStore?: ClaimRegistryStore;
   reviewerStore: ReviewerIdentityStore;
   reviewer: ReviewerActor | null;
 };

@@ -52,9 +52,15 @@ export async function submitProviderInterest(store: ProviderInterestStore, input
   return { reference: interest.reference, accessCode, status: interest.status, createdAt: interest.createdAt };
 }
 
-export async function lookupProviderInterestStatus(store: ProviderInterestStore, input: ProviderInterestStatusLookup): Promise<ProviderInterestStatusView | undefined> {
+export async function findProviderInterestWithAccess(store: ProviderInterestStore, input: ProviderInterestStatusLookup): Promise<ProviderInterest | undefined> {
   const interest = await store.findByReference(input.reference);
   if (!interest || !hasMatchingAccessCode(interest.statusAccessHash, input.accessCode)) return undefined;
+  return interest;
+}
+
+export async function lookupProviderInterestStatus(store: ProviderInterestStore, input: ProviderInterestStatusLookup): Promise<ProviderInterestStatusView | undefined> {
+  const interest = await findProviderInterestWithAccess(store, input);
+  if (!interest) return undefined;
   return toStatusView(interest);
 }
 

@@ -4,6 +4,7 @@ import "./styles.css";
 import "./accessibility.css";
 import { AccessibilityControls } from "./ui/AccessibilityControls.js";
 import { AccessPlanner } from "./ui/AccessPlanner.js";
+import { ClaimRegistryWorkspace } from "./ui/ClaimRegistryWorkspace.js";
 import { ExperienceStudio } from "./ui/ExperienceStudio.js";
 import { ProviderOnboardingApp } from "./ui/ProviderOnboardingApp.js";
 import { TourismPublicSite } from "./ui/TourismPublicSite.js";
@@ -31,7 +32,8 @@ function AppRouter() {
     : route === "provider-onboarding" ? <ProviderOnboardingApp />
       : route === "experience-studio" ? <ExperienceStudio onNavigate={navigate} />
         : route === "access-planner" ? <AccessPlanner onNavigate={navigate} />
-          : <TourismPublicSite pathname={pathname} onNavigate={navigate} />;
+          : route === "claim-registry" ? <ClaimRegistryWorkspace onNavigate={navigate} />
+            : <TourismPublicSite pathname={pathname} onNavigate={navigate} />;
 
   return <><a className="skip-link" href="#main-content">انتقل إلى المحتوى الرئيسي</a><AccessibilityControls />{content}</>;
 }
