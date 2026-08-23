@@ -8,6 +8,8 @@ describe("public INDEX.html", () => {
     expect(indexHtml).toContain("INDEX.html — فهرس عام من جذر المنظومة");
     expect(indexHtml).toContain('href="/?view=urban"');
     expect(indexHtml).toContain('href="/?view=explore"');
+    expect(indexHtml).toContain('href="/?view=independence"');
+    expect(indexHtml).toContain("مسار الاستقلال");
     expect(indexHtml).not.toContain("github.com/Solvanix/urban-sense-core");
   });
 });

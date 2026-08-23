@@ -16,12 +16,13 @@ export const masakenAlKhairHref = "/?view=masaken";
 export const masakenOwnerHref = "/?view=masaken-owner";
 export const masakenPlanHref = "/?view=masaken-plan";
 export const masakenTeamHref = "/?view=masaken-team";
+export const independencePathHref = "/?view=independence";
 
-export type RootView = "urban" | "sense" | "operations" | "explore" | "domain" | "progress" | "access" | "citizen" | "growth" | "loyalty" | "experience" | "experience-studio" | "experience-access" | "experience-claims" | "masaken" | "masaken-owner" | "masaken-plan" | "masaken-team" | null;
+export type RootView = "urban" | "sense" | "operations" | "explore" | "domain" | "progress" | "access" | "citizen" | "growth" | "loyalty" | "experience" | "experience-studio" | "experience-access" | "experience-claims" | "masaken" | "masaken-owner" | "masaken-plan" | "masaken-team" | "independence" | null;
 
 export function getRootView(search: string): RootView {
   const view = new URLSearchParams(search).get("view");
-  return view === "urban" || view === "sense" || view === "operations" || view === "explore" || view === "domain" || view === "progress" || view === "access" || view === "citizen" || view === "growth" || view === "loyalty" || view === "experience" || view === "experience-studio" || view === "experience-access" || view === "experience-claims" || view === "masaken" || view === "masaken-owner" || view === "masaken-plan" || view === "masaken-team" ? view : null;
+  return view === "urban" || view === "sense" || view === "operations" || view === "explore" || view === "domain" || view === "progress" || view === "access" || view === "citizen" || view === "growth" || view === "loyalty" || view === "experience" || view === "experience-studio" || view === "experience-access" || view === "experience-claims" || view === "masaken" || view === "masaken-owner" || view === "masaken-plan" || view === "masaken-team" || view === "independence" ? view : null;
 }
 
 export function isSensePortalSearch(search: string) {

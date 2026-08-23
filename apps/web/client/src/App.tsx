@@ -23,6 +23,7 @@ import GrowthJourney from "./pages/GrowthJourney";
 import LoyaltyExplainer from "./pages/LoyaltyExplainer";
 import ExperienceProjectHub from "./pages/ExperienceProjectHub";
 import MasakenAlKhair from "./pages/MasakenAlKhair";
+import IndependencePath from "./pages/IndependencePath";
 import { getRootView } from "./lib/sensePortalRoute";
 
 function RootPage() {
@@ -45,6 +46,7 @@ function RootPage() {
   if (rootView === "masaken-owner") return <MasakenAlKhair screen="owner" />;
   if (rootView === "masaken-plan") return <MasakenAlKhair screen="plan" />;
   if (rootView === "masaken-team") return <MasakenAlKhair screen="team" />;
+  if (rootView === "independence") return <IndependencePath />;
   return <SensePortal />;
 }
 

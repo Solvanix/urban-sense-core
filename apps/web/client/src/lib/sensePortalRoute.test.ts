@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { citizenStartHref, experienceAccessHref, experienceClaimsHref, experienceHubHref, experienceStudioHref, getRootView, isSensePortalSearch, masakenAlKhairHref, masakenOwnerHref, masakenPlanHref, masakenTeamHref, municipalOperationsHref, sensePortalHref, urbanSenseHref } from "./sensePortalRoute";
+import { citizenStartHref, experienceAccessHref, experienceClaimsHref, experienceHubHref, experienceStudioHref, getRootView, independencePathHref, isSensePortalSearch, masakenAlKhairHref, masakenOwnerHref, masakenPlanHref, masakenTeamHref, municipalOperationsHref, sensePortalHref, urbanSenseHref } from "./sensePortalRoute";
 
 describe("SENSE portal public entry", () => {
   it("uses a root URL query that survives hosts without SPA subpath fallback", () => {
@@ -15,6 +15,7 @@ describe("SENSE portal public entry", () => {
     expect(masakenOwnerHref).toBe("/?view=masaken-owner");
     expect(masakenPlanHref).toBe("/?view=masaken-plan");
     expect(masakenTeamHref).toBe("/?view=masaken-team");
+    expect(independencePathHref).toBe("/?view=independence");
     expect(isSensePortalSearch("?view=sense")).toBe(true);
     expect(isSensePortalSearch("?v=release&view=sense")).toBe(true);
     expect(isSensePortalSearch("?view=other")).toBe(false);
@@ -34,6 +35,7 @@ describe("SENSE portal public entry", () => {
     expect(getRootView("?view=masaken-owner")).toBe("masaken-owner");
     expect(getRootView("?view=masaken-plan")).toBe("masaken-plan");
     expect(getRootView("?view=masaken-team")).toBe("masaken-team");
+    expect(getRootView("?view=independence")).toBe("independence");
     expect(getRootView("?view=provider")).toBeNull();
   });
 });
