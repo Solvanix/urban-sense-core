@@ -4,6 +4,7 @@ import { readReviewerOidcConfig } from "../server/reviewerOidcAuth.js";
 describe("independent reviewer OIDC configuration", () => {
   it("keeps the real-data service disabled when no independent OIDC boundary is configured", () => {
     expect(readReviewerOidcConfig({})).toBeNull();
+    expect(readReviewerOidcConfig({ SENSE_EXPERIENCE_WEB_ORIGIN: "https://experience.example" })).toBeNull();
   });
 
   it("rejects partial OIDC configuration rather than silently trusting a local reviewer", () => {

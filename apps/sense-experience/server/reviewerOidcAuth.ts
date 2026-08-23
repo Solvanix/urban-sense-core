@@ -33,15 +33,14 @@ function required(name: string, value: string | undefined) {
 }
 
 export function readReviewerOidcConfig(env: Record<string, string | undefined> = process.env): ReviewerOidcConfig | null {
-  const keys = [
+  const oidcKeys = [
     "SENSE_EXPERIENCE_OIDC_ISSUER",
     "SENSE_EXPERIENCE_OIDC_CLIENT_ID",
     "SENSE_EXPERIENCE_OIDC_CLIENT_SECRET",
     "SENSE_EXPERIENCE_OIDC_REDIRECT_URI",
-    "SENSE_EXPERIENCE_WEB_ORIGIN",
     "SENSE_EXPERIENCE_REVIEWER_SESSION_SECRET"
   ] as const;
-  const configured = keys.filter((key) => Boolean(env[key]?.trim()));
+  const configured = oidcKeys.filter((key) => Boolean(env[key]?.trim()));
   if (configured.length === 0) return null;
 
   const config: ReviewerOidcConfig = {

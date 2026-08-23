@@ -3,6 +3,10 @@ import type { AppRouter } from "../../server/router.js";
 
 export function configuredSenseExperienceApiBaseUrl() {
   const baseUrl = import.meta.env.VITE_SENSE_EXPERIENCE_API_URL?.trim().replace(/\/$/, "");
+  if (baseUrl) return baseUrl;
+  if (import.meta.env.VITE_SENSE_EXPERIENCE_SINGLE_ORIGIN === "true" && typeof window !== "undefined") {
+    return window.location.origin;
+  }
   if (!baseUrl) {
     throw new Error("لم تُفعّل خدمة SENSE Experience المستقلة بعد؛ لا يمكن حفظ بيانات المزود في هذه المعاينة.");
   }
