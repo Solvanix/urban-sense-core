@@ -41,7 +41,10 @@ function RootPage() {
   if (rootView === "experience-studio") return <ExperienceProjectHub screen="studio" />;
   if (rootView === "experience-access") return <ExperienceProjectHub screen="access" />;
   if (rootView === "experience-claims") return <ExperienceProjectHub screen="claims" />;
-  if (rootView === "masaken") return <MasakenAlKhair />;
+  if (rootView === "masaken") return <MasakenAlKhair screen="overview" />;
+  if (rootView === "masaken-owner") return <MasakenAlKhair screen="owner" />;
+  if (rootView === "masaken-plan") return <MasakenAlKhair screen="plan" />;
+  if (rootView === "masaken-team") return <MasakenAlKhair screen="team" />;
   return <SensePortal />;
 }
 
