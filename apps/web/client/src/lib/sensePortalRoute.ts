@@ -12,12 +12,13 @@ export const experienceHubHref = "/?view=experience";
 export const experienceStudioHref = "/?view=experience-studio";
 export const experienceAccessHref = "/?view=experience-access";
 export const experienceClaimsHref = "/?view=experience-claims";
+export const masakenAlKhairHref = "/?view=masaken";
 
-export type RootView = "urban" | "sense" | "operations" | "explore" | "domain" | "progress" | "access" | "citizen" | "growth" | "loyalty" | "experience" | "experience-studio" | "experience-access" | "experience-claims" | null;
+export type RootView = "urban" | "sense" | "operations" | "explore" | "domain" | "progress" | "access" | "citizen" | "growth" | "loyalty" | "experience" | "experience-studio" | "experience-access" | "experience-claims" | "masaken" | null;
 
 export function getRootView(search: string): RootView {
   const view = new URLSearchParams(search).get("view");
-  return view === "urban" || view === "sense" || view === "operations" || view === "explore" || view === "domain" || view === "progress" || view === "access" || view === "citizen" || view === "growth" || view === "loyalty" || view === "experience" || view === "experience-studio" || view === "experience-access" || view === "experience-claims" ? view : null;
+  return view === "urban" || view === "sense" || view === "operations" || view === "explore" || view === "domain" || view === "progress" || view === "access" || view === "citizen" || view === "growth" || view === "loyalty" || view === "experience" || view === "experience-studio" || view === "experience-access" || view === "experience-claims" || view === "masaken" ? view : null;
 }
 
 export function isSensePortalSearch(search: string) {

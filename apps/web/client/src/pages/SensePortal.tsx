@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { ecosystemExplorerHref, experienceHubHref, growthJourneyHref, loyaltyExplainerHref, municipalOperationsHref, urbanSenseHref } from "@/lib/sensePortalRoute";
+import { ecosystemExplorerHref, experienceHubHref, growthJourneyHref, loyaltyExplainerHref, masakenAlKhairHref, municipalOperationsHref, urbanSenseHref } from "@/lib/sensePortalRoute";
 import { Accessibility, ArrowLeft, BadgeCheck, Bot, Building2, BriefcaseBusiness, ChevronLeft, CircleDollarSign, ClipboardList, Code2, Compass, Database, Eye, Gauge, Layers3, LockKeyhole, Map, MessageCircle, Radio, Route, ShieldCheck, Store, UserRoundCheck, UsersRound, Wrench } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";
@@ -41,6 +41,7 @@ export const ecosystemRoutes: EcosystemRoute[] = [
   { id: "loyalty", label: "الاستحقاق والولاء", eyebrow: "نقاط · قسائم · قيمة مقيدة", readiness: "منشور", description: "نموذج يوضح الفرق بين نقاط غير نقدية وقسائم تاجر وقيمة مالية منظمة.", detail: "لا يطلب رقم هاتف ولا يرسل رصيدًا أو قسيمة؛ أي ربط يحتاج موافقة ومزودًا وعقدًا وتسوية.", actionLabel: "افهم نموذج الاستحقاق", href: loyaltyExplainerHref, internal: true, icon: BadgeCheck, tone: "blue" },
   { id: "commerce", label: "السوق والمتجر", eyebrow: "تجارة متعددة المشاريع", readiness: "مقترح", description: "مسار منفصل مستقبلًا لكتالوج حقيقي وطلبات ومدفوعات وسياسة إرجاع.", detail: "لا كتالوج حي، ولا طلبات، ولا شحن، ولا بوابة دفع، ولا دفتر مبيعات داخل المنظومة الآن.", actionLabel: "يعتمد على قرار الكيان والتجارة", icon: Store, tone: "amber" },
   { id: "maker", label: "التمكين والتصنيع", eyebrow: "من الفكرة إلى نموذج", readiness: "مقترح", description: "تجربة مستقبلية محدودة لربط التصميم والنمذجة والتوثيق وفرص السوق.", detail: "ليست مركزًا قائمًا أو معدات مملوكة أو شراكة نافذة؛ تبدأ فقط بعد قرار قانوني وخدمة تجريبية حقيقية.", actionLabel: "راجع بوابات القرار", href: "https://github.com/Solvanix/urban-sense-core/blob/main/docs/research/SENSE-DIGITAL-MANUFACTURING-CENTER-EVIDENCE-ANALYSIS-2026-08-20.md", icon: Wrench, tone: "slate" },
+  { id: "masaken", label: "مساكن الخير", eyebrow: "سكن كريم · معايير · شراكة", readiness: "مقترح", description: "لوحة معايير لمبادرة يقودها عمر الفاروق لربط ملاك مشاركين طوعًا بمسار سكن منضبط.", detail: "ليست قوائم سكن أو طلبات أو تمويلًا أو عقدًا؛ تبدأ بعد اعتماد النطاق والشريك القانوني ومسار الإحالة.", actionLabel: "راجع معايير المبادرة", href: masakenAlKhairHref, internal: true, icon: Building2, tone: "amber" },
 ];
 
 export const ecosystemAccessGates: EcosystemAccessGate[] = [

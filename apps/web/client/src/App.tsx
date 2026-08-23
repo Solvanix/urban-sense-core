@@ -22,6 +22,7 @@ import CitizenStart from "./pages/CitizenStart";
 import GrowthJourney from "./pages/GrowthJourney";
 import LoyaltyExplainer from "./pages/LoyaltyExplainer";
 import ExperienceProjectHub from "./pages/ExperienceProjectHub";
+import MasakenAlKhair from "./pages/MasakenAlKhair";
 import { getRootView } from "./lib/sensePortalRoute";
 
 function RootPage() {
@@ -40,6 +41,7 @@ function RootPage() {
   if (rootView === "experience-studio") return <ExperienceProjectHub screen="studio" />;
   if (rootView === "experience-access") return <ExperienceProjectHub screen="access" />;
   if (rootView === "experience-claims") return <ExperienceProjectHub screen="claims" />;
+  if (rootView === "masaken") return <MasakenAlKhair />;
   return <SensePortal />;
 }
 
