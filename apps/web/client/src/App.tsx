@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, useSearch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
@@ -21,10 +21,11 @@ import AccessControl from "./pages/AccessControl";
 import CitizenStart from "./pages/CitizenStart";
 import GrowthJourney from "./pages/GrowthJourney";
 import LoyaltyExplainer from "./pages/LoyaltyExplainer";
+import ExperienceProjectHub from "./pages/ExperienceProjectHub";
 import { getRootView } from "./lib/sensePortalRoute";
 
 function RootPage() {
-  const rootView = getRootView(window.location.search);
+  const rootView = getRootView(useSearch());
   if (rootView === "urban") return <Home />;
   if (rootView === "sense") return <SensePortal />;
   if (rootView === "explore") return <EcosystemExplorer />;
@@ -35,6 +36,10 @@ function RootPage() {
   if (rootView === "citizen") return <CitizenStart />;
   if (rootView === "growth") return <GrowthJourney />;
   if (rootView === "loyalty") return <LoyaltyExplainer />;
+  if (rootView === "experience") return <ExperienceProjectHub screen="hub" />;
+  if (rootView === "experience-studio") return <ExperienceProjectHub screen="studio" />;
+  if (rootView === "experience-access") return <ExperienceProjectHub screen="access" />;
+  if (rootView === "experience-claims") return <ExperienceProjectHub screen="claims" />;
   return <SensePortal />;
 }
 

@@ -1,7 +1,7 @@
 import { ArrowLeft, ArrowUpLeft, Building2, CheckCircle2, Code2, Compass, ExternalLink, FileText, Globe2, Layers3, LockKeyhole, Map, Route, ShieldCheck, Sparkles, Store, UsersRound, Wrench } from "lucide-react";
 import { Link } from "wouter";
 import { ecosystemAccessGates, ecosystemRoutes } from "./SensePortal";
-import { domainReadinessHref, progressDashboardHref, sensePortalHref } from "@/lib/sensePortalRoute";
+import { domainReadinessHref, experienceHubHref, progressDashboardHref, sensePortalHref } from "@/lib/sensePortalRoute";
 
 const liveUrl = "https://urbansense-dzfbcdz5.manus.space";
 const repositoryUrl = "https://github.com/Solvanix/urban-sense-core";
@@ -16,7 +16,7 @@ const readinessTone = {
 const journeys = [
   { id: "visitor", icon: UsersRound, title: "أريد رؤية ما هو متاح الآن", text: "ابدأ بالبوابة ثم افتح Urban‑Sense؛ لا تحتاج البوابة إلى حساب.", href: sensePortalHref, action: "افتح البوابة" },
   { id: "municipality", icon: Building2, title: "أعمل مع بلدية", text: "راجع المسار العام أولًا، ثم انتقل إلى العمليات فقط بحساب ودور بلدي فعّال.", href: "/?view=operations", action: "دخول العمليات" },
-  { id: "provider", icon: Map, title: "أقدّم تجربة أو خدمة", text: "المسار مستقل في الكود؛ لا يوجد تسجيل مزودين أو جمع بيانات عامة الآن.", href: `${repositoryUrl}/tree/main/apps/sense-experience`, action: "استعرض النواة" },
+  { id: "provider", icon: Map, title: "أقدّم تجربة أو خدمة", text: "ابدأ بالاستديو أو خطة الوصول أو مسودة الادعاء. لا يوجد تسجيل مزودين أو جمع بيانات عامة الآن.", href: experienceHubHref, action: "افتح المشروع" },
   { id: "technical", icon: Code2, title: "أريد فهم البنية أو المساهمة", text: "ابدأ بفهرس HTML ثم انتقل إلى التطبيق والوثيقة المناسبة وفق صلاحيتك في GitHub.", href: rootIndexUrl, action: "افتح فهرس الجذر" },
 ];
 

@@ -1,6 +1,6 @@
 import { ArrowLeft, CheckCircle2, CircleDashed, Compass, ExternalLink, Globe2, LockKeyhole, MapPinned, Route, ShieldCheck, Store, Wrench } from "lucide-react";
 import { Link } from "wouter";
-import { domainReadinessHref, ecosystemExplorerHref, sensePortalHref } from "@/lib/sensePortalRoute";
+import { domainReadinessHref, ecosystemExplorerHref, experienceHubHref, sensePortalHref } from "@/lib/sensePortalRoute";
 
 const liveUrl = "https://urbansense-dzfbcdz5.manus.space";
 const repositoryUrl = "https://github.com/Solvanix/urban-sense-core";
@@ -24,7 +24,7 @@ const lanes = [
     labelTone: "text-sky-100",
     icon: CircleDashed,
     items: [
-      { title: "SENSE Experience", text: "نواة مستقلة لمسار مزودي الخدمات والمراجعة البشرية، بلا نشر مستقل أو تسجيل عام للبيانات الحقيقية حتى الآن.", href: `${repositoryUrl}/tree/main/apps/sense-experience`, action: "استعرض المصدر" },
+      { title: "SENSE Experience", text: "صفحات عملية مستقلة لمسار التجارب والمراجعة البشرية؛ تبقى بيانات المزودين وAPI المستقلة مقيدة حتى الجاهزية.", href: experienceHubHref, action: "افتح المشروع" },
       { title: "الرؤية الحاسوبية", text: "مسار بحثي مقيد بالموافقة والرخصة؛ لا توجد كاميرات حية أو مراقبة مفعلة داخل Urban‑Sense.", href: `${repositoryUrl}/blob/main/docs/research/YOLO-SMART-CITY-INTEGRATION-BLUEPRINT-2026-08-20.md`, action: "راجع المسار" },
     ],
   },

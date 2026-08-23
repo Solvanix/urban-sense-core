@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { citizenStartHref, getRootView, isSensePortalSearch, municipalOperationsHref, sensePortalHref, urbanSenseHref } from "./sensePortalRoute";
+import { citizenStartHref, experienceAccessHref, experienceClaimsHref, experienceHubHref, experienceStudioHref, getRootView, isSensePortalSearch, municipalOperationsHref, sensePortalHref, urbanSenseHref } from "./sensePortalRoute";
 
 describe("SENSE portal public entry", () => {
   it("uses a root URL query that survives hosts without SPA subpath fallback", () => {
@@ -7,6 +7,10 @@ describe("SENSE portal public entry", () => {
     expect(urbanSenseHref).toBe("/?view=urban");
     expect(municipalOperationsHref).toBe("/?view=operations");
     expect(citizenStartHref).toBe("/?view=citizen");
+    expect(experienceHubHref).toBe("/?view=experience");
+    expect(experienceStudioHref).toBe("/?view=experience-studio");
+    expect(experienceAccessHref).toBe("/?view=experience-access");
+    expect(experienceClaimsHref).toBe("/?view=experience-claims");
     expect(isSensePortalSearch("?view=sense")).toBe(true);
     expect(isSensePortalSearch("?v=release&view=sense")).toBe(true);
     expect(isSensePortalSearch("?view=other")).toBe(false);
@@ -18,6 +22,10 @@ describe("SENSE portal public entry", () => {
     expect(getRootView("?view=sense")).toBe("sense");
     expect(getRootView("?view=access")).toBe("access");
     expect(getRootView("?view=citizen")).toBe("citizen");
+    expect(getRootView("?view=experience")).toBe("experience");
+    expect(getRootView("?view=experience-studio")).toBe("experience-studio");
+    expect(getRootView("?view=experience-access")).toBe("experience-access");
+    expect(getRootView("?view=experience-claims")).toBe("experience-claims");
     expect(getRootView("?view=provider")).toBeNull();
   });
 });
