@@ -4,6 +4,9 @@
 - [x] Link the individual journey to truthful SENSE Experience provider-readiness and future training-program states without collecting enrollment data or claiming a partnership, course, credential, or operating academy.
 - [x] Expose and test a single public source of truth for the unavailable SENSE Experience provider-readiness route and documented future training-program state, rather than linking to a generic repository directory.
 - [x] Add unit coverage for the individual-versus-team journey decisions and verify the public portal route visually on desktop and mobile.
+- [x] Add a public, non-enrollment loyalty and earned-value explainer that separates non-cash points from vouchers or regulated monetary value and does not collect phone numbers or send value externally.
+- [x] Add tests for the loyalty model’s prohibition on cash-out, transfer, and external credit delivery until a provider, consent flow, and operating policy are approved.
+- [x] Assert explicitly that person-to-person transfer remains blocked in the loyalty model.
 
 - [x] Define the Arabic RTL visual system and application information architecture.
 - [x] Model municipal scopes, roles, report states, assignments, evidence, ratings, and append-only audit events in Drizzle.
