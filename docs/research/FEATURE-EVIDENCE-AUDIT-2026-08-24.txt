@@ -1,0 +1,391 @@
+=== URBAN-SENSE-CORE FEATURE FILES ===
+apps/sense-experience/docs/CLAIM-REGISTRY-VERIFICATION-NOTES.md
+apps/sense-experience/docs/LIVE-VERIFICATION.md
+apps/sense-experience/server/claimRegistryService.ts
+apps/sense-experience/server/context.ts
+apps/sense-experience/server/db.ts
+apps/sense-experience/server/index.ts
+apps/sense-experience/server/mysqlClaimRegistryStore.ts
+apps/sense-experience/server/mysqlProviderInterestStore.ts
+apps/sense-experience/server/mysqlReviewerIdentityStore.ts
+apps/sense-experience/server/providerInterestService.ts
+apps/sense-experience/server/reviewerIdentityService.ts
+apps/sense-experience/server/reviewerOidcAuth.ts
+apps/sense-experience/server/reviewerSession.ts
+apps/sense-experience/server/router.ts
+apps/sense-experience/server/runtimeReadiness.ts
+apps/sense-experience/server/trpc.ts
+apps/sense-experience/src/ui/AccessPlanner.tsx
+apps/sense-experience/src/ui/AccessibilityControls.tsx
+apps/sense-experience/src/ui/ClaimRegistryWorkspace.tsx
+apps/sense-experience/src/ui/ExperienceStudio.tsx
+apps/sense-experience/src/ui/ProviderInvitationPage.tsx
+apps/sense-experience/src/ui/ProviderOnboardingApp.tsx
+apps/sense-experience/src/ui/SurveyFeatureGuidePage.tsx
+apps/sense-experience/src/ui/TourismPublicSite.test.ts
+apps/sense-experience/src/ui/TourismPublicSite.tsx
+apps/web/client/src/pages/AccessControl.tsx
+apps/web/client/src/pages/CitizenStart.test.ts
+apps/web/client/src/pages/CitizenStart.tsx
+apps/web/client/src/pages/ComponentShowcase.tsx
+apps/web/client/src/pages/DomainReadiness.tsx
+apps/web/client/src/pages/EcosystemExplorer.tsx
+apps/web/client/src/pages/ExperienceProjectHub.test.ts
+apps/web/client/src/pages/ExperienceProjectHub.tsx
+apps/web/client/src/pages/ForMunicipalities.tsx
+apps/web/client/src/pages/GrowthJourney.tsx
+apps/web/client/src/pages/Home.tsx
+apps/web/client/src/pages/HowItWorks.tsx
+apps/web/client/src/pages/IndependencePath.tsx
+apps/web/client/src/pages/LoyaltyExplainer.tsx
+apps/web/client/src/pages/MasakenAlKhair.test.ts
+apps/web/client/src/pages/MasakenAlKhair.tsx
+apps/web/client/src/pages/MyReports.tsx
+apps/web/client/src/pages/NewReport.tsx
+apps/web/client/src/pages/NotFound.tsx
+apps/web/client/src/pages/OperationsDashboard.tsx
+apps/web/client/src/pages/OperationsReport.tsx
+apps/web/client/src/pages/PilotInvitation.tsx
+apps/web/client/src/pages/ProgressDashboard.tsx
+apps/web/client/src/pages/ReportDetail.tsx
+apps/web/client/src/pages/SensePortal.test.ts
+apps/web/client/src/pages/SensePortal.tsx
+apps/web/docs/EXPERIENCE-NAVIGATION-VERIFICATION.md
+apps/web/docs/INDEPENDENCE-PATH-VERIFICATION.md
+apps/web/docs/MASAKEN-AL-KHAIR-VERIFICATION.md
+apps/web/server/_core/context.ts
+apps/web/server/_core/cookies.ts
+apps/web/server/_core/dataApi.ts
+apps/web/server/_core/env.ts
+apps/web/server/_core/heartbeat.ts
+apps/web/server/_core/imageGeneration.ts
+apps/web/server/_core/index.ts
+apps/web/server/_core/llm.ts
+apps/web/server/_core/map.ts
+apps/web/server/_core/notification.ts
+apps/web/server/_core/oauth.ts
+apps/web/server/_core/sdk.ts
+apps/web/server/_core/storageProxy.ts
+apps/web/server/_core/systemRouter.ts
+apps/web/server/_core/trpc.ts
+apps/web/server/_core/types/cookie.d.ts
+apps/web/server/_core/types/manusTypes.ts
+apps/web/server/_core/vite.ts
+apps/web/server/_core/voiceTranscription.ts
+apps/web/server/accessPolicy.test.ts
+apps/web/server/accessPolicy.ts
+apps/web/server/auditLedger.ts
+apps/web/server/auth.logout.test.ts
+apps/web/server/db.ts
+apps/web/server/deploymentBundle.test.ts
+apps/web/server/publicPagesLinks.test.ts
+apps/web/server/reportLifecycle.test.ts
+apps/web/server/reportPolicy.ts
+apps/web/server/routers.ts
+apps/web/server/routers/access.ts
+apps/web/server/routers/reports.test.ts
+apps/web/server/routers/reports.ts
+apps/web/server/routers/reports.workflow.test.ts
+apps/web/server/storage.ts
+docs/research/AINAC-2026-VISITOR-DUE-DILIGENCE.md
+docs/research/CRESINMED-PUBLIC-CONTEXT-2026-08-22.md
+docs/research/DIGITAL-PALESTINE-INITIAL-VERIFICATION-2026-08-24.md
+docs/research/DIGIWORK-TRAINING-EVALUATION-FORM-REVIEW-2026-08-20.md
+docs/research/ENTREVIABLE-UX-REVIEW-2026-08-22.md
+docs/research/GITHUB-AND-PALESTINIAN-REFERENCE-SCAN-2026-08-23.md
+docs/research/GITHUB-AUDIT-RAW-2026-08-24.txt
+docs/research/MAHARAT-METHODOLOGY-TO-SENSE-EXPERIENCE-2026-08-20.md
+docs/research/MY-COMMUNICATION-ACADEMY-CHANNEL-ANALYSIS.md
+docs/research/MY-COMMUNICATION-ACADEMY-FULL-ARCHIVE-AUDIT-2026-08-20.md
+docs/research/PREVIEW-VERIFICATION-NOTES-2026-08-20.md
+docs/research/SENSE-DIGITAL-MANUFACTURING-CENTER-EVIDENCE-ANALYSIS-2026-08-20.md
+docs/research/SENSE-DIGIWORK-ORIGIN-STORY-2026-08-20.md
+docs/research/SENSE-LIGHTWEIGHT-CREATIVE-CONCEPT-2026-08-20.md
+docs/research/SENSE-MEETING-TO-WORKPLAN-RECONCILIATION-2026-08-20.md
+docs/research/SENSE-PORTAL-VISUAL-DIRECTION-2026-08-20.md
+docs/research/TOURISM-SURVEY-FULL-EXTRACTION-2026-08-22.md
+docs/research/TOURISM-SURVEY-INITIAL-EXTRACTION-2026-08-22.md
+docs/research/TOURISM-SURVEY-SOURCE-LOG-2026-08-22.md
+docs/research/YOLO-SMART-CITY-INTEGRATION-BLUEPRINT-2026-08-20.md
+docs/research/YOLO-SMART-CITY-LEADERSHIP-DECK-2026-08-20.md
+docs/sense-experience/APPLIED-PRODUCT-METHODOLOGY.md
+docs/sense-experience/CONTINUOUS-DEVELOPMENT-BACKLOG.md
+docs/sense-experience/ENGINEERING-HANDOFF.md
+docs/sense-experience/PERSISTENCE-BOUNDARY.md
+docs/sense-experience/PREVIEW-DEBUG.md
+docs/sense-experience/PRODUCT-BOUNDARIES.md
+docs/sense-experience/PROVIDER-INVITATION-PILOT.md
+docs/sense-experience/PROVIDER-ONBOARDING-AI-BLUEPRINT.md
+docs/sense-experience/REAL-DATA-READINESS.md
+docs/sense-experience/REPOSITORY-CONSOLIDATION-AUDIT.md
+docs/sense-experience/REVIEWER-IDENTITY-CONTRACT.md
+docs/sense-experience/SERVICE-DATA-CONTRACT.md
+docs/sense-experience/SURVEY-FEATURE-GUIDE-UX.md
+docs/sense-experience/TOURISM-PROVIDER-DATA-CONTRACT-PROVISIONAL.md
+docs/sense-experience/UI-REVIEW.md
+docs/sensecity/DISABILITY-INCLUSION-CHARTER.md
+docs/sensecity/FOUNDER_CONTENT_PARTNER_INVITATION.md
+docs/sensecity/LEGAL-ENTITY-DECISION-MEMO-2026-08-23.md
+docs/sensecity/MEDIA_AGENCY_PARTNERSHIP_BRIEF.md
+docs/sensecity/MULTIPLATFORM_MESSAGE_SYSTEM.md
+docs/sensecity/NATIONAL_CONTENT_PARTNER_INVITATION.md
+presentations/urban-sense-core-architecture/cover.html
+presentations/urban-sense-core-architecture/delivery_status.html
+presentations/urban-sense-core-architecture/isolation_by_design.html
+presentations/urban-sense-core-architecture/one_repo_not_one_system.html
+presentations/urban-sense-core-architecture/portfolio_map.html
+presentations/urban-sense-core-architecture/safe_publication_path.html
+presentations/urban-sense-core-architecture/sense_experience_position.html
+presentations/urban-sense-core-architecture/slide_state.json
+=== WEB ROUTES ===
+apps/web/client/src/App.tsx:4:import { Route, Switch, useSearch } from "wouter";
+apps/web/client/src/App.tsx:16:import SensePortal from "./pages/SensePortal";
+apps/web/client/src/App.tsx:22:import GrowthJourney from "./pages/GrowthJourney";
+apps/web/client/src/App.tsx:23:import LoyaltyExplainer from "./pages/LoyaltyExplainer";
+apps/web/client/src/App.tsx:24:import ExperienceProjectHub from "./pages/ExperienceProjectHub";
+apps/web/client/src/App.tsx:25:import MasakenAlKhair from "./pages/MasakenAlKhair";
+apps/web/client/src/App.tsx:26:import IndependencePath from "./pages/IndependencePath";
+apps/web/client/src/App.tsx:27:import { getRootView } from "./lib/sensePortalRoute";
+apps/web/client/src/App.tsx:32:  if (rootView === "sense") return <SensePortal />;
+apps/web/client/src/App.tsx:39:  if (rootView === "growth") return <GrowthJourney />;
+apps/web/client/src/App.tsx:40:  if (rootView === "loyalty") return <LoyaltyExplainer />;
+apps/web/client/src/App.tsx:41:  if (rootView === "experience") return <ExperienceProjectHub screen="hub" />;
+apps/web/client/src/App.tsx:42:  if (rootView === "experience-studio") return <ExperienceProjectHub screen="studio" />;
+apps/web/client/src/App.tsx:43:  if (rootView === "experience-access") return <ExperienceProjectHub screen="access" />;
+apps/web/client/src/App.tsx:44:  if (rootView === "experience-claims") return <ExperienceProjectHub screen="claims" />;
+apps/web/client/src/App.tsx:45:  if (rootView === "masaken") return <MasakenAlKhair screen="overview" />;
+apps/web/client/src/App.tsx:46:  if (rootView === "masaken-owner") return <MasakenAlKhair screen="owner" />;
+apps/web/client/src/App.tsx:47:  if (rootView === "masaken-plan") return <MasakenAlKhair screen="plan" />;
+apps/web/client/src/App.tsx:48:  if (rootView === "masaken-team") return <MasakenAlKhair screen="team" />;
+apps/web/client/src/App.tsx:49:  if (rootView === "independence") return <IndependencePath />;
+apps/web/client/src/App.tsx:50:  return <SensePortal />;
+apps/web/client/src/App.tsx:53:function Router() {
+apps/web/client/src/App.tsx:54:  // make sure to consider if you need authentication for certain routes
+apps/web/client/src/App.tsx:57:      <Route path={"/"} component={RootPage} />
+apps/web/client/src/App.tsx:58:      <Route path={"/sense"} component={SensePortal} />
+apps/web/client/src/App.tsx:59:      <Route path={"/منظومة-sense"} component={SensePortal} />
+apps/web/client/src/App.tsx:60:      <Route path={"/كيف-تعمل"} component={HowItWorks} />
+apps/web/client/src/App.tsx:61:      <Route path={"/للبلديات"} component={ForMunicipalities} />
+apps/web/client/src/App.tsx:62:      <Route path={"/التجربة"} component={PilotInvitation} />
+apps/web/client/src/App.tsx:63:      <Route path={"/ابدأ-بلاغ"} component={CitizenStart} />
+apps/web/client/src/App.tsx:64:      <Route path={"/بلاغ-جديد"} component={NewReport} />
+apps/web/client/src/App.tsx:65:      <Route path={"/بلاغاتي"} component={MyReports} />
+apps/web/client/src/App.tsx:66:      <Route path={"/بلاغاتي/:id"} component={ReportDetail} />
+apps/web/client/src/App.tsx:67:      <Route path={"/العمليات"} component={OperationsDashboard} />
+apps/web/client/src/App.tsx:68:      <Route path={"/العمليات/:id"} component={OperationsReport} />
+apps/web/client/src/App.tsx:69:      <Route path={"/404"} component={NotFound} />
+apps/web/client/src/App.tsx:71:      <Route component={NotFound} />
+apps/web/client/src/App.tsx:91:            <Router />
+apps/web/client/src/App.tsx:4:import { Route, Switch, useSearch } from "wouter";
+apps/web/client/src/App.tsx:16:import SensePortal from "./pages/SensePortal";
+apps/web/client/src/App.tsx:22:import GrowthJourney from "./pages/GrowthJourney";
+apps/web/client/src/App.tsx:23:import LoyaltyExplainer from "./pages/LoyaltyExplainer";
+apps/web/client/src/App.tsx:24:import ExperienceProjectHub from "./pages/ExperienceProjectHub";
+apps/web/client/src/App.tsx:25:import MasakenAlKhair from "./pages/MasakenAlKhair";
+apps/web/client/src/App.tsx:26:import IndependencePath from "./pages/IndependencePath";
+apps/web/client/src/App.tsx:27:import { getRootView } from "./lib/sensePortalRoute";
+apps/web/client/src/App.tsx:32:  if (rootView === "sense") return <SensePortal />;
+apps/web/client/src/App.tsx:39:  if (rootView === "growth") return <GrowthJourney />;
+apps/web/client/src/App.tsx:40:  if (rootView === "loyalty") return <LoyaltyExplainer />;
+apps/web/client/src/App.tsx:41:  if (rootView === "experience") return <ExperienceProjectHub screen="hub" />;
+apps/web/client/src/App.tsx:42:  if (rootView === "experience-studio") return <ExperienceProjectHub screen="studio" />;
+apps/web/client/src/App.tsx:43:  if (rootView === "experience-access") return <ExperienceProjectHub screen="access" />;
+apps/web/client/src/App.tsx:44:  if (rootView === "experience-claims") return <ExperienceProjectHub screen="claims" />;
+apps/web/client/src/App.tsx:45:  if (rootView === "masaken") return <MasakenAlKhair screen="overview" />;
+apps/web/client/src/App.tsx:46:  if (rootView === "masaken-owner") return <MasakenAlKhair screen="owner" />;
+apps/web/client/src/App.tsx:47:  if (rootView === "masaken-plan") return <MasakenAlKhair screen="plan" />;
+apps/web/client/src/App.tsx:48:  if (rootView === "masaken-team") return <MasakenAlKhair screen="team" />;
+apps/web/client/src/App.tsx:49:  if (rootView === "independence") return <IndependencePath />;
+apps/web/client/src/App.tsx:50:  return <SensePortal />;
+apps/web/client/src/App.tsx:53:function Router() {
+apps/web/client/src/App.tsx:54:  // make sure to consider if you need authentication for certain routes
+apps/web/client/src/App.tsx:57:      <Route path={"/"} component={RootPage} />
+apps/web/client/src/App.tsx:58:      <Route path={"/sense"} component={SensePortal} />
+apps/web/client/src/App.tsx:59:      <Route path={"/منظومة-sense"} component={SensePortal} />
+apps/web/client/src/App.tsx:60:      <Route path={"/كيف-تعمل"} component={HowItWorks} />
+apps/web/client/src/App.tsx:61:      <Route path={"/للبلديات"} component={ForMunicipalities} />
+apps/web/client/src/App.tsx:62:      <Route path={"/التجربة"} component={PilotInvitation} />
+apps/web/client/src/App.tsx:63:      <Route path={"/ابدأ-بلاغ"} component={CitizenStart} />
+apps/web/client/src/App.tsx:64:      <Route path={"/بلاغ-جديد"} component={NewReport} />
+apps/web/client/src/App.tsx:65:      <Route path={"/بلاغاتي"} component={MyReports} />
+apps/web/client/src/App.tsx:66:      <Route path={"/بلاغاتي/:id"} component={ReportDetail} />
+apps/web/client/src/App.tsx:67:      <Route path={"/العمليات"} component={OperationsDashboard} />
+apps/web/client/src/App.tsx:68:      <Route path={"/العمليات/:id"} component={OperationsReport} />
+apps/web/client/src/App.tsx:69:      <Route path={"/404"} component={NotFound} />
+apps/web/client/src/App.tsx:71:      <Route component={NotFound} />
+apps/web/client/src/App.tsx:91:            <Router />
+apps/web/client/src/components/Map.tsx:55: * 🛣️ ROUTES (from `routes` library)
+apps/web/client/src/components/ui/sidebar.tsx:85:      document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+apps/web/client/src/lib/growthJourney.test.ts:2:import { getGrowthOutcome, needsTeamRoute } from "./growthJourney";
+apps/web/client/src/lib/growthJourney.test.ts:8:    expect(outcome.recommendedRoute).toBe("individual");
+apps/web/client/src/lib/growthJourney.test.ts:14:    expect(outcome.recommendedRoute).toBe("individual");
+apps/web/client/src/lib/growthJourney.test.ts:19:    expect(needsTeamRoute("not-yet")).toBe("individual");
+apps/web/client/src/lib/growthJourney.test.ts:20:    expect(needsTeamRoute("yes")).toBe("team");
+apps/web/client/src/lib/growthJourney.ts:13:  recommendedRoute: "individual" | "team";
+apps/web/client/src/lib/growthJourney.ts:17:  if (choice === "copy") return { kind: "repair", title: "المحاولة بدأت من تقليد لا من أثر واضح.", explanation: "المحتوى قد يلهمك، لكنه لا يحدد ما الذي ستستطيع إنجازه أو إثباته. اختر مخرجًا صغيرًا يخص هدفك أنت.", nextAction: "عد إلى المشهد واختر مخرجًا صغيرًا قابلًا للتجربة.", recommendedRoute: "individual" };
+apps/web/client/src/lib/growthJourney.ts:18:  if (choice === "team-first") return { kind: "repair", title: "الفريق ليس أول إجابة لكل هدف.", explanation: "ابدأ بتعريف الجزء الذي تستطيع اختباره وحدك. يظهر باب التعاون حين يحتاج التحدي أدوارًا أو خبرات لا يجمعها شخص واحد.", nextAction: "حدد مخرجك الفردي أولًا، ثم افحص إن كان يحتاج أدوارًا متكاملة.", recommendedRoute: "individual" };
+apps/web/client/src/lib/growthJourney.ts:21:  return { kind: "ready", title: "اختيارك يصنع خطوة يمكن اختبارها.", explanation: `بدل وعد واسع، تبدأ الآن بـ${focus}. هذا المخرج لا يمنح قبولًا أو شهادة، لكنه يوضح ما الذي تريد تطويره بالفعل.`, nextAction: "انتقل إلى خريطة خطوتك الفردية، ثم افتح باب التعاون فقط إذا ظهر احتياج حقيقي له.", recommendedRoute: "individual" };
+apps/web/client/src/lib/growthJourney.ts:24:export function needsTeamRoute(answer: "yes" | "not-yet") {
+apps/web/client/src/lib/publicSite.ts:1:import { sensePortalHref } from "./sensePortalRoute";
+apps/web/client/src/lib/sensePortalRoute.test.ts:2:import { citizenStartHref, experienceAccessHref, experienceClaimsHref, experienceHubHref, experienceStudioHref, getRootView, independencePathHref, isSensePortalSearch, masakenAlKhairHref, masakenOwnerHref, masakenPlanHref, masakenTeamHref, municipalOperationsHref, sensePortalHref, urbanSenseHref } from "./sensePortalRoute";
+apps/web/client/src/lib/sensePortalRoute.test.ts:19:    expect(isSensePortalSearch("?view=sense")).toBe(true);
+apps/web/client/src/lib/sensePortalRoute.test.ts:20:    expect(isSensePortalSearch("?v=release&view=sense")).toBe(true);
+apps/web/client/src/lib/sensePortalRoute.test.ts:21:    expect(isSensePortalSearch("?view=other")).toBe(false);
+apps/web/client/src/lib/sensePortalRoute.test.ts:24:  it("routes the municipal admin entry through the served root without making it a public dashboard", () => {
+apps/web/client/src/lib/sensePortalRoute.ts:28:export function isSensePortalSearch(search: string) {
+apps/web/client/src/lib/trpc.ts:2:import type { AppRouter } from "../../../server/routers";
+apps/web/client/src/lib/trpc.ts:4:export const trpc = createTRPCReact<AppRouter>();
+apps/web/client/src/pages/AccessControl.tsx:3:import { accessManagementHref, urbanSenseHref } from "@/lib/sensePortalRoute";
+apps/web/client/src/pages/CitizenStart.test.ts:5:  it("guides citizens into the existing report and follow-up routes without collecting data on the entry page", () => {
+apps/web/client/src/pages/DomainReadiness.tsx:3:import { ecosystemExplorerHref, sensePortalHref } from "@/lib/sensePortalRoute";
+apps/web/client/src/pages/EcosystemExplorer.tsx:1:import { ArrowLeft, ArrowUpLeft, Building2, CheckCircle2, Code2, Compass, ExternalLink, FileText, Globe2, Layers3, LockKeyhole, Map, Route, ShieldCheck, Sparkles, Store, UsersRound, Wrench } from "lucide-react";
+apps/web/client/src/pages/EcosystemExplorer.tsx:3:import { ecosystemAccessGates, ecosystemRoutes } from "./SensePortal";
+apps/web/client/src/pages/EcosystemExplorer.tsx:4:import { domainReadinessHref, experienceHubHref, progressDashboardHref, sensePortalHref } from "@/lib/sensePortalRoute";
+apps/web/client/src/pages/EcosystemExplorer.tsx:34:            <Link href={progressDashboardHref} className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-sky-300/25 bg-sky-300/10 px-3 text-sky-50">لوحة التقدم <Route size={15} /></Link>
+apps/web/client/src/pages/EcosystemExplorer.tsx:46:            <div className="flex items-center justify-between gap-4"><div><p className="text-sm font-extrabold text-[#ffd881]">المدخل المنشور</p><h2 className="mt-1 text-2xl font-extrabold">بوابة SENSE</h2></div><Route className="text-[#e3a238]" size={28} /></div>
+apps/web/client/src/pages/EcosystemExplorer.tsx:77:            {ecosystemRoutes.map((route) => { const Icon = route.icon; return <article key={route.id} className="flex min-h-72 flex-col rounded-[1.6rem] border border-white/10 bg-[#102126] p-5"><div className="flex items-start justify-between gap-3"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10"><Icon size={20} /></span><span className={`rounded-full border px-2.5 py-1 text-[11px] font-extrabold ${readinessTone[route.readiness]}`}>{route.readiness}</span></div><p className="mt-6 text-xs font-bold text-[#f2c76e]">{route.eyebrow}</p><h3 className="mt-1 text-xl font-extrabold">{route.label}</h3><p className="mt-3 flex-1 text-sm leading-6 text-white/60">{route.description}</p>{route.href ? <a href={route.internal ? route.href : route.href} target={route.internal ? undefined : "_blank"} rel={route.internal ? undefined : "noreferrer"} className="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-[#f7cc71]">{route.actionLabel}<ArrowLeft size={16} /></a> : <span className="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-white/40">{route.actionLabel}<LockKeyhole size={15} /></span>}</article>; })}
+apps/web/client/src/pages/GrowthJourney.tsx:7:import { sensePortalHref } from "@/lib/sensePortalRoute";
+apps/web/client/src/pages/GrowthJourney.tsx:23:export default function GrowthJourney() {
+apps/web/client/src/pages/LoyaltyExplainer.tsx:2:import { sensePortalHref } from "@/lib/sensePortalRoute";
+apps/web/client/src/pages/LoyaltyExplainer.tsx:12:export default function LoyaltyExplainer() {
+apps/web/client/src/pages/OperationsReport.tsx:15:import { useLocation, useRoute } from "wouter";
+apps/web/client/src/pages/OperationsReport.tsx:27:  const [, params] = useRoute("/العمليات/:id");
+apps/web/client/src/pages/ProgressDashboard.tsx:1:import { ArrowLeft, CheckCircle2, CircleDashed, Compass, ExternalLink, Globe2, LockKeyhole, MapPinned, Route, ShieldCheck, Store, Wrench } from "lucide-react";
+apps/web/client/src/pages/ProgressDashboard.tsx:3:import { domainReadinessHref, ecosystemExplorerHref, experienceHubHref, sensePortalHref } from "@/lib/sensePortalRoute";
+apps/web/client/src/pages/ProgressDashboard.tsx:55:            <p className="inline-flex items-center gap-2 rounded-full border border-[#e3a238]/35 bg-[#e3a238]/10 px-3 py-1.5 text-xs font-extrabold text-[#ffd881]"><Route size={14} />لوحة تقدم تشغيلية</p>
+apps/web/client/src/pages/ReportDetail.tsx:12:import { useLocation, useRoute } from "wouter";
+apps/web/client/src/pages/ReportDetail.tsx:16:  const [, params] = useRoute("/بلاغاتي/:id");
+apps/web/client/src/pages/SensePortal.test.ts:2:import { ecosystemAccessGates, ecosystemRoutes, regionalCurrencyReferences } from "./SensePortal";
+apps/web/client/src/pages/SensePortal.test.ts:5:  it("labels the only public application as published and keeps the other routes honest", () => {
+apps/web/client/src/pages/SensePortal.test.ts:6:    expect(ecosystemRoutes.find((route) => route.id === "urban-sense")).toMatchObject({ readiness: "منشور", internal: true, href: "/?view=urban" });
+apps/web/client/src/pages/SensePortal.test.ts:7:    expect(ecosystemRoutes.find((route) => route.id === "experience")).toMatchObject({ readiness: "نواة مستقلة" });
+apps/web/client/src/pages/SensePortal.test.ts:8:    expect(ecosystemRoutes.filter((route) => route.readiness === "مقترح").map((route) => route.id)).toEqual(["commerce", "maker", "masaken"]);
+apps/web/client/src/pages/SensePortal.test.ts:12:    const commerce = ecosystemRoutes.find((route) => route.id === "commerce");
+apps/web/client/src/pages/SensePortal.test.ts:18:    const masaken = ecosystemRoutes.find((route) => route.id === "masaken");
+apps/web/client/src/pages/SensePortal.tsx:2:import { ecosystemExplorerHref, experienceHubHref, growthJourneyHref, independencePathHref, loyaltyExplainerHref, masakenAlKhairHref, municipalOperationsHref, urbanSenseHref } from "@/lib/sensePortalRoute";
+apps/web/client/src/pages/SensePortal.tsx:3:import { Accessibility, ArrowLeft, BadgeCheck, Bot, Building2, BriefcaseBusiness, ChevronLeft, CircleDollarSign, ClipboardList, Code2, Compass, Database, Eye, Gauge, Layers3, LockKeyhole, Map, MessageCircle, Radio, Route, ShieldCheck, Store, UserRoundCheck, UsersRound, Wrench } from "lucide-react";
+apps/web/client/src/pages/SensePortal.tsx:11:export type EcosystemRoute = {
+apps/web/client/src/pages/SensePortal.tsx:37:export const ecosystemRoutes: EcosystemRoute[] = [
+apps/web/client/src/pages/SensePortal.tsx:79:function PortalLink({ route }: { route: EcosystemRoute }) {
+apps/web/client/src/pages/SensePortal.tsx:93:export default function SensePortal() {
+apps/web/client/src/pages/SensePortal.tsx:94:  const [activeRouteId, setActiveRouteId] = useState("urban-sense");
+apps/web/client/src/pages/SensePortal.tsx:97:  const activeRoute = ecosystemRoutes.find((route) => route.id === activeRouteId) ?? ecosystemRoutes[0]!;
+apps/web/client/src/pages/SensePortal.tsx:98:  const ActiveIcon = activeRoute.icon;
+apps/web/client/src/pages/SensePortal.tsx:109:        <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(140deg,#142c31_0%,#0b171b_65%)] p-5 sm:p-7" aria-label="وحدة المسار النشط"><div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-[linear-gradient(90deg,transparent,rgba(227,162,56,.16),transparent)]" /><div className="relative flex items-start justify-between gap-4 border-b border-white/10 pb-5"><div className="flex items-center gap-3"><span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-[#f4c86d]"><ActiveIcon size={22} /></span><div><p className="text-xs font-bold text-white/50">المسار النشط</p><h2 className="text-xl font-extrabold">{activeRoute.label}</h2></div></div><span className={cn("rounded-full px-3 py-1 text-xs font-extrabold", readinessClass[activeRoute.readiness])}>{activeRoute.readiness}</span></div><div className="relative grid gap-4 pt-6 sm:grid-cols-[1fr_auto] sm:items-end"><div><p className="text-xl font-extrabold leading-8">{activeRoute.description}</p><p className="mt-3 max-w-xl leading-7 text-white/60">{activeRoute.detail}</p></div><PortalLink route={activeRoute} /></div><div className="relative mt-7 flex items-center gap-3 text-xs font-bold text-white/45"><span className="h-px flex-1 bg-white/10" /><Route size={15} /><span>حدد بطاقة لمسار مختلف</span><span className="h-px flex-1 bg-white/10" /></div></section>
+apps/web/client/src/pages/SensePortal.tsx:112:      <section className="pb-14" aria-labelledby="routes-title"><div className="mb-5 flex items-end justify-between gap-4"><div><p className="text-sm font-extrabold text-[#e3a238]">محطات المنظومة</p><h2 id="routes-title" className="mt-1 text-2xl font-extrabold">اختر المسار، لا تتوه في الوعود.</h2></div><p className="hidden max-w-md text-left text-sm leading-6 text-white/50 md:block">التدرج مستلهم من محطات العرض في المرجع: بطاقة نشطة أمامية، ومحطات مجاورة، من دون نسخ الشكل أو وظائف السيارة.</p></div><div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">{ecosystemRoutes.map((route, index) => { const Icon = route.icon; const active = route.id === activeRouteId; return <button key={route.id} onClick={() => setActiveRouteId(route.id)} aria-pressed={active} className={cn("group min-h-56 rounded-[1.65rem] border p-5 text-right motion-safe:transition-all motion-safe:duration-200", active ? cn("border-white/45 shadow-2xl", !reducedMotion && "-translate-y-2 scale-[1.015]", `bg-gradient-to-br ${toneClass[route.tone]}`) : "border-white/10 bg-white/[.045] hover:border-white/30 hover:bg-white/[.08]")}><div className="flex items-start justify-between gap-3"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-white"><Icon size={20} /></span><span className={cn("rounded-full px-2.5 py-1 text-[11px] font-extrabold", readinessClass[route.readiness])}>{route.readiness}</span></div><p className="mt-7 text-xs font-bold text-white/55">0{index + 1} · {route.eyebrow}</p><h3 className="mt-1 text-xl font-extrabold">{route.label}</h3><p className="mt-3 text-sm leading-6 text-white/60">{route.description}</p><span className="mt-5 inline-flex items-center gap-1 text-sm font-extrabold text-[#f7cc71]">عرض الحالة <ChevronLeft size={16} /></span></button>; })}</div></section>
+apps/web/client/src/pages/ExperienceProjectHub.tsx:4:import { experienceAccessHref, experienceClaimsHref, experienceHubHref, experienceStudioHref, sensePortalHref } from "@/lib/sensePortalRoute";
+apps/web/client/src/pages/ExperienceProjectHub.tsx:65:export default function ExperienceProjectHub({ screen }: { screen: ExperienceProjectScreen }) {
+apps/web/client/src/pages/ExperienceProjectHub.test.ts:2:import { experienceProjectPaths } from "./ExperienceProjectHub";
+apps/web/client/src/pages/MasakenAlKhair.tsx:5:import { masakenAlKhairHref, masakenOwnerHref, masakenPlanHref, masakenTeamHref, sensePortalHref } from "@/lib/sensePortalRoute";
+apps/web/client/src/pages/MasakenAlKhair.tsx:73:export default function MasakenAlKhair({ screen = "overview" }: { screen?: MasakenScreen }) {
+apps/web/client/src/pages/MasakenAlKhair.test.ts:2:import { masakenStandards } from "./MasakenAlKhair";
+apps/web/client/src/pages/IndependencePath.tsx:6:import { sensePortalHref } from "@/lib/sensePortalRoute";
+apps/web/client/src/pages/IndependencePath.tsx:14:export default function IndependencePath() {
+=== CORE TEST FILES ===
+apps/sense-experience/src/ui/TourismPublicSite.test.ts
+apps/sense-experience/tests/accessibilityPreferences.test.ts
+apps/sense-experience/tests/claimRegistry.projection.test.ts
+apps/sense-experience/tests/claimRegistry.router.test.ts
+apps/sense-experience/tests/claimRegistryService.test.ts
+apps/sense-experience/tests/experienceCard.test.ts
+apps/sense-experience/tests/onboarding.workflow.test.ts
+apps/sense-experience/tests/providerInterest.router.test.ts
+apps/sense-experience/tests/reviewerAdministration.router.test.ts
+apps/sense-experience/tests/reviewerIdentity.service.test.ts
+apps/sense-experience/tests/reviewerOidcAuth.test.ts
+apps/sense-experience/tests/routing.test.ts
+apps/sense-experience/tests/runtimeReadiness.test.ts
+apps/sense-experience/tests/tourismPublicSite.test.ts
+apps/web/client/src/components/PublicTilePattern.test.ts
+apps/web/client/src/lib/growthJourney.test.ts
+apps/web/client/src/lib/independencePath.test.ts
+apps/web/client/src/lib/loyaltyModel.test.ts
+apps/web/client/src/lib/publicIndexAsset.test.ts
+apps/web/client/src/lib/publicSite.test.ts
+apps/web/client/src/lib/sensePortalRoute.test.ts
+apps/web/client/src/lib/senseProgramStates.test.ts
+apps/web/client/src/pages/CitizenStart.test.ts
+apps/web/client/src/pages/ExperienceProjectHub.test.ts
+apps/web/client/src/pages/MasakenAlKhair.test.ts
+apps/web/client/src/pages/SensePortal.test.ts
+apps/web/server/accessPolicy.test.ts
+apps/web/server/auth.logout.test.ts
+apps/web/server/deploymentBundle.test.ts
+apps/web/server/publicPagesLinks.test.ts
+apps/web/server/reportLifecycle.test.ts
+apps/web/server/routers/reports.test.ts
+apps/web/server/routers/reports.workflow.test.ts
+=== TODO OPEN ITEMS ===
+- [ ] اختبار واجهات الوصول مع أشخاص ذوي إعاقة ومختصين قبل تسميتها تجربة إتاحة معتمدة.
+- [ ] تحديد مسار ربع سنوي لتوسعة SENSE Experience داخل urban-sense-core دون إنشاء مستودعات موازية.
+- [ ] بناء سجل أدلة وادعاءات قابل للمراجعة وربطه ببطاقة الزائر العامة.
+- [ ] إضافة وضع إدخال متعدد الوسائط للمزوّد مع فصل معالجة الملفات والاقتراحات الذكية عن النشر العام.
+- [ ] إضافة طبقة خرائط وتجهيزات وصول ومعلومات تنقل بعد اعتماد مصدر بيانات موثق.
+- [ ] تحسين أداء حزمة الواجهة عبر تقسيم المسارات الكبيرة قبل التوسع في وظائف جديدة.
+- [ ] إعداد سجل فجوات موحد يحدد حالة كل قدرة: جاهزة للبناء أو تحتاج سياسة أو تحتاج مصدر بيانات أو تحتاج شريك تشغيل.
+- [ ] إعداد عقد رفع ملفات خاص ومخزن مرجعي قبل تفعيل رفع ملفات الإنتاج.
+- [ ] تصميم تدفق ذكاء اصطناعي ينتج مسودات وأسئلة متابعة قابلة للموافقة البشرية فقط.
+- [ ] تحديد مصادر خرائط وتنقل موثقة وسياسة دقة الموقع قبل تفعيل الخريطة الحية.
+- [ ] تحديد حدود حجز مستقلة وسياسة متجر ومنتجات ومصدر الحقيقة قبل التفعيل.
+- [ ] تصميم جلسات اختبار تشاركي للوصول مع مستخدمين ذوي إعاقة ومراجعين مختصين.
+- [ ] تطبيق ترحيل سجل الادعاءات على قاعدة بيانات SENSE Experience مستقلة بعد إعداد الاتصال واعتماد قبول بيانات المزوّد الحقيقية.
+- [ ] اعتماد نطاق مساكن الخير الأول: المدينة، فئة مستفيد واحدة، شريك إحالة، والجهة القانونية المشغلة قبل دعوة الملاك.
+- [ ] مراجعة قانونية محلية لسياسة الإحالة وعدم التمييز والخصوصية ونموذج العقد قبل جمع عروض سكن أو بيانات مستفيدين.
+- [ ] اعتماد تمويل واضح أو النص صراحة على غياب أي ضمان إيجار أو صندوق مخاطر قبل تقديم عرض المشاركة للملاك.
+- [ ] اتخاذ قرار موثق بشأن كيان SenseCity ومسار استضافة مساكن الخير بعد مراجعة محامٍ ومحاسب فلسطينيين للغايات والتمويل والخصوصية.
+- [ ] اعتماد ميثاق التمكين رسميًا وتشكيل دائرة خبرة حية مع أشخاص ذوي إعاقة ومنظمات ممثلة لهم قبل إطلاق أي ادعاء تمكين أو خدمة عامة جديدة.
+- [ ] اختيار مسار تمكين عملي واحد للشهور الثلاثة الأولى: وصول سياحي موثق، أو سكن شامل، أو فرصة عمل/إبداع مع شريك تشغيلي مؤهل.
+- [ ] مراجعة رسالة فيديو SenseCity عبر الهدف والجمهور والعائق والبديل والدليل والصورة والفعل ومخاطر سوء الفهم.
+- [ ] ترتيب استراتيجية رسالة SenseCity في تسلسل موحد من الفكرة والجمهور والعائق إلى الزوايا والدليل والفعل والفيديو.
+- [ ] صياغة رسالة مظلة عن SenseCity وSENSE وكل الأعمال: التمكين والإتاحة، المشاركة المدنية، السياحة، مسار الاستقلال، مساكن الخير، والتقنية.
+- [ ] تطبيق قالب الهدف والشريحة والعائق والرسالة وأسئلة النقد الستة على رسالة SenseCity قبل اعتماد الفيديو.
+- [ ] إعادة نقد رسالة SenseCity من زوايا الفكرة وكسر الاعتقاد والفائدة والمعرفة والوكالة والاتصال الإنساني والثقة والمشاركة والوصل والفعل.
+- [ ] اعتماد استراتيجية نشر لمنظومة SenseCity تربط كل جمهور برسالة وقناة وفعل ومؤشر، مع منع نشر القدرات غير الجاهزة كخدمات مكتملة.
+- [ ] إعداد وثيقة قصة وحقيقة SenseCity موجهة لمدرب محتوى محتمل كشريك مؤسس، مع فصل المبني عن المستقبل وتحديد دور الشراكة.
+- [ ] تقييم قدرة الشريك المحتمل على بناء مواقع لكل موضوع أو ورشة وربطها بنموذج وكالة SENSE البرمجية والمحتوى والتجارب الرقمية.
+- [ ] تدقيق كامل لحالة urban-sense-core على GitHub مقابل المحلي ومشروع Manus، وتوثيق ما دُفع وما لم يُدفع والفجوات التنفيذية.
+=== SENSE-HUB REMOTES/HEAD ===
+15961af3823da70ce12c9e7bb570022bbf89be65
+15961af3823da70ce12c9e7bb570022bbf89be65
+## [32mmain[m
+ [31mM[m todo.md
+[31m??[m docs/research/
+=== SENSE-HUB FILES ===
+client/src/pages/ComponentShowcase.tsx
+client/src/pages/Governance.tsx
+client/src/pages/Home.tsx
+client/src/pages/NotFound.tsx
+client/src/pages/Privacy.tsx
+client/src/pages/ProviderDraft.tsx
+client/src/pages/ProviderGuide.tsx
+client/src/pages/Shop.tsx
+docs/complete-rural-tourism-survey-questions-ar.md
+docs/operations-runbook.md
+docs/portfolio-architecture.md
+docs/provider-draft-data-model.md
+docs/provider-intake-blueprint.md
+docs/provider-intelligence-and-integration-gates.md
+docs/rural-tourism-survey-trace.md
+drizzle.config.ts
+drizzle/0000_nostalgic_killmonger.sql
+drizzle/0001_mute_oracle.sql
+drizzle/meta/0000_snapshot.json
+drizzle/meta/0001_snapshot.json
+drizzle/meta/_journal.json
+drizzle/migrations/.gitkeep
+drizzle/relations.ts
+drizzle/schema.ts
+server/audit.test.ts
+server/auth.logout.test.ts
+server/commerce.router.test.ts
+server/provider-drafts.ownership.test.ts
+server/provider-drafts.router.test.ts
+server/provider-intake.test.ts
+server/public-provider-profile.test.ts
+server/publication-contracts.test.ts
+server/publication-manifest.test.ts
+server/routers.ts
+server/routers/commerce.ts
+server/routers/providerDrafts.ts
+server/routers/publications.ts
+server/shopify.smoke.test.ts
