@@ -1,0 +1,100 @@
+{
+  "project_info": {
+    "title": "urban-sense-core",
+    "created": 1787482477.368,
+    "last_updated": 1787482599.432,
+    "total_slides": 8
+  },
+  "slides": [
+    {
+      "id": "cover",
+      "state": "edited",
+      "pageNum": 1
+    },
+    {
+      "id": "one_repo_not_one_system",
+      "state": "edited",
+      "pageNum": 2
+    },
+    {
+      "id": "portfolio_map",
+      "state": "edited",
+      "pageNum": 3
+    },
+    {
+      "id": "sense_experience_position",
+      "state": "edited",
+      "pageNum": 4
+    },
+    {
+      "id": "isolation_by_design",
+      "state": "edited",
+      "pageNum": 5
+    },
+    {
+      "id": "safe_publication_path",
+      "state": "edited",
+      "pageNum": 6
+    },
+    {
+      "id": "delivery_status",
+      "state": "edited",
+      "pageNum": 7
+    },
+    {
+      "id": "activation_and_team",
+      "state": "edit_pending",
+      "pageNum": 8
+    }
+  ],
+  "outline": [
+    {
+      "id": "cover",
+      "title": "urban-sense-core",
+      "summary": "غلاف موجز: مستودع هندسي مرجعي واحد مع تطبيقات مستقلة في التشغيل والبيانات.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "one_repo_not_one_system",
+      "title": "مستودع واحد لا يعني نظامًا واحدًا",
+      "summary": "المبدأ الحاكم: مركزية الكود والقرارات والاختبارات، مع استقلال التطبيقات في النشر والبيانات والصلاحيات.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "portfolio_map",
+      "title": "خريطة المحفظة",
+      "summary": "خريطة طبقات توضح Urban-Sense وSENSE Experience والبوابة العامة والمكونات المستقبلية وحدود كل منها.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "sense_experience_position",
+      "title": "موقع SENSE Experience",
+      "summary": "يبين جمهور التطبيق وطبقاته الداخلية، من واجهة المزوّد والمراجع إلى العقود والخادم وقاعدة البيانات المستقلة.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "isolation_by_design",
+      "title": "العزل قرار معماري",
+      "summary": "مصفوفة تبين ما يمكن مشاركته بين التطبيقات وما يمنع مشاركته صراحة.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "safe_publication_path",
+      "title": "التكامل عبر عقود نشر ضيقة",
+      "summary": "مسار من تصريح المزوّد إلى المراجعة ثم إسقاط عام محدود، مع منع انتقال الأدلة والبيانات الخاصة.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "delivery_status",
+      "title": "ما بُني وما ينتظر تفعيلًا",
+      "summary": "حالة قدرات SENSE Experience: عناصر مختبرة، عناصر مبنية بانتظار تفعيل، وعناصر محجوبة بقرارات.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "activation_and_team",
+      "title": "بوابات التفعيل وطريقة عمل الفريق",
+      "summary": "تسلسل تفعيل سجل الادعاءات ونقطة البدء للمطور ودليل التسليم الحي داخل المستودع.",
+      "image_plan": "Use a suitable image if needed"
+    }
+  ]
+}

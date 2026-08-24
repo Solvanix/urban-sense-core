@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>موقع SENSE Experience</title>
+  <style>
+    *{box-sizing:border-box;margin:0}
+    .slide-container{width:1280px;min-height:720px;background:#f7f2e8;color:#12383a;font-family:Arial,"Noto Sans Arabic",sans-serif}
+    .content{min-height:720px;padding:52px 80px 0}
+    .eyebrow{color:#9d7422;font-size:14px;letter-spacing:1.4px;font-weight:700}
+    .head{display:flex;justify-content:space-between;align-items:flex-end;margin-top:12px;border-bottom:1px solid #cdbf92;padding-top:0;padding-bottom:18px}
+    .head h1{font-size:44px;letter-spacing:-1.2px}.head p{width:420px;color:#58726b;font-size:17px;line-height:1.65}
+    .architecture{display:grid;grid-template-columns:255px 1fr;gap:34px;margin-top:28px;direction:rtl}
+    .audience{min-height:420px;padding:20px 18px 0;border-top:5px solid #e5bb59;background:#143f3d;color:#f7f2e8}
+    .audience h2{font-size:22px}.audience p{margin-top:10px;color:#cfe2dc;font-size:15px;line-height:1.65}.audience ul{margin-top:28px;padding:0;list-style:none}.audience li{padding-top:15px;border-top:1px solid rgba(255,255,255,.19);font-size:18px;font-weight:700}.audience li+li{margin-top:14px}.audience small{display:block;margin-top:5px;color:#bbd0c9;font-size:13px;font-weight:400;line-height:1.55}
+    .layers{border-top:1px solid #b9cbc4}.layer{min-height:88px;display:grid;grid-template-columns:175px 1fr 235px;align-items:center;border-bottom:1px solid #b9cbc4}.layer .index{height:88px;padding:27px 18px 0;color:#9d7422;font-size:18px;font-weight:800;background:#f2ead7}.layer h3{padding-right:25px;font-size:23px}.layer p{padding:0 25px;color:#58726b;font-size:15px;line-height:1.6}.layer.dark{background:#143f3d;color:#f7f2e8;border-color:#143f3d}.layer.dark .index{background:#e5bb59;color:#14383a}.layer.dark p{color:#d2e3dd}.pill{display:inline-block;margin-right:25px;color:#12383a;background:#d9e8e2;padding:6px 9px;font-size:12px;font-weight:700}.dark .pill{color:#f9efd6;background:rgba(229,187,89,.19)}
+    .boundary{margin-top:20px;padding:16px 20px;border-top:2px solid #e5bb59;border-bottom:1px solid #c7d5ce;display:flex;align-items:center;gap:22px}.boundary b{font-size:19px;color:#12383a}.boundary p{color:#58726b;font-size:16px;line-height:1.6}.footer{margin-top:13px;color:#6c817a;font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="slide-container"><main class="content">
+    <p class="eyebrow">03 · موقع التطبيق داخل المحفظة</p>
+    <div class="head"><h1>SENSE Experience طبقة مستقلة للمزوّد والمراجع</h1><p>تطبيق سياحي عربي ضمن المستودع المرجعي؛ لا يرث قاعدة Urban-Sense أو هوياته أو صلاحياته.</p></div>
+    <section class="architecture">
+      <aside class="audience"><h2>من يخدم التطبيق؟</h2><p>لكل جمهور مسار محدود بمهامه، لا لوحة موحدة للجميع.</p><ul><li>المزوّد<small>مسودات تجربة، اهتمام، ادعاء، ومرجع دليل خاص</small></li><li>المراجع<small>هوية مستقلة، قرار معلّل، وسجل تدقيق</small></li><li>الزائر<small>إسقاط عام محدود بعد الموافقة والتحقق</small></li></ul></aside>
+      <section class="layers" aria-label="طبقات SENSE Experience">
+        <div class="layer"><div class="index">01 · الواجهة</div><h3>مسارات عربية عملية</h3><p>استديو تجربة، خطة وصول، انضمام، وسجل ادعاءات مقيد.</p></div>
+        <div class="layer"><div class="index">02 · العقود</div><h3>قواعد الخصوصية والنشر</h3><p>قوائم بيضاء، موافقة قائمة عامة، وحالة تحقق منفصلة عن تصريح المزوّد.</p></div>
+        <div class="layer dark"><div class="index">03 · الخادم</div><h3>tRPC + مراجعة بشرية</h3><p>إجراءات مقيدة برمز متابعة للمزوّد وبصلاحية OIDC للمراجع.</p><span class="pill">لا نشر تلقائي</span></div>
+        <div class="layer"><div class="index">04 · البيانات</div><h3>MySQL مستقلة</h3><p>اهتمام، ادعاء، دليل مرجعي، قرار، وسجل تدقيق داخل نطاق الخدمة.</p><span class="pill">قاعدة منفصلة</span></div>
+      </section>
+    </section>
+    <section class="boundary"><b>حد العزل</b><p>لا تنتقل بلاغات مدنية أو أدلتها أو أدوارها إلى SENSE Experience؛ ولا ينتقل من SENSE Experience إلا عقد نشر عام محدود وموافق عليه مستقبلًا.</p></section>
+    <p class="footer">المصدر: apps/sense-experience/README.md · docs/sense-experience/ENGINEERING-HANDOFF.md</p>
+  </main></div>
+</body>
+</html>

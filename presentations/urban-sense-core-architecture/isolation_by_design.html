@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>العزل قرار معماري</title>
+  <style>
+    *{box-sizing:border-box;margin:0}
+    .slide-container{width:1280px;min-height:720px;background:#f7f2e8;color:#12383a;font-family:Arial,"Noto Sans Arabic",sans-serif}
+    .content{min-height:720px;padding:54px 78px 0}
+    .eyebrow{color:#9d7422;font-size:14px;letter-spacing:1.4px;font-weight:700}
+    .header{margin-top:12px;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid #c8b375;padding-bottom:20px}
+    .header h1{font-size:45px;letter-spacing:-1.3px}.header p{width:410px;color:#59736b;font-size:17px;line-height:1.7}
+    .principle{margin-top:25px;color:#254d4c;font-size:23px;line-height:1.6;font-weight:700}.principle b{color:#a4771e}
+    .matrix{display:grid;grid-template-columns:1fr 1fr;margin-top:28px;border-top:4px solid #12383a;min-height:356px}
+    .zone{padding:25px 30px 0}.allow{background:#e4efea;border-left:1px solid #bdcfc7}.deny{background:#f1e7e1}
+    .zone-label{font-size:14px;font-weight:800;letter-spacing:1px}.allow .zone-label{color:#27675d}.deny .zone-label{color:#8a493a}
+    .zone h2{margin-top:11px;font-size:30px}.zone ul{list-style:none;margin-top:19px}.zone li{padding:11px 0;border-top:1px solid rgba(18,56,58,.16);font-size:18px;line-height:1.45}.zone li:first-child{border-top:0}.allow li::before{content:"+";display:inline-block;width:22px;color:#277166;font-size:21px;font-weight:800}.deny li::before{content:"×";display:inline-block;width:22px;color:#9d4c3d;font-size:22px;font-weight:800}
+    .rule{margin-top:24px;display:flex;align-items:center;gap:18px}.rule-line{width:72px;height:3px;background:#e5bb59}.rule p{font-size:17px;color:#45635b;line-height:1.7}.rule b{color:#12383a}.source{margin-top:14px;color:#71857e;font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="slide-container"><main class="content">
+    <p class="eyebrow">04 · حدود البيانات والهوية</p>
+    <header class="header"><h1>العزل قرار معماري</h1><p>التكامل الآمن يبدأ بتحديد ما يمكن مشاركته، ثم منع كل ما لا يملك عقد نشر صريحًا.</p></header>
+    <p class="principle">بين SENSE Experience وUrban-Sense: <b>هوية بصرية ومعايير جودة مشتركة</b>، لكن لا بيانات تشغيلية أو صلاحيات عابرة للتطبيقات.</p>
+    <section class="matrix">
+      <article class="zone allow"><p class="zone-label">يُشارك بوعي وبلا بيانات تشغيلية</p><h2>معايير وعقود عامة</h2><ul><li>إرشادات الإتاحة واللغة وواجهة RTL</li><li>نمط الجودة: فحص الأنواع والاختبارات والبناء</li><li>قرارات المعمارية والتوثيق داخل GitHub</li><li>عقد نشر عام محدود عند اعتماده</li></ul></article>
+      <article class="zone deny"><p class="zone-label">يُمنع صراحة بلا استثناء ضمني</p><h2>بيانات وأدوار تشغيلية</h2><ul><li>بلاغات المواطنين وأدلتها وسجلها الميداني</li><li>ملفات المزوّدين ومراجع الأدلة وملاحظات المراجعة</li><li>OAuth أو جلسات الدخول أو أدوار المراجعين</li><li>قاعدة بيانات مشتركة أو نسخ غير مراقب للبيانات</li></ul></article>
+    </section>
+    <div class="rule"><span class="rule-line"></span><p><b>النتيجة:</b> لا يمكن لتطبيق أن يقرأ بيانات تطبيق آخر لمجرد أنهما يعيشان في المستودع نفسه.</p></div>
+    <p class="source">المصدر: docs/PORTFOLIO-ARCHITECTURE.md · docs/sense-experience/ENGINEERING-HANDOFF.md</p>
+  </main></div>
+</body>
+</html>

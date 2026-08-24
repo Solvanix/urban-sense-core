@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>urban-sense-core</title>
+  <style>
+    *{box-sizing:border-box;margin:0} 
+    .slide-container{width:1280px;min-height:720px;background:#102e31;color:#f7f2e8;position:relative;font-family:Arial,"Noto Sans Arabic",sans-serif}
+    .content{min-height:720px;padding:76px 86px;display:flex;align-items:center;justify-content:space-between;gap:60px}
+    .copy{width:690px;position:relative;z-index:2}.kicker{color:#e5bb59;font-size:16px;letter-spacing:2px;font-weight:700;margin-bottom:26px}.title{font-size:68px;line-height:1.13;letter-spacing:-2px;font-weight:800}.title span{color:#e5bb59}.subtitle{max-width:610px;margin-top:30px;color:#d2e1dc;font-size:24px;line-height:1.75}.rule{width:105px;height:4px;background:#e5bb59;margin-top:36px}.foot{margin-top:22px;color:#9fbbb3;font-size:16px}
+    .visual{width:330px;height:420px;position:relative;flex:0 0 330px}.ring{position:absolute;border:1px solid rgba(229,187,89,.68);border-radius:50%}.ring.one{width:280px;height:280px;top:55px;right:10px}.ring.two{width:190px;height:190px;top:100px;right:55px;border-color:rgba(210,225,220,.42)}.ring.three{width:92px;height:92px;top:149px;right:104px;border-width:3px}.dot{position:absolute;border-radius:50%;background:#e5bb59}.dot.a{width:16px;height:16px;right:0;top:183px}.dot.b{width:13px;height:13px;right:124px;top:39px;background:#d2e1dc}.dot.c{width:11px;height:11px;right:259px;top:300px;background:#d2e1dc}.line{position:absolute;width:185px;height:1px;background:rgba(210,225,220,.48);transform-origin:right}.line.a{right:41px;top:191px;transform:rotate(-40deg)}.line.b{right:126px;top:112px;transform:rotate(100deg)}.node{position:absolute;right:89px;top:323px;padding:13px 17px;border:1px solid rgba(210,225,220,.38);color:#d2e1dc;background:rgba(255,255,255,.04);font-size:13px}.corner{position:absolute;left:0;bottom:0;width:235px;height:195px;border-top:1px solid rgba(229,187,89,.45);border-right:1px solid rgba(229,187,89,.45)}
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="corner"></div>
+    <div class="content">
+      <section class="copy">
+        <p class="kicker">ARCHITECTURE BRIEF · 2026</p>
+        <h1 class="title">urban-sense-core<br><span>مستودع واحد</span>، تطبيقات مستقلة</h1>
+        <p class="subtitle">كيف يحتضن المستودع المرجعي تطبيق SENSE Experience من دون دمج البيانات أو الصلاحيات أو قرارات التشغيل.</p>
+        <div class="rule"></div>
+        <p class="foot">ملخص هندسة المحفظة وحدود التكامل الآمن</p>
+      </section>
+      <aside class="visual" aria-label="رسم تجريدي لعقود مستقلة مترابطة">
+        <div class="ring one"></div><div class="ring two"></div><div class="ring three"></div>
+        <div class="line a"></div><div class="line b"></div><div class="dot a"></div><div class="dot b"></div><div class="dot c"></div>
+        <div class="node">عقود نشر محدودة</div>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>

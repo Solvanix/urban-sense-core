@@ -1,0 +1,283 @@
+=== REPO ===
+origin	https://github.com/Solvanix/urban-sense-core.git (fetch)
+origin	https://github.com/Solvanix/urban-sense-core.git (push)
+=== COMMITS ===
+6425a0c79a70afd7ef8fb65557bf7297031c15f6
+6425a0c79a70afd7ef8fb65557bf7297031c15f6
+[33m6425a0c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m feat(sensecity): add personal independence path
+[33mbd8a567[m docs(sensecity): center disability inclusion
+[33mf92eb2f[m docs(sensecity): analyze legal entity decision
+[33m695c614[m feat(masaken): add pilot readiness control center
+[33mbbf9904[m feat(masaken): add executable initiative workspace
+[33mf71571c[m feat(masaken): add reviewable standards board
+[33m5fa6f60[m docs: add Masaken Al-Khair initiative blueprint
+[33mfc49aa5[m feat(portal): link entry to experience project pages
+[33m8034822[m docs(sense-experience): add engineering handoff guide
+[33mf6ffc17[m feat(sense-experience): add governed claim registry
+[33mc5ee9dd[m docs: record delivered sense experience milestone
+[33m06fed0a[m feat(sense-experience): add experience studio and inclusive access tools
+[33m2325b34[m feat: guard earned value destinations
+[33m4908680[m feat: add guarded loyalty model
+[33mc7919ed[m feat: add source-safe individual growth journey
+=== STATUS ===
+## [32mmain[m...[31morigin/main[m
+ [31mM[m todo.md
+[31m??[m docs/research/DIGITAL-PALESTINE-INITIAL-VERIFICATION-2026-08-24.md
+[31m??[m docs/research/GITHUB-AUDIT-RAW-2026-08-24.txt
+[31m??[m docs/sensecity/FOUNDER_CONTENT_PARTNER_INVITATION.md
+[31m??[m docs/sensecity/MEDIA_AGENCY_PARTNERSHIP_BRIEF.md
+[31m??[m docs/sensecity/MULTIPLATFORM_MESSAGE_SYSTEM.md
+[31m??[m docs/sensecity/NATIONAL_CONTENT_PARTNER_INVITATION.md
+[31m??[m presentations/
+=== LOCAL TRACKED COUNT ===
+370
+=== REMOTE TRACKED COUNT ===
+370
+=== LOCAL UNTRACKED ===
+docs/research/DIGITAL-PALESTINE-INITIAL-VERIFICATION-2026-08-24.md
+docs/research/GITHUB-AUDIT-RAW-2026-08-24.txt
+docs/sensecity/FOUNDER_CONTENT_PARTNER_INVITATION.md
+docs/sensecity/MEDIA_AGENCY_PARTNERSHIP_BRIEF.md
+docs/sensecity/MULTIPLATFORM_MESSAGE_SYSTEM.md
+docs/sensecity/NATIONAL_CONTENT_PARTNER_INVITATION.md
+presentations/urban-sense-core-architecture/cover.html
+presentations/urban-sense-core-architecture/delivery_status.html
+presentations/urban-sense-core-architecture/isolation_by_design.html
+presentations/urban-sense-core-architecture/one_repo_not_one_system.html
+presentations/urban-sense-core-architecture/portfolio_map.html
+presentations/urban-sense-core-architecture/safe_publication_path.html
+presentations/urban-sense-core-architecture/sense_experience_position.html
+presentations/urban-sense-core-architecture/slide_state.json
+=== REMOTE TOP LEVEL ===
+.env.example
+.github
+.gitignore
+INDEX.html
+INDEX.md
+README.md
+apps
+docs
+projects
+public-index
+todo.md
+=== REMOTE RECENT FILES BY CATEGORY ===
+apps/README.md
+apps/sense-experience/.env.example
+apps/sense-experience/.gitignore
+apps/sense-experience/Dockerfile
+apps/sense-experience/README.md
+apps/sense-experience/compose.yaml
+apps/sense-experience/docs/CLAIM-REGISTRY-VERIFICATION-NOTES.md
+apps/sense-experience/docs/LIVE-VERIFICATION.md
+apps/sense-experience/drizzle.config.ts
+apps/sense-experience/drizzle/migrations/0000_glossy_hemingway.sql
+apps/sense-experience/drizzle/migrations/0001_clever_pride.sql
+apps/sense-experience/drizzle/migrations/0002_fresh_invisible_woman.sql
+apps/sense-experience/drizzle/migrations/0003_condemned_cerise.sql
+apps/sense-experience/drizzle/migrations/meta/0000_snapshot.json
+apps/sense-experience/drizzle/migrations/meta/0001_snapshot.json
+apps/sense-experience/drizzle/migrations/meta/0002_snapshot.json
+apps/sense-experience/drizzle/migrations/meta/0003_snapshot.json
+apps/sense-experience/drizzle/migrations/meta/_journal.json
+apps/sense-experience/drizzle/schema.ts
+apps/sense-experience/index.html
+apps/sense-experience/ops/DEPLOYMENT.md
+apps/sense-experience/ops/bootstrap-server.sh
+apps/sense-experience/ops/provision-reviewer.mjs
+apps/sense-experience/package.json
+apps/sense-experience/pnpm-lock.yaml
+apps/sense-experience/public/manifest.webmanifest
+apps/sense-experience/public/service-worker.js
+apps/sense-experience/server/claimRegistryService.ts
+apps/sense-experience/server/context.ts
+apps/sense-experience/server/db.ts
+apps/sense-experience/server/index.ts
+apps/sense-experience/server/mysqlClaimRegistryStore.ts
+apps/sense-experience/server/mysqlProviderInterestStore.ts
+apps/sense-experience/server/mysqlReviewerIdentityStore.ts
+apps/sense-experience/server/providerInterestService.ts
+apps/sense-experience/server/reviewerIdentityService.ts
+apps/sense-experience/server/reviewerOidcAuth.ts
+apps/sense-experience/server/reviewerSession.ts
+apps/sense-experience/server/router.ts
+apps/sense-experience/server/runtimeReadiness.ts
+apps/sense-experience/server/trpc.ts
+apps/sense-experience/src/accessibility.css
+apps/sense-experience/src/accessibility/preferences.ts
+apps/sense-experience/src/main.tsx
+apps/sense-experience/src/onboarding/claimRegistry.ts
+apps/sense-experience/src/onboarding/contracts.ts
+apps/sense-experience/src/onboarding/experienceCard.ts
+apps/sense-experience/src/onboarding/interest.ts
+apps/sense-experience/src/onboarding/interestApi.ts
+apps/sense-experience/src/onboarding/interestRepository.ts
+apps/sense-experience/src/onboarding/review.ts
+apps/sense-experience/src/onboarding/workflow.ts
+apps/sense-experience/src/routing.ts
+apps/sense-experience/src/styles.css
+apps/sense-experience/src/ui/AccessPlanner.tsx
+apps/sense-experience/src/ui/AccessibilityControls.tsx
+apps/sense-experience/src/ui/ClaimRegistryWorkspace.tsx
+apps/sense-experience/src/ui/ExperienceStudio.tsx
+apps/sense-experience/src/ui/ProviderInvitationPage.tsx
+apps/sense-experience/src/ui/ProviderOnboardingApp.tsx
+apps/sense-experience/src/ui/SurveyFeatureGuidePage.tsx
+apps/sense-experience/src/ui/TourismPublicSite.test.ts
+apps/sense-experience/src/ui/TourismPublicSite.tsx
+apps/sense-experience/src/vite-env.d.ts
+apps/sense-experience/tests/accessibilityPreferences.test.ts
+apps/sense-experience/tests/claimRegistry.projection.test.ts
+apps/sense-experience/tests/claimRegistry.router.test.ts
+apps/sense-experience/tests/claimRegistryService.test.ts
+apps/sense-experience/tests/experienceCard.test.ts
+apps/sense-experience/tests/onboarding.workflow.test.ts
+apps/sense-experience/tests/providerInterest.router.test.ts
+apps/sense-experience/tests/reviewerAdministration.router.test.ts
+apps/sense-experience/tests/reviewerIdentity.service.test.ts
+apps/sense-experience/tests/reviewerOidcAuth.test.ts
+apps/sense-experience/tests/routing.test.ts
+apps/sense-experience/tests/runtimeReadiness.test.ts
+apps/sense-experience/tests/tourismPublicSite.test.ts
+apps/sense-experience/tsconfig.build.json
+apps/sense-experience/tsconfig.json
+apps/sense-experience/vite.config.ts
+apps/sense-experience/vitest.config.ts
+apps/web/.env.runtime.example
+apps/web/.gitignore
+apps/web/.gitkeep
+apps/web/.prettierignore
+apps/web/.prettierrc
+apps/web/Dockerfile
+apps/web/README.md
+apps/web/client/index.html
+apps/web/client/public/.gitkeep
+apps/web/client/public/INDEX.html
+apps/web/client/public/__manus__/debug-collector.js
+apps/web/client/src/App.tsx
+apps/web/client/src/_core/hooks/useAuth.ts
+apps/web/client/src/components/AIChatBox.tsx
+apps/web/client/src/components/DashboardLayout.tsx
+apps/web/client/src/components/DashboardLayoutSkeleton.tsx
+apps/web/client/src/components/ErrorBoundary.tsx
+apps/web/client/src/components/ManusDialog.tsx
+apps/web/client/src/components/Map.tsx
+apps/web/client/src/components/PublicFooter.tsx
+apps/web/client/src/components/PublicHeader.tsx
+apps/web/client/src/components/PublicTilePattern.test.ts
+apps/web/client/src/components/PublicTilePattern.tsx
+apps/web/client/src/components/ui/accordion.tsx
+apps/web/client/src/components/ui/alert-dialog.tsx
+apps/web/client/src/components/ui/alert.tsx
+apps/web/client/src/components/ui/aspect-ratio.tsx
+apps/web/client/src/components/ui/avatar.tsx
+apps/web/client/src/components/ui/badge.tsx
+apps/web/client/src/components/ui/breadcrumb.tsx
+apps/web/client/src/components/ui/button-group.tsx
+apps/web/client/src/components/ui/button.tsx
+apps/web/client/src/components/ui/calendar.tsx
+apps/web/client/src/components/ui/card.tsx
+apps/web/client/src/components/ui/carousel.tsx
+apps/web/client/src/components/ui/chart.tsx
+apps/web/client/src/components/ui/checkbox.tsx
+apps/web/client/src/components/ui/collapsible.tsx
+apps/web/client/src/components/ui/command.tsx
+apps/web/client/src/components/ui/context-menu.tsx
+apps/web/client/src/components/ui/dialog.tsx
+apps/web/client/src/components/ui/drawer.tsx
+apps/web/client/src/components/ui/dropdown-menu.tsx
+apps/web/client/src/components/ui/empty.tsx
+apps/web/client/src/components/ui/field.tsx
+apps/web/client/src/components/ui/form.tsx
+apps/web/client/src/components/ui/hover-card.tsx
+apps/web/client/src/components/ui/input-group.tsx
+apps/web/client/src/components/ui/input-otp.tsx
+apps/web/client/src/components/ui/input.tsx
+apps/web/client/src/components/ui/item.tsx
+apps/web/client/src/components/ui/kbd.tsx
+apps/web/client/src/components/ui/label.tsx
+apps/web/client/src/components/ui/menubar.tsx
+apps/web/client/src/components/ui/navigation-menu.tsx
+apps/web/client/src/components/ui/pagination.tsx
+apps/web/client/src/components/ui/popover.tsx
+apps/web/client/src/components/ui/progress.tsx
+apps/web/client/src/components/ui/radio-group.tsx
+apps/web/client/src/components/ui/resizable.tsx
+apps/web/client/src/components/ui/scroll-area.tsx
+apps/web/client/src/components/ui/select.tsx
+apps/web/client/src/components/ui/separator.tsx
+apps/web/client/src/components/ui/sheet.tsx
+apps/web/client/src/components/ui/sidebar.tsx
+apps/web/client/src/components/ui/skeleton.tsx
+apps/web/client/src/components/ui/slider.tsx
+apps/web/client/src/components/ui/sonner.tsx
+apps/web/client/src/components/ui/spinner.tsx
+apps/web/client/src/components/ui/switch.tsx
+apps/web/client/src/components/ui/table.tsx
+apps/web/client/src/components/ui/tabs.tsx
+apps/web/client/src/components/ui/textarea.tsx
+apps/web/client/src/components/ui/toggle-group.tsx
+apps/web/client/src/components/ui/toggle.tsx
+apps/web/client/src/components/ui/tooltip.tsx
+apps/web/client/src/const.ts
+apps/web/client/src/contexts/ThemeContext.tsx
+apps/web/client/src/hooks/useComposition.ts
+apps/web/client/src/hooks/useMobile.tsx
+apps/web/client/src/hooks/usePersistFn.ts
+apps/web/client/src/index.css
+apps/web/client/src/lib/growthJourney.test.ts
+apps/web/client/src/lib/growthJourney.ts
+apps/web/client/src/lib/independencePath.test.ts
+apps/web/client/src/lib/independencePath.ts
+apps/web/client/src/lib/loyaltyModel.test.ts
+apps/web/client/src/lib/loyaltyModel.ts
+apps/web/client/src/lib/masakenWorkspace.ts
+apps/web/client/src/lib/publicIndexAsset.test.ts
+apps/web/client/src/lib/publicSite.test.ts
+apps/web/client/src/lib/publicSite.ts
+apps/web/client/src/lib/report-ui.ts
+apps/web/client/src/lib/sensePortalRoute.test.ts
+apps/web/client/src/lib/sensePortalRoute.ts
+apps/web/client/src/lib/senseProgramStates.test.ts
+apps/web/client/src/lib/senseProgramStates.ts
+apps/web/client/src/lib/trpc.ts
+apps/web/client/src/lib/utils.ts
+apps/web/client/src/main.tsx
+apps/web/client/src/pages/AccessControl.tsx
+apps/web/client/src/pages/CitizenStart.test.ts
+apps/web/client/src/pages/CitizenStart.tsx
+apps/web/client/src/pages/ComponentShowcase.tsx
+apps/web/client/src/pages/DomainReadiness.tsx
+apps/web/client/src/pages/EcosystemExplorer.tsx
+apps/web/client/src/pages/ExperienceProjectHub.test.ts
+apps/web/client/src/pages/ExperienceProjectHub.tsx
+apps/web/client/src/pages/ForMunicipalities.tsx
+apps/web/client/src/pages/GrowthJourney.tsx
+apps/web/client/src/pages/Home.tsx
+apps/web/client/src/pages/HowItWorks.tsx
+apps/web/client/src/pages/IndependencePath.tsx
+apps/web/client/src/pages/LoyaltyExplainer.tsx
+apps/web/client/src/pages/MasakenAlKhair.test.ts
+apps/web/client/src/pages/MasakenAlKhair.tsx
+apps/web/client/src/pages/MyReports.tsx
+apps/web/client/src/pages/NewReport.tsx
+apps/web/client/src/pages/NotFound.tsx
+apps/web/client/src/pages/OperationsDashboard.tsx
+apps/web/client/src/pages/OperationsReport.tsx
+apps/web/client/src/pages/PilotInvitation.tsx
+apps/web/client/src/pages/ProgressDashboard.tsx
+apps/web/client/src/pages/ReportDetail.tsx
+apps/web/client/src/pages/SensePortal.test.ts
+apps/web/client/src/pages/SensePortal.tsx
+apps/web/components.json
+apps/web/compose.yaml
+apps/web/docs/EXPERIENCE-NAVIGATION-VERIFICATION.md
+apps/web/docs/INDEPENDENCE-PATH-VERIFICATION.md
+apps/web/docs/MASAKEN-AL-KHAIR-VERIFICATION.md
+apps/web/drizzle.config.ts
+apps/web/drizzle/0000_bent_green_goblin.sql
+apps/web/drizzle/0001_lame_sway.sql
+apps/web/drizzle/0002_curious_hannibal_king.sql
+apps/web/drizzle/0003_confused_thunderbird.sql
+apps/web/drizzle/meta/0000_snapshot.json
+apps/web/drizzle/meta/0001_snapshot.json
+apps/web/drizzle/meta/0002_snapshot.json
