@@ -10,6 +10,8 @@ describe("GitHub Pages public index", () => {
     expect(indexHtml).toContain('href="https://urbansense-dzfbcdz5.manus.space/?view=growth"');
     expect(indexHtml).toContain('href="https://urbansense-dzfbcdz5.manus.space/?view=loyalty"');
     expect(indexHtml).toContain('href="https://urbansense-dzfbcdz5.manus.space/?view=refugees"');
+    expect(indexHtml).toContain('href="https://urbansense-dzfbcdz5.manus.space/?view=work-compass"');
+    expect(indexHtml).toContain('href="https://urbansense-dzfbcdz5.manus.space/?view=continuity"');
     expect(indexHtml).toContain('href="https://github.com/Solvanix/urban-sense-core/tree/main/apps/sense-experience"');
     expect(indexHtml).toContain("روابط الزيارة الحالية");
     expect(indexHtml).toContain('href:"https://urbansense-dzfbcdz5.manus.space/%D9%84%D9%84%D8%A8%D9%84%D8%AF%D9%8A%D8%A7%D8%AA"');
