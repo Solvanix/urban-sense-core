@@ -14,6 +14,9 @@
 - [x] Add unit coverage that verifies the refugee-context route does not expose enrolment, aid application, payment, or beneficiary-data actions.
 - [x] Add a route/page-level check that the refugee-context page contains no form field, submit action, donation/payment CTA, aid-application control, or beneficiary-data collection affordance.
 - [x] Render the refugee-context page in a test and verify that its visible links are limited to the SENSE portal, official UNRWA information, and the central-source documents.
+- [ ] Add a source-cited final-status-issues learning section that distinguishes institutional facts, analytical questions, and political positions without representing any party or negotiation.
+- [ ] Add visible and tested UN/UNRWA non-interference safeguards that prohibit agents, facilities, accounts, data integrations, operational workflows, and institutional branding connected to UN premises, personnel, privileges, immunities, or humanitarian delivery.
+- [ ] Add a source-cited Kalandia Training Centre historical record using only verified institutional facts; prohibit unsourced graduate totals, Gaza-reach claims, partnership language, access claims, or operational use of the centre.
 
 - [x] Define the Arabic RTL visual system and application information architecture.
 - [x] Model municipal scopes, roles, report states, assignments, evidence, ratings, and append-only audit events in Drizzle.
@@ -168,3 +171,6 @@
 - [ ] Implement the container-based bootstrap bundle, including a Docker build, local service composition, health checks, and a production handoff guide.
 - [x] Resolve the duplicate `sensePortalHref` export and the missing access-router import in the live Urban-Sense project, then verify the deployed public entry routes.
 - [x] Sync the guided citizen entry route from the central source into the live Urban‑Sense deployment and verify the public GitHub Pages citizen link reaches a working experience.
+- [x] Add the public interactive SENSE Work Compass route, turning a selected need into an AI-assisted, verified, reusable work card without collecting personal or beneficiary data.
+- [x] Add the public interactive national-continuity route, connecting skills, source literacy, accessible coordination, memory, local projects, and official-source context for Qalandiya and UNRWA.
+- [x] Link the new live Work Compass and national-continuity routes from the SENSE portal and verify both on desktop and mobile alongside the portal entry.

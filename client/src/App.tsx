@@ -22,6 +22,8 @@ import CitizenStart from "./pages/CitizenStart";
 import GrowthJourney from "./pages/GrowthJourney";
 import LoyaltyExplainer from "./pages/LoyaltyExplainer";
 import RefugeeContext from "./pages/RefugeeContext";
+import WorkCompass from "./pages/WorkCompass";
+import NationalContinuity from "./pages/NationalContinuity";
 import { getRootView } from "./lib/sensePortalRoute";
 
 function RootPage() {
@@ -37,6 +39,8 @@ function RootPage() {
   if (rootView === "growth") return <GrowthJourney />;
   if (rootView === "loyalty") return <LoyaltyExplainer />;
   if (rootView === "refugees") return <RefugeeContext />;
+  if (rootView === "work-compass") return <WorkCompass />;
+  if (rootView === "continuity") return <NationalContinuity />;
   return <SensePortal />;
 }
 
@@ -56,6 +60,8 @@ function Router() {
       <Route path={"/بلاغاتي/:id"} component={ReportDetail} />
       <Route path={"/العمليات"} component={OperationsDashboard} />
       <Route path={"/العمليات/:id"} component={OperationsReport} />
+      <Route path={"/بوصلة-العمل"} component={WorkCompass} />
+      <Route path={"/الاستمرارية-الوطنية"} component={NationalContinuity} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
