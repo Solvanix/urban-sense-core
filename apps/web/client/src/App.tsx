@@ -25,6 +25,7 @@ import ExperienceProjectHub from "./pages/ExperienceProjectHub";
 import MasakenAlKhair from "./pages/MasakenAlKhair";
 import IndependencePath from "./pages/IndependencePath";
 import VerificationRoom from "./pages/VerificationRoom";
+import RefugeeContext from "./pages/RefugeeContext";
 import { getRootView } from "./lib/sensePortalRoute";
 
 function RootPage() {
@@ -49,6 +50,7 @@ function RootPage() {
   if (rootView === "masaken-team") return <MasakenAlKhair screen="team" />;
   if (rootView === "independence") return <IndependencePath />;
   if (rootView === "verification") return <VerificationRoom />;
+  if (rootView === "refugees") return <RefugeeContext />;
   return <SensePortal />;
 }
 
