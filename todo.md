@@ -10,6 +10,10 @@
 - [x] Add a public destination-preference interaction that distinguishes default preference from temporary per-redemption choice without collecting phone, bank, card, or wallet details.
 - [x] Add tests that prevent non-approved partner destinations and ensure a temporary choice never overwrites the default preference.
 - [x] Enforce that a pending partner route cannot become the saved default preference in the public demonstration model.
+- [x] Add a public, source-cited refugee-context knowledge and referral route that separates UNRWA humanitarian delivery from SENSE’s independent learning and skills role, with no beneficiary intake, donation collection, or UN affiliation claim.
+- [x] Add unit coverage that verifies the refugee-context route does not expose enrolment, aid application, payment, or beneficiary-data actions.
+- [x] Add a route/page-level check that the refugee-context page contains no form field, submit action, donation/payment CTA, aid-application control, or beneficiary-data collection affordance.
+- [x] Render the refugee-context page in a test and verify that its visible links are limited to the SENSE portal, official UNRWA information, and the central-source documents.
 
 - [x] Define the Arabic RTL visual system and application information architecture.
 - [x] Model municipal scopes, roles, report states, assignments, evidence, ratings, and append-only audit events in Drizzle.

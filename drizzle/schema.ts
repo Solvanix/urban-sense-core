@@ -201,5 +201,28 @@ export const auditEvents = mysqlTable(
   table => [index("audit_events_entity_idx").on(table.entityType, table.entityId, table.createdAt)],
 );
 
+export const earnedPointEvents = mysqlTable(
+  "earned_point_events",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    publicReference: varchar("publicReference", { length: 40 }).notNull().unique(),
+    beneficiaryUserId: int("beneficiaryUserId").notNull().references(() => users.id, { onDelete: "restrict" }),
+    points: int("points").notNull(),
+    status: mysqlEnum("status", ["pending_review", "approved", "voided"]).default("pending_review").notNull(),
+    reason: varchar("reason", { length: 500 }).notNull(),
+    evidenceReference: varchar("evidenceReference", { length: 500 }).notNull(),
+    createdByUserId: int("createdByUserId").notNull().references(() => users.id, { onDelete: "restrict" }),
+    reviewedByUserId: int("reviewedByUserId").references(() => users.id, { onDelete: "restrict" }),
+    reviewReason: varchar("reviewReason", { length: 500 }),
+    reviewedAt: timestamp("reviewedAt"),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  table => [
+    index("earned_point_events_beneficiary_idx").on(table.beneficiaryUserId, table.status),
+    index("earned_point_events_status_idx").on(table.status, table.createdAt),
+  ],
+);
+
 export type Municipality = typeof municipalities.$inferSelect;
 export type Report = typeof reports.$inferSelect;
+export type EarnedPointEvent = typeof earnedPointEvents.$inferSelect;
