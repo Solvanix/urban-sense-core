@@ -24,6 +24,7 @@ import LoyaltyExplainer from "./pages/LoyaltyExplainer";
 import ExperienceProjectHub from "./pages/ExperienceProjectHub";
 import MasakenAlKhair from "./pages/MasakenAlKhair";
 import IndependencePath from "./pages/IndependencePath";
+import VerificationRoom from "./pages/VerificationRoom";
 import { getRootView } from "./lib/sensePortalRoute";
 
 function RootPage() {
@@ -47,6 +48,7 @@ function RootPage() {
   if (rootView === "masaken-plan") return <MasakenAlKhair screen="plan" />;
   if (rootView === "masaken-team") return <MasakenAlKhair screen="team" />;
   if (rootView === "independence") return <IndependencePath />;
+  if (rootView === "verification") return <VerificationRoom />;
   return <SensePortal />;
 }
 
@@ -66,6 +68,7 @@ function Router() {
       <Route path={"/بلاغاتي/:id"} component={ReportDetail} />
       <Route path={"/العمليات"} component={OperationsDashboard} />
       <Route path={"/العمليات/:id"} component={OperationsReport} />
+      <Route path={"/غرفة-التحقق"} component={VerificationRoom} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
