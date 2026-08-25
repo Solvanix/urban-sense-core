@@ -282,3 +282,16 @@
 - [x] Review the central repository’s stated SENSE goals, mission, executive summary, project reality map, and implementation status before replacing unclear documents with a formal Arabic Word and PowerPoint delivery suite.
 - [x] Repackage the SENSE entity paper, institutional report, operating plan, collaboration draft, authorization register, evidence brief, and competency invitation as right-to-left Arabic Word documents or PowerPoint presentations with clear audience-specific purposes.
 - [x] Verify Arabic right-to-left direction, readability, document hierarchy, and cross-file consistency before delivering the complete non-Markdown SENSE file suite.
+- [x] Present an in-chat demonstrative analysis of the official SENSE Word and PowerPoint suite, explaining each artifact’s audience, decision question, contribution, and handoff to the next artifact.
+- [x] Read the user’s most recent incoming LinkedIn message without sending, replying, reacting, or changing any LinkedIn content.
+- [x] Read the latest LinkedIn message after successful user authentication, open and analyze the linked questionnaire, and prepare evidence-grounded answers plus a SENSE work/collaboration invitation for user review.
+- [x] Obtain explicit user confirmation immediately before submitting the questionnaire or sending any LinkedIn invitation or reply.
+- [x] Prepare a research-grounded LinkedIn reply that comments on the survey through SENSE’s responsible-AI perspective and invites an ethical discussion of strategic academic–practice collaboration.
+- [x] Prepare a complete survey response draft from user-confirmed personal and professional facts only; do not infer demographics, work engagement, autonomy, or self-assessment scores.
+- [x] Prepare balanced proposed self-assessment scores from the user's stated responsible-AI perspective, while leaving personal demographics and factual employment details explicitly unresolved until the user supplies or confirms them.
+- [x] Submit the user-approved research questionnaire and send the approved LinkedIn response, then document the outcome without exposing private survey answers in the central repository.
+- [x] Present the complete questionnaire structure in chat and map its responsible-AI, engagement, and autonomy themes to concrete SENSE capability, learning, team, and governance uses.
+- [x] Build a public, interactive SENSE Work Compass landing route that turns a real need into a defined outcome, AI-assisted work steps, verification, decision ownership, and reusable learning without collecting personal or beneficiary data.
+- [x] Build a public, interactive national-continuity landing route that connects skills, source literacy, accessible coordination, memory, local projects, and formal referral readiness; present Qalandiya and UNRWA only through dated institutional sources and non-interference boundaries.
+- [x] Link the new landing routes from the SENSE portal and project surfaces as live experiences with concrete actions, project entry points, and clear state labels rather than explanatory-only pages.
+- [x] Produce a direct Arabic Word rationale for establishing a national center for local systems and capability development, leading with programs and national value and placing UN/UNRWA and humanitarian-operational boundaries in a concise governance annex.

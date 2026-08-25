@@ -26,6 +26,8 @@ import MasakenAlKhair from "./pages/MasakenAlKhair";
 import IndependencePath from "./pages/IndependencePath";
 import VerificationRoom from "./pages/VerificationRoom";
 import RefugeeContext from "./pages/RefugeeContext";
+import WorkCompass from "./pages/WorkCompass";
+import NationalContinuity from "./pages/NationalContinuity";
 import { getRootView } from "./lib/sensePortalRoute";
 
 function RootPage() {
@@ -51,6 +53,8 @@ function RootPage() {
   if (rootView === "independence") return <IndependencePath />;
   if (rootView === "verification") return <VerificationRoom />;
   if (rootView === "refugees") return <RefugeeContext />;
+  if (rootView === "work-compass") return <WorkCompass />;
+  if (rootView === "continuity") return <NationalContinuity />;
   return <SensePortal />;
 }
 
@@ -71,6 +75,8 @@ function Router() {
       <Route path={"/العمليات"} component={OperationsDashboard} />
       <Route path={"/العمليات/:id"} component={OperationsReport} />
       <Route path={"/غرفة-التحقق"} component={VerificationRoom} />
+      <Route path={"/بوصلة-العمل"} component={WorkCompass} />
+      <Route path={"/الاستمرارية-الوطنية"} component={NationalContinuity} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
