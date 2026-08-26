@@ -11,12 +11,13 @@ export const loyaltyExplainerHref = "/?view=loyalty";
 export const refugeeContextHref = "/?view=refugees";
 export const workCompassHref = "/?view=work-compass";
 export const nationalContinuityHref = "/?view=continuity";
+export const recoveryIdentityHref = "/?view=recovery";
 
-export type RootView = "urban" | "sense" | "operations" | "explore" | "domain" | "progress" | "access" | "citizen" | "growth" | "loyalty" | "refugees" | "work-compass" | "continuity" | null;
+export type RootView = "urban" | "sense" | "operations" | "explore" | "domain" | "progress" | "access" | "citizen" | "growth" | "loyalty" | "refugees" | "work-compass" | "continuity" | "recovery" | null;
 
 export function getRootView(search: string): RootView {
   const view = new URLSearchParams(search).get("view");
-  return view === "urban" || view === "sense" || view === "operations" || view === "explore" || view === "domain" || view === "progress" || view === "access" || view === "citizen" || view === "growth" || view === "loyalty" || view === "refugees" || view === "work-compass" || view === "continuity" ? view : null;
+  return view === "urban" || view === "sense" || view === "operations" || view === "explore" || view === "domain" || view === "progress" || view === "access" || view === "citizen" || view === "growth" || view === "loyalty" || view === "refugees" || view === "work-compass" || view === "continuity" || view === "recovery" ? view : null;
 }
 
 export function isSensePortalSearch(search: string) {

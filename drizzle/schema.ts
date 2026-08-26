@@ -226,3 +226,67 @@ export const earnedPointEvents = mysqlTable(
 export type Municipality = typeof municipalities.$inferSelect;
 export type Report = typeof reports.$inferSelect;
 export type EarnedPointEvent = typeof earnedPointEvents.$inferSelect;
+
+
+export const productIdentityStatusValues = ["active", "suspended", "claimed"] as const;
+export const productRecoveryStatusValues = ["protected", "reported_lost", "found", "handoff_ready", "returned"] as const;
+export const productEventTypeValues = ["issued", "verified_purchase", "transferred", "reported_lost", "found", "handoff", "returned"] as const;
+export const recoveryCaseStatusValues = ["open", "under_review", "found", "handoff_ready", "returned", "closed"] as const;
+
+export const productIdentities = mysqlTable(
+  "product_identities",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    publicReference: varchar("publicReference", { length: 40 }).notNull().unique(),
+    tagToken: varchar("tagToken", { length: 96 }).notNull().unique(),
+    providerUserId: int("providerUserId").notNull().references(() => users.id, { onDelete: "restrict" }),
+    municipalityId: int("municipalityId").references(() => municipalities.id, { onDelete: "set null" }),
+    productType: varchar("productType", { length: 80 }).notNull(),
+    title: varchar("title", { length: 160 }).notNull(),
+    description: text("description").notNull(),
+    provenance: text("provenance").notNull(),
+    purchaseReferenceHash: varchar("purchaseReferenceHash", { length: 128 }),
+    status: mysqlEnum("status", productIdentityStatusValues).default("active").notNull(),
+    recoveryStatus: mysqlEnum("recoveryStatus", productRecoveryStatusValues).default("protected").notNull(),
+    publicContactEnabled: boolean("publicContactEnabled").default(true).notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [index("product_identity_provider_idx").on(table.providerUserId, table.status), index("product_identity_municipality_idx").on(table.municipalityId, table.recoveryStatus)],
+);
+
+export const productEvents = mysqlTable(
+  "product_events",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    productId: int("productId").notNull().references(() => productIdentities.id, { onDelete: "cascade" }),
+    eventType: mysqlEnum("eventType", productEventTypeValues).notNull(),
+    actorUserId: int("actorUserId").references(() => users.id, { onDelete: "set null" }),
+    municipalityId: int("municipalityId").references(() => municipalities.id, { onDelete: "set null" }),
+    publicNote: varchar("publicNote", { length: 500 }),
+    evidenceHash: varchar("evidenceHash", { length: 128 }),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  table => [index("product_events_product_idx").on(table.productId, table.createdAt)],
+);
+
+export const recoveryCases = mysqlTable(
+  "recovery_cases",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    publicReference: varchar("publicReference", { length: 40 }).notNull().unique(),
+    productId: int("productId").notNull().references(() => productIdentities.id, { onDelete: "cascade" }),
+    finderUserId: int("finderUserId").references(() => users.id, { onDelete: "set null" }),
+    municipalityId: int("municipalityId").references(() => municipalities.id, { onDelete: "set null" }),
+    status: mysqlEnum("status", recoveryCaseStatusValues).default("open").notNull(),
+    finderMessage: varchar("finderMessage", { length: 700 }),
+    municipalityNote: varchar("municipalityNote", { length: 700 }),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [index("recovery_cases_product_idx").on(table.productId, table.status), index("recovery_cases_municipality_idx").on(table.municipalityId, table.status)],
+);
+
+export type ProductIdentity = typeof productIdentities.$inferSelect;
+export type ProductEvent = typeof productEvents.$inferSelect;
+export type RecoveryCase = typeof recoveryCases.$inferSelect;
