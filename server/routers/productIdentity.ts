@@ -44,6 +44,7 @@ export const productIdentityRouter = router({
       title: productIdentities.title,
       description: productIdentities.description,
       provenance: productIdentities.provenance,
+      storeListingUrl: productIdentities.storeListingUrl,
       status: productIdentities.status,
       recoveryStatus: productIdentities.recoveryStatus,
       publicContactEnabled: productIdentities.publicContactEnabled,
