@@ -233,6 +233,24 @@ export const productRecoveryStatusValues = ["protected", "reported_lost", "found
 export const productEventTypeValues = ["issued", "verified_purchase", "transferred", "reported_lost", "found", "handoff", "returned"] as const;
 export const recoveryCaseStatusValues = ["open", "under_review", "found", "handoff_ready", "returned", "closed"] as const;
 
+export const serviceProviderStatusValues = ["pending", "verified", "suspended"] as const;
+
+export const serviceProviders = mysqlTable(
+  "service_providers",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    ownerUserId: int("ownerUserId").notNull().references(() => users.id, { onDelete: "restrict" }),
+    municipalityId: int("municipalityId").references(() => municipalities.id, { onDelete: "set null" }),
+    name: varchar("name", { length: 160 }).notNull(),
+    category: varchar("category", { length: 80 }).notNull(),
+    publicProfileUrl: varchar("publicProfileUrl", { length: 520 }),
+    status: mysqlEnum("status", serviceProviderStatusValues).default("pending").notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [index("service_provider_owner_idx").on(table.ownerUserId, table.status), index("service_provider_municipality_idx").on(table.municipalityId, table.status)],
+);
+
 export const productIdentities = mysqlTable(
   "product_identities",
   {
@@ -240,6 +258,7 @@ export const productIdentities = mysqlTable(
     publicReference: varchar("publicReference", { length: 40 }).notNull().unique(),
     tagToken: varchar("tagToken", { length: 96 }).notNull().unique(),
     providerUserId: int("providerUserId").notNull().references(() => users.id, { onDelete: "restrict" }),
+    serviceProviderId: int("serviceProviderId").references(() => serviceProviders.id, { onDelete: "set null" }),
     municipalityId: int("municipalityId").references(() => municipalities.id, { onDelete: "set null" }),
     productType: varchar("productType", { length: 80 }).notNull(),
     title: varchar("title", { length: 160 }).notNull(),
@@ -287,6 +306,7 @@ export const recoveryCases = mysqlTable(
   table => [index("recovery_cases_product_idx").on(table.productId, table.status), index("recovery_cases_municipality_idx").on(table.municipalityId, table.status)],
 );
 
+export type ServiceProvider = typeof serviceProviders.$inferSelect;
 export type ProductIdentity = typeof productIdentities.$inferSelect;
 export type ProductEvent = typeof productEvents.$inferSelect;
 export type RecoveryCase = typeof recoveryCases.$inferSelect;

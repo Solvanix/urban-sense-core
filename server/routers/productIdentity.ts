@@ -2,7 +2,7 @@ import { and, desc, eq } from "drizzle-orm";
 import { randomUUID } from "node:crypto";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import { productEvents, productIdentities, recoveryCases } from "../../drizzle/schema";
+import { productEvents, productIdentities, recoveryCases, serviceProviders } from "../../drizzle/schema";
 import { getDb } from "../db";
 import { protectedProcedure, publicProcedure, router } from "../_core/trpc";
 
@@ -13,6 +13,14 @@ const productInput = z.object({
   provenance: z.string().trim().min(4).max(4000),
   municipalityId: z.number().int().positive().optional(),
   publicContactEnabled: z.boolean().default(true),
+  serviceProviderId: z.number().int().positive().optional(),
+});
+
+const serviceProviderInput = z.object({
+  name: z.string().trim().min(2).max(160),
+  category: z.string().trim().min(2).max(80),
+  publicProfileUrl: z.string().url().max(520).optional(),
+  municipalityId: z.number().int().positive().optional(),
 });
 
 async function requireDb() {
@@ -43,14 +51,30 @@ export const productIdentityRouter = router({
     return product;
   }),
 
+  createProvider: protectedProcedure.input(serviceProviderInput).mutation(async ({ ctx, input }) => {
+    const db = await requireDb();
+    const [created] = await db.insert(serviceProviders).values({ ...input, ownerUserId: ctx.user.id });
+    return { id: Number(created.insertId), status: "pending" as const };
+  }),
+
+  listMyProviders: protectedProcedure.query(async ({ ctx }) => {
+    const db = await requireDb();
+    return db.select().from(serviceProviders).where(eq(serviceProviders.ownerUserId, ctx.user.id)).orderBy(desc(serviceProviders.createdAt));
+  }),
+
   create: protectedProcedure.input(productInput).mutation(async ({ ctx, input }) => {
     const db = await requireDb();
+    if (input.serviceProviderId) {
+      const [provider] = await db.select({ id: serviceProviders.id }).from(serviceProviders).where(and(eq(serviceProviders.id, input.serviceProviderId), eq(serviceProviders.ownerUserId, ctx.user.id))).limit(1);
+      if (!provider) throw new TRPCError({ code: "FORBIDDEN", message: "لا يمكنك ربط المنتج بمزود خدمة لا تملكه." });
+    }
     const publicReference = makeReference("SENSE-P");
     const tagToken = randomUUID().replaceAll("-", "");
     const [created] = await db.insert(productIdentities).values({
       publicReference,
       tagToken,
       providerUserId: ctx.user.id,
+      serviceProviderId: input.serviceProviderId,
       municipalityId: input.municipalityId,
       productType: input.productType,
       title: input.title,
