@@ -264,6 +264,7 @@ export const productIdentities = mysqlTable(
     title: varchar("title", { length: 160 }).notNull(),
     description: text("description").notNull(),
     provenance: text("provenance").notNull(),
+    storeListingUrl: varchar("storeListingUrl", { length: 520 }),
     purchaseReferenceHash: varchar("purchaseReferenceHash", { length: 128 }),
     status: mysqlEnum("status", productIdentityStatusValues).default("active").notNull(),
     recoveryStatus: mysqlEnum("recoveryStatus", productRecoveryStatusValues).default("protected").notNull(),

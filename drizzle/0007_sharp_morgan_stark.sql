@@ -1,0 +1,1 @@
+ALTER TABLE `product_identities` ADD `storeListingUrl` varchar(520);

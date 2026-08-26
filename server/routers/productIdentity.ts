@@ -14,6 +14,7 @@ const productInput = z.object({
   municipalityId: z.number().int().positive().optional(),
   publicContactEnabled: z.boolean().default(true),
   serviceProviderId: z.number().int().positive().optional(),
+  storeListingUrl: z.string().url().max(520).optional(),
 });
 
 const serviceProviderInput = z.object({
@@ -80,6 +81,7 @@ export const productIdentityRouter = router({
       title: input.title,
       description: input.description,
       provenance: input.provenance,
+      storeListingUrl: input.storeListingUrl,
       publicContactEnabled: input.publicContactEnabled,
     });
     const productId = Number(created.insertId);
