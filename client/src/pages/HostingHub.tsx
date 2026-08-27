@@ -20,7 +20,8 @@ const principles = [
 ];
 
 export default function HostingHub() {
-  const [mode, setMode] = useState<HostingMode>("home");
+  const initialMode = getModeFromLocation();
+  const [mode, setMode] = useState<HostingMode>(initialMode);
   const [notice, setNotice] = useState<string | null>(null);
   const [interest, setInterest] = useState("");
   const active = modes.find((item) => item.id === mode)!;
@@ -57,6 +58,15 @@ export default function HostingHub() {
       </div>
     </main>
   );
+}
+
+function getModeFromLocation(): HostingMode {
+  const queryMode = new URLSearchParams(window.location.search).get("mode");
+  if (queryMode === "hosts" || queryMode === "guests" || queryMode === "programs") return queryMode;
+  if (window.location.pathname.includes("المضيفون")) return "hosts";
+  if (window.location.pathname.includes("المستضافون")) return "guests";
+  if (window.location.pathname.includes("البرامج")) return "programs";
+  return "home";
 }
 
 function HostPanel() { return <div className="mt-6 space-y-4 text-[#58716a]"><p className="leading-7">المضيف ليس مجرد صاحب مكان؛ هو شريك يحدد ساعات الاستضافة، نوع النشاط، السعة، ما هو مجاني، وما يحتاج مساهمة أو شراءً اختياريًا. يبدأ كل شيء بملف عرض قابل للمراجعة، لا بإعلان توافر غير مؤكد.</p><div className="grid gap-3 sm:grid-cols-2">{["بطاقة عرض المكان وحدوده", "مواعيد قابلة للتنسيق", "سياسة احترام وخصوصية", "توثيق محتوى بإذن المضيف"].map((item) => <div key={item} className="rounded-xl bg-[#eef2e9] p-4 font-bold">{item}</div>)}</div></div>; }
