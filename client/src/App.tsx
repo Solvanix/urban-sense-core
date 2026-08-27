@@ -25,6 +25,7 @@ import RefugeeContext from "./pages/RefugeeContext";
 import WorkCompass from "./pages/WorkCompass";
 import NationalContinuity from "./pages/NationalContinuity";
 import RecoveryIdentity from "./pages/RecoveryIdentity";
+import HostingHub from "./pages/HostingHub";
 import { getRootView } from "./lib/sensePortalRoute";
 
 function RootPage() {
@@ -43,6 +44,7 @@ function RootPage() {
   if (rootView === "work-compass") return <WorkCompass />;
   if (rootView === "continuity") return <NationalContinuity />;
   if (rootView === "recovery") return <RecoveryIdentity />;
+  if (rootView === "hosting") return <HostingHub />;
   return <SensePortal />;
 }
 
@@ -65,6 +67,7 @@ function Router() {
       <Route path={"/بوصلة-العمل"} component={WorkCompass} />
       <Route path={"/الاستمرارية-الوطنية"} component={NationalContinuity} />
       <Route path={"/هوية-المنتج"} component={RecoveryIdentity} />
+      <Route path={"/الاستضافة"} component={HostingHub} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
