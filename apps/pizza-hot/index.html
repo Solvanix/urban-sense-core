@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Pizza hot — نموذج مستقل لمتجر محلي في العيزرية" />
+  <title>Pizza hot | طعم ما بتنساه</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="#home"><span class="brand-mark">P</span><span><b>بيتزا هوت</b><small>طعم ما بتنساه</small></span></a><nav><a href="#menu">القائمة</a><a href="#assistant">المساعد</a><a href="#about">عن المزود</a></nav><button class="cart-button" id="cartButton">السلة <span id="cartCount">0</span></button></header>
+  <main>
+    <section id="home" class="hero"><div class="hero-copy"><p class="eyebrow">مزود محلي · العيزرية</p><h1>بيتزا هوت<br><em>طعم ما بتنساه</em></h1><p>تجربة طلب عربية واضحة، وبيانات قابلة للتحقق قبل اعتماد أي طلب.</p><div class="actions"><a class="button primary" href="#menu">استعرض القائمة</a><a class="button ghost" href="#assistant">اسأل المساعد</a></div></div><div class="hero-card"><div class="pulse"></div><p>حالة التشغيل</p><strong>نموذج تجريبي</strong><small>العنوان، الساعات والتوصيل تحتاج تأكيد المزود</small></div></section>
+    <section id="menu" class="section"><div class="section-heading"><div><p class="eyebrow">الاختيارات</p><h2>القائمة الحالية</h2></div><div class="notice">الأسعار بالشيكل · مصدرها ملف مزود Pizza hot في متجر SENSE</div></div><div class="menu-grid" id="menuGrid"></div></section>
+    <section id="assistant" class="assistant-section"><div><p class="eyebrow">Business agent</p><h2>اسأل قبل أن تطلب</h2><p>المساعد يجيب من الكتالوج الموثق فقط. إذا لم يجد المعلومة، يحوّل السؤال للمراجعة البشرية.</p></div><div class="chat"><div class="chat-log" id="chatLog"><div class="bubble agent">مرحباً! اسألني عن الأسعار أو المنتجات المتاحة. لا أؤكد الطلبات ولا أخترع وقت التوصيل.</div></div><form id="chatForm"><input id="chatInput" placeholder="مثال: كم سعر بيتزا الدجاج؟" autocomplete="off"/><button class="button primary">إرسال</button></form></div></section>
+    <section id="about" class="info-grid"><article><p class="eyebrow">عن المزود</p><h2>Pizza hot / العيزرية</h2><p>ملف مزود تجريبي متصل بكتالوج SENSE. بيانات الموقع وساعات العمل والتوصيل لم تعتمد بعد.</p></article><article><h3>قبل الإطلاق</h3><ul><li>تأكيد العنوان والهاتف.</li><li>اعتماد المكونات والحساسيات.</li><li>تحديد مناطق وزمن التوصيل.</li><li>توصيل الطلبات بالموافقة البشرية.</li></ul></article></section>
+    <section class="sources"><p><b>مصدر البيانات:</b> متجر SENSE · Pizza hot · Provider ID 10. هذه النسخة المستقلة لا تحتوي أسراراً ولا تعتمد على Stunning.</p></section>
+  </main>
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true"><div class="drawer-head"><h2>سلتك</h2><button id="closeCart">×</button></div><div id="cartItems"></div><div class="cart-total"><span>الإجمالي</span><strong id="cartTotal">0 ₪</strong></div><form id="orderForm"><input id="customerName" required placeholder="الاسم"/><input id="customerPhone" required placeholder="الهاتف"/><input id="customerArea" required placeholder="المنطقة"/><textarea id="orderNotes" placeholder="ملاحظات الطلب"></textarea><button class="button primary" type="submit">إرسال للمراجعة البشرية</button></form><p class="small">لن يتم اعتماد الطلب أو الدفع من هذه النسخة التجريبية.</p></aside>
+  <div class="toast" id="toast" role="status"></div><script src="./app.js"></script>
+</body></html>

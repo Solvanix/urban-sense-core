@@ -1,0 +1,23 @@
+{
+  "provider": {"name": "Pizza hot", "providerId": 10, "market": "SENSE Store", "area": "Al-Eizariya", "verified": false},
+  "currency": "NIS",
+  "source": "https://sense.runasp.net/Providers/Details/10",
+  "verificationNeeded": ["address", "hours", "delivery zone", "ingredients", "stock", "phone"],
+  "products": [
+    {"id":"margherita","name":"بيتزا مارغريتا","nameEn":"Margherita","price":50,"category":"بيتزا","verifiedPrice":true},
+    {"id":"vegetable","name":"بيتزا خضار","nameEn":"Vegetable","price":50,"category":"بيتزا","verifiedPrice":true},
+    {"id":"salami","name":"بيتزا سلامي","nameEn":"Salami","price":55,"category":"بيتزا","verifiedPrice":true},
+    {"id":"tuna","name":"بيتزا تونة","nameEn":"Tuna","price":53,"category":"بيتزا","verifiedPrice":true},
+    {"id":"calzone","name":"كلزوني","nameEn":"Calzone","price":60,"category":"بيتزا","verifiedPrice":true},
+    {"id":"chicken","name":"بيتزا دجاج","nameEn":"Chicken Pizza","price":65,"category":"بيتزا","verifiedPrice":true},
+    {"id":"sausage","name":"بيتزا نقانق","nameEn":"Sausage Pizza","price":55,"category":"بيتزا","verifiedPrice":true},
+    {"id":"crunch-melt","name":"كرانش ملت","nameEn":"Crunch Melt","price":null,"category":"إضافات","verifiedPrice":false},
+    {"id":"cola","name":"كوكاكولا","nameEn":"Coca-Cola","price":null,"category":"مشروبات","verifiedPrice":false},
+    {"id":"wings-large","name":"أجنحة دجاج كبيرة","nameEn":"Large chicken wings","price":null,"category":"إضافات","verifiedPrice":false},
+    {"id":"wings-small","name":"أجنحة دجاج صغيرة","nameEn":"Small chicken wings","price":null,"category":"إضافات","verifiedPrice":false},
+    {"id":"zinger-large","name":"زنجر كبير","nameEn":"Large zinger","price":null,"category":"إضافات","verifiedPrice":false},
+    {"id":"zinger-small","name":"زنجر صغير","nameEn":"Small zinger","price":null,"category":"إضافات","verifiedPrice":false},
+    {"id":"fries-large","name":"بطاطا كبيرة","nameEn":"Large fries","price":null,"category":"إضافات","verifiedPrice":false},
+    {"id":"fries-small","name":"بطاطا صغيرة","nameEn":"Small fries","price":null,"category":"إضافات","verifiedPrice":false}
+  ]
+}
