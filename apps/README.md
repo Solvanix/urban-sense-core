@@ -8,6 +8,7 @@
 |---|---|---|---|
 | [`web/`](web/) — **Urban‑Sense** | منشور ضمن نطاق تجريبي محكوم | [الموقع العام](https://urbansense-dzfbcdz5.manus.space/) · [بوابة SENSE](https://urbansense-dzfbcdz5.manus.space/?view=sense) | لا يقدم سياحة أو متجرًا أو دفعًا أو كاميرات حية. |
 | [`sense-experience/`](sense-experience/) — **SENSE Experience** | نواة مستقلة في الكود؛ غير منشورة إنتاجيًا | [وثيقة التطبيق](sense-experience/README.md) | لا يستقبل بيانات مزودين حقيقية، ولا يملك رابط إنتاج أو حساب مراجع نشطًا بعد. |
+| [`pizza-hot/`](pizza-hot/) — **Commerce Pilot** | MVP ثابت مستقل منشور عبر GitHub Pages | [النسخة المنشورة](https://solvanix.github.io/urban-sense-core/pizza-hot/) · [الكود](pizza-hot/) | لا ينفذ دفعًا أو توصيلًا أو حفظ طلبات خلفيًا؛ الأسعار غير المؤكدة لا تُعامل كحقائق تشغيلية. |
 
 ## كيف تختار المدخل الصحيح؟
 
@@ -27,3 +28,5 @@ cd ../sense-experience && pnpm check && pnpm test && pnpm build
 ```
 
 راجع [`../docs/README.md`](../docs/README.md) لخريطة الوثائق والقرارات وبوابات التشغيل.
+
+لرؤية نموذج الأعمال الكامل وخطة تحويل هذه النوى إلى خدمات مستقلة، راجع [`../docs/BUSINESS-MODEL-AND-EXECUTION-PLAN-2026-09.md`](../docs/BUSINESS-MODEL-AND-EXECUTION-PLAN-2026-09.md).
