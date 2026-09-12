@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="SENSE Visualize — تصور ديناميكي لمؤشرات الوجهة والبلاغات والشبكة المحلية." />
+    <title>SENSE Visualize — طبقة تشغيل الوجهة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <div class="brand-mark">S</div>
+          <div>
+            <div class="eyebrow">SENSE / TIBYAN</div>
+            <h1 data-editable="pageTitle">طبقة تشغيل الوجهة</h1>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button class="button button-dark" id="printButton">طباعة / PDF</button>
+          <button class="button button-light" id="exportButton">تصدير JSON</button>
+          <a class="button button-ghost" href="../" target="_blank" rel="noreferrer">المستودع</a>
+        </div>
+      </header>
+
+      <section class="hero-grid">
+        <div class="hero-copy">
+          <div class="status-row">
+            <span class="status-dot"></span>
+            <span id="dataStatus">جاري تحميل مصدر البيانات…</span>
+            <span class="mono" id="lastUpdated">—</span>
+          </div>
+          <p class="kicker">Urban-Sense Core / Visualize</p>
+          <h2 data-editable="heroTitle">من البيانات المجزأة إلى رحلة قابلة للاكتشاف والتنفيذ والقياس.</h2>
+          <p class="hero-description" data-editable="heroDescription">لوحة تشغيل أولية تربط القصة بالمكان، والمسار بالتجربة، والبلاغ بسير عمل بلدي قابل للمتابعة. القيم الرقمية المعروضة نموذجية إلى أن تُستبدل بتصدير موثق.</p>
+          <div class="hero-meta">
+            <span class="meta-chip" id="periodLabel">الفترة —</span>
+            <span class="meta-chip">تحديث تلقائي قابل للضبط</span>
+            <span class="meta-chip">لا تُعرض بيانات شخصية</span>
+          </div>
+        </div>
+        <div class="hero-orbit" aria-label="نموذج التشغيل">
+          <div class="orbit-center">الوجهة<br /><strong>تبيان</strong></div>
+          <div class="orbit-node node-one">قصة</div>
+          <div class="orbit-node node-two">مسار</div>
+          <div class="orbit-node node-three">تجربة</div>
+          <div class="orbit-node node-four">قياس</div>
+          <div class="orbit-line line-one"></div>
+          <div class="orbit-line line-two"></div>
+          <div class="orbit-line line-three"></div>
+          <div class="orbit-line line-four"></div>
+        </div>
+      </section>
+
+      <section class="control-strip">
+        <div class="control-group source-control">
+          <label for="sourceInput">مصدر JSON</label>
+          <input id="sourceInput" type="url" spellcheck="false" placeholder="./data/dashboard.json أو رابط عام يدعم CORS" />
+        </div>
+        <div class="control-group compact-control">
+          <label for="refreshSelect">المزامنة</label>
+          <select id="refreshSelect">
+            <option value="0">يدوي فقط</option>
+            <option value="30">كل 30 ثانية</option>
+            <option value="60">كل دقيقة</option>
+            <option value="300">كل 5 دقائق</option>
+          </select>
+        </div>
+        <button class="button button-accent" id="refreshButton">تحديث الآن</button>
+        <button class="button button-light" id="editorButton">تحرير البيانات</button>
+      </section>
+
+      <section class="notice-banner" id="noticeBanner">
+        <strong>حالة البيانات:</strong>
+        <span id="dataNotice">—</span>
+      </section>
+
+      <section class="metrics-section">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">01 / المؤشرات</p>
+            <h3>هل تتحسن الرحلة أم تزداد تجزؤاً؟</h3>
+          </div>
+          <p class="section-note">كل بطاقة تقارن القيمة الحالية بالهدف التشغيلي المسجل في مصدر البيانات.</p>
+        </div>
+        <div class="metric-grid" id="metricGrid"></div>
+      </section>
+
+      <section class="analysis-grid">
+        <article class="panel funnel-panel">
+          <div class="panel-heading">
+            <div><p class="kicker">02 / التحويل</p><h3>من المشاهدة إلى الفعل</h3></div>
+            <span class="panel-tag">Creator → Place → Experience</span>
+          </div>
+          <div class="funnel" id="funnelChart"></div>
+          <p class="panel-footnote">هذه ليست أرقاماً تجارية مثبتة؛ إنها هيكل قياس يوضح أين يتسرب المسار، وما الذي يجب ربطه بمصدر فعلي.</p>
+        </article>
+
+        <article class="panel workflow-panel">
+          <div class="panel-heading">
+            <div><p class="kicker">03 / البلدية</p><h3>دورة البلاغ وإغلاقه</h3></div>
+            <span class="panel-tag">Case management</span>
+          </div>
+          <div class="bar-chart" id="workflowChart"></div>
+          <p class="panel-footnote">استقبال → تصنيف → أولوية → إحالة → SLA → إغلاق → تقييم.</p>
+        </article>
+      </section>
+
+      <section class="lower-grid">
+        <article class="panel category-panel">
+          <div class="panel-heading">
+            <div><p class="kicker">04 / الأولويات</p><h3>خريطة الضغط الحضري</h3></div>
+            <span class="panel-tag">Reports by category</span>
+          </div>
+          <div class="category-list" id="categoryChart"></div>
+        </article>
+        <article class="panel network-panel">
+          <div class="panel-heading">
+            <div><p class="kicker">05 / الشبكة</p><h3>المبدعون والشركاء</h3></div>
+            <span class="panel-tag">Local capacity</span>
+          </div>
+          <div class="network-content">
+            <div class="creator-chart" id="creatorChart"></div>
+            <div class="partner-list" id="partnerList"></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="operating-model">
+        <div class="section-heading">
+          <div><p class="kicker">06 / نموذج SENSE التشغيلي</p><h3>هوية → مشروع → مهارة → سير عمل → أثر قابل للتحقق</h3></div>
+          <p class="section-note">مستخلص من مواد Claude 101 وClaude Code 101 كما وردت في المدخلات، ومترجم إلى بنية تنفيذية للمشروع.</p>
+        </div>
+        <div class="model-rail">
+          <div><span>01</span><strong>Identity</strong><small>هوية وقواعد</small></div>
+          <div><span>02</span><strong>Projects</strong><small>سياق ومعرفة</small></div>
+          <div><span>03</span><strong>Skills</strong><small>خبرات قابلة لإعادة الاستخدام</small></div>
+          <div><span>04</span><strong>Workflows</strong><small>استقبال إلى إغلاق</small></div>
+          <div><span>05</span><strong>Artifacts</strong><small>لوحة وملف وقرار</small></div>
+          <div><span>06</span><strong>Verification</strong><small>مصدر، مالك، موافقة</small></div>
+        </div>
+      </section>
+
+      <section class="assumptions-section">
+        <div class="assumption-copy">
+          <p class="kicker">07 / الحوكمة</p>
+          <h3>الوضوح قبل اللمعان.</h3>
+          <p>اللوحة تفصل بين «نموذج واجهة» و«نتيجة موثقة». عند ربط ملف JSON بتصدير بلدي أو استبيان مقبول، يتغير التحليل دون تغيير الواجهة، لكن لا يصبح الرقم حقيقة إلا بعد تسجيل المصدر والتعريف والتواتر والمالك.</p>
+        </div>
+        <div class="assumption-list" id="assumptionList"></div>
+      </section>
+
+      <footer class="footer">
+        <span>SENSE / Urban-Sense Core</span>
+        <span id="footerSource">المصدر: —</span>
+        <span>نموذج أولي قابل للتطوير</span>
+      </footer>
+    </main>
+
+    <dialog id="editorDialog">
+      <form method="dialog" class="editor-dialog">
+        <div class="dialog-heading"><div><p class="kicker">محرر محلي</p><h3>حرّر JSON ثم أعد الرسم</h3></div><button class="icon-button" value="cancel" aria-label="إغلاق">×</button></div>
+        <p class="dialog-note">الحفظ هنا محلي في هذا المتصفح فقط. لتغيير المصدر العام، حدّث ملف <code>visualize/data/dashboard.json</code> في المستودع أو مرّر رابط JSON عام عبر خانة المصدر.</p>
+        <textarea id="jsonEditor" spellcheck="false" aria-label="محرر بيانات JSON"></textarea>
+        <div class="dialog-actions"><button type="button" class="button button-accent" id="applyJsonButton">تطبيق البيانات</button><button type="button" class="button button-light" id="resetLocalButton">إزالة النسخة المحلية</button></div>
+        <div class="editor-error" id="editorError" role="alert"></div>
+      </form>
+    </dialog>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>

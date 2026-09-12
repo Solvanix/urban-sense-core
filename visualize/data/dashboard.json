@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "project": "SENSE / TIBYAN",
+    "destination": "Al-Eizariya",
+    "version": "0.1.0-prototype",
+    "data_status": "prototype",
+    "status_label": "بيانات أولية قابلة للاستبدال",
+    "last_updated": "2026-09-12T00:00:00Z",
+    "source": "Repository-maintained JSON; replace with a verified municipal export before making public impact claims",
+    "refresh_hint": "Update this file or pass ?data=<public-json-url> to reload another source"
+  },
+  "period": {
+    "label": "خط أساس تجريبي — أيلول 2026",
+    "start": "2026-09-01",
+    "end": "2026-09-30"
+  },
+  "metrics": {
+    "stop_rate": { "label": "نسبة التوقف عند الوجهة", "value": 20, "unit": "%", "target": 35, "direction": "up", "confidence": "غير مقاس بعد" },
+    "dwell_minutes": { "label": "متوسط مدة التوقف", "value": 20, "unit": "دقيقة", "target": 35, "direction": "up", "confidence": "غير مقاس بعد" },
+    "trusted_info_minutes": { "label": "زمن الوصول إلى معلومة موثوقة", "value": 30, "unit": "دقيقة", "target": 10, "direction": "down", "confidence": "غير مقاس بعد" },
+    "accessibility_coverage": { "label": "تغطية معلومات الوصول الشامل", "value": 20, "unit": "%", "target": 80, "direction": "up", "confidence": "غير مقاس بعد" },
+    "active_providers": { "label": "المزودون المحليون النشطون", "value": 10, "unit": "مزود", "target": 30, "direction": "up", "confidence": "غير مقاس بعد" },
+    "content_to_visit": { "label": "التحويل من المحتوى إلى زيارة", "value": 2, "unit": "%", "target": 8, "direction": "up", "confidence": "غير مقاس بعد" },
+    "report_closure_hours": { "label": "الزمن الوسيط لإغلاق البلاغ", "value": 72, "unit": "ساعة", "target": 24, "direction": "down", "confidence": "غير مقاس بعد" }
+  },
+  "funnel": [
+    { "stage": "مشاهدة قصة محلية", "value": 1000 },
+    { "stage": "ضغط: اذهب للمكان", "value": 140 },
+    { "stage": "فتح مسار", "value": 80 },
+    { "stage": "زيارة موثقة", "value": 20 },
+    { "stage": "شراء/حجز/تجربة", "value": 8 }
+  ],
+  "reports": {
+    "workflow": [
+      { "stage": "استقبال", "value": 36 },
+      { "stage": "تصنيف", "value": 31 },
+      { "stage": "أولوية", "value": 25 },
+      { "stage": "إحالة", "value": 22 },
+      { "stage": "SLA", "value": 18 },
+      { "stage": "إغلاق", "value": 12 },
+      { "stage": "تقييم", "value": 7 }
+    ],
+    "by_category": [
+      { "category": "الوصول والتنقل", "value": 12, "color": "#d97850" },
+      { "category": "النظافة والبيئة", "value": 9, "color": "#8aa37b" },
+      { "category": "المياه والخدمات", "value": 6, "color": "#5d8fa3" },
+      { "category": "المعلومة والهوية", "value": 5, "color": "#b78b51" },
+      { "category": "السلامة والوصول الشامل", "value": 4, "color": "#ba5d67" }
+    ]
+  },
+  "network": {
+    "creator_categories": [
+      { "label": "تراث وتاريخ", "value": 3 },
+      { "label": "طعام ومنتج محلي", "value": 2 },
+      { "label": "وصول شامل", "value": 1 },
+      { "label": "طلاب وشباب", "value": 3 },
+      { "label": "حرفيون ومرشدون", "value": 1 }
+    ],
+    "partners": [
+      { "name": "البلدية", "role": "مالك مسار البلاغ والبيانات", "status": "مسار شراكة مقترح" },
+      { "name": "Technopark / Urban Up", "role": "احتضان وتجريب وربط فرص", "status": "مسار تعاون مقترح" },
+      { "name": "المؤسسات التعليمية", "role": "تعلم تطبيقي ومحتوى شبابي", "status": "مسار تعاون مقترح" },
+      { "name": "Mabasol", "role": "شريك استراتيجي — نسخة بيتا", "status": "بحاجة لتثبيت نطاق التعاون" }
+    ]
+  },
+  "assumptions": [
+    "القيم الرقمية في هذا الملف ليست قياسات ميدانية موثقة؛ هي خط أساس تجريبي لتجربة الواجهة فقط.",
+    "قبل نشر أي ادعاء أثر، يجب ربط كل مؤشر بمصدر، ومالك، وتواتر تحديث، وتعريف، وسجل موافقة.",
+    "تغيير البيانات في هذا الملف أو في مصدر JSON العام يغيّر التحليل والرسوم تلقائياً عند التحديث.",
+    "لا تُجمع بيانات شخصية في لوحة العرض؛ تستخدم البيانات المجمعة أو المجهّلة فقط في النموذج الأولي."
+  ]
+}
