@@ -6,6 +6,7 @@ on:
     paths:
       - "public-index/**"
       - "visualize/**"
+      - "apps/pizza-hot/**"
       - ".github/workflows/publish-index-pages.yml"
   workflow_dispatch:
 
@@ -42,6 +43,11 @@ jobs:
           cp -R visualize/. _site/visualize/
           test -f _site/visualize/index.html
           test -f _site/visualize/data/dashboard.json
+          mkdir -p _site/pizza-hot
+          cp -R apps/pizza-hot/. _site/pizza-hot/
+          rm -f _site/pizza-hot/.env _site/pizza-hot/.env.local _site/pizza-hot/.env.local.ready
+          test -f _site/pizza-hot/index.html
+          test -f _site/pizza-hot/catalog.json
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
