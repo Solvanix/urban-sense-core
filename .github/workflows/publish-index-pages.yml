@@ -7,6 +7,7 @@ on:
       - "public-index/**"
       - "visualize/**"
       - "apps/pizza-hot/**"
+      - "apps/executive-visualization/**"
       - ".github/workflows/publish-index-pages.yml"
   workflow_dispatch:
 
@@ -32,6 +33,22 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: apps/executive-visualization/pnpm-lock.yaml
+      - name: Build executive visualization
+        working-directory: apps/executive-visualization
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm check
+          pnpm build
       - name: Build static Pages artifact
         shell: bash
         run: |
@@ -43,6 +60,9 @@ jobs:
           cp -R visualize/. _site/visualize/
           test -f _site/visualize/index.html
           test -f _site/visualize/data/dashboard.json
+          mkdir -p _site/executive
+          cp -R apps/executive-visualization/dist/public/. _site/executive/
+          test -f _site/executive/index.html
           mkdir -p _site/pizza-hot
           cp -R apps/pizza-hot/. _site/pizza-hot/
           rm -f _site/pizza-hot/.env _site/pizza-hot/.env.local _site/pizza-hot/.env.local.ready
