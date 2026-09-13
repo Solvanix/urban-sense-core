@@ -1,0 +1,16 @@
+title,slug,parent,type,category,status,source_file,notes
+الرئيسية,home,,page,واجهة,مسودة, SENSE-WordPress-content-pack-v1.md,صفحة ثابتة وهوية المنصة
+التحرير,editorial,,page,التحرير,مسودة,wordpress-sense-site-structure.json,فهرس المقالات
+القصة الرئيسية,main-story,التحرير,post,التحرير,مسودة جاهزة للتحرير الميداني,SENSE-editorial-academic-pack.md,900-1200 كلمة مع وسائط
+التقرير السياحي,tourism-report,التحرير,post,التحرير,مسودة جاهزة للتحقق,SENSE-editorial-academic-pack.md,يحتاج مقابلات ومصادر ميدانية
+القصة المصورة,photo-story,التحرير,page,التحرير,قيد التجهيز,SENSE-editorial-academic-pack.md,5-7 صور
+الفيديو والصوت,video-audio,التحرير,page,التحرير,قيد التجهيز,SENSE-editorial-academic-pack.md,يتطلب فيديو وتسجيلًا مرخصين أو منتجين
+اكتشف,discover,,page,الوجهات,مسودة,wordpress-sense-site-structure.json,فهرس الوجهات
+العيزرية,al-eizariya,اكتشف,page,الوجهات,قيد التوثيق,SENSE-WordPress-content-pack-v1.md,يتطلب تحققًا ميدانيًا
+المعالم,landmarks,اكتشف,page,الوجهات,قيد التجهيز,wordpress-sense-site-structure.json,فهرس المعالم
+المسارات,routes,اكتشف,page,الوجهات,قيد التجهيز,SENSE-WordPress-content-pack-v1.md,المسارات لا تُعلن قبل الاختبار
+المتجر الوطني,national-store,,page,المتجر,مقترح,SENSE-WordPress-content-pack-v1.md,واجهة متجر دون دفع في الإصدار الأول
+قصص الحرفيين,artisan-stories,,page,الحرفيون,قيد التجهيز,wordpress-sense-site-structure.json,يحتاج موافقات وبيانات أصحاب الأعمال
+سهولة الوصول,accessibility,,page,معلومات,مسودة,SENSE-WordPress-implementation-v1.md,مبادئ الوصول واختبارات الهاتف
+عن SENSE,about,,page,معلومات,مسودة,SENSE-WordPress-content-pack-v1.md,تعريف المشروع وحدوده
+المصادر والحقوق,sources-rights,,page,معلومات,مسودة,SENSE-editorial-academic-pack.md,سجل المصادر وحقوق الوسائط
