@@ -1,0 +1,62 @@
+{
+  "site": {
+    "name": "SENSE",
+    "description": "منصة سياحية ومتجر إلكتروني وطني لاكتشاف فلسطين من خلال قصص أماكنها وتجارب أهلها ومنتجات حرفييها.",
+    "language": "ar",
+    "direction": "rtl",
+    "theme": "Blocksy",
+    "tokens_source": "sense-brand-tokens.json"
+  },
+  "brand": {
+    "colors": {
+      "night_story": "#17211F",
+      "olive_place": "#66734A",
+      "stone_jerusalem": "#E7DED0",
+      "light_gold": "#C79A4A",
+      "warm_clay": "#A7654B",
+      "paper_white": "#FAF8F3",
+      "verified_green": "#3D795E",
+      "needs_review_red": "#A44B42"
+    },
+    "fonts": {
+      "headings": "IBM Plex Sans Arabic",
+      "body": "IBM Plex Sans Arabic",
+      "latin": "Inter"
+    }
+  },
+  "navigation": [
+    {"title": "الرئيسية", "slug": "home", "type": "page"},
+    {"title": "التحرير", "slug": "editorial", "type": "page", "children": [
+      {"title": "القصة الرئيسية", "slug": "main-story", "type": "post"},
+      {"title": "التقرير السياحي", "slug": "tourism-report", "type": "post"},
+      {"title": "القصة المصورة", "slug": "photo-story", "type": "page"},
+      {"title": "الفيديو والصوت", "slug": "video-audio", "type": "page"}
+    ]},
+    {"title": "اكتشف", "slug": "discover", "type": "page", "children": [
+      {"title": "العيزرية", "slug": "al-eizariya", "type": "page"},
+      {"title": "المعالم", "slug": "landmarks", "type": "page"},
+      {"title": "المسارات", "slug": "routes", "type": "page"}
+    ]},
+    {"title": "المتجر الوطني", "slug": "national-store", "type": "page"},
+    {"title": "قصص الحرفيين", "slug": "artisan-stories", "type": "page"},
+    {"title": "سهولة الوصول", "slug": "accessibility", "type": "page"},
+    {"title": "عن SENSE", "slug": "about", "type": "page"},
+    {"title": "المصادر والحقوق", "slug": "sources-rights", "type": "page"}
+  ],
+  "external_links": [
+    {"label": "الموقع التعريفي", "url": "https://senseivo.com"},
+    {"label": "المتجر الحالي", "url": "https://sense.runasp.net/"},
+    {"label": "SENSE City Shop", "url": "https://sensecity.shop"},
+    {"label": "SENSE City", "url": "https://sensecity.org"},
+    {"label": "WSENSE", "url": "https://wsenses.com"},
+    {"label": "Facebook", "url": "https://www.facebook.com/share/1YTsmYdUdT/"},
+    {"label": "LinkedIn", "url": "https://www.linkedin.com/company/sense-tech-solution-s/"}
+  ],
+  "status_labels": ["منشور", "قيد التحقق", "قيد التجهيز", "مقترح"],
+  "publish_rules": {
+    "alt_text_required": true,
+    "source_required_for_factual_claims": true,
+    "human_review_required": true,
+    "payment_or_booking_claims_require_live_integration": true
+  }
+}
