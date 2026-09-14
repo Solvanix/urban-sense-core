@@ -22,6 +22,7 @@ import CitizenStart from "./pages/CitizenStart";
 import GrowthJourney from "./pages/GrowthJourney";
 import LoyaltyExplainer from "./pages/LoyaltyExplainer";
 import ExperienceProjectHub from "./pages/ExperienceProjectHub";
+import TourismPlatform from "./pages/TourismPlatform";
 import MasakenAlKhair from "./pages/MasakenAlKhair";
 import IndependencePath from "./pages/IndependencePath";
 import VerificationRoom from "./pages/VerificationRoom";
@@ -47,6 +48,7 @@ function RootPage() {
   if (rootView === "experience-studio") return <ExperienceProjectHub screen="studio" />;
   if (rootView === "experience-access") return <ExperienceProjectHub screen="access" />;
   if (rootView === "experience-claims") return <ExperienceProjectHub screen="claims" />;
+  if (rootView === "tourism") return <TourismPlatform />;
   if (rootView === "masaken") return <MasakenAlKhair screen="overview" />;
   if (rootView === "masaken-owner") return <MasakenAlKhair screen="owner" />;
   if (rootView === "masaken-plan") return <MasakenAlKhair screen="plan" />;

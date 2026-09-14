@@ -12,6 +12,7 @@ export const experienceHubHref = "/?view=experience";
 export const experienceStudioHref = "/?view=experience-studio";
 export const experienceAccessHref = "/?view=experience-access";
 export const experienceClaimsHref = "/?view=experience-claims";
+export const tourismPlatformHref = "/?view=tourism";
 export const masakenAlKhairHref = "/?view=masaken";
 export const masakenOwnerHref = "/?view=masaken-owner";
 export const masakenPlanHref = "/?view=masaken-plan";
@@ -23,11 +24,11 @@ export const workCompassHref = "/?view=work-compass";
 export const nationalContinuityHref = "/?view=continuity";
 export const liveVisualizeHref = "/?view=visualize";
 
-export type RootView = "urban" | "sense" | "operations" | "explore" | "domain" | "progress" | "access" | "citizen" | "growth" | "loyalty" | "experience" | "experience-studio" | "experience-access" | "experience-claims" | "masaken" | "masaken-owner" | "masaken-plan" | "masaken-team" | "independence" | "verification" | "refugees" | "work-compass" | "continuity" | "visualize" | null;
+export type RootView = "urban" | "sense" | "operations" | "explore" | "domain" | "progress" | "access" | "citizen" | "growth" | "loyalty" | "experience" | "experience-studio" | "experience-access" | "experience-claims" | "tourism" | "masaken" | "masaken-owner" | "masaken-plan" | "masaken-team" | "independence" | "verification" | "refugees" | "work-compass" | "continuity" | "visualize" | null;
 
 export function getRootView(search: string): RootView {
   const view = new URLSearchParams(search).get("view");
-  return view === "urban" || view === "sense" || view === "operations" || view === "explore" || view === "domain" || view === "progress" || view === "access" || view === "citizen" || view === "growth" || view === "loyalty" || view === "experience" || view === "experience-studio" || view === "experience-access" || view === "experience-claims" || view === "masaken" || view === "masaken-owner" || view === "masaken-plan" || view === "masaken-team" || view === "independence" || view === "verification" || view === "refugees" || view === "work-compass" || view === "continuity" || view === "visualize" ? view : null;
+  return view === "urban" || view === "sense" || view === "operations" || view === "explore" || view === "domain" || view === "progress" || view === "access" || view === "citizen" || view === "growth" || view === "loyalty" || view === "experience" || view === "experience-studio" || view === "experience-access" || view === "experience-claims" || view === "tourism" || view === "masaken" || view === "masaken-owner" || view === "masaken-plan" || view === "masaken-team" || view === "independence" || view === "verification" || view === "refugees" || view === "work-compass" || view === "continuity" || view === "visualize" ? view : null;
 }
 
 export function isSensePortalSearch(search: string) {
