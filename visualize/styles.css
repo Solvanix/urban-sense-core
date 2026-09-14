@@ -199,3 +199,27 @@ body.editing-copy [data-editable] { padding: 3px 6px; outline: 1px dashed var(--
   .operating-model, .assumptions-section { break-inside: avoid; }
   dialog { display: none; }
 }
+
+/* Vertical Slice analytical proof */
+.analysis-proof { margin: 28px 0; padding: 26px; border: 1px solid #cbd9d1; border-radius: 22px; background: linear-gradient(135deg, #f8fcf9, #edf5f0); }
+.alert-list { display: grid; gap: 10px; margin: 18px 0; }
+.analysis-alert { display: grid; grid-template-columns: 190px 1fr auto; gap: 14px; align-items: center; padding: 13px 15px; border-radius: 12px; background: #fff; border-right: 4px solid #d8a94e; box-shadow: 0 5px 16px rgba(20, 55, 45, .05); }
+.analysis-alert.info { border-right-color: #5c8da0; }
+.analysis-alert strong { color: #173f38; }
+.analysis-alert span, .analysis-alert small { color: #547069; line-height: 1.7; }
+.analysis-alert small { font-family: "IBM Plex Mono", monospace; font-size: 11px; }
+.trend-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; }
+.trend-chart, .area-table { min-height: 230px; padding: 18px; border: 1px solid #d5e1da; border-radius: 16px; background: rgba(255,255,255,.84); }
+.proof-heading { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 24px; color: #204d44; }
+.proof-heading span { color: #6c8178; font-size: 12px; }
+.trend-chart { display: flex; align-items: end; gap: 8px; }
+.trend-chart .proof-heading { position: absolute; }
+.trend-column { flex: 1; height: 150px; display: flex; flex-direction: column; justify-content: end; align-items: center; gap: 7px; }
+.trend-column span { display: block; width: 100%; max-width: 28px; border-radius: 6px 6px 2px 2px; background: linear-gradient(#d97850, #b85f47); min-height: 8px; }
+.trend-column small { color: #71867e; font-size: 10px; direction: ltr; }
+.area-table table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.area-table th, .area-table td { padding: 9px 5px; border-bottom: 1px solid #e1ebe5; text-align: right; }
+.area-table th { color: #527168; font-weight: 700; }
+.area-table td { color: #21483f; }
+@media (max-width: 820px) { .analysis-alert { grid-template-columns: 1fr; gap: 4px; } .trend-grid { grid-template-columns: 1fr; } }
+@media print { .analysis-proof { break-inside: avoid; } .analysis-alert { box-shadow: none; } }

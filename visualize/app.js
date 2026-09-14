@@ -22,6 +22,10 @@ const footerSource = $("#footerSource");
 const editorDialog = $("#editorDialog");
 const jsonEditor = $("#jsonEditor");
 const editorError = $("#editorError");
+const trendChart = $("#trendChart");
+const areaTable = $("#areaTable");
+const alertList = $("#alertList");
+const methodNote = $("#methodNote");
 
 let currentData = null;
 let refreshTimer = null;
@@ -116,12 +120,26 @@ function renderAssumptions(data) {
   assumptionList.innerHTML = (data.assumptions || []).map((item) => `<div class="assumption-item">${escapeHtml(item)}</div>`).join("");
 }
 
+function renderAnalyticalProof(data) {
+  const trend = data.trend || [];
+  const max = Math.max(...trend.map((item) => Number(item.median_close_hours) || 0), 1);
+  trendChart.innerHTML = `<div class="proof-heading"><strong>اتجاه الوسيط حتى الإغلاق</strong><span>بالساعات · ${escapeHtml(data.period?.label || "")}</span></div>${trend.map((item) => {
+    const height = Math.max(8, Math.round((Number(item.median_close_hours) / max) * 100));
+    return `<div class="trend-column" title="${escapeHtml(item.date)}: ${escapeHtml(item.median_close_hours)} ساعة"><span style="height:${height}%"></span><small>${escapeHtml(item.date.slice(5))}</small></div>`;
+  }).join("")}`;
+  areaTable.innerHTML = `<div class="proof-heading"><strong>مقارنة حسب المنطقة</strong><span>مشتقة من السجلات</span></div><table><thead><tr><th>المنطقة</th><th>البلاغات</th><th>وسيط الإغلاق</th><th>إعادة الفتح</th></tr></thead><tbody>${(data.area_analysis || []).map((item) => `<tr><td>${escapeHtml(item.area)}</td><td>${formatNumber(item.reports)}</td><td>${escapeHtml(item.median_close_hours)} س</td><td>${escapeHtml(item.reopen_rate)}%</td></tr>`).join("")}</tbody></table>`;
+  alertList.innerHTML = (data.alerts || []).map((item) => `<div class="analysis-alert ${escapeHtml(item.severity)}"><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.detail)}</span><small>الدليل: ${escapeHtml(item.evidence)}</small></div>`).join("");
+  methodNote.textContent = data.meta?.method ? `المحرك: ${data.meta.method} · ${formatNumber(data.meta.record_count)} سجل` : "لا يوجد وصف للمحرك";
+}
+
 function renderMeta(data) {
   periodLabel.textContent = data.period?.label || "فترة غير محددة";
   footerSource.textContent = `المصدر: ${data.meta?.source || activeSource}`;
-  notice.textContent = data.meta?.data_status === "prototype"
-    ? "النموذج يعرض بيانات أولية/تجريبية. لا تستخدم الأرقام كأثر محقق قبل استبدال المصدر وتسجيل خط الأساس."
-    : `تم تحميل المصدر: ${data.meta?.source || activeSource}`;
+  notice.textContent = data.meta?.data_status === "synthetic_pilot"
+    ? "تم تشغيل محرك التحليل على Fixture اصطناعي موثق. النتائج محسوبة فعليًا من 112 سجلًا لكنها لا تمثل أداءً بلديًا."
+    : data.meta?.data_status === "prototype"
+      ? "النموذج يعرض بيانات أولية/تجريبية. لا تستخدم الأرقام كأثر محقق قبل استبدال المصدر وتسجيل خط الأساس."
+      : `تم تحميل المصدر: ${data.meta?.source || activeSource}`;
 }
 
 function render(data) {
@@ -132,6 +150,7 @@ function render(data) {
   renderCategories(data);
   renderNetwork(data);
   renderAssumptions(data);
+  renderAnalyticalProof(data);
   renderMeta(data);
   setSuccessState(data);
   applyCopy();

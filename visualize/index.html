@@ -36,7 +36,7 @@
           </div>
           <p class="kicker">Urban-Sense Core / Visualize</p>
           <h2 data-editable="heroTitle">من البيانات المجزأة إلى رحلة قابلة للاكتشاف والتنفيذ والقياس.</h2>
-          <p class="hero-description" data-editable="heroDescription">لوحة تشغيل أولية تربط القصة بالمكان، والمسار بالتجربة، والبلاغ بسير عمل بلدي قابل للمتابعة. القيم الرقمية المعروضة نموذجية إلى أن تُستبدل بتصدير موثق.</p>
+          <p class="hero-description" data-editable="heroDescription">شريحة تشغيلية تربط سجلات البلاغات بقاعدة SQLite ومحرك تحليل قابل لإعادة التشغيل، ثم تعرض المؤشرات والاتجاهات والتنبيهات مع مصدر كل نتيجة. البيانات الحالية اصطناعية موثقة وليست قياسًا بلديًا.</p>
           <div class="hero-meta">
             <span class="meta-chip" id="periodLabel">الفترة —</span>
             <span class="meta-chip">تحديث تلقائي قابل للضبط</span>
@@ -77,6 +77,18 @@
       <section class="notice-banner" id="noticeBanner">
         <strong>حالة البيانات:</strong>
         <span id="dataNotice">—</span>
+      </section>
+
+      <section class="analysis-proof" aria-label="نتائج التحليل القابلة للتتبع">
+        <div class="section-heading">
+          <div><p class="kicker">00 / الدليل التحليلي</p><h3>ماذا استنتج المحرك من السجلات؟</h3></div>
+          <p class="section-note" id="methodNote">—</p>
+        </div>
+        <div class="alert-list" id="alertList"></div>
+        <div class="trend-grid">
+          <div class="trend-chart" id="trendChart" aria-label="اتجاه وسيط زمن الإغلاق"></div>
+          <div class="area-table" id="areaTable" aria-label="مقارنة المناطق"></div>
+        </div>
       </section>
 
       <section class="metrics-section">
@@ -157,7 +169,7 @@
       <footer class="footer">
         <span>SENSE / Urban-Sense Core</span>
         <span id="footerSource">المصدر: —</span>
-        <span>نموذج أولي قابل للتطوير</span>
+        <span>Vertical Slice · مصدر قابل للتتبع</span>
       </footer>
     </main>
 
