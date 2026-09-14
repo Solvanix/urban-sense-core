@@ -2,73 +2,269 @@
   "meta": {
     "project": "SENSE / TIBYAN",
     "destination": "Al-Eizariya",
-    "version": "0.1.0-prototype",
-    "data_status": "prototype",
-    "status_label": "بيانات أولية قابلة للاستبدال",
-    "last_updated": "2026-09-12T00:00:00Z",
-    "source": "Repository-maintained JSON; replace with a verified municipal export before making public impact claims",
+    "version": "0.2.0-vertical-slice",
+    "data_status": "synthetic_pilot",
+    "status_label": "تحليل قابل لإعادة التشغيل · بيانات اصطناعية موثقة",
+    "last_updated": "2026-09-14T14:00:00Z",
+    "source": "analytics/vertical_slice/seed/reports.csv",
+    "method": "SQLite + deterministic Python aggregation",
+    "record_count": 112,
+    "privacy": "لا توجد بيانات شخصية؛ المعرّفات اصطناعية",
     "owner": "SENSE / Urban-Sense — owner not yet operationally assigned",
     "freshness": "Repository snapshot; live signals are displayed separately",
     "refresh_hint": "Update this file or pass ?data=<public-json-url> to reload another source"
   },
   "period": {
-    "label": "خط أساس تجريبي — أيلول 2026",
+    "label": "1–14 أيلول 2026 · شريحة تجريبية",
     "start": "2026-09-01",
-    "end": "2026-09-30"
+    "end": "2026-09-14"
+  },
+  "filters": {
+    "areas": [
+      "البلدة القديمة",
+      "الشارع الرئيسي",
+      "الكنيسة",
+      "المدخل الشرقي"
+    ],
+    "categories": [
+      "المعلومة والهوية",
+      "الوصول والتنقل"
+    ]
   },
   "metrics": {
-    "stop_rate": { "label": "نسبة التوقف عند الوجهة", "value": 20, "unit": "%", "target": 35, "direction": "up", "confidence": "غير مقاس بعد" },
-    "dwell_minutes": { "label": "متوسط مدة التوقف", "value": 20, "unit": "دقيقة", "target": 35, "direction": "up", "confidence": "غير مقاس بعد" },
-    "trusted_info_minutes": { "label": "زمن الوصول إلى معلومة موثوقة", "value": 30, "unit": "دقيقة", "target": 10, "direction": "down", "confidence": "غير مقاس بعد" },
-    "accessibility_coverage": { "label": "تغطية معلومات الوصول الشامل", "value": 20, "unit": "%", "target": 80, "direction": "up", "confidence": "غير مقاس بعد" },
-    "active_providers": { "label": "المزودون المحليون النشطون", "value": 10, "unit": "مزود", "target": 30, "direction": "up", "confidence": "غير مقاس بعد" },
-    "content_to_visit": { "label": "التحويل من المحتوى إلى زيارة", "value": 2, "unit": "%", "target": 8, "direction": "up", "confidence": "غير مقاس بعد" },
-    "report_closure_hours": { "label": "الزمن الوسيط لإغلاق البلاغ", "value": 72, "unit": "ساعة", "target": 24, "direction": "down", "confidence": "غير مقاس بعد" }
+    "reports": {
+      "label": "إجمالي البلاغات",
+      "value": 112,
+      "unit": "بلاغ",
+      "target": null,
+      "confidence": "عينة اصطناعية مكتملة"
+    },
+    "median_ack_minutes": {
+      "label": "الوسيط حتى إقرار الاستلام",
+      "value": 34.5,
+      "unit": "دقيقة",
+      "target": 30,
+      "direction": "down",
+      "confidence": "محسوب من طوابع زمنية"
+    },
+    "median_assign_minutes": {
+      "label": "الوسيط حتى الإحالة",
+      "value": 55.0,
+      "unit": "دقيقة",
+      "target": 60,
+      "direction": "down",
+      "confidence": "محسوب من طوابع زمنية"
+    },
+    "median_close_hours": {
+      "label": "الوسيط حتى الإغلاق",
+      "value": 21.5,
+      "unit": "ساعة",
+      "target": 24,
+      "direction": "down",
+      "confidence": "محسوب من طوابع زمنية"
+    },
+    "reopen_rate": {
+      "label": "معدل إعادة الفتح",
+      "value": 8.0,
+      "unit": "%",
+      "target": 5,
+      "direction": "down",
+      "confidence": "محسوب من حقل reopened"
+    },
+    "average_rating": {
+      "label": "متوسط التقييم",
+      "value": 4.0,
+      "unit": "/5",
+      "target": 4,
+      "direction": "up",
+      "confidence": "من 90 تقييمًا متاحًا"
+    }
   },
   "funnel": [
-    { "stage": "مشاهدة قصة محلية", "value": 1000 },
-    { "stage": "ضغط: اذهب للمكان", "value": 140 },
-    { "stage": "فتح مسار", "value": 80 },
-    { "stage": "زيارة موثقة", "value": 20 },
-    { "stage": "شراء/حجز/تجربة", "value": 8 }
+    {
+      "stage": "استقبال",
+      "value": 112
+    },
+    {
+      "stage": "إقرار الاستلام",
+      "value": 112
+    },
+    {
+      "stage": "إحالة",
+      "value": 112
+    },
+    {
+      "stage": "إغلاق",
+      "value": 112
+    },
+    {
+      "stage": "تقييم",
+      "value": 90
+    }
   ],
   "reports": {
     "workflow": [
-      { "stage": "استقبال", "value": 36 },
-      { "stage": "تصنيف", "value": 31 },
-      { "stage": "أولوية", "value": 25 },
-      { "stage": "إحالة", "value": 22 },
-      { "stage": "SLA", "value": 18 },
-      { "stage": "إغلاق", "value": 12 },
-      { "stage": "تقييم", "value": 7 }
+      {
+        "stage": "استقبال",
+        "value": 112
+      },
+      {
+        "stage": "إقرار الاستلام",
+        "value": 112
+      },
+      {
+        "stage": "إحالة",
+        "value": 112
+      },
+      {
+        "stage": "إغلاق",
+        "value": 112
+      },
+      {
+        "stage": "تقييم",
+        "value": 90
+      }
     ],
     "by_category": [
-      { "category": "الوصول والتنقل", "value": 12, "color": "#d97850" },
-      { "category": "النظافة والبيئة", "value": 9, "color": "#8aa37b" },
-      { "category": "المياه والخدمات", "value": 6, "color": "#5d8fa3" },
-      { "category": "المعلومة والهوية", "value": 5, "color": "#b78b51" },
-      { "category": "السلامة والوصول الشامل", "value": 4, "color": "#ba5d67" }
+      {
+        "category": "المعلومة والهوية",
+        "value": 37,
+        "color": "#d97850"
+      },
+      {
+        "category": "الوصول والتنقل",
+        "value": 75,
+        "color": "#d97850"
+      }
     ]
   },
-  "network": {
-    "creator_categories": [
-      { "label": "تراث وتاريخ", "value": 3 },
-      { "label": "طعام ومنتج محلي", "value": 2 },
-      { "label": "وصول شامل", "value": 1 },
-      { "label": "طلاب وشباب", "value": 3 },
-      { "label": "حرفيون ومرشدون", "value": 1 }
-    ],
-    "partners": [
-      { "name": "البلدية", "role": "مالك مسار البلاغ والبيانات", "status": "مسار شراكة مقترح" },
-      { "name": "Technopark / Urban Up", "role": "احتضان وتجريب وربط فرص", "status": "مسار تعاون مقترح" },
-      { "name": "المؤسسات التعليمية", "role": "تعلم تطبيقي ومحتوى شبابي", "status": "مسار تعاون مقترح" },
-      { "name": "Mabasol", "role": "شريك استراتيجي — نسخة بيتا", "status": "بحاجة لتثبيت نطاق التعاون" }
+  "trend": [
+    {
+      "date": "2026-09-01",
+      "reports": 8,
+      "median_close_hours": 19.0
+    },
+    {
+      "date": "2026-09-02",
+      "reports": 8,
+      "median_close_hours": 19.0
+    },
+    {
+      "date": "2026-09-03",
+      "reports": 8,
+      "median_close_hours": 19.0
+    },
+    {
+      "date": "2026-09-04",
+      "reports": 8,
+      "median_close_hours": 19.0
+    },
+    {
+      "date": "2026-09-05",
+      "reports": 8,
+      "median_close_hours": 19.0
+    },
+    {
+      "date": "2026-09-06",
+      "reports": 8,
+      "median_close_hours": 19.0
+    },
+    {
+      "date": "2026-09-07",
+      "reports": 8,
+      "median_close_hours": 19.0
+    },
+    {
+      "date": "2026-09-08",
+      "reports": 8,
+      "median_close_hours": 24.0
+    },
+    {
+      "date": "2026-09-09",
+      "reports": 8,
+      "median_close_hours": 24.0
+    },
+    {
+      "date": "2026-09-10",
+      "reports": 8,
+      "median_close_hours": 24.0
+    },
+    {
+      "date": "2026-09-11",
+      "reports": 8,
+      "median_close_hours": 24.0
+    },
+    {
+      "date": "2026-09-12",
+      "reports": 8,
+      "median_close_hours": 24.0
+    },
+    {
+      "date": "2026-09-13",
+      "reports": 8,
+      "median_close_hours": 24.0
+    },
+    {
+      "date": "2026-09-14",
+      "reports": 8,
+      "median_close_hours": 24.0
+    }
+  ],
+  "area_analysis": [
+    {
+      "area": "البلدة القديمة",
+      "reports": 28,
+      "median_close_hours": 11.5,
+      "reopen_rate": 10.7
+    },
+    {
+      "area": "الشارع الرئيسي",
+      "reports": 28,
+      "median_close_hours": 23.5,
+      "reopen_rate": 7.1
+    },
+    {
+      "area": "الكنيسة",
+      "reports": 28,
+      "median_close_hours": 21.5,
+      "reopen_rate": 7.1
+    },
+    {
+      "area": "المدخل الشرقي",
+      "reports": 28,
+      "median_close_hours": 26.5,
+      "reopen_rate": 7.1
+    }
+  ],
+  "alerts": [
+    {
+      "severity": "warning",
+      "title": "منطقة تتجاوز عتبة الإغلاق",
+      "detail": "الوسيط في المدخل الشرقي هو 26.5 ساعة، فوق عتبة 24 ساعة.",
+      "evidence": "computed from reports.closed_at - reports.created_at"
+    },
+    {
+      "severity": "info",
+      "title": "نطاق البيانات محدود",
+      "detail": "هذه شريحة تجريبية اصطناعية من 112 بلاغًا، وليست قياسًا بلديًا.",
+      "evidence": "seed/reports.csv; synthetic-pilot-v1"
+    }
+  ],
+  "provenance": {
+    "source_type": "synthetic_fixture",
+    "source_path": "analytics/vertical_slice/seed/reports.csv",
+    "schema_version": "reports.v1",
+    "generated_by": "analytics/vertical_slice/analyze.py",
+    "calculation_notes": [
+      "الوسيط محسوب بالاستيفاء الخطي على مدد البلاغات.",
+      "معدل إعادة الفتح = البلاغات المعاد فتحها ÷ إجمالي البلاغات.",
+      "البيانات اصطناعية لا تمثل سكانًا أو بلاغات حقيقية."
     ]
   },
   "assumptions": [
-    "القيم الرقمية في هذا الملف ليست قياسات ميدانية موثقة؛ هي خط أساس تجريبي لتجربة الواجهة فقط.",
-    "قبل نشر أي ادعاء أثر، يجب ربط كل مؤشر بمصدر، ومالك، وتواتر تحديث، وتعريف، وسجل موافقة.",
-    "تغيير البيانات في هذا الملف أو في مصدر JSON العام يغيّر التحليل والرسوم تلقائياً عند التحديث.",
-    "لا تُجمع بيانات شخصية في لوحة العرض؛ تستخدم البيانات المجمعة أو المجهّلة فقط في النموذج الأولي."
+    "هذه ليست قياسات ميدانية أو بلدية.",
+    "تم تثبيت مصدر واحد ونطاق واحد لبناء Vertical Slice قابل للاختبار.",
+    "لا تُعرض أي معلومات شخصية.",
+    "يجب استبدال seed/reports.csv بتصدير معتمد قبل أي قرار تشغيلي."
   ]
 }
