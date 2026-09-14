@@ -1,4 +1,4 @@
-export type SenseRoute = "provider-onboarding" | "reviewer-queue" | "experience-studio" | "access-planner" | "claim-registry" | "public-site";
+export type SenseRoute = "provider-onboarding" | "reviewer-queue" | "experience-studio" | "access-planner" | "claim-registry" | "tourism-readiness" | "public-site";
 
 export function normalizePathname(pathname: string) {
   try {
@@ -15,5 +15,6 @@ export function resolveSenseRoute(pathname: string): SenseRoute {
   if (normalized === "/استديو-التجربة" || normalized === "/experience-studio") return "experience-studio";
   if (normalized === "/خطة-الوصول" || normalized === "/access-plan") return "access-planner";
   if (normalized === "/سجل-الادعاءات" || normalized === "/claims") return "claim-registry";
+  if (normalized === "/جواز-المشروع" || normalized === "/tourism-readiness" || normalized === "/passport") return "tourism-readiness";
   return "public-site";
 }

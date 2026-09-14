@@ -8,6 +8,7 @@
 
 - **`apps/sense-experience/`** — منصة SENSE السياحية العربية للعيزرية: اكتشاف المسارات، بناء خطة يوم، طلب مراجعة محلي آمن، وممر شراكة لمزودي التجارب.
 - **`apps/sense-go/`** — تطبيق الجوال Expo: اكتشاف RTL، حفظ الخطة محليًا، قصص المكان، ومسار المزود.
+- **`جواز المشروع`** عبر `/جواز-المشروع` أو `/tourism-readiness` — ملف جاهزية سياحية يعيد استخدام منطق الاستبانات لإنتاج بطاقة عرض، ملخص مقابلة، مخطط قصة WordPress، وخريطة فجوات.
 - **`apps/web/`** — Urban‑Sense للبلاغات المدنية، مستقل في البيانات والهوية والصلاحيات.
 - **`tourism/`** — نسخة GitHub Pages القديمة/التجريبية، محفوظة كمرجع بصري لا كمصدر المنتج الجديد.
 
@@ -41,6 +42,7 @@ pnpm start
 - [`docs/sense-experience/ENGINEERING-HANDOFF.md`](docs/sense-experience/ENGINEERING-HANDOFF.md)
 - [`apps/sense-experience/README.md`](apps/sense-experience/README.md)
 - [`apps/sense-go/README.md`](apps/sense-go/README.md)
+- [`docs/sense-experience/TOURISM-PROJECT-PROFILE-REFERENCE.md`](docs/sense-experience/TOURISM-PROJECT-PROFILE-REFERENCE.md)
 
 ## الجودة
 

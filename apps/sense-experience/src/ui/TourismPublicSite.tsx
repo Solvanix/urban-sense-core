@@ -110,7 +110,7 @@ export function TourismPublicSite({ pathname, onNavigate }: { pathname: string; 
         <nav aria-label="التنقل الرئيسي">
           {publicLinks.map((link) => <a key={link.href} href={link.href} className={getPublicPage(link.href) === page ? "active" : ""} onClick={(event) => { event.preventDefault(); onNavigate(link.href); }}>{link.label}</a>)}
         </nav>
-        <button className="sense-nav-provider" onClick={() => onNavigate("/انضم")}>أضف تجربتك <span>↗</span></button>
+        <button className="sense-nav-provider" onClick={() => onNavigate("/جواز-المشروع")}>جواز مشروعك <span>↗</span></button>
       </header>
 
       {page === "home" && <HomePage onNavigate={onNavigate} plan={plan} updatePlan={updatePlan} />}

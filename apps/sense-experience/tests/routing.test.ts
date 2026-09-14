@@ -10,4 +10,10 @@ describe("SENSE Experience Arabic routing", () => {
   it("routes an encoded reviewer return URL to the constrained reviewer screen", () => {
     expect(resolveSenseRoute("/%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9")).toBe("reviewer-queue");
   });
+
+  it("routes Arabic and Latin tourism passport URLs", () => {
+    expect(resolveSenseRoute("/جواز-المشروع")).toBe("tourism-readiness");
+    expect(resolveSenseRoute("/tourism-readiness")).toBe("tourism-readiness");
+    expect(resolveSenseRoute("/passport")).toBe("tourism-readiness");
+  });
 });
