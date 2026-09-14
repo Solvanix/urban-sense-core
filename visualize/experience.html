@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="SENSE Experience Visualizer — خريطة تفاعلية لتجربة الزائر والوحدات البلدية والمحلية." />
+    <title>SENSE Experience Visualizer — من المكان إلى التجربة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./experience.css" />
+  </head>
+  <body>
+    <main class="experience-shell">
+      <header class="experience-topbar">
+        <a class="brand" href="./index.html"><span class="brand-mark">S</span><span>SENSE / Visualize</span></a>
+        <nav class="top-nav" aria-label="تنقل التصور"><a href="./index.html">لوحة التشغيل</a><a href="./README.md" target="_blank" rel="noreferrer">عقد البيانات</a><button id="printButton">طباعة / PDF</button></nav>
+      </header>
+
+      <section class="experience-hero">
+        <div class="hero-copy">
+          <div class="live-pill"><span></span><span id="statusLabel">جاري تحميل النموذج…</span><span class="mono" id="statusVersion">—</span></div>
+          <p class="kicker">SENSE / EXPERIENCE VISUALIZER</p>
+          <h1 id="heroPromise">من المكان إلى تجربة يمكن اكتشافها وعيشها وقياسها.</h1>
+          <p id="heroDescription">هذه ليست خريطة صور؛ إنها طبقة منتج تربط القصة بالمسار، والمسار بالتجربة، والتجربة بمالك ومصدر وخطوة تالية.</p>
+          <div class="hero-actions"><a class="action-primary" href="#journey">ابدأ بجولة داخل النظام</a><a class="action-secondary" href="./index.html">اذهب إلى المؤشرات التشغيلية</a></div>
+        </div>
+        <div class="hero-visual" aria-label="نواة وحدات SENSE">
+          <div class="hex-core"><span>الوجهة</span><strong>تبيان</strong><small>SENSE CORE</small></div>
+          <div class="hex-module module-a"><span>01</span><strong>قصة</strong></div>
+          <div class="hex-module module-b"><span>02</span><strong>مسار</strong></div>
+          <div class="hex-module module-c"><span>03</span><strong>AR</strong></div>
+          <div class="hex-module module-d"><span>04</span><strong>تجربة</strong></div>
+          <div class="hex-module module-e"><span>05</span><strong>بلدية</strong></div>
+          <div class="hex-module module-f"><span>06</span><strong>أثر</strong></div>
+          <i class="connector c1"></i><i class="connector c2"></i><i class="connector c3"></i><i class="connector c4"></i><i class="connector c5"></i><i class="connector c6"></i>
+        </div>
+      </section>
+
+      <section class="audience-section" id="journey">
+        <div class="section-header"><div><p class="kicker">01 / اختر زاوية النظر</p><h2>نفس النواة، أربع رحلات.</h2></div><p>التطبيق لا يعرض الفكرة نفسها للجميع. يغيّر الوعد، والخطوة الأولى، والوحدات الظاهرة بحسب الدور.</p></div>
+        <div class="audience-tabs" id="audienceTabs" role="tablist" aria-label="اختيار الجمهور"></div>
+        <div class="journey-panel">
+          <div class="journey-copy"><span class="journey-label" id="audienceLabel">—</span><h3 id="audiencePromise">—</h3><p>المسار المقترح:</p><div class="journey-steps" id="journeySteps"></div></div>
+          <div class="journey-route"><div class="route-track"></div><div class="route-endpoint start">النية</div><div class="route-endpoint end">الأثر</div><div class="route-marker marker-1">اكتشاف</div><div class="route-marker marker-2">اختيار</div><div class="route-marker marker-3">تجربة</div><div class="route-marker marker-4">مشاركة</div></div>
+        </div>
+      </section>
+
+      <section class="module-section">
+        <div class="section-header"><div><p class="kicker">02 / النظام المعياري</p><h2>وحدات مستقلة حول نواة واحدة.</h2></div><p>يمكن تشغيل وحدة واحدة في تجربة أولى، ثم إضافة الوحدات عندما تثبت الحاجة والقدرة والبيانات.</p></div>
+        <div class="module-filter" id="moduleFilter"><button class="filter-button active" data-filter="all">الكل</button><button class="filter-button" data-filter="visitor">الزائر</button><button class="filter-button" data-filter="municipality">البلدية</button><button class="filter-button" data-filter="investor">المستثمر</button><button class="filter-button" data-filter="provider">المبدع</button></div>
+        <div class="module-grid" id="moduleGrid"></div>
+      </section>
+
+      <section class="validation-section">
+        <div class="validation-intro"><p class="kicker">03 / لا نبني قبل أن نتحقق</p><h2>منهجية Foras تصبح جزءاً من المنتج.</h2><p>الفكرة لا تنتقل مباشرة من صورة جميلة إلى MVP. نستخدم حلقة تحقق: مشكلة حقيقية، مستخدمون حقيقيون، نموذج قيمة، ثم أصغر مسار قابل للزيارة والقياس.</p><div class="validation-note">قاعدة تصميم: كل ادعاء في الواجهة يجب أن يملك دليلاً أو يُوسم بوضوح كفرضية.</div></div>
+        <div class="validation-loop" id="validationLoop"></div>
+      </section>
+
+      <section class="learning-section">
+        <div class="section-header"><div><p class="kicker">04 / التعلم يتحول إلى قطعة عمل</p><h2>Maharat داخل المسار، لا خارجه.</h2></div><p>تحويل مسارات السياحة والاستراتيجية والأعمال والفعاليات إلى مخرجات قابلة للاستخدام في المشروع.</p></div>
+        <div class="learning-grid"><article><span> C1 </span><strong>استراتيجية وسياسات السياحة</strong><p>تُترجم إلى مصفوفة أولويات ومالك ومؤشر.</p></article><article><span> C2 </span><strong>إدارة الأعمال والشركات الصغيرة</strong><p>تُترجم إلى بطاقة مزود وتجربة ونموذج قيمة.</p></article><article><span> C3 </span><strong>السياحة القائمة على التجربة</strong><p>تُترجم إلى مصمم رحلة وقواعد سعة ووصول.</p></article><article><span> C4 </span><strong>تخطيط وتصميم المناسبات</strong><p>يُترجم إلى تشغيل فعالية ونقاط قياس ومراجعة.</p></article></div>
+      </section>
+
+      <section class="governance-section">
+        <div><p class="kicker">05 / حوكمة النشر</p><h2>الجمال لا يعفي من الدليل.</h2><p>المراجع المصورة تقود التصميم وتشرح الإمكان، لكنها لا تثبت قصة أو عائداً أو أثراً بمفردها. قبل نشر أي بطاقة، يجب تثبيت مصدرها ومالكها وحالة جاهزيتها.</p></div>
+        <div class="governance-list" id="governanceList"></div>
+      </section>
+
+      <footer class="experience-footer"><span>SENSE / Urban-Sense Core</span><span>Experience Visualizer · <span id="footerDate">—</span></span><a href="./index.html">العودة إلى لوحة التشغيل ←</a></footer>
+    </main>
+    <script src="./experience.js" type="module"></script>
+  </body>
+</html>
