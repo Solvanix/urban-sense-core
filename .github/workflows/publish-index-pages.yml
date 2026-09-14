@@ -8,6 +8,7 @@ on:
       - "visualize/**"
       - "apps/pizza-hot/**"
       - "apps/executive-visualization/**"
+      - "tourism/**"
       - ".github/workflows/publish-index-pages.yml"
   workflow_dispatch:
 
@@ -68,6 +69,9 @@ jobs:
           rm -f _site/pizza-hot/.env _site/pizza-hot/.env.local _site/pizza-hot/.env.local.ready
           test -f _site/pizza-hot/index.html
           test -f _site/pizza-hot/catalog.json
+          mkdir -p _site/tourism
+          cp -R tourism/. _site/tourism/
+          test -f _site/tourism/index.html
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
