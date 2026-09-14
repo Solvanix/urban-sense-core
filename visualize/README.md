@@ -12,6 +12,14 @@
 https://solvanix.github.io/urban-sense-core/visualize/
 ```
 
+صفحة المتحكم المستقلة للعرض:
+
+```text
+https://solvanix.github.io/urban-sense-core/visualize/control.html
+```
+
+صفحة الزائر هي `index.html`، أما `control.html` فهي وحدة عرض للمؤشرات مع مصدر JSON قابل للتبديل والتصدير. كلاهما عام ولا يفتح قاعدة بيانات الإنتاج؛ لوحة قاعدة البيانات المحمية موجودة داخل `apps/web`.
+
 ويمكن فتحه بمصدر JSON بديل:
 
 ```text

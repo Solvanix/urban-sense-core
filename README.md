@@ -10,6 +10,8 @@
 
 [**افتح الفهرس العام المنشور من GitHub Pages**](https://solvanix.github.io/urban-sense-core/) — نسخة ثابتة عامة من فهرس المنظومة؛ لا تشغّل قاعدة بيانات أو تسجيل دخول التطبيق.
 
+[**شاهد Visualize كزائر**](https://solvanix.github.io/urban-sense-core/visualize/) · [**شاهد Visualize كمتحكم**](https://solvanix.github.io/urban-sense-core/visualize/control.html) — نسختان عامتان للعرض من GitHub Pages؛ لا تمثلان قاعدة الإنتاج ولا تعرضان بيانات شخصية.
+
 [**افتح لوحة التقدم التشغيلية الحية**](https://urbansense-dzfbcdz5.manus.space/?view=progress) — تفصل بين ما هو منشور، وما هو نواة مستقلة مقيدة، وما يتطلب قرارًا أو تشغيلًا حقيقيًا.
 
 [**افتح Visualize التشغيلية المحمية**](https://urbansense-dzfbcdz5.manus.space/?view=visualize) — لوحة جديدة تقرأ مؤشرات البلاغات المجمعة من قاعدة Urban‑Sense بعد الدخول والصلاحية البلدية. إن لم يظهر المسار في النشر الحالي، استخدم نسخة GitHub Pages العامة أدناه إلى حين تحديث بيئة التطبيق الكامل.
