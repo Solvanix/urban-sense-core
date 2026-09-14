@@ -1,196 +1,184 @@
+import { useMemo, useState } from "react";
 import { SurveyFeatureGuidePage } from "./SurveyFeatureGuidePage.js";
 
-type PublicPage = "home" | "discover" | "partners" | "vision" | "readiness" | "survey-guide";
+type PublicPage = "home" | "discover" | "booking" | "partners" | "vision" | "readiness" | "survey-guide";
+type Category = "الكل" | "تراث" | "طعام" | "طبيعة" | "حرفة";
+
+type Experience = {
+  id: string;
+  title: string;
+  eyebrow: string;
+  description: string;
+  category: Exclude<Category, "الكل">;
+  duration: string;
+  level: string;
+  image: string;
+  status: string;
+  accent: string;
+};
+
+const experiences: Experience[] = [
+  {
+    id: "stone-stories",
+    title: "حين تتكلم الحجارة",
+    eyebrow: "مسار تراثي · مقترح",
+    description: "مشي هادئ بين العتبات والحجر والظلال؛ يفتح لك تاريخ المكان عبر تفاصيل صغيرة لا تراها من نافذة السيارة.",
+    category: "تراث",
+    duration: "90 دقيقة",
+    level: "سهل",
+    image: "/media/hero.jpg",
+    status: "قيد التحقق المحلي",
+    accent: "gold",
+  },
+  {
+    id: "olive-table",
+    title: "مائدة من الحكايات",
+    eyebrow: "طعام وذاكرة · مقترح",
+    description: "جلسة تذوق محلية يتبع كل طبق فيها سؤال عن البيت والموسم والذاكرة، مع احترام خصوصية المضيف.",
+    category: "طعام",
+    duration: "ساعتان",
+    level: "للجميع",
+    image: "/media/stone.jpg",
+    status: "نبحث عن مضيفين",
+    accent: "terracotta",
+  },
+  {
+    id: "human-map",
+    title: "ارسم خريطتك الإنسانية",
+    eyebrow: "تعلم ومشاركة · مقترح",
+    description: "ورشة قصيرة للطلبة والباحثين تحوّل معرفة السكان إلى أسئلة تحترم المصدر وتترك أثرًا قابلًا للتعلم.",
+    category: "حرفة",
+    duration: "60 دقيقة",
+    level: "متوسط",
+    image: "/media/map.jpg",
+    status: "نسخة تجريبية",
+    accent: "teal",
+  },
+  {
+    id: "morning-light",
+    title: "قبل أن تستيقظ المدينة",
+    eyebrow: "شروق وإطلالة · مقترح",
+    description: "مسار فجر بطيء للضوء والهواء. نقطة التجمع والظروف التشغيلية تحتاج اعتمادًا ميدانيًا قبل الإعلان.",
+    category: "طبيعة",
+    duration: "75 دقيقة",
+    level: "متوسط",
+    image: "/media/hero.jpg",
+    status: "بانتظار اعتماد المسار",
+    accent: "sage",
+  },
+];
+
+const categories: Category[] = ["الكل", "تراث", "طعام", "طبيعة", "حرفة"];
+const planKey = "sense-experience-plan-v2";
 
 export function getPublicPage(pathname: string): PublicPage {
   const decodedPath = decodeURIComponent(pathname);
-  if (decodedPath === "/اكتشف" || decodedPath === "/discover") return "discover";
-  if (decodedPath === "/للشركاء" || decodedPath === "/partners") return "partners";
-  if (decodedPath === "/رؤية-مسؤولة" || decodedPath === "/responsible-vision") return "vision";
-  if (decodedPath === "/جاهزية-المزود" || decodedPath === "/provider-readiness") return "readiness";
-  if (decodedPath === "/دليل-الميزات" || decodedPath === "/feature-guide") return "survey-guide";
+  if (["/اكتشف", "/discover", "/المسارات", "/trails"].includes(decodedPath)) return "discover";
+  if (["/حجزي", "/booking", "/احجز"].includes(decodedPath)) return "booking";
+  if (["/للشركاء", "/partners"].includes(decodedPath)) return "partners";
+  if (["/رؤية-مسؤولة", "/responsible-vision"].includes(decodedPath)) return "vision";
+  if (["/جاهزية-المزود", "/provider-readiness"].includes(decodedPath)) return "readiness";
+  if (["/دليل-الميزات", "/feature-guide"].includes(decodedPath)) return "survey-guide";
   return "home";
 }
 
 const publicLinks = [
-  { href: "/", label: "البوابة" },
+  { href: "/", label: "الرئيسية" },
   { href: "/اكتشف", label: "اكتشف" },
-  { href: "/للشركاء", label: "الثقة والشراكة" },
-  { href: "/رؤية-مسؤولة", label: "الرؤية المسؤولة" },
-  { href: "/جاهزية-المزود", label: "مسار المزود" },
-  { href: "/دليل-الميزات", label: "دليل الميزات" },
-  { href: "/استديو-التجربة", label: "استديو التجربة" },
-  { href: "/خطة-الوصول", label: "خطة الوصول" }
+  { href: "/حجزي", label: "خطة يومي" },
+  { href: "/للشركاء", label: "للشركاء" },
 ];
 
-export function TourismPublicSite({
-  pathname,
-  onNavigate
-}: {
-  pathname: string;
-  onNavigate: (href: string) => void;
-}) {
+export function TourismPublicSite({ pathname, onNavigate }: { pathname: string; onNavigate: (href: string) => void }) {
   const page = getPublicPage(pathname);
+  const [plan, setPlan] = useState<string[]>(() => {
+    try { return JSON.parse(localStorage.getItem(planKey) || "[]") as string[]; } catch { return []; }
+  });
+
+  function updatePlan(next: string[]) {
+    setPlan(next);
+    localStorage.setItem(planKey, JSON.stringify(next));
+  }
 
   return (
-    <main id="main-content" tabIndex={-1} className="tourism-site" dir="rtl">
-      <header className="tourism-nav">
-        <button className="tourism-brand" onClick={() => onNavigate("/")} aria-label="العودة إلى بوابة SENSE Experience">
-          <span className="tourism-brand-mark">س</span>
-          <span><b>SENSE</b><small>EXPERIENCE</small></span>
+    <main id="main-content" tabIndex={-1} className="sense-platform" dir="rtl">
+      <header className="sense-nav">
+        <button className="sense-brand" onClick={() => onNavigate("/")} aria-label="العودة إلى SENSE">
+          <span className="sense-brand-mark">س</span>
+          <span><b>SENSE</b><small>AL-EIZARIYA / EXPERIENCE</small></span>
         </button>
         <nav aria-label="التنقل الرئيسي">
-          {publicLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={(getPublicPage(link.href) === page && link.href !== "/انضم") ? "active" : ""}
-              onClick={(event) => { event.preventDefault(); onNavigate(link.href); }}
-            >
-              {link.label}
-            </a>
-          ))}
+          {publicLinks.map((link) => <a key={link.href} href={link.href} className={getPublicPage(link.href) === page ? "active" : ""} onClick={(event) => { event.preventDefault(); onNavigate(link.href); }}>{link.label}</a>)}
         </nav>
+        <button className="sense-nav-provider" onClick={() => onNavigate("/انضم")}>أضف تجربتك <span>↗</span></button>
       </header>
 
-      {page === "home" ? <GatewayPage onNavigate={onNavigate} /> : page === "discover" ? <DiscoverPage onNavigate={onNavigate} /> : page === "partners" ? <PartnerPage onNavigate={onNavigate} /> : page === "vision" ? <ResponsibleVisionPage onNavigate={onNavigate} /> : page === "readiness" ? <ProviderReadinessPage onNavigate={onNavigate} /> : <SurveyFeatureGuidePage onNavigate={onNavigate} />}
+      {page === "home" && <HomePage onNavigate={onNavigate} plan={plan} updatePlan={updatePlan} />}
+      {page === "discover" && <DiscoverPage onNavigate={onNavigate} plan={plan} updatePlan={updatePlan} />}
+      {page === "booking" && <BookingPage onNavigate={onNavigate} plan={plan} />}
+      {page === "partners" && <PartnersPage onNavigate={onNavigate} />}
+      {page === "vision" && <VisionPage onNavigate={onNavigate} />}
+      {page === "readiness" && <ReadinessPage onNavigate={onNavigate} />}
+      {page === "survey-guide" && <SurveyFeatureGuidePage onNavigate={onNavigate} />}
 
-      <footer className="tourism-footer">
-        <div><span className="eyebrow">SENSE EXPERIENCE</span><p>طبقة تعريف وثقة للمكان، تُبنى مع مزودي الخدمة لا بدلًا عنهم.</p></div>
-        <p>هذه معاينة للواجهة العامة. لا تحتوي مزودين منشورين أو حجزًا أو متجرًا تشغيليًا حتى الآن.</p>
+      <footer className="sense-footer">
+        <div><span className="sense-footer-mark">س</span><div><strong>SENSE Experience</strong><p>العيزرية تُعاش، لا تُستهلك.</p></div></div>
+        <div className="sense-footer-links"><a href="/رؤية-مسؤولة" onClick={(event) => { event.preventDefault(); onNavigate("/رؤية-مسؤولة"); }}>رؤية مسؤولة</a><a href="/جاهزية-المزود" onClick={(event) => { event.preventDefault(); onNavigate("/جاهزية-المزود"); }}>دليل الشركاء</a><span>نسخة تجريبية · 2026</span></div>
       </footer>
     </main>
   );
 }
 
-function GatewayPage({ onNavigate }: { onNavigate: (href: string) => void }) {
-  return (
-    <>
-      <section className="gateway-hero">
-        <div className="gateway-copy">
-          <p className="eyebrow">مكان · مسار · أثر</p>
-          <h1>لا نعرض المكان قبل أن نفهم <em>قصته.</em></h1>
-          <p>بوابة عربية هادئة لتجارب فلسطين المحلية: تساعد الزائر على الوصول إلى سياق المكان، وتساعد المزود على تقديم خدمته بلغته وبصورة يمكن مراجعتها.</p>
-          <div className="gateway-actions">
-            <button className="primary tourism-action" onClick={() => onNavigate("/اكتشف")}>شاهد تصور الدليل</button>
-            <button className="secondary tourism-action" onClick={() => onNavigate("/جاهزية-المزود")}>أنا مزود خدمة</button>
-            <button className="secondary tourism-action" onClick={() => onNavigate("/دليل-الميزات")}>كيف تتحول المعلومات إلى تجربة؟</button>
-          </div>
-          <p className="status-line"><span />الواجهة العامة قيد التكوين — لا توجد قوائم أو حجوزات منشورة بعد.</p>
-        </div>
-        <div className="place-collage" aria-label="تكوين بصري مفاهيمي يعبر عن المكان والحرفة والطريق">
-          <article className="collage-card collage-warm"><small>من المكان</small><b>مساحة للفن<br />والحكاية</b><i /></article>
-          <article className="collage-card collage-stone"><small>من المسار</small><b>تفاصيل تقود<br />إلى تجربة</b><i /></article>
-          <article className="collage-card collage-teal"><small>من الأثر</small><b>مهارة تتصل<br />بالسوق</b><i /></article>
-          <div className="collage-stamp">2026<br /><span>IN THE MAKING</span></div>
-        </div>
-      </section>
-
-      <section className="gateway-principles" aria-label="ما الذي يجعل التجربة مختلفة">
-        <article><span>01</span><h2>لا قوائم فارغة</h2><p>لا نملأ الدليل بأسماء أو تقييمات مصطنعة. يبدأ كل ملف من صاحب الخدمة ثم يمر بمراجعة واضحة.</p></article>
-        <article><span>02</span><h2>الضيف أولًا</h2><p>نرتب المعلومات التي يحتاجها الزائر فعلًا: ماذا سيحدث، كيف يصل، ومن يتواصل معه قبل أن يقرر.</p></article>
-        <article><span>03</span><h2>المكان ليس منتجًا وحسب</h2><p>نصمم مساحة يمكن أن تربط الحرفة والتعلم والثقافة والخدمات المحلية، من دون أن تذيب هوية أصحابها.</p></article>
-      </section>
-
-      <section className="gateway-bridge">
-        <div><p className="eyebrow">من التجربة إلى الفرصة</p><h2>للجهة المحلية هويتها. ولـSense دور في إظهارها لا احتكارها.</h2></div>
-        <p>ضمن الرؤية الأوسع، يمكن للدليل السياحي أن يعرّف الزائر بالمكان، بينما يفتح المتجر العام — عند بنائه — مسارًا منفصلًا للمنتجات والمشاريع. ويظل كل جزء مستقلًا في البيانات والصلاحيات وقرار النشر.</p>
-      </section>
-    </>
-  );
-}
-
-function DiscoverPage({ onNavigate }: { onNavigate: (href: string) => void }) {
-  const lenses = [
-    { number: "A", title: "فن وحرفة", body: "مسارات للحرف والتجارب التي تشرح كيف يصنع المكان قيمته، لا مجرد ما يبيعه." },
-    { number: "B", title: "طعام وذاكرة", body: "مساحة مستقبليّة لخدمات الطعام والتجارب المحلية بعد التحقق من العرض ومعلومات الوصول." },
-    { number: "C", title: "طريق وإقامة", body: "معلومات تخطط للرحلة بهدوء: نقطة البداية، التواصل، وما يحتاج الزائر معرفته قبل الوصول." },
-    { number: "D", title: "مؤسسات ومبادرات", body: "جهات ثقافية ومجتمعية لها حضور وخدمة أو نشاط واضح، لا مجرد شعار في قائمة." }
-  ];
-
-  return (
-    <>
-      <section className="discover-intro">
-        <div><p className="eyebrow">تصور الدليل</p><h1>بدل أن تبدأ من أسماء كثيرة، ابدأ بما تريد أن <em>تعيشه.</em></h1></div>
-        <p>هذه ليست نتائج بحث حية ولا توصيات لمزودين؛ إنها بنية صفحة الاكتشاف التي ستستقبل ملفات موثقة بعد فتح برنامج المزودين.</p>
-      </section>
-      <section className="discovery-board" aria-label="تصنيفات الدليل المستقبلية">
-        {lenses.map((lens, index) => <article key={lens.number} className={`lens-card lens-${index + 1}`}><span>{lens.number}</span><h2>{lens.title}</h2><p>{lens.body}</p><button onClick={() => onNavigate("/جاهزية-المزود")}>اعرف مسار الجاهزية</button></article>)}
-      </section>
-      <section className="empty-discovery">
-        <div className="empty-map" aria-hidden="true"><span>مناطق وتجارب<br />تظهر بعد التحقق</span></div>
-        <div><p className="eyebrow">قائمة الانتظار المعلنة</p><h2>الدليل لا يزال يتلقى ملفات، لذلك لا نخفي هذه الحقيقة خلف بطاقات مزيفة.</h2><p>يمكن لمزود خدمة أو جهة ثقافية أن يتعرف على متطلبات الجاهزية؛ وعند تشغيل الخدمة المستقلة، تمر الملفات بمراجعة مستقلة وموافقة قبل أي ظهور عام.</p><button className="primary tourism-action" onClick={() => onNavigate("/جاهزية-المزود")}>اعرف قبل أن تبدأ</button></div>
-      </section>
-    </>
-  );
-}
-
-function PartnerPage({ onNavigate }: { onNavigate: (href: string) => void }) {
-  return (
-    <>
-      <section className="partner-hero">
-        <p className="eyebrow">قبل الظهور العام</p>
-        <h1>الثقة ليست شارة. إنها <em>مسار عمل.</em></h1>
-        <p>صممنا الانضمام ليبدأ ببيانات قليلة، ثم بموافقة واضحة ومراجعة بشرية مستقلة قبل أي ظهور عام. لا تتحول الرغبة في الانضمام إلى نشر تلقائي.</p>
-      </section>
-      <section className="trust-grid">
-        <article><span>01</span><h2>الجهة تقول ما تقدمه</h2><p>يُكتب الملف من منظور الخدمة الفعلية، وليس من قالب تسويقي يضيف وعودًا من عنده.</p></article>
-        <article><span>02</span><h2>مراجع مستقل يقرر</h2><p>تُفصل هوية المراجع وصلاحياته عن بيانات Urban‑Sense وعن أي ترويسات يرسلها المتصفح.</p></article>
-        <article><span>03</span><h2>النشر موافقة منفصلة</h2><p>بيانات الاتصال والوصف لا تصبح عامة بمجرد التسجيل؛ للنشر قرار وموافقة منفصلان.</p></article>
-        <article><span>04</span><h2>التوسع لا يسبق الأمان</h2><p>الحجز والدفع والتقييمات والمتجر ليست مفتوحة الآن، ولن تُضاف قبل وجود البيانات والحوكمة المناسبة.</p></article>
-      </section>
-      <section className="partner-callout"><div><p className="eyebrow">للمزودين والجهات</p><h2>إن كانت خدمتك حقيقية، نريد أن نسمعها كما هي.</h2></div><button className="primary tourism-action" onClick={() => onNavigate("/جاهزية-المزود")}>اعرف شروط الجاهزية</button></section>
-    </>
-  );
-}
-
-function ProviderReadinessPage({ onNavigate }: { onNavigate: (href: string) => void }) {
-  const steps = [
-    { number: "01", title: "حدد دورك الحقيقي", body: "هل تقدم تجربة أو حرفة أو ضيافة أو خدمة ثقافية؟ نبدأ من ما تقدمه فعلًا، لا من وصف تسويقي جاهز." },
-    { number: "02", title: "أكمل بطاقات الجاهزية", body: "عرض الخدمة، ما يتوقعه الزائر، أساسيات الوصول والسلامة، وموافقة مستقلة على التواصل." },
-    { number: "03", title: "مراجعة بشرية مستقلة", body: "لا تنتج الإجابات ملفًا عامًا تلقائيًا. المراجع المخوّل يطلب إيضاحًا أو يقرر ملاءمة التجربة المحدودة." },
-    { number: "04", title: "إطلاق مقيد ومراجع", body: "أي ظهور لاحق يحتاج قرار نشر مستقل. الحجز والدفع والتقييمات والمتجر ليست جزءًا من هذه المرحلة." }
-  ];
-
+function HomePage({ onNavigate, plan, updatePlan }: { onNavigate: (href: string) => void; plan: string[]; updatePlan: (next: string[]) => void }) {
   return <>
-    <style>{`.readiness-hero{padding:clamp(32px,7vw,88px);border-radius:30px;background:linear-gradient(135deg,#143f3d,#1f665b 62%,#d5a94d);color:#f7fbf8}.readiness-hero h1{max-width:760px;margin:10px 0 18px;font-size:clamp(38px,5vw,68px);line-height:1.1;letter-spacing:-.05em}.readiness-hero h1 em{color:#ffe29a;font-style:normal}.readiness-hero p:not(.eyebrow){max-width:700px;margin:0;color:#d6ebe3;font-size:16px;line-height:2}.readiness-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0 44px}.readiness-step{min-height:290px;padding:25px;border:1px solid rgba(20,63,61,.14);border-radius:18px;background:#f7f5ed}.readiness-step span{display:block;color:#b68425;font-family:'DM Mono',monospace;font-weight:800}.readiness-step h2{margin:50px 0 9px;color:#173f3c;font-size:25px;line-height:1.25}.readiness-step p{margin:0;color:#5c726a;font-size:13px;line-height:1.9}.readiness-boundary{display:grid;grid-template-columns:.95fr 1.05fr;gap:34px;align-items:start;margin-bottom:66px;padding:36px;border-top:1px solid rgba(20,63,61,.18);border-bottom:1px solid rgba(20,63,61,.18)}.readiness-boundary h2{margin:8px 0 0;font-size:30px;line-height:1.35}.readiness-boundary p:last-child{margin:0;color:#5a726b;line-height:2;font-size:14px}@media(max-width:900px){.readiness-grid{grid-template-columns:1fr 1fr}.readiness-boundary{grid-template-columns:1fr}}@media(max-width:560px){.readiness-hero{padding:33px 22px}.readiness-grid{grid-template-columns:1fr}.readiness-step{min-height:0}.readiness-step h2{margin-top:30px}}`}</style>
-    <section className="readiness-hero"><p className="eyebrow">مسار المزود</p><h1>لا نطلب ملفك قبل أن تعرف ما تعنيه <em>الجاهزية.</em></h1><p>هذه تجربة تعلم مصغرة أصلية لـSENSE Experience: تهيئ المزود لتقديم وصف مسؤول وقابل للمراجعة. ليست دورة Maharat، ولا تمنح شهادة، ولا تحفظ أو تنشر بياناتك في هذه المعاينة.</p></section>
-    <section className="readiness-grid" aria-label="خطوات جاهزية المزود">{steps.map((step) => <article className="readiness-step" key={step.number}><span>{step.number}</span><h2>{step.title}</h2><p>{step.body}</p></article>)}</section>
-    <section className="readiness-boundary"><div><p className="eyebrow">الحد الذي نحميه</p><h2>الاستعداد ليس قبولًا، والقبول ليس نشرًا.</h2></div><div><p>الخدمة المستقلة وهوية المراجعين لم تُنشرا بعد، لذلك لا نفتح نموذج تسجيل فعليًا ولا نعد بظهور في الدليل. حين تصبح الخدمة جاهزة، يكون هذا المسار مدخلًا اختياريًا قبل مراجعة بشرية، لا بديلًا عنها.</p><button className="secondary tourism-action" onClick={() => onNavigate("/للشركاء")}>راجع مبادئ الثقة</button></div></section>
+    <section className="sense-hero">
+      <div className="sense-hero-copy">
+        <p className="sense-kicker"><span className="sense-kicker-dot" /> SENSE / العيزرية</p>
+        <h1>أنت لا تزور المكان.<br /><em>المكان يزورك.</em></h1>
+        <p className="sense-hero-lead">منصة سياحية عربية تبني يومك حول القصص المحلية، المسارات الهادئة، والناس الذين يصنعون معنى المكان — لا حول قائمة مزدحمة من النقاط.</p>
+        <div className="sense-hero-actions"><button className="sense-primary" onClick={() => onNavigate("/اكتشف")}>ابدأ من هنا <span>←</span></button><button className="sense-text-button" onClick={() => onNavigate("/رؤية-مسؤولة")}>كيف نبني التجربة؟ <span>↗</span></button></div>
+        <div className="sense-hero-proof"><div><strong>4</strong><span>مسارات أولية</span></div><div><strong>1</strong><span>بلدة، طبقات</span></div><div><strong>0</strong><span>وعود مصطنعة</span></div></div>
+      </div>
+      <div className="sense-hero-media"><img src="/media/hero.jpg" alt="ممر حجري في البلدة القديمة" /><div className="sense-image-note"><span>01</span><strong>المشهد الأول</strong><small>بين الظل والنور تبدأ الحكاية</small></div><div className="sense-image-stamp">AL<br /><b>EIZARIYA</b></div></div>
+    </section>
+
+    <section className="sense-statement"><div><span className="sense-section-label">فكرة SENSE</span><h2>كل يوم هنا<br /><em>له إيقاعه.</em></h2></div><p>نرتب لك ما تحتاج معرفته قبل الوصول: قصة قصيرة، وقت واقعي، طريقة تواصل، ونقطة بداية يمكن التحقق منها. إذا كانت المعلومة غير مكتملة، نقول ذلك بوضوح.</p><div className="sense-statement-line" /></section>
+
+    <section className="sense-featured"><div className="sense-section-head"><div><span className="sense-section-label">اختَر مزاج يومك</span><h2>مسارات تترك<br /><em>أثرًا خفيفًا.</em></h2></div><button className="sense-link-button" onClick={() => onNavigate("/اكتشف")}>شاهد كل المسارات <span>←</span></button></div><div className="sense-experience-grid">{experiences.slice(0, 3).map((item, index) => <ExperienceCard key={item.id} item={item} index={index} selected={plan.includes(item.id)} onToggle={() => updatePlan(plan.includes(item.id) ? plan.filter((id) => id !== item.id) : [...plan, item.id])} />)}</div></section>
+
+    <section className="sense-journey-band"><div className="sense-journey-art"><span>02</span><div className="sense-journey-ring" /></div><div><span className="sense-section-label">خطتك، بطريقتك</span><h2>لا تحتاج برنامجًا<br /><em>مزدحمًا.</em></h2><p>أضف ما يعجبك إلى خطة يومك، ثم اطلب من شريك محلي مراجعة التفاصيل قبل أن تصل. لا دفع، لا حجز وهمي، ولا مفاجآت مخفية.</p><button className="sense-light-button" onClick={() => onNavigate("/حجزي")}>{plan.length ? `افتح خطتك (${plan.length})` : "ابنِ خطة يومك"} <span>←</span></button></div></section>
+
+    <section className="sense-trust-strip"><div><span>03</span><strong>القصة قبل البيع</strong><p>لا بطاقة بلا سياق.</p></div><div><span>04</span><strong>المعلومة لها مصدر</strong><p>نعرض ما نعرفه وما لم يُتحقق منه.</p></div><div><span>05</span><strong>المضيف شريك</strong><p>لا نشر دون موافقة ومراجعة.</p></div><button onClick={() => onNavigate("/للشركاء")}>هل لديك تجربة محلية؟ <span>↗</span></button></section>
   </>;
 }
 
-function ResponsibleVisionPage({ onNavigate }: { onNavigate: (href: string) => void }) {
-  return (
-    <>
-      <style>{`.vision-hero{display:grid;grid-template-columns:1fr .92fr;gap:46px;align-items:center;min-height:540px;padding:clamp(28px,6vw,74px);border:1px solid rgba(18,58,53,.15);border-radius:30px;background:linear-gradient(135deg,#f7fbf8,#e7f0eb 60%,#f4e7c2);overflow:hidden}.vision-hero h1{max-width:650px;margin:9px 0 18px;font-size:clamp(40px,5vw,70px);line-height:1.08;letter-spacing:-.055em}.vision-hero h1 em{color:#bd8424;font-style:normal}.vision-hero>div>p:not(.eyebrow){max-width:610px;color:#526e66;line-height:2;font-size:16px}.vision-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}.vision-signal{display:grid;grid-template-columns:1fr 34px 1fr 34px 1fr;align-items:center;color:#eef8f3;background:#143f3d;padding:34px}.vision-signal div{min-height:186px;padding:16px 12px;border-top:4px solid #e4bd5b;background:rgba(255,255,255,.06)}.vision-signal span,.vision-signal b,.vision-signal small{display:block}.vision-signal span{color:#e7c875;font-family:'DM Mono',monospace;font-size:11px}.vision-signal b{margin-top:34px;font-size:19px;line-height:1.35}.vision-signal small{margin-top:10px;color:#c5ddd6;font-size:11px;line-height:1.7}.vision-signal i{height:2px;background:#e4bd5b;position:relative}.vision-signal i:after{position:absolute;right:0;top:-6px;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:10px solid #e4bd5b;content:''}.vision-tiles{display:grid;grid-template-columns:1.05fr .9fr 1.05fr;gap:14px;margin:18px 0}.vision-tile{min-height:270px;padding:26px;border-radius:18px}.vision-tile span{font-family:'DM Mono',monospace;font-size:11px;font-weight:700}.vision-tile h2{margin:58px 0 10px;font-size:27px;line-height:1.25}.vision-tile p{margin:0;line-height:1.9;font-size:13px}.vision-teal{color:#ecf7f2;background:#174943}.vision-teal span{color:#e8c878}.vision-teal p{color:#c8dfd8}.vision-paper{color:#21433d;background:#f4f1e7}.vision-paper p{color:#60746e}.vision-gold{color:#3a2e10;background:#e8c26e}.vision-gold p{color:#66501b}.vision-bridge{display:grid;grid-template-columns:.95fr 1.05fr;gap:50px;align-items:start;margin:44px 0 72px;padding:38px;border-top:1px solid rgba(19,54,50,.2);border-bottom:1px solid rgba(19,54,50,.2)}.vision-bridge h2{max-width:560px;margin:7px 0 0;font-size:31px;line-height:1.3}.vision-bridge p:last-child{margin:0;color:#5a726b;line-height:2;font-size:14px}@media(max-width:900px){.vision-hero,.vision-bridge{grid-template-columns:1fr}.vision-hero{min-height:0}.vision-signal{max-width:620px}.vision-tiles{grid-template-columns:1fr 1fr}.vision-tile:last-child{grid-column:span 2}}@media(max-width:560px){.vision-hero{padding:32px 21px}.vision-hero h1{font-size:46px}.vision-signal{grid-template-columns:1fr}.vision-signal i{width:2px;height:20px;justify-self:center}.vision-signal i:after{top:auto;bottom:-1px;right:-4px;border-right:6px solid transparent;border-left:6px solid transparent;border-top:8px solid #e4bd5b;border-bottom:0}.vision-tiles{grid-template-columns:1fr}.vision-tile:last-child{grid-column:auto}.vision-tile{min-height:0}.vision-tile h2{margin-top:35px}}`}</style>
-      <section className="vision-hero">
-        <div>
-          <p className="eyebrow">إشارة · إنسان · أثر</p>
-          <h1>نرى ما يكفي للفهم، ولا نحوّل المكان إلى <em>مراقبة.</em></h1>
-          <p>هذه صفحة تعريف لمسار بحثي مقترح داخل منظومة SENSE. لا يوجد نموذج رؤية حاسوبية أو بث كاميرات أو بيانات حية في هذه الواجهة أو في منصة Urban‑Sense.</p>
-          <div className="vision-actions">
-            <button className="primary tourism-action" onClick={() => onNavigate("/للشركاء")}>اقرأ مبدأ الثقة</button>
-            <button className="secondary tourism-action" onClick={() => onNavigate("/انضم")}>انضم كمزود خدمة</button>
-          </div>
-        </div>
-        <div className="vision-signal" aria-label="مخطط مفاهيمي لمسار الرؤية المسؤولة">
-          <div><span>01</span><b>غرض محدد</b><small>وسيط مصرح به فقط</small></div>
-          <i />
-          <div><span>02</span><b>مراجعة بشرية</b><small>الاقتراح ليس قرارًا</small></div>
-          <i />
-          <div><span>03</span><b>أثر محدود</b><small>ملخص لا مراقبة</small></div>
-        </div>
-      </section>
-      <section className="vision-tiles">
-        <article className="vision-tile vision-teal"><span>ليس الآن</span><h2>لا كاميرات عامة.<br />لا بث حي.</h2><p>لا تبدأ المنظومة من الحسّاسات أو التتبع أو تصنيف الأشخاص، ولا تعد بأي منها.</p></article>
-        <article className="vision-tile vision-paper"><span>عند الموافقة فقط</span><h2>تجربة واحدة<br />بغرض واحد.</h2><p>أي بحث لاحق يحتاج حق استخدام، مالك موقع، موافقة، سياسة حذف، ومراجعًا بشريًا.</p></article>
-        <article className="vision-tile vision-gold"><span>القاعدة</span><h2>التكامل عقد<br />لا شعار.</h2><p>لا تنتقل سوى ملاحظة ضيقة مراجعَة؛ لا وجوه أو لوحات أو فيديو خام أو قرار آلي.</p></article>
-      </section>
-      <section className="vision-bridge">
-        <div><p className="eyebrow">المدينة المتصلة</p><h2>الاتصال والبيانات والرؤية طبقات تمكين، لا بديل عن الحوكمة.</h2></div>
-        <p>تتعلم SENSE من مسارات التقنية والمدينة الذكية كيف تبني التدرج: بيانات موثوقة، تشغيل واضح، تكامل محدود، وحوكمة قابلة للمراجعة. وتبقى هذه الصفحة تعريفًا بالمسار لا إعلانًا عن خدمة منشورة.</p>
-      </section>
-    </>
-  );
+function DiscoverPage({ onNavigate, plan, updatePlan }: { onNavigate: (href: string) => void; plan: string[]; updatePlan: (next: string[]) => void }) {
+  const [category, setCategory] = useState<Category>("الكل");
+  const filtered = useMemo(() => category === "الكل" ? experiences : experiences.filter((item) => item.category === category), [category]);
+  return <>
+    <section className="sense-page-hero"><div><span className="sense-section-label">دليل العيزرية</span><h1>اكتشف ما تريد<br /><em>أن تعيشه.</em></h1></div><p>ليست كل البطاقات حجوزات جاهزة. بعضها مسارات تحريرية قيد التحقق؛ نعرضها كما هي كي تعرف أين تبدأ وأين تحتاج أن تسأل.</p></section>
+    <section className="sense-discover-layout"><aside className="sense-filter-panel"><span className="sense-section-label">صفِّ حسب المزاج</span><div className="sense-category-list">{categories.map((item) => <button key={item} className={category === item ? "active" : ""} onClick={() => setCategory(item)}>{item}<span>{item === "الكل" ? experiences.length : experiences.filter((experience) => experience.category === item).length}</span></button>)}</div><div className="sense-discover-note"><strong>ملاحظة مهمة</strong><p>الأوقات والأسعار والسعة تحتاج تأكيدًا من الشريك المحلي قبل الزيارة.</p></div></aside><div className="sense-discover-results"><div className="sense-results-top"><span>{filtered.length} مسارات ظاهرة</span><button onClick={() => onNavigate("/رؤية-مسؤولة")}>كيف نتحقق؟ ↗</button></div><div className="sense-experience-grid sense-discover-grid">{filtered.map((item, index) => <ExperienceCard key={item.id} item={item} index={index} selected={plan.includes(item.id)} onToggle={() => updatePlan(plan.includes(item.id) ? plan.filter((id) => id !== item.id) : [...plan, item.id])} />)}</div></div></section>
+  </>;
+}
+
+function ExperienceCard({ item, index, selected, onToggle }: { item: Experience; index: number; selected: boolean; onToggle: () => void }) {
+  return <article className={`sense-experience-card accent-${item.accent}`}><div className="sense-card-image"><img src={item.image} alt="" /><span className="sense-card-index">0{index + 1}</span><span className="sense-card-status">{item.status}</span></div><div className="sense-card-body"><span className="sense-card-eyebrow">{item.eyebrow}</span><h3>{item.title}</h3><p>{item.description}</p><div className="sense-card-meta"><span>◷ {item.duration}</span><span>◌ {item.level}</span></div><button className={selected ? "selected" : ""} onClick={onToggle}>{selected ? "أضيفت إلى خطة يومي ✓" : "أضف إلى خطة يومي +"}</button></div></article>;
+}
+
+function BookingPage({ onNavigate, plan }: { onNavigate: (href: string) => void; plan: string[] }) {
+  const chosen = experiences.filter((item) => plan.includes(item.id));
+  const [submitted, setSubmitted] = useState(false);
+  return <section className="sense-booking-page"><div className="sense-page-hero booking-hero"><div><span className="sense-section-label">خطتك الشخصية</span><h1>يومك يبدأ<br /><em>من سؤال.</em></h1></div><p>حوّل المسارات التي أعجبتك إلى طلب مراجعة محلي. هذه الخطوة لا تطلب دفعًا ولا تنشئ حجزًا نهائيًا.</p></div><div className="sense-booking-layout"><div className="sense-plan-summary"><div className="sense-summary-head"><span className="sense-section-label">المسارات المختارة</span><button onClick={() => onNavigate("/اكتشف")}>+ أضف مسارًا</button></div>{chosen.length ? <ol>{chosen.map((item) => <li key={item.id}><span>0{experiences.indexOf(item) + 1}</span><div><strong>{item.title}</strong><small>{item.duration} · {item.status}</small></div></li>)}</ol> : <div className="sense-empty-plan"><span>✦</span><strong>لم تختر مسارًا بعد</strong><p>ابدأ من دليل المسارات، ثم عُد إلى هنا لترتيب اليوم.</p><button onClick={() => onNavigate("/اكتشف")}>اذهب إلى الاكتشاف ←</button></div>}<div className="sense-boundary-box"><strong>قبل التأكيد</strong><p>سنحتاج مراجعة التوافر والسعر والوصول مع شريك محلي. لن نعرض لك معلومات غير مؤكدة.</p></div></div><form className="sense-request-form" onSubmit={(event) => { event.preventDefault(); setSubmitted(true); }}><span className="sense-section-label">مسودة طلب مراجعة</span><h2>ساعدنا نفهم يومك.</h2><label>الاسم أو اسم المجموعة<input required placeholder="مثال: عائلة الخطيب" /></label><div className="sense-form-row"><label>تاريخ الزيارة<input required type="date" /></label><label>عدد الأشخاص<input required type="number" min="1" max="20" defaultValue="2" /></label></div><label>طريقة التواصل<input required type="text" placeholder="بريد إلكتروني أو رقم هاتف" /></label><label>ما الذي يهمك؟<textarea rows={3} placeholder="وصول سهل، قصة معينة، طعام محلي..." /></label><button className="sense-primary" disabled={!chosen.length}>{submitted ? "وصلت المسودة ✓" : "أنشئ مسودة الطلب ↗"}</button><small>المسودة محلية في هذه النسخة التجريبية ولا تُرسل إلى خادم.</small>{submitted && <div className="sense-form-success"><strong>مسودة جاهزة للمراجعة.</strong><p>احتفظ بالتفاصيل وتحقق من الشريك المحلي قبل الدفع أو الوصول.</p></div>}</form></div></section>;
+}
+
+function PartnersPage({ onNavigate }: { onNavigate: (href: string) => void }) {
+  return <><section className="sense-partner-hero"><div><span className="sense-section-label">لأصحاب التجارب</span><h1>خبرتك المحلية<br /><em>تستحق أن تُروى.</em></h1><p>نساعد المرشدين، الحرفيين، المضيفين، وأصحاب المبادرات على بناء بطاقة تجربة واضحة — ثم نترك قرار النشر لمراجعة بشرية وموافقة صريحة.</p><button className="sense-primary" onClick={() => onNavigate("/انضم")}>ابدأ مسار الشراكة ↗</button></div><div className="sense-partner-art"><span>لست قائمة أخرى.</span><strong>أنت<br />جزء من<br /><em>المكان.</em></strong></div></section><section className="sense-partner-steps"><div><span>01</span><h2>قدّم ما تفعله فعلًا</h2><p>وصف واضح للتجربة، جمهورها، مدتها، وما يحتاجه الزائر قبل الوصول.</p></div><div><span>02</span><h2>نراجع معك التفاصيل</h2><p>لا نضيف وعودًا من عندنا. نطلب توضيحًا عندما يلزم ونحافظ على صوتك.</p></div><div><span>03</span><h2>تقرر كيف تظهر</h2><p>القبول ليس نشرًا تلقائيًا. لك قرار مستقل في الظهور العام وبيانات التواصل.</p></div></section></>;
+}
+
+function VisionPage({ onNavigate }: { onNavigate: (href: string) => void }) {
+  return <section className="sense-editorial-page"><span className="sense-section-label">رؤية مسؤولة</span><h1>المنصة الجيدة<br /><em>تعرف حدودها.</em></h1><div className="sense-editorial-columns"><p>السياحة ليست جمع نقاط على الخريطة. هي علاقة بين زائر ومكان ومضيف، وكل علاقة تحتاج سياقًا وموافقة ومساحة للرفض.</p><div><h2>ما نعد به</h2><ul><li>معلومة مفيدة قبل الوصول.</li><li>مصدر ظاهر أو تنبيه واضح بأن التحقق لم يكتمل.</li><li>احترام خصوصية المضيف وقرار النشر.</li><li>فصل المنصة السياحية عن بيانات Urban‑Sense البلدية.</li></ul></div></div><button className="sense-secondary" onClick={() => onNavigate("/اكتشف")}>عد إلى الدليل ←</button></section>;
+}
+
+function ReadinessPage({ onNavigate }: { onNavigate: (href: string) => void }) {
+  return <section className="sense-readiness-page"><span className="sense-section-label">مسار المزود</span><h1>الجاهزية ليست<br /><em>طلبًا طويلًا.</em></h1><p>قبل أن تسجل، تعرّف على ما يحتاجه ملف تجربة مسؤول: ما الذي سيعيشه الزائر، ما الذي نعرفه، وما الذي يجب أن يُراجع محليًا.</p><div className="sense-readiness-grid"><article><span>01</span><h2>عرّف التجربة</h2><p>من أنت؟ ماذا يحدث؟ ولمن تصلح التجربة؟</p></article><article><span>02</span><h2>وضّح ما قبل الوصول</h2><p>المكان، الوقت، الوصول، اللغة، والاحتياطات.</p></article><article><span>03</span><h2>شارك في المراجعة</h2><p>المراجع المستقل يسأل قبل أن يقرر.</p></article></div><button className="sense-primary" onClick={() => onNavigate("/انضم")}>افتح نموذج الشراكة ↗</button></section>;
 }

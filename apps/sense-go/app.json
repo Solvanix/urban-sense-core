@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "SENSE Go",
+    "slug": "sense-go",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "scheme": "sensego",
+    "newArchEnabled": true,
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.sense.experience.go" },
+    "android": { "package": "com.sense.experience.go" },
+    "web": { "bundler": "metro", "output": "static" }
+  }
+}
