@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./visualize-enhancements.css" />
   </head>
   <body>
     <main class="shell">
@@ -23,7 +24,7 @@
         <div class="top-actions">
           <button class="button button-dark" id="printButton">طباعة / PDF</button>
           <button class="button button-light" id="exportButton">تصدير JSON</button>
-          <a class="button button-ghost" href="../" target="_blank" rel="noreferrer">المستودع</a>
+          <a class="button button-accent" href="./experience.html">تجربة الزائر</a><a class="button button-light" href="./validation.html">مركز التحقق</a><a class="button button-ghost" href="./maba-bridge.html">جسر MABA</a><a class="button button-ghost" href="../" target="_blank" rel="noreferrer">المستودع</a>
         </div>
       </header>
 
@@ -142,9 +143,31 @@
         </article>
       </section>
 
+      <section class="live-section">
+        <div class="section-heading">
+          <div><p class="kicker">06 / الإشارة الحية</p><h3>ما يحدث الآن حول العيزرية</h3></div>
+          <p class="section-note">مصادر عامة قابلة للفشل؛ تُعرض مع زمن الطلب والمصدر ولا تتحول تلقائياً إلى ادعاء أثر.</p>
+        </div>
+        <div class="live-grid">
+          <article class="live-card weather-card"><div class="live-card-head"><span class="live-icon">☼</span><span class="live-badge" id="weatherStatus">جاري الطلب</span></div><h4>الطقس الحالي</h4><div class="live-value" id="weatherValue">—</div><p id="weatherDetail">Open-Meteo · العيزرية</p><a href="https://open-meteo.com/" target="_blank" rel="noreferrer">مصدر مفتوح ↗</a></article>
+          <article class="live-card map-card"><div class="live-card-head"><span class="live-icon">⌖</span><span class="live-badge" id="osmStatus">جاري الطلب</span></div><h4>خريطة الأماكن العامة</h4><div class="live-value" id="osmValue">—</div><p id="osmDetail">نقاط اهتمام عامة ضمن نطاق العيزرية</p><a id="osmLink" href="https://www.openstreetmap.org/#map=14/31.77/35.26" target="_blank" rel="noreferrer">فتح الخريطة ↗</a></article>
+          <article class="live-card health-card"><div class="live-card-head"><span class="live-icon">✓</span><span class="live-badge good">مراقبة</span></div><h4>صحة البيانات</h4><div class="live-value" id="healthValue">—</div><p id="healthDetail">يفحص الحقول والمصدر والحداثة</p><button class="text-button" id="healthButton">تشغيل الفحص</button></article>
+        </div>
+      </section>
+
+      <section class="decision-section">
+        <div class="section-heading"><div><p class="kicker">07 / مركز القرار</p><h3>من المؤشر إلى الخطوة التالية</h3></div><p class="section-note">الاقتراحات آلية من البيانات الحالية، ولا تستبدل قرار المالك أو البلدية.</p></div>
+        <div class="decision-grid" id="decisionGrid"></div>
+      </section>
+
+      <section class="source-registry">
+        <div class="section-heading"><div><p class="kicker">08 / سجل المصادر</p><h3>كل رقم له صاحب ومسار تحقق</h3></div><p class="section-note">تسجيل المصدر يمنع أن تتحول الأرقام التجريبية إلى وعود تسويقية.</p></div>
+        <div class="registry-grid" id="registryGrid"></div>
+      </section>
+
       <section class="operating-model">
         <div class="section-heading">
-          <div><p class="kicker">06 / نموذج SENSE التشغيلي</p><h3>هوية → مشروع → مهارة → سير عمل → أثر قابل للتحقق</h3></div>
+          <div><p class="kicker">09 / نموذج SENSE التشغيلي</p><h3>هوية → مشروع → مهارة → سير عمل → أثر قابل للتحقق</h3></div>
           <p class="section-note">مستخلص من مواد Claude 101 وClaude Code 101 كما وردت في المدخلات، ومترجم إلى بنية تنفيذية للمشروع.</p>
         </div>
         <div class="model-rail">

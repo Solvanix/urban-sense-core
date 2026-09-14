@@ -9,7 +9,10 @@
     "source": "analytics/vertical_slice/seed/reports.csv",
     "method": "SQLite + deterministic Python aggregation",
     "record_count": 112,
-    "privacy": "لا توجد بيانات شخصية؛ المعرّفات اصطناعية"
+    "privacy": "لا توجد بيانات شخصية؛ المعرّفات اصطناعية",
+    "owner": "SENSE / Urban-Sense — owner not yet operationally assigned",
+    "freshness": "Repository snapshot; live signals are displayed separately",
+    "refresh_hint": "Update this file or pass ?data=<public-json-url> to reload another source"
   },
   "period": {
     "label": "1–14 أيلول 2026 · شريحة تجريبية",

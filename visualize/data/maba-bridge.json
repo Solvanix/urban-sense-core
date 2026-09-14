@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "SENSE × MABA Bridge",
+    "status": "working-draft",
+    "status_label": "حدود تكامل أولية للمراجعة المشتركة",
+    "quotation_reference": "MABA-QUO-TNC-2026-01",
+    "quotation_date": "2026-09-13",
+    "note": "الأرقام والشروط من عرض إرشادي صالح 30 يوماً كما ورد في الملف المرفق، وليست عقداً أو موافقة شراء."
+  },
+  "positioning": {
+    "sense": "SENSE هو نظام تشغيل للوجهة: معرفة، قصة، اكتشاف، مسار، تجربة، اقتصاد، قياس وتعلم.",
+    "maba": "MABA يمكن أن توفر طبقة أنظمة هندسية: NFC، أجهزة، محفظة، نقل، وصول، تطبيقات ميدانية وبوابة متعددة البلديات.",
+    "boundary": "MABA ليست بديلاً عن استراتيجية SENSE أو محتواه أو نموذج تشغيله؛ وهي شريك محتمل لطبقة محددة بعد تثبيت المتطلبات الوظيفية."
+  },
+  "layers": [
+    { "sense_layer": "المشكلة والبحث", "maba_fit": "خارج العرض الحالي", "owner": "SENSE + البلدية", "decision": "تشخيص قبل الطلب" },
+    { "sense_layer": "قاعدة المعرفة والمحتوى", "maba_fit": "تكامل محتمل عبر APIs", "owner": "SENSE + شركاء المحتوى", "decision": "تعريف المصدر والمالك" },
+    { "sense_layer": "الخريطة والقصة والمسار", "maba_fit": "تكامل محتمل مع تطبيق السائح", "owner": "SENSE", "decision": "MVP أولوية 1" },
+    { "sense_layer": "التجربة والحجز", "maba_fit": "ليس مفصلاً في العرض الحالي", "owner": "SENSE + شريك منصة", "decision": "يحتاج متطلبات وظيفية" },
+    { "sense_layer": "NFC والهوية والمحفظة", "maba_fit": "نطاق MABA الأساسي", "owner": "MABA بعد التحقق", "decision": "أولوية 3 بعد اختبار القيمة" },
+    { "sense_layer": "النقل والوصول", "maba_fit": "وحدة نقل Offline-first وتحكم وصول", "owner": "MABA + البلدية", "decision": "يتطلب Pilot وأجهزة" },
+    { "sense_layer": "لوحة البلدية والقياس", "maba_fit": "بوابة بلدية وتقارير أولية", "owner": "مشترك", "decision": "توحيد مؤشرات SENSE" },
+    { "sense_layer": "الذكاء الاصطناعي وRAG والـAgents", "maba_fit": "خارج العرض الحالي", "owner": "SENSE + شريك AI", "decision": "لا يضاف قبل مصدر موثوق" }
+  ],
+  "functional_requirements": [
+    { "id": "FR-01", "name": "قاعدة معرفة موثقة", "priority": "MVP-1", "owner": "SENSE", "acceptance": "كل نقطة لها مصدر ومالك وتاريخ مراجعة" },
+    { "id": "FR-02", "name": "منصة اكتشاف ومسار", "priority": "MVP-1", "owner": "SENSE", "acceptance": "الزائر ينتقل من قصة إلى مكان إلى مسار" },
+    { "id": "FR-03", "name": "تطبيق زائر", "priority": "MVP-1", "owner": "شريك منصة", "acceptance": "رحلة هاتفية قابلة للاختبار مع مستخدمين" },
+    { "id": "FR-04", "name": "نظام الحجز", "priority": "MVP-2", "owner": "SENSE + شريك", "acceptance": "حجز تجربة بسعة ووقت ومالك واضح" },
+    { "id": "FR-05", "name": "NFC والهوية", "priority": "MVP-3", "owner": "MABA", "acceptance": "قيمة مقاسة مقابل QR/تطبيق في اختبار صغير" },
+    { "id": "FR-06", "name": "Offline-first", "priority": "Cross-cutting", "owner": "MABA + SENSE", "acceptance": "قراءة آخر نسخة ومزامنة مؤجلة مع إظهار عمر البيانات" },
+    { "id": "FR-07", "name": "الوصول الشامل", "priority": "Cross-cutting", "owner": "مشترك", "acceptance": "وصف وصول لكل نقطة واختبار مع مستخدمين" },
+    { "id": "FR-08", "name": "لوحة بلدية", "priority": "MVP-2", "owner": "مشترك", "acceptance": "بلاغ/تجربة/مؤشر مع مالك وSLA وسجل تدقيق" }
+  ],
+  "quotation_snapshot": {
+    "software_items_usd": 15200,
+    "indicative_one_municipality_usd": 37668,
+    "economy_validator_indicative_usd": 33418,
+    "timeline_weeks": 18,
+    "validity_days": 30,
+    "warning": "هذه قيم من عرض MABA المرفق وليست قراراً مالياً أو سعراً نهائياً لـ SENSE."
+  },
+  "next_meeting": [
+    "اعرض وثيقة المتطلبات الوظيفية قبل مناقشة السعر.",
+    "اطلب من MABA تحديد ما تملكه وما يحتاج شريك منصة أو AI.",
+    "افصل تكامل NFC عن MVP الأول ما لم تثبت التجربة قيمة واضحة.",
+    "اطلب عرضاً محدثاً يوضح التكلفة والمدة لكل طبقة، والواجهات، وملكية البيانات، والدعم، وخطة الخروج.",
+    "حدّد اجتماعاً مشتركاً مع البلدية لمراجعة التشغيل لا العرض التقني فقط."
+  ]
+}

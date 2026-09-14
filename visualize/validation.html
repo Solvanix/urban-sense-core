@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="SENSE Validation Center — خريطة الفرضيات وخطة التحقق والبايلوت." />
+    <title>SENSE Validation Center — تحقق قبل البناء</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./validation.css" />
+  </head>
+  <body>
+    <main class="validation-shell">
+      <header class="validation-topbar"><a class="brand" href="./index.html"><span class="brand-mark">S</span><span>SENSE / Validation Center</span></a><nav><a href="./index.html">لوحة التشغيل</a><a href="./experience.html">تجربة الزائر</a><a href="./maba-bridge.html">جسر MABA</a><button id="printButton">طباعة / PDF</button></nav></header>
+      <section class="validation-hero"><div><div class="status"><span></span><strong id="statusLabel">جاري التحميل…</strong><small id="statusDate">—</small></div><p class="kicker">VALIDATE BEFORE YOU BUILD</p><h1>لا نبني<br /><em>قبل أن نتحقق.</em></h1><p>مركز عملي يحول الرؤية إلى فرضيات، والفرضيات إلى أدلة، والأدلة إلى قرار Pilot يمكن للبلدية والشريك والمستثمر مناقشته.</p><div class="hero-links"><a class="primary" href="#assumptions">افتح خريطة الفرضيات</a><a class="secondary" href="#pilot">شاهد نموذج الـPilot</a></div></div><div class="ladder-visual"><div class="ladder-title">Validation ladder</div><div id="ladderVisual"></div></div></section>
+
+      <section class="one-pager"><div class="section-heading"><div><p class="kicker">01 / ONE-PAGER</p><h2>ملخص قرار من صفحة واحدة.</h2></div><p>هذا ليس عرضاً نهائياً ولا عقداً. إنه سطح مشترك لتحديد ما نعرفه وما لا نعرفه وما يجب اختباره قبل الالتزام.</p></div><div class="one-grid" id="onePager"></div></section>
+
+      <section class="assumptions-section" id="assumptions"><div class="section-heading"><div><p class="kicker">02 / ASSUMPTIONS MAP</p><h2>الفرضيات الأخطر أولاً.</h2></div><p>يمكن تعديل الملف المصدر لاحقاً. كل صف يربط الادعاء بدرجة يقين ودليل واختبار ومالك.</p></div><div class="table-wrap"><table><thead><tr><th>المعرف</th><th>الفرضية</th><th>اليقين</th><th>الدليل الحالي</th><th>الاختبار التالي</th><th>المالك</th></tr></thead><tbody id="assumptionTable"></tbody></table></div></section>
+
+      <section class="dimensions-section"><div class="section-heading"><div><p class="kicker">03 / READINESS</p><h2>هل الحل صالح للواقع؟</h2></div><p>التقنية وحدها لا تكفي. نقيس الملاءمة التشغيلية والمؤسسية والبيانية والاقتصادية قبل التوسع.</p></div><div class="dimension-grid" id="dimensionGrid"></div></section>
+
+      <section class="pilot-section" id="pilot"><div class="pilot-intro"><p class="kicker">04 / PILOT DESIGN</p><h2>بايلوت قصير يمكن قياسه.</h2><p>المقترح الحالي هو تجربة محدودة في العيزرية، تُثبت أو تفنّد الفرضيات قبل إضافة الحجز والمتجر وNFC والذكاء الاصطناعي.</p><div class="pilot-ribbon"><strong id="pilotDuration">—</strong><span id="pilotPlace">—</span><span id="pilotUsers">—</span></div></div><div class="pilot-kpis"><h3>KPIs متفق عليها قبل البداية</h3><div id="kpiList"></div></div></section>
+
+      <section class="offline-section"><div><p class="kicker">05 / RESILIENCE</p><h2>العمل لا يتوقف عند انقطاع الشبكة.</h2><p>يجب تصميم المسار ليظل مفيداً في بيئة اتصال أو طاقة غير مستقرة، مع إظهار عمر البيانات وعدم بيع الوهم بأنها لحظية.</p></div><div class="offline-list" id="offlineList"></div></section>
+      <footer><span>SENSE / Urban-Sense Core</span><span>مسودة تحقق — ليست موافقة أو عقداً</span><a href="./experience.html">إلى تجربة الزائر ←</a></footer>
+    </main>
+    <script src="./validation.js" type="module"></script>
+  </body>
+</html>

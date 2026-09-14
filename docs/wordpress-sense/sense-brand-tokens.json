@@ -1,0 +1,29 @@
+{
+  "brand": "SENSE",
+  "direction": "rtl",
+  "palette": {
+    "night_story": "#17211F",
+    "olive_place": "#66734A",
+    "stone_jerusalem": "#E7DED0",
+    "light_gold": "#C79A4A",
+    "warm_clay": "#A7654B",
+    "paper_white": "#FAF8F3",
+    "verified_green": "#3D795E",
+    "needs_review_red": "#A44B42"
+  },
+  "typography": {
+    "arabic_heading": "IBM Plex Sans Arabic",
+    "arabic_body": "IBM Plex Sans Arabic",
+    "latin": "Inter"
+  },
+  "navigation": [
+    "اكتشف",
+    "خطط جولتك",
+    "تجارب",
+    "المتجر الوطني",
+    "سهولة الوصول",
+    "عن SENSE"
+  ],
+  "primary_cta": "ابدأ اكتشافك",
+  "tagline": "اكتشف المكان. عش القصة. خذ جزءًا منها معك."
+}

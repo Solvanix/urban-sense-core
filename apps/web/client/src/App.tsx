@@ -28,6 +28,7 @@ import VerificationRoom from "./pages/VerificationRoom";
 import RefugeeContext from "./pages/RefugeeContext";
 import WorkCompass from "./pages/WorkCompass";
 import NationalContinuity from "./pages/NationalContinuity";
+import LiveVisualize from "./pages/LiveVisualize";
 import { getRootView } from "./lib/sensePortalRoute";
 
 function RootPage() {
@@ -55,6 +56,7 @@ function RootPage() {
   if (rootView === "refugees") return <RefugeeContext />;
   if (rootView === "work-compass") return <WorkCompass />;
   if (rootView === "continuity") return <NationalContinuity />;
+  if (rootView === "visualize") return <LiveVisualize />;
   return <SensePortal />;
 }
 
@@ -77,6 +79,7 @@ function Router() {
       <Route path={"/غرفة-التحقق"} component={VerificationRoom} />
       <Route path={"/بوصلة-العمل"} component={WorkCompass} />
       <Route path={"/الاستمرارية-الوطنية"} component={NationalContinuity} />
+      <Route path={"/التحليلات"} component={LiveVisualize} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
