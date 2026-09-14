@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@500;600;700;800;900&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root { --background: #f4f0e9; --foreground: #183c3a; --card: #fffdf8; --card-foreground: #183c3a; --popover: #fffdf8; --popover-foreground: #183c3a; --primary: #173d3a; --primary-foreground: #fff8ea; --secondary: #e5dfd2; --secondary-foreground: #183c3a; --muted: #e7e1d4; --muted-foreground: #607870; --accent: #e9c77e; --accent-foreground: #183c3a; --destructive: #b8463f; --border: #d5ddd5; --input: #d5ddd5; --ring: #c79440; --radius: 1rem; }
+
+@theme inline { --color-background: var(--background); --color-foreground: var(--foreground); --color-card: var(--card); --color-card-foreground: var(--card-foreground); --color-popover: var(--popover); --color-popover-foreground: var(--popover-foreground); --color-primary: var(--primary); --color-primary-foreground: var(--primary-foreground); --color-secondary: var(--secondary); --color-secondary-foreground: var(--secondary-foreground); --color-muted: var(--muted); --color-muted-foreground: var(--muted-foreground); --color-accent: var(--accent); --color-accent-foreground: var(--accent-foreground); --color-destructive: var(--destructive); --color-border: var(--border); --color-input: var(--input); --color-ring: var(--ring); }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: 'IBM Plex Sans Arabic', sans-serif; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; text-decoration: none; }
+.font-display, h1, h2, h3 { font-family: 'Noto Kufi Arabic', sans-serif; }
+.skip-link { position: fixed; right: 1rem; top: -5rem; z-index: 100; border-radius: 999px; background: #e9c77e; padding: .7rem 1rem; font-weight: 700; transition: top .2s ease; }
+.skip-link:focus { top: 1rem; }
+.nav-link { position: relative; transition: color .2s ease; }
+.nav-link:hover { color: #b2782b; }
+.nav-link::after { content: ''; position: absolute; right: 0; bottom: -.45rem; height: 2px; width: 0; background: #c79440; transition: width .25s ease; }
+.nav-link:hover::after, .nav-link:focus-visible::after { width: 100%; }
+.hero-grid { isolation: isolate; }
+.primary-btn, .audio-btn { display: inline-flex; align-items: center; gap: .55rem; border-radius: 999px; padding: .9rem 1.3rem; font-size: .875rem; font-weight: 700; transition: transform .18s ease, background .18s ease; }
+.primary-btn { background: #e9c77e; color: #183c3a; }
+.primary-btn:hover { background: #f2d795; transform: translateY(-2px); }
+.audio-btn { border: 1px solid rgba(255,255,255,.3); color: #fff8ea; background: rgba(255,255,255,.08); backdrop-filter: blur(8px); }
+.audio-btn:hover { background: rgba(255,255,255,.16); transform: translateY(-2px); }
+.lead-copy { max-width: 720px; font-family: 'Noto Kufi Arabic', sans-serif; font-size: clamp(1.4rem, 2.8vw, 2.25rem); font-weight: 700; line-height: 2; letter-spacing: -.03em; }
+.article-copy { max-width: 720px; color: #4f6860; font-size: 1.075rem; line-height: 2.15; }
+.article-copy h2 { margin-top: 3rem; color: #183c3a; font-size: clamp(1.4rem, 2.4vw, 2rem); font-weight: 800; }
+.article-copy blockquote { position: relative; margin: 2.5rem 0; border-right: 4px solid #d3a24b; padding: 1rem 1.5rem 1rem 0; color: #285c55; font-family: 'Noto Kufi Arabic', sans-serif; font-size: 1.25rem; font-weight: 700; line-height: 2; }
+.article-copy blockquote svg { margin-bottom: .5rem; color: #d3a24b; }
+.eyebrow { display: flex; align-items: center; gap: .6rem; color: #af7b2c; font-size: .78rem; font-weight: 800; letter-spacing: .04em; }
+.section-title { margin-top: .75rem; font-family: 'Noto Kufi Arabic', sans-serif; font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 900; line-height: 1.45; letter-spacing: -.05em; }
+.story-card { min-height: 350px; border-radius: 1.35rem; padding: 1.35rem; transition: transform .25s cubic-bezier(.23,1,.32,1), box-shadow .25s ease; }
+.story-card:hover { transform: translateY(-7px) rotate(-.4deg); box-shadow: 0 18px 40px rgba(24,60,58,.12); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+@media (max-width: 640px) { .hero-grid { min-height: 650px; } .lead-copy { font-size: 1.35rem; line-height: 1.9; } }
