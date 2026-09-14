@@ -7,6 +7,8 @@
     "status_label": "بيانات أولية قابلة للاستبدال",
     "last_updated": "2026-09-12T00:00:00Z",
     "source": "Repository-maintained JSON; replace with a verified municipal export before making public impact claims",
+    "owner": "SENSE / Urban-Sense — owner not yet operationally assigned",
+    "freshness": "Repository snapshot; live signals are displayed separately",
     "refresh_hint": "Update this file or pass ?data=<public-json-url> to reload another source"
   },
   "period": {

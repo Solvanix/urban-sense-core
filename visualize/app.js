@@ -133,6 +133,9 @@ function render(data) {
   renderNetwork(data);
   renderAssumptions(data);
   renderMeta(data);
+  renderDecisions(data);
+  renderRegistry(data);
+  runHealthCheck();
   setSuccessState(data);
   applyCopy();
 }
@@ -222,6 +225,72 @@ function resetLocalJson() {
   fetchData();
 }
 
+const LIVE_COORDS = { latitude: 31.77, longitude: 35.26, label: "العيزرية" };
+const liveText = (id, value) => { const node = document.querySelector(id); if (node) node.textContent = value; };
+const liveBadge = (id, value, state = "") => { const node = document.querySelector(id); if (node) { node.textContent = value; node.className = `live-badge ${state}`.trim(); } };
+
+async function fetchLiveSignals() {
+  liveBadge("#weatherStatus", "جاري الطلب", "busy");
+  liveBadge("#osmStatus", "جاري الطلب", "busy");
+  try {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${LIVE_COORDS.latitude}&longitude=${LIVE_COORDS.longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&timezone=auto`;
+    const response = await fetch(url, { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    const current = data.current;
+    liveText("#weatherValue", `${Math.round(current.temperature_2m)}°C`);
+    liveText("#weatherDetail", `${LIVE_COORDS.label} · رطوبة ${current.relative_humidity_2m}% · رياح ${Math.round(current.wind_speed_10m)} كم/س · ${formatDate(current.time)}`);
+    liveBadge("#weatherStatus", "حي الآن", "good");
+  } catch (error) {
+    liveText("#weatherValue", "غير متاح"); liveText("#weatherDetail", `تعذر الوصول إلى Open-Meteo: ${error.message}`); liveBadge("#weatherStatus", "فشل المصدر", "error");
+  }
+  try {
+    const query = `[out:json][timeout:12];(nwr(around:5000,${LIVE_COORDS.latitude},${LIVE_COORDS.longitude})[amenity];nwr(around:5000,${LIVE_COORDS.latitude},${LIVE_COORDS.longitude})[tourism];);out count;`;
+    const endpoints = ["https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter"];
+    let data = null; let lastError = null;
+    for (const endpoint of endpoints) {
+      try {
+        const response = await fetch(`${endpoint}?data=${encodeURIComponent(query)}`, { cache: "no-store" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        data = await response.json(); break;
+      } catch (error) { lastError = error; }
+    }
+    if (!data) throw lastError || new Error("No Overpass endpoint responded");
+    const count = data.elements?.[0]?.tags?.total || "—";
+    liveText("#osmValue", `${formatNumber(count)} نقطة`); liveText("#osmDetail", `نطاق 5 كم · آخر طلب ${new Date().toLocaleTimeString("ar-EG")}`); liveBadge("#osmStatus", "حي الآن", "good");
+  } catch (error) {
+    liveText("#osmValue", "غير متاح"); liveText("#osmDetail", `تعذر الوصول إلى Overpass: ${error.message}`); liveBadge("#osmStatus", "فشل المصدر", "error");
+  }
+}
+
+function renderDecisions(data) {
+  const items = Object.entries(data.metrics || {}).slice(0, 6).map(([key, item]) => {
+    const current = Number(item.value); const target = Number(item.target); const direction = item.direction === "down" ? current <= target : current >= target;
+    const state = direction ? "على المسار" : "يحتاج تدخلاً";
+    const action = direction ? "استمر في القياس والتحقق." : item.direction === "down" ? "افتح مراجعة سبب الارتفاع وحدد مالكاً." : "حدد تجربة قصيرة لرفع المؤشر ثم أعد القياس.";
+    return `<article class="decision-card ${direction ? "is-good" : "is-risk"}"><div class="decision-top"><span>${escapeHtml(item.label)}</span><b>${state}</b></div><strong>${escapeHtml(action)}</strong><small>${escapeHtml(key)} · الثقة: ${escapeHtml(item.confidence || "غير محددة")}</small></article>`;
+  });
+  const node = document.querySelector("#decisionGrid"); if (node) node.innerHTML = items.join("");
+}
+
+function renderRegistry(data) {
+  const meta = data.meta || {};
+  const rows = [
+    ["المصدر الأساسي", meta.source || activeSource, meta.data_status === "prototype" ? "تجريبي" : "موثق"],
+    ["آخر تحديث", formatDate(meta.last_updated), "يحتاج مراقبة"],
+    ["فترة القياس", data.period?.label || "غير محددة", "معلنة"],
+    ["المالك", meta.owner || "غير مسجل", meta.owner ? "مسجل" : "فجوة"],
+  ];
+  const node = document.querySelector("#registryGrid"); if (node) node.innerHTML = rows.map(([label, value, state]) => `<div class="registry-item"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong><b>${escapeHtml(state)}</b></div>`).join("");
+}
+
+function runHealthCheck() {
+  if (!currentData) return;
+  const checks = [Boolean(currentData.meta?.source), Boolean(currentData.meta?.last_updated), Boolean(currentData.period?.label), Object.keys(currentData.metrics || {}).length > 0, (currentData.assumptions || []).length > 0];
+  const score = Math.round((checks.filter(Boolean).length / checks.length) * 100);
+  liveText("#healthValue", `${score}%`); liveText("#healthDetail", `${checks.filter(Boolean).length}/${checks.length} بوابات أساسية مكتملة · لا يعني ذلك صحة الأرقام ميدانياً`);
+}
+
 sourceInput.value = activeSource;
 refreshSelect.value = localStorage.getItem(REFRESH_KEY) || "0";
 sourceInput.addEventListener("change", () => {
@@ -237,5 +306,6 @@ $("#exportButton").addEventListener("click", exportJson);
 $("#editorButton").addEventListener("click", openEditor);
 $("#applyJsonButton").addEventListener("click", applyLocalJson);
 $("#resetLocalButton").addEventListener("click", resetLocalJson);
+$("#healthButton")?.addEventListener("click", runHealthCheck);
 
-fetchData().finally(setRefreshTimer);
+fetchData().then(() => { renderDecisions(currentData || {}); renderRegistry(currentData || {}); runHealthCheck(); fetchLiveSignals(); }).finally(setRefreshTimer);

@@ -2,6 +2,22 @@
 
 واجهة تصور ديناميكي خفيفة تعمل من GitHub Pages دون خادم، وتقرأ عقد بيانات JSON قابلة للاستبدال. الهدف هو تحويل مؤشرات SENSE/TIBYAN إلى شاشة تشغيل يمكن أن تتطور من نموذج أولي إلى لوحة بلدية موثقة.
 
+## ما الجديد في Visualize 2.0
+
+تحتوي الصفحة الآن على ثلاث طبقات إضافية: إشارات حية من Open-Meteo للطقس وOverpass/OpenStreetMap لنقاط الاهتمام العامة، فحص صحة لعقد البيانات، ومركز قرار يحول المؤشر المتأخر أو المتقدم إلى خطوة متابعة مقترحة. الإشارات الحية لا تُدمج في أرقام خط الأساس ولا تثبت أثراً بلديًا؛ هي سياق لحظي منفصل مع حالة نجاح أو فشل وزمن الطلب.
+
+الرابط العام المستهدف هو:
+
+```text
+https://solvanix.github.io/urban-sense-core/visualize/
+```
+
+ويمكن فتحه بمصدر JSON بديل:
+
+```text
+https://solvanix.github.io/urban-sense-core/visualize/?data=https%3A%2F%2Fexample.org%2Fdashboard.json
+```
+
 ## التشغيل
 
 افتح `visualize/index.html` عبر GitHub Pages. التطبيق يقرأ افتراضياً من `visualize/data/dashboard.json`، ويعيد رسم المؤشرات والرسوم عند الضغط على «تحديث الآن» أو وفق فترة المزامنة التي يحددها المستخدم.
@@ -35,6 +51,11 @@ https://solvanix.github.io/urban-sense-core/visualize/?data=https%3A%2F%2Fexampl
 ## عقد بيانات Experience Visualizer
 
 ملف `data/experience.json` يتضمن `audiences` لتبديل الوعد والمسار بحسب الجمهور، و`modules` لتصفية الوحدات، و`validation` لتحويل منهجية التحقق قبل البناء إلى واجهة، و`governance` لقواعد النشر. تغيير هذا الملف يعيد بناء تجربة الزائر عند التحديث.
+
+مصادر الإشارة الحية العامة:
+
+- [Open-Meteo](https://open-meteo.com/) — الطقس الحالي عند إحداثيات العيزرية التقريبية.
+- [Overpass API / OpenStreetMap](https://overpass-api.de/) — عدد تقريبي لنقاط الاهتمام العامة في نطاق 5 كم؛ تستخدم الصفحة مساراً بديلاً عاماً عند تعطل الخادم الأول، وقد يفشل المصدران بسبب حدود الخدمة العامة.
 
 ## عقد البيانات
 
