@@ -43,6 +43,7 @@ pnpm start
 - [`apps/sense-experience/README.md`](apps/sense-experience/README.md)
 - [`apps/sense-go/README.md`](apps/sense-go/README.md)
 - [`docs/sense-experience/TOURISM-PROJECT-PROFILE-REFERENCE.md`](docs/sense-experience/TOURISM-PROJECT-PROFILE-REFERENCE.md)
+- [`docs/sense-experience/مرجع-الاستبيان-السياحي-للهاتف.txt`](docs/sense-experience/%D9%85%D8%B1%D8%AC%D8%B9-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%A8%D9%8A%D8%A7%D9%86-%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%AD%D9%8A-%D9%84%D9%84%D9%87%D8%A7%D8%AA%D9%81.txt)
 
 ## الجودة
 
