@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "title": "SENSE Link Index",
+    "updated": "2026-09-15",
+    "scope": "Al-Eizariya-first / public and working links",
+    "note": "الروابط المؤقتة أو الخاصة موسومة بوضوح. لا تُعرض روابط الإدارة أو الترحيلات كروابط عامة."
+  },
+  "visualize": [
+    {"title":"لوحة التشغيل","url":"./index.html","kind":"visual","status":"published","audience":"مستثمر / بلدية","description":"المؤشرات، البلاغات، الشبكة، الحوكمة ومصدر JSON قابل للتحديث."},
+    {"title":"Experience Visualizer","url":"./experience.html","kind":"visual","status":"published","audience":"زائر / شريك / مستثمر","description":"رحلة الزائر والوحدات المعيارية حسب الدور."},
+    {"title":"Validation Center","url":"./validation.html","kind":"visual","status":"published","audience":"بلدية / شريك / مستثمر","description":"One-Pager، خريطة الفرضيات، سلم التحقق، Pilot وKPIs."},
+    {"title":"MABA Bridge","url":"./maba-bridge.html","kind":"visual","status":"published","audience":"MABA / شريك تقني","description":"حدود التكامل والمتطلبات الوظيفية والاقتباس الإرشادي."},
+    {"title":"Problem Statement Canvas","url":"./problem-statement-canvas.html","kind":"canvas","status":"published","audience":"فريق / بلدية / لجنة","description":"قالب قابل للتحرير والحفظ المحلي والطباعة أو الحفظ كـPDF."}
+  ],
+  "product": [
+    {"title":"SENSE public WordPress","url":"https://sense133.wordpress.com/","kind":"public","status":"verified-public","audience":"زائر / قارئ","description":"طبقة القصص والتقارير والميثاق والمحتوى التحريري."},
+    {"title":"SENSE temporary preview","url":"https://5173-iyf7zhn1linoioibho02h-04ad7cb6.us1.manus.computer/","kind":"preview","status":"temporary","audience":"اختبار","description":"معاينة تطويرية مؤقتة؛ ليست رابط إنتاج نهائي."},
+    {"title":"Launchpad preview","url":"https://5173-iyf7zhn1linoioibho02h-04ad7cb6.us1.manus.computer/launchpad","kind":"preview","status":"temporary","audience":"صاحب مشروع / شريك","description":"بطاقة مشروع، مؤشر جاهزية، ومحاكاة مقابلة؛ يلزم تثبيت النشر الدائم."},
+    {"title":"GitHub repository","url":"https://github.com/Solvanix/urban-sense-core","kind":"source","status":"public","audience":"فريق تقني / شريك","description":"المستودع المركزي الذي يحتوي visualize وملفات البيانات."}
+  ],
+  "editorial": [
+    {"title":"الكنز الذي مررنا بجانبه","url":"https://sense133.wordpress.com/2026/09/15/%d8%a7%d9%84%d9%83%d9%86%d8%b2-%d8%a7%d9%84%d8%b0%d9%8a-%d9%85%d8%b1%d8%b1%d9%86%d8%a7-%d8%a8%d8%ac%d8%a7%d9%86%d8%a8%d9%87/","status":"public","description":"قصة افتتاحية عن الأماكن التي نمر بها دون أن نرى طبقاتها."},
+    {"title":"من الزيتون إلى المغارة","url":"https://sense133.wordpress.com/2026/09/15/%d8%aa%d9%82%d8%b1%d9%8a%d8%b1-%d9%85%d9%8a%d8%af%d8%a7%d9%86%d9%8a-%d9%85%d9%86-%d8%a7%d9%84%d8%b2%d9%8a%d8%aa%d9%88%d9%86-%d8%a5%d9%84%d9%89-%d8%a7%d9%84%d9%85%d8%ba%d8%a7%d8%b1%d8%a9/","status":"public","description":"تقرير ميداني يفصل بين الرواية والمعلومة التي تحتاج تحققاً."},
+    {"title":"جواز الرحلة","url":"https://sense133.wordpress.com/2026/09/15/%d8%ac%d9%88%d8%a7%d8%b2-%d8%a7%d9%84%d8%b1%d8%ad%d9%84%d8%a9-%d9%85%d9%86-%d8%a7%d9%84%d8%b2%d9%8a%d8%aa%d9%88%d9%86%d8%a9-%d8%a5%d9%84%d9%89-%d8%a7%d9%84%d9%85%d8%ba%d8%a7%d8%b1%d8%a9/","status":"public","description":"تحويل القصة إلى محطات: الزيتونة، الطريق، المغارة، الاقتصاد المحلي."},
+    {"title":"ميثاق المكان","url":"https://sense133.wordpress.com/2026/09/15/%d9%85%d9%8a%d8%ab%d8%a7%d9%82-%d8%a7%d9%84%d9%85%d9%83%d8%a7%d9%86-%d8%b3%d8%a8%d8%b9-%d9%88%d8%b9%d9%88%d8%af-%d9%84%d8%b2%d8%a7%d8%a6%d8%b1-%d9%8a%d8%b1%d9%8a%d8%af-%d8%a3%d9%86-%d9%8a%d8%aa%d8%b1/","status":"public","description":"سبعة وعود للزائر المسؤول واحترام المكان والمجتمع."}
+  ],
+  "references": [
+    {"title":"WordPress AI Commander","url":"https://github.com/Idearia/WordPress-AI-Commander","status":"public-reference","description":"مرجع تقني لفكرة أوامر المحتوى عبر اللغة الطبيعية؛ ليس مدمجاً داخل GitHub Pages."},
+    {"title":"SiteGround AI Agent for WordPress","url":"https://www.siteground.com/blog/siteground-ai-agent-for-wordpress","status":"public-reference","description":"مرجع لخدمة خارجية تتطلب حساباً واستضافة/صلاحيات؛ لم تُفعّل داخل المشروع."},
+    {"title":"تقارير هيئة تطوير المنطقة الشرقية","url":"https://sda.gov.sa/reports","status":"public-reference","description":"مرجع منهجي لتجربة تصور مؤشرات حضرية وسرد قرار، مع بقاء التركيز على العيزرية."}
+  ],
+  "restricted": [
+    {"title":"WordPress Admin","url":"https://sense133.wordpress.com/wp-admin/","status":"login-required","description":"يتطلب حساب WordPress؛ لا يُدرج كمسار عام للمستثمر أو الزائر."},
+    {"title":"WordPress posts editor","url":"https://sense133.wordpress.com/wp-admin/edit.php","status":"login-required","description":"يتطلب صلاحيات الإدارة أو التحرير."},
+    {"title":"Manus shared replays","url":"https://manus.im/","status":"login-or-session-dependent","description":"يمكن قراءة بعض العناوين العامة، لكن المحتوى التفصيلي أو الملفات قد يتطلب جلسة دخول أو تشغيل تفاعلي."}
+  ]
+}

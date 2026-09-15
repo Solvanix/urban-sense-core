@@ -107,6 +107,10 @@ https://solvanix.github.io/urban-sense-core/visualize/?data=https%3A%2F%2Fexampl
 
 يمكن استخدام الصفحة كوثيقة مستقلة مع البلدية أو الشريك أو المستثمر، ثم العودة إلى `validation.html` لتحويل كل بند إلى فرضية واختبار ومالك ومؤشر.
 
+## Link Index
+
+تجمع `link-index.html` كل الروابط المتعلقة بالمشروع في واجهة واحدة قابلة للطباعة. تقسم الصفحة الروابط إلى Visualize المنشور داخل GitHub Pages، وطبقة المنتج، والقصص التحريرية، والمراجع الخارجية، والروابط التي تتطلب دخولاً أو جلسة. الروابط المؤقتة لا تُعرض كإنتاج نهائي، وروابط WordPress الإدارية لا تُقدّم كمسار عام.
+
 ## صفحات Visualize المنشورة
 
 | الصفحة | الاستخدام |
@@ -116,6 +120,7 @@ https://solvanix.github.io/urban-sense-core/visualize/?data=https%3A%2F%2Fexampl
 | `validation.html` | One-Pager، خريطة الفرضيات، سلم التحقق، Pilot وKPIs |
 | `maba-bridge.html` | حدود تكامل MABA والمتطلبات الوظيفية والاقتباس الإرشادي |
 | `problem-statement-canvas.html` | قالب Problem Statement قابل للتحرير والطباعة إلى PDF |
+| `link-index.html` | الفهرس الموحد للروابط المنشورة والمؤقتة والخاصة والمراجع |
 
 ## الحالة الحالية
 
