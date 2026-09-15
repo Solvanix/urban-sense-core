@@ -47,3 +47,15 @@ document.querySelector("#booking-form").addEventListener("submit", (event) => {
 });
 
 renderPlan();
+
+const passportStops = [
+  { index: "المحطة 01", title: "شجرة تعرّف بالمكان", text: "لا يبدأ الزائر بشاشة مزدحمة. يبدأ بحكاية الموسم، وطريقة العناية، وما تعنيه الأرض للعائلة.", check: "مضيف موافق · قصة قابلة للنشر · حق تصوير واضح" },
+  { index: "المحطة 02", title: "الطريق الذي لا يظهر من بعيد", text: "نمر بين تضاريس وقرى ومشاهد تحتاج مرشدًا يشرح أسماء المواضع ويحدد نقاط التوقف الآمنة ويحمي البيوت والأراضي الخاصة.", check: "مسار آمن · نقطة توقف معتمدة · لا تصوير بلا إذن" },
+  { index: "المحطة 03", title: "المغارة التي لا تُفتح قبل أن تُحمى", text: "أكثر المحطات إثارة هي الأكثر احتياجًا للمسؤولية. لا زيارة مفتوحة قبل فحص السلامة والملكية وحق الوصول والبيئة الداخلية.", check: "فحص ميداني · حق وصول · مرشد مؤهل · عدد محدود" },
+  { index: "المحطة 04", title: "اقتصاد صغير له وجه", text: "تكتمل الرحلة حين تصل منفعتها إلى مزارع أو صاحب منتج أو حرفي أو مرشد؛ لا نعرض الناس كزينة للقصة.", check: "موافقة واضحة · منفعة محلية · شراء بوعي" },
+];
+document.querySelectorAll("[data-passport]").forEach((button) => button.addEventListener("click", () => {
+  const stop = passportStops[Number(button.dataset.passport)];
+  document.querySelectorAll("[data-passport]").forEach((item) => item.classList.toggle("active", item === button));
+  document.querySelector("#passport-detail").innerHTML = `<span class="passport-detail-index">${stop.index}</span><h3>${stop.title}</h3><p>${stop.text}</p><div class="passport-check"><b>ما الذي نتحقق منه؟</b><span>${stop.check}</span></div>`;
+}));
