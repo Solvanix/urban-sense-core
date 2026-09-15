@@ -1,4 +1,4 @@
-const cacheName = "sense-experience-shell-v1";
+const cacheName = "sense-experience-shell-v2";
 const shell = ["/", "/manifest.webmanifest"];
 
 self.addEventListener("install", (event) => {
