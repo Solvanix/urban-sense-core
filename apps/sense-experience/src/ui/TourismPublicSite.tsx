@@ -87,7 +87,6 @@ const publicLinks = [
   { href: "/اكتشف", label: "اكتشف" },
   { href: "/حجزي", label: "خطة يومي" },
   { href: "/للشركاء", label: "للشركاء" },
-  { href: "/مختبر-الحملات", label: "مختبر الحملات" },
 ];
 
 export function TourismPublicSite({ pathname, onNavigate }: { pathname: string; onNavigate: (href: string) => void }) {
