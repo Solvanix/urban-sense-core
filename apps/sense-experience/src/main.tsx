@@ -10,6 +10,7 @@ import { ProviderOnboardingApp } from "./ui/ProviderOnboardingApp.js";
 import { TourismPublicSite } from "./ui/TourismPublicSite.js";
 import { TourismReadinessPage } from "./ui/TourismReadinessPage.js";
 import { TourismLaunchpadPage } from "./ui/TourismLaunchpadPage.js";
+import { TourismCampaignLabPage } from "./ui/TourismCampaignLabPage.js";
 import { normalizePathname, resolveSenseRoute } from "./routing.js";
 
 const root = document.getElementById("root");
@@ -37,6 +38,7 @@ function AppRouter() {
             : route === "claim-registry" ? <ClaimRegistryWorkspace onNavigate={navigate} />
               : route === "tourism-readiness" ? <TourismReadinessPage onNavigate={navigate} />
               : route === "tourism-launchpad" ? <TourismLaunchpadPage onNavigate={navigate} />
+              : route === "tourism-campaign-lab" ? <TourismCampaignLabPage onNavigate={navigate} />
               : <TourismPublicSite pathname={pathname} onNavigate={navigate} />;
 
   return <><a className="skip-link" href="#main-content">انتقل إلى المحتوى الرئيسي</a><AccessibilityControls />{content}</>;
