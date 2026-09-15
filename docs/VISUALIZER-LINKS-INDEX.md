@@ -13,6 +13,7 @@
 | تجربة الوجهة | [experience.html](https://solvanix.github.io/urban-sense-core/visualize/experience.html) | منشورة |
 | غرفة التحقق | [validation.html](https://solvanix.github.io/urban-sense-core/visualize/validation.html) | منشورة |
 | جسر MABA | [maba-bridge.html](https://solvanix.github.io/urban-sense-core/visualize/maba-bridge.html) | منشورة |
+| Problem Statement Canvas للعيزرية | [problem-canvas.html](https://solvanix.github.io/urban-sense-core/visualize/problem-canvas.html) | صفحة قابلة للتحرير والتنزيل والطباعة |
 | Visualizer حي في Manus Space | [sensevizlive](https://sensevizlive-53hgdb9n.manus.space/#live) | نموذج حي مستقل؛ يحتاج تثبيت مصدر البيانات قبل الاعتماد |
 
 ## ثانيًا: الإعلام والقصص

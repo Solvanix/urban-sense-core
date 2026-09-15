@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Problem Statement Canvas — العيزرية / SENSE">
+  <title>Problem Statement Canvas — العيزرية</title>
+  <style>
+    :root{--ink:#173b46;--teal:#087f91;--teal-dark:#075967;--paper:#fffdf7;--cream:#f2eee4;--muted:#5b6d72;--line:#c8d5d3;--gold:#d99b38;--rose:#b85f58;--shadow:0 14px 34px rgba(25,54,58,.10)}
+    *{box-sizing:border-box}html{background:#dfe8e5;scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Arial,"Tahoma",sans-serif;line-height:1.65}.page{width:min(1420px,calc(100% - 28px));margin:22px auto 52px}.toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px;padding:12px 15px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.9);box-shadow:var(--shadow)}.toolbar-title{font-weight:800;color:var(--teal-dark)}.toolbar-actions{display:flex;gap:8px;flex-wrap:wrap}button{border:0;border-radius:8px;padding:9px 13px;font:inherit;font-size:12px;font-weight:800;cursor:pointer}.primary{background:var(--teal-dark);color:#fff}.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}.danger{background:#fff1ef;color:#853f3b;border:1px solid #ecc4bf}.status{font-size:11px;color:var(--muted)}
+    .canvas{background:var(--paper);box-shadow:var(--shadow);border:1px solid #cbd3cc}.canvas-head{display:grid;grid-template-columns:1fr 220px;gap:22px;align-items:center;padding:24px 28px 20px;border-bottom:7px solid var(--teal)}.canvas-head h1{margin:0;font-size:clamp(25px,4vw,45px);letter-spacing:-.04em;line-height:1.05}.canvas-head p{margin:7px 0 0;color:var(--muted);font-size:14px}.mark{justify-self:end;display:grid;place-items:center;width:150px;height:88px;border-radius:42% 8% 42% 8%;background:linear-gradient(145deg,#ed6e5d 0 34%,#f4c85f 35% 48%,#1993a0 49%);color:#fff;text-align:center;font-weight:900;font-size:15px;box-shadow:inset 0 0 0 7px rgba(255,255,255,.55)}
+    .grid{display:grid;grid-template-columns:1fr 1fr 1fr}.cell{min-height:250px;padding:17px 19px;border-left:5px solid var(--teal);border-bottom:5px solid var(--teal);overflow:hidden}.cell:nth-child(3n){border-left:0}.cell:nth-child(n+4){min-height:220px}.cell h2{margin:0 0 5px;color:#132d37;font-size:20px;line-height:1.1}.prompt{margin:0 0 9px;color:var(--muted);font-size:11px;font-weight:700;line-height:1.35}.editable{min-height:55px;padding:4px 6px;outline:0;border-radius:5px;white-space:pre-wrap;font-size:13px}.editable:focus{background:#fff8de;box-shadow:0 0 0 2px #e4bd59}.editable:hover{background:rgba(255,250,226,.55)}.list{margin:0;padding-right:20px}.list li{margin:2px 0}.problem-statement{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:start;grid-column:1/-1;border-left:0!important;min-height:115px!important;border-bottom:0!important}.problem-statement h2{font-size:19px}.problem-statement .editable{font-size:15px;font-weight:700;line-height:1.5}
+    .metrics{margin:18px 20px;padding:18px;border:1px solid var(--line);border-radius:13px;background:#f7faf7}.metrics-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:12px}.metrics-head h2{margin:0;font-size:19px}.metrics-head p{margin:0;color:var(--muted);font-size:11px}.metric-controls{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.metric-control{display:grid;gap:4px}.metric-control label{font-size:10px;color:var(--muted);font-weight:800}.metric-control input,.metric-control select{width:100%;padding:8px;border:1px solid var(--line);border-radius:7px;background:#fff;font:inherit;font-size:12px}.metric-card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:15px}.metric-card{padding:12px;border:1px solid var(--line);border-top:3px solid var(--gold);background:#fff}.metric-card strong{display:block;font-size:22px;color:var(--teal-dark);direction:ltr;text-align:right}.metric-card span{display:block;color:var(--muted);font-size:11px}.evidence{margin-top:12px;padding:9px;color:#5b4b29;background:#fff8df;border-right:3px solid var(--gold);font-size:11px}
+    .source-note{display:flex;justify-content:space-between;gap:12px;padding:13px 20px;color:var(--muted);font-size:11px;border-top:1px solid var(--line)}.source-note a{color:var(--teal-dark);font-weight:800}.hidden{display:none!important}
+    @media(max-width:900px){.grid{grid-template-columns:1fr 1fr}.cell:nth-child(3n){border-left:5px solid var(--teal)}.cell:nth-child(2n){border-left:0}.problem-statement{grid-column:1/-1}.metric-controls,.metric-card-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:620px){.page{width:calc(100% - 16px);margin:8px auto 28px}.toolbar,.canvas-head,.source-note{display:block}.toolbar-actions{margin-top:9px}.canvas-head{padding:18px}.mark{justify-self:start;margin-top:15px}.grid{display:block}.cell,.cell:nth-child(n){min-height:auto;border-left:0;border-bottom:4px solid var(--teal)}.problem-statement{display:block}.metric-controls,.metric-card-grid{grid-template-columns:1fr}.metrics{margin:12px;padding:13px}}
+    @media print{html{background:#fff}body{background:#fff}.page{width:100%;margin:0}.toolbar{display:none}.canvas{box-shadow:none;border:0}.canvas-head{padding:12px 0 10px}.cell{break-inside:avoid}.metrics{margin:12px 0}.editable{padding:0}.source-note{padding:10px 0}.mark{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="toolbar" role="toolbar" aria-label="أدوات Canvas">
+    <div><div class="toolbar-title">Canvas قابل للتحرير — العيزرية</div><div class="status" id="status">التعديلات تحفظ محليًا في هذا المتصفح</div></div>
+    <div class="toolbar-actions"><button class="secondary" id="editToggle">تفعيل التحرير</button><button class="secondary" id="saveButton">حفظ محلي</button><button class="primary" id="downloadButton">تنزيل HTML نظيف</button><button class="primary" id="printButton">طباعة / PDF</button><button class="danger" id="resetButton">إعادة الأصل</button></div>
+  </div>
+  <main class="canvas" id="canvas">
+    <header class="canvas-head"><div><h1 contenteditable="false" class="editable" data-key="title">PROBLEM STATEMENT CANVAS</h1><p contenteditable="false" class="editable" data-key="subtitle">بناء مشكلة قابلة للتحقق لمشروع SENSE / TIBYAN في العيزرية</p></div><div class="mark">SENSE<br>AL-EIZARIYA</div></header>
+    <section class="grid">
+      <article class="cell"><h2>المشكلة</h2><p class="prompt">ما السبب الجذري للمشكلة؟</p><div class="editable" data-key="problem">الأصول السياحية في العيزرية غير متصلة عبر نظام واحد واضح يربط المعالم والطرق والفعاليات والمزودين والمحتوى واحتياجات الزوار. تشتت البيانات والقنوات والمسؤوليات يجعل الوجهة صعبة الاكتشاف والتنقل والتجربة.</div></article>
+      <article class="cell"><h2>السياق</h2><p class="prompt">متى تحدث المشكلة؟ وكم تتكرر؟</p><div class="editable" data-key="context">تحدث قبل وأثناء رحلة الزائر، خصوصًا عندما يمر الناس بجوار المعالم دون توقف، أو لا يجدون معلومة موثوقة في الوقت المناسب، أو لا يعرفون الخطوة التالية. المشكلة متكررة عبر الوجهة وليست حادثة منفردة.</div></article>
+      <article class="cell"><h2>البدائل الحالية</h2><p class="prompt">ماذا يفعل الناس اليوم؟</p><div class="editable" data-key="alternatives">خرائط عامة، وسائل التواصل الاجتماعي، الاتصال أو الزيارة المباشرة، صفحات تراث وسياحة منفصلة، والكلمة المنقولة بين الناس.</div></article>
+      <article class="cell"><h2>المستخدمون</h2><p class="prompt">من يواجه المشكلة أكثر؟</p><div class="editable" data-key="users"><ul class="list"><li>الزوار المحليون والدوليون</li><li>العائلات والطلبة والمدارس والجامعات</li><li>الأشخاص ذوو الإعاقة</li><li>التجار والمرشدون والحرفيون ومزودو التجارب</li><li>المبدعون والوكالات</li><li>فرق البلدية ومديرو الوجهة</li></ul></div></article>
+      <article class="cell"><h2>الأثر العاطفي</h2><p class="prompt">كيف يشعر المستخدم؟</p><div class="editable" data-key="emotional"><b>الزوار:</b> ارتباك، عدم يقين، وانفصال عن المكان.<br><b>المزودون:</b> إحباط، ضعف الظهور، وعدم يقين.<br><b>البلدية:</b> ضغط بسبب الطلبات والمتابعة المجزأة.</div></article>
+      <article class="cell"><h2>قصور البدائل</h2><p class="prompt">ما عيوب البدائل؟</p><div class="editable" data-key="shortcomings"><ul class="list"><li>المعلومات مبعثرة أو صعبة التحقق</li><li>ضعف الصلة بين المحتوى والمكان والفعل</li><li>معلومات وصول شاملة محدودة</li><li>لا يوجد سير عمل مشترك للبلاغات والمتابعة</li><li>لا يوجد قياس موحد للاكتشاف والزيارة والنشاط المحلي</li></ul></div></article>
+      <article class="cell problem-statement"><h2>بيان المشكلة</h2><div class="editable" data-key="statement">يواجه الزوار والمزودون المحليون والمبدعون وفرق البلدية نظامًا سياحيًا واتصاليًا مجزأً لا يحول المعلومات والمحتوى باستمرار إلى رحلة قابلة للاكتشاف والتنفيذ والقياس؛ مما يؤدي إلى مرور الزوار دون توقف، وضعف استخدام الأصول التراثية، وضياع فرص اقتصادية محلية، وصعوبة المتابعة.</div></article>
+    </section>
+    <section class="metrics">
+      <div class="metrics-head"><div><h2>الأثر القابل للقياس</h2><p>اضبط القيم قبل التنزيل. القيم الحالية من Vertical Slice اصطناعية وليست قياسات بلدية.</p></div><span class="status" id="metricStatus">مصدر: synthetic-pilot-v1</span></div>
+      <div class="metric-controls">
+        <div class="metric-control"><label for="stopRate">معدل التوقف %</label><input id="stopRate" type="number" min="0" step=".1" value="0"></div>
+        <div class="metric-control"><label for="dwellTime">مدة المكوث بالدقائق</label><input id="dwellTime" type="number" min="0" step=".1" value="0"></div>
+        <div class="metric-control"><label for="verifiedInfo">زمن المعلومة الموثوقة بالدقائق</label><input id="verifiedInfo" type="number" min="0" step=".1" value="0"></div>
+        <div class="metric-control"><label for="accessCoverage">تغطية الوصول الشامل %</label><input id="accessCoverage" type="number" min="0" step=".1" value="0"></div>
+        <div class="metric-control"><label for="contentVisit">تحويل المحتوى إلى زيارة %</label><input id="contentVisit" type="number" min="0" step=".1" value="0"></div>
+        <div class="metric-control"><label for="caseClosure">وسيط إغلاق البلاغ بالساعات</label><input id="caseClosure" type="number" min="0" step=".1" value="21.5"></div>
+        <div class="metric-control"><label for="providers">المزودون النشطون</label><input id="providers" type="number" min="0" step="1" value="0"></div>
+        <div class="metric-control"><label for="commerce">قيمة التجارة المحلية / العملة</label><input id="commerce" type="number" min="0" step="1" value="0"></div>
+      </div>
+      <div class="metric-card-grid"><div class="metric-card"><span>معدل التوقف</span><strong data-metric="stopRate">0%</strong></div><div class="metric-card"><span>مدة المكوث</span><strong data-metric="dwellTime">0 دقيقة</strong></div><div class="metric-card"><span>معلومة موثوقة</span><strong data-metric="verifiedInfo">0 دقيقة</strong></div><div class="metric-card"><span>الوصول الشامل</span><strong data-metric="accessCoverage">0%</strong></div><div class="metric-card"><span>المحتوى → زيارة</span><strong data-metric="contentVisit">0%</strong></div><div class="metric-card"><span>إغلاق البلاغ</span><strong data-metric="caseClosure">21.5 ساعة</strong></div><div class="metric-card"><span>مزودون نشطون</span><strong data-metric="providers">0</strong></div><div class="metric-card"><span>التجارة المحلية</span><strong data-metric="commerce">0</strong></div></div>
+      <div class="evidence">قاعدة التفسير: المؤشرات التي قيمتها صفر تعني «غير مقاس بعد»، وليست نتيجة صفرية. لا تستخدم هذه الصفحة لإثبات أثر قبل ربطها بمصدر ميداني أو مؤسسي موثق.</div>
+    </section>
+    <footer class="source-note"><span>نسخة قابلة للتحرير · SENSE / Urban-Sense Core</span><span><a href="./" target="_blank">لوحة Visualizer</a> · <a href="../analytics/vertical_slice/README.md" target="_blank">منهج الشريحة</a></span></footer>
+  </main>
+</div>
+<script>
+(() => {
+  const STORAGE = 'sense-problem-canvas-v1';
+  const editable = [...document.querySelectorAll('[data-key]')];
+  const inputs = [...document.querySelectorAll('.metric-control input')];
+  const status = document.querySelector('#status');
+  let editing = false;
+  const snapshot = () => ({text: Object.fromEntries(editable.map(el => [el.dataset.key, el.innerHTML])), metrics: Object.fromEntries(inputs.map(el => [el.id, el.value]))});
+  const setStatus = msg => { status.textContent = msg; window.setTimeout(() => status.textContent = 'التعديلات تحفظ محليًا في هذا المتصفح', 2400); };
+  const updateMetrics = () => inputs.forEach(input => { const target = document.querySelector(`[data-metric="${input.id}"]`); if (target) target.textContent = `${input.value || 0}${['stopRate','accessCoverage','contentVisit'].includes(input.id) ? '%' : input.id === 'dwellTime' || input.id === 'verifiedInfo' ? ' دقيقة' : input.id === 'caseClosure' ? ' ساعة' : input.id === 'commerce' ? ' NIS' : ''}`; });
+  const apply = data => { if (data?.text) editable.forEach(el => { if (data.text[el.dataset.key] !== undefined) el.innerHTML = data.text[el.dataset.key]; }); if (data?.metrics) inputs.forEach(el => { if (data.metrics[el.id] !== undefined) el.value = data.metrics[el.id]; }); updateMetrics(); };
+  const save = () => { localStorage.setItem(STORAGE, JSON.stringify(snapshot())); setStatus('تم حفظ النسخة محليًا'); };
+  document.querySelector('#editToggle').onclick = () => { editing = !editing; editable.forEach(el => el.contentEditable = editing); document.querySelector('#editToggle').textContent = editing ? 'إيقاف التحرير' : 'تفعيل التحرير'; setStatus(editing ? 'يمكنك تعديل النصوص داخل القالب' : 'تم إيقاف التحرير'); };
+  document.querySelector('#saveButton').onclick = save;
+  inputs.forEach(el => el.addEventListener('input', updateMetrics));
+  document.querySelector('#resetButton').onclick = () => { localStorage.removeItem(STORAGE); location.reload(); };
+  document.querySelector('#printButton').onclick = () => window.print();
+  document.querySelector('#downloadButton').onclick = () => { const clone = document.documentElement.cloneNode(true); clone.querySelector('#status').textContent = 'نسخة قابلة للتحرير محفوظة'; clone.querySelectorAll('[contenteditable="true"]').forEach(el => el.setAttribute('contenteditable','false')); clone.querySelectorAll('script').forEach(el => el.remove()); const html = '<!doctype html>\n' + clone.outerHTML; const blob = new Blob([html], {type:'text/html;charset=utf-8'}); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'problem-statement-canvas-al-eizariya.html'; a.click(); URL.revokeObjectURL(url); setStatus('تم تنزيل HTML'); };
+  try { apply(JSON.parse(localStorage.getItem(STORAGE) || 'null')); } catch { localStorage.removeItem(STORAGE); }
+  updateMetrics();
+})();
+</script>
+</body>
+</html>
