@@ -14,8 +14,8 @@
   ],
   "product": [
     {"title":"SENSE public WordPress","url":"https://sense133.wordpress.com/","kind":"public","status":"verified-public","audience":"زائر / قارئ","description":"طبقة القصص والتقارير والميثاق والمحتوى التحريري."},
-    {"title":"SENSE temporary preview","url":"https://5173-iyf7zhn1linoioibho02h-04ad7cb6.us1.manus.computer/","kind":"preview","status":"temporary","audience":"اختبار","description":"معاينة تطويرية مؤقتة؛ ليست رابط إنتاج نهائي."},
-    {"title":"Launchpad preview","url":"https://5173-iyf7zhn1linoioibho02h-04ad7cb6.us1.manus.computer/launchpad","kind":"preview","status":"temporary","audience":"صاحب مشروع / شريك","description":"بطاقة مشروع، مؤشر جاهزية، ومحاكاة مقابلة؛ يلزم تثبيت النشر الدائم."},
+    {"title":"SENSE temporary preview","url":"https://5173-iyf7zhn1linoioibho02h-04ad7cb6.us1.manus.computer/","kind":"preview","status":"unavailable-at-audit","audience":"اختبار","description":"معاينة Manus مؤقتة؛ أعادت 502 عند آخر تحقق في 2026-09-15، وليست رابط إنتاج نهائي."},
+    {"title":"Launchpad preview","url":"https://5173-iyf7zhn1linoioibho02h-04ad7cb6.us1.manus.computer/launchpad","kind":"preview","status":"unavailable-at-audit","audience":"صاحب مشروع / شريك","description":"Launchpad مؤقت؛ أعاد 502 عند آخر تحقق في 2026-09-15، ويحتاج إعادة نشر دائم قبل اعتماده."},
     {"title":"GitHub repository","url":"https://github.com/Solvanix/urban-sense-core","kind":"source","status":"public","audience":"فريق تقني / شريك","description":"المستودع المركزي الذي يحتوي visualize وملفات البيانات."}
   ],
   "editorial": [
