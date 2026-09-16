@@ -12,6 +12,8 @@
 | فهم العلاقة بين التطبيقات المستقلة | [هندسة المحفظة](PORTFOLIO-ARCHITECTURE.md) |
 | متابعة تسلسل العمل والقرارات التالية | [ابدأ من هنا](START-HERE.md) |
 | فهم نطاق Urban‑Sense وبوابات إطلاقه | [بوصلة المنتج](URBAN-SENSE-PRODUCT-COMPASS.md) |
+| اختبار قابلية تنفيذ SENSE قبل توسيع المعمارية | [سجل تحقق المفهوم](validation/SENSE-CONCEPT-VALIDATION-RECORD-2026-09-16.md) |
+| معرفة حالة تسليم مشروع Digital Marketing | [سجل حالة التسليم](delivery/DIGITAL-MARKETING-DELIVERY-STATUS-2026-09-16.md) |
 | تشغيل SENSE Experience بأمان | [بوابة جاهزية البيانات الحقيقية](sense-experience/REAL-DATA-READINESS.md) |
 | مراجعة حوكمة SENSE المرحلية | [إطار الحوكمة](SENSE-PHASED-GOVERNANCE-FRAMEWORK-2026-08-20.md) |
 | مراجعة اسم «عَنان | ANAN» المقترح | [حزمة الرسائل](ANAN-PROPOSED-BRAND-MESSAGING-2026-08-20.md) |
@@ -50,6 +52,8 @@
 ### البحث والسجل
 
 يضم [`research/`](research/) تحليلات مقيدة بالمصادر عن التحديات، والتعلّم، والرؤية الحاسوبية، والمراجع العامة. أما سجل المصادر والأرشيف فيبدأ من [`LEGACY-SOURCE-REGISTER.md`](LEGACY-SOURCE-REGISTER.md) و[`ARCHIVE-INTAKE-2026-08-19.md`](ARCHIVE-INTAKE-2026-08-19.md).
+
+يضم [`validation/`](validation/) سجلات اختبار الفكرة والافتراضات والبوابات قبل تثبيت المعمارية. ويُحفظ ملف UrbanUp المرجعي في [`research/UrbanUp_Session1_Technical_Feasibility_Concept_Validation_v2.pdf`](research/UrbanUp_Session1_Technical_Feasibility_Concept_Validation_v2.pdf)، بينما يشرح [سجل تحقق مفهوم SENSE](validation/SENSE-CONCEPT-VALIDATION-RECORD-2026-09-16.md) كيف تُترجم مبادئه إلى حدود واختبارات تحريرية وتقنية.
 
 ## قواعد القراءة
 
