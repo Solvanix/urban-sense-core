@@ -9,6 +9,7 @@ on:
       - "apps/pizza-hot/**"
       - "apps/executive-visualization/**"
       - "tourism/**"
+      - "shared/**"
       - ".github/workflows/publish-index-pages.yml"
   workflow_dispatch:
 
@@ -57,6 +58,10 @@ jobs:
           rm -rf _site
           mkdir -p _site
           cp -R public-index/. _site/
+          mkdir -p _site/shared
+          cp -R shared/. _site/shared/
+          test -f _site/shared/sense-navigation.js
+          test -f _site/shared/sense-navigation.css
           mkdir -p _site/visualize
           cp -R visualize/. _site/visualize/
           test -f _site/visualize/index.html
