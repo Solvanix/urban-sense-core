@@ -1,5 +1,7 @@
 # Start Here: Foundation Phase A
 
+> **Scope note:** This foundation track describes the core civic-reporting application. The separate SENSE tourism/editorial track for Al-Eizariya is documented under `docs/validation/`, `docs/roadmap/`, `tourism/`, and the WordPress materials. The electricity campaign under `docs/delivery/digital-marketing-electricity/` is a separate academic project and is not a SENSE product.
+
 ## Purpose
 
 This document is the operational entry point for Urban‑Sense Core. It turns the prior technical audit into a safe, testable delivery sequence.
