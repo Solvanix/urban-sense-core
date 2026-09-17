@@ -15,6 +15,7 @@
 | اختبار قابلية تنفيذ SENSE قبل توسيع المعمارية | [سجل تحقق المفهوم](validation/SENSE-CONCEPT-VALIDATION-RECORD-2026-09-16.md) |
 | تجهيز SENSE لتقديم UrbanUp / Technopark | [مذكرة التحليل والنطاق](research/ANALYSIS-NOTES-URBANUP-AND-SCOPE-2026-09-17.md) |
 | عرض القيمة المؤسسي للبلديات والجهات الوسيطة | [Institutional Value Proposition Canvas](roadmap/SENSE-Institutional-Municipal-Value-Proposition-Canvas-Urban-Up.pdf) |
+| تشغيل واختبار نسخة SENSE Routes العامة | [دليل SENSE Routes](../tourism/README.md) |
 | معرفة حالة تسليم مشروع Digital Marketing | [سجل حالة التسليم](delivery/DIGITAL-MARKETING-DELIVERY-STATUS-2026-09-16.md) |
 | تشغيل SENSE Experience بأمان | [بوابة جاهزية البيانات الحقيقية](sense-experience/REAL-DATA-READINESS.md) |
 | مراجعة حوكمة SENSE المرحلية | [إطار الحوكمة](SENSE-PHASED-GOVERNANCE-FRAMEWORK-2026-08-20.md) |

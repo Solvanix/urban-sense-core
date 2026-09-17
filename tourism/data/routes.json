@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "datasetId": "sense-routes-al-eizariya",
   "title": "SENSE Routes — مسارات العيزرية",
   "description": "بيانات عامة لمسارات تحريرية وتجريبية. لا تمثل حجزًا أو اعتمادًا أو شراكة رسمية.",
@@ -16,9 +16,24 @@
     "linkRole": "قصة عامة تشرح المكان؛ لا تستبدل سجل المصدر أو حالة التشغيل."
   },
   "statusVocabulary": {
-    "content": ["editorial", "source-reviewed", "field-check-needed", "paused"],
-    "access": ["not-verified", "needs-owner-permission", "field-check-needed", "reviewed"],
-    "booking": ["draft-interest-only", "not-available", "request-only", "operational"]
+    "content": [
+      "editorial",
+      "source-reviewed",
+      "field-check-needed",
+      "paused"
+    ],
+    "access": [
+      "not-verified",
+      "needs-owner-permission",
+      "field-check-needed",
+      "reviewed"
+    ],
+    "booking": [
+      "draft-interest-only",
+      "not-available",
+      "request-only",
+      "operational"
+    ]
   },
   "sources": [
     {
@@ -54,16 +69,59 @@
       "kicker": "المسار الأكثر هدوءًا",
       "category": "ذاكرة ومشي",
       "location": "العيزرية — الموقع الدقيق قيد التحديد",
-      "duration": { "value": 90, "unit": "minutes", "label": "90 دقيقة" },
-      "audience": ["زائر فردي", "زوجان", "مجموعة صغيرة"],
+      "duration": {
+        "value": 90,
+        "unit": "minutes",
+        "label": "90 دقيقة"
+      },
+      "audience": [
+        "زائر فردي",
+        "زوجان",
+        "مجموعة صغيرة"
+      ],
       "description": "مشي بصري بين العتبات والتفاصيل التي لا تظهر من نافذة السيارة.",
       "contentStatus": "source-reviewed",
-      "confidence": { "level": "editorial", "label": "قصة تحريرية مرتبطة بمصادر عامة", "basis": ["SRC-WP-JOURNEY-001", "SRC-PALESTINE-TOURISM-001"] },
-      "access": { "status": "field-check-needed", "label": "الوصول يحتاج تحققًا ميدانيًا", "details": "لا تُعرض نقطة لقاء أو ادعاء إتاحة قبل مراجعة محلية.", "evidenceNeeded": ["نقطة لقاء", "سطح الطريق", "حق التصوير", "معلومات الطوارئ"] },
-      "booking": { "status": "draft-interest-only", "label": "مسودة اهتمام فقط", "provider": null, "capacity": null, "price": null, "requestMode": "local-review-before-contact", "publicAction": "أنشئ مسودة طلب" },
+      "confidence": {
+        "level": "editorial",
+        "label": "قصة تحريرية مرتبطة بمصادر عامة",
+        "basis": [
+          "SRC-WP-JOURNEY-001",
+          "SRC-PALESTINE-TOURISM-001"
+        ]
+      },
+      "access": {
+        "status": "field-check-needed",
+        "label": "الوصول يحتاج تحققًا ميدانيًا",
+        "details": "لا تُعرض نقطة لقاء أو ادعاء إتاحة قبل مراجعة محلية.",
+        "evidenceNeeded": [
+          "نقطة لقاء",
+          "سطح الطريق",
+          "حق التصوير",
+          "معلومات الطوارئ"
+        ]
+      },
+      "booking": {
+        "status": "draft-interest-only",
+        "label": "مسودة اهتمام فقط",
+        "provider": null,
+        "capacity": null,
+        "price": null,
+        "requestMode": "local-review-before-contact",
+        "publicAction": "أنشئ مسودة طلب"
+      },
       "localBenefit": "يحتاج مضيفًا أو صاحب معرفة محلية يوافق على طريقة العرض.",
       "storyUrl": "https://sense133.wordpress.com/2026/09/15/%d8%ac%d9%88%d8%a7%d8%b2-%d8%a7%d9%84%d8%b1%d8%ad%d9%84%d8%a9-%d9%85%d9%86-%d8%a7%d9%84%d8%b2%d9%8a%d8%aa%d9%88%d9%86%d8%a9-%d8%a5%d9%84%d9%89-%d8%a7%d9%84%d9%85%d8%ba%d8%a7%d8%b1%d8%a9/",
-      "nextEvidence": ["مراجعة محلية للمسار", "تحديد مالك كل معلومة", "اختبار قراءة البطاقة مع زوار"]
+      "nextEvidence": [
+        "مراجعة محلية للمسار",
+        "تحديد مالك كل معلومة",
+        "اختبار قراءة البطاقة مع زوار"
+      ],
+      "difficulty": "سهل",
+      "experienceType": "مشي",
+      "tags": [
+        "ذاكرة",
+        "مشي"
+      ]
     },
     {
       "id": "EIZ-ROUTE-002",
@@ -72,16 +130,57 @@
       "kicker": "قصة ومكان",
       "category": "سرد وذاكرة",
       "location": "العيزرية — البيوت الخاصة لا تُحدد على الخريطة العامة",
-      "duration": { "value": 45, "unit": "minutes", "label": "45 دقيقة" },
-      "audience": ["قارئ", "زائر مهتم بالعمارة", "باحث"],
+      "duration": {
+        "value": 45,
+        "unit": "minutes",
+        "label": "45 دقيقة"
+      },
+      "audience": [
+        "قارئ",
+        "زائر مهتم بالعمارة",
+        "باحث"
+      ],
       "description": "قصة عن الذاكرة والحق في أن يقرر أصحاب المكان ما يُحفظ وما يُنشر.",
       "contentStatus": "editorial",
-      "confidence": { "level": "editorial", "label": "مادة سردية تحتاج صاحب قصة وموافقة نشر", "basis": ["SRC-WP-JOURNEY-001"] },
-      "access": { "status": "needs-owner-permission", "label": "لا زيارة خاصة دون إذن", "details": "المحتوى لا يمنح حق دخول أو تصوير للبيوت.", "evidenceNeeded": ["موافقة صاحب المكان", "حدود التصوير", "صيغة الاقتباس"] },
-      "booking": { "status": "not-available", "label": "لا يوجد حجز", "provider": null, "capacity": null, "price": null, "requestMode": "none", "publicAction": "اقرأ القصة" },
+      "confidence": {
+        "level": "editorial",
+        "label": "مادة سردية تحتاج صاحب قصة وموافقة نشر",
+        "basis": [
+          "SRC-WP-JOURNEY-001"
+        ]
+      },
+      "access": {
+        "status": "needs-owner-permission",
+        "label": "لا زيارة خاصة دون إذن",
+        "details": "المحتوى لا يمنح حق دخول أو تصوير للبيوت.",
+        "evidenceNeeded": [
+          "موافقة صاحب المكان",
+          "حدود التصوير",
+          "صيغة الاقتباس"
+        ]
+      },
+      "booking": {
+        "status": "not-available",
+        "label": "لا يوجد حجز",
+        "provider": null,
+        "capacity": null,
+        "price": null,
+        "requestMode": "none",
+        "publicAction": "اقرأ القصة"
+      },
       "localBenefit": "حماية خصوصية أصحاب البيوت وإتاحة رواية يوافقون عليها.",
       "storyUrl": "https://solvanix.github.io/urban-sense-core/tourism/",
-      "nextEvidence": ["مقابلة صاحب القصة", "موافقة تحريرية", "مراجعة الخصوصية"]
+      "nextEvidence": [
+        "مقابلة صاحب القصة",
+        "موافقة تحريرية",
+        "مراجعة الخصوصية"
+      ],
+      "difficulty": "سهل",
+      "experienceType": "قصة",
+      "tags": [
+        "سرد",
+        "ذاكرة"
+      ]
     },
     {
       "id": "EIZ-ROUTE-003",
@@ -90,16 +189,57 @@
       "kicker": "تعلم ومشاركة",
       "category": "تعلم وبحث",
       "location": "العيزرية — نقطة الورشة تحتاج مضيفًا",
-      "duration": { "value": 60, "unit": "minutes", "label": "60 دقيقة" },
-      "audience": ["طلاب", "باحثون", "عائلات"],
+      "duration": {
+        "value": 60,
+        "unit": "minutes",
+        "label": "60 دقيقة"
+      },
+      "audience": [
+        "طلاب",
+        "باحثون",
+        "عائلات"
+      ],
       "description": "ورشة صغيرة تحول معرفة السكان إلى أسئلة تحترم المصدر ولا تجمع بيانات شخصية.",
       "contentStatus": "editorial",
-      "confidence": { "level": "source-reviewed", "label": "مفهوم تجربة تعليمي قابل للتطوير", "basis": ["SRC-CULTURE-TOURISM-001"] },
-      "access": { "status": "not-verified", "label": "المكان والمضيف غير معتمدين", "details": "لا تسجيل عام قبل تحديد مضيف ومكان وموافقة أخلاقية.", "evidenceNeeded": ["شريك مستضيف", "نموذج موافقة", "مخرج غير شخصي"] },
-      "booking": { "status": "not-available", "label": "لا يوجد تسجيل", "provider": null, "capacity": null, "price": null, "requestMode": "none", "publicAction": "أضف إلى خطة يوم" },
+      "confidence": {
+        "level": "source-reviewed",
+        "label": "مفهوم تجربة تعليمي قابل للتطوير",
+        "basis": [
+          "SRC-CULTURE-TOURISM-001"
+        ]
+      },
+      "access": {
+        "status": "not-verified",
+        "label": "المكان والمضيف غير معتمدين",
+        "details": "لا تسجيل عام قبل تحديد مضيف ومكان وموافقة أخلاقية.",
+        "evidenceNeeded": [
+          "شريك مستضيف",
+          "نموذج موافقة",
+          "مخرج غير شخصي"
+        ]
+      },
+      "booking": {
+        "status": "not-available",
+        "label": "لا يوجد تسجيل",
+        "provider": null,
+        "capacity": null,
+        "price": null,
+        "requestMode": "none",
+        "publicAction": "أضف إلى خطة يوم"
+      },
       "localBenefit": "إبقاء معرفة المجتمع في يد أصحابها وعدم تحويلها إلى قاعدة بيانات شخصية.",
       "storyUrl": "https://solvanix.github.io/urban-sense-core/tourism/",
-      "nextEvidence": ["تصميم ورشة قصيرة", "مراجعة أخلاقية", "تجربة مع مجموعة صغيرة"]
+      "nextEvidence": [
+        "تصميم ورشة قصيرة",
+        "مراجعة أخلاقية",
+        "تجربة مع مجموعة صغيرة"
+      ],
+      "difficulty": "متوسط",
+      "experienceType": "ورشة",
+      "tags": [
+        "تعلم",
+        "بحث"
+      ]
     },
     {
       "id": "EIZ-ROUTE-004",
@@ -108,16 +248,58 @@
       "kicker": "طعام وذاكرة",
       "category": "طعام ومنتج محلي",
       "location": "العيزرية — المضيف قيد التحديد",
-      "duration": { "value": 120, "unit": "minutes", "label": "ساعتان" },
-      "audience": ["مجموعات صغيرة", "زائر مهتم بالطعام المحلي"],
+      "duration": {
+        "value": 120,
+        "unit": "minutes",
+        "label": "ساعتان"
+      },
+      "audience": [
+        "مجموعات صغيرة",
+        "زائر مهتم بالطعام المحلي"
+      ],
       "description": "جلسة تذوق محلية مقترحة، يتبع كل طبق فيها سؤال عن البيت والموسم والذاكرة.",
       "contentStatus": "field-check-needed",
-      "confidence": { "level": "editorial", "label": "فكرة تجربة لا تمثل مطعمًا أو مضيفًا مؤكدًا", "basis": ["SRC-WP-JOURNEY-001", "SRC-CULTURE-TOURISM-001"] },
-      "access": { "status": "not-verified", "label": "المكان والسلامة الغذائية غير متحققين", "details": "لا إعلان عن طعام أو استقبال قبل تحديد المسؤول والاشتراطات.", "evidenceNeeded": ["مضيف مؤكد", "معلومات حساسية غذائية", "السعة", "نقطة اللقاء"] },
-      "booking": { "status": "draft-interest-only", "label": "اهتمام مبدئي بلا دفع", "provider": null, "capacity": null, "price": null, "requestMode": "local-review-before-contact", "publicAction": "أنشئ مسودة طلب" },
+      "confidence": {
+        "level": "editorial",
+        "label": "فكرة تجربة لا تمثل مطعمًا أو مضيفًا مؤكدًا",
+        "basis": [
+          "SRC-WP-JOURNEY-001",
+          "SRC-CULTURE-TOURISM-001"
+        ]
+      },
+      "access": {
+        "status": "not-verified",
+        "label": "المكان والسلامة الغذائية غير متحققين",
+        "details": "لا إعلان عن طعام أو استقبال قبل تحديد المسؤول والاشتراطات.",
+        "evidenceNeeded": [
+          "مضيف مؤكد",
+          "معلومات حساسية غذائية",
+          "السعة",
+          "نقطة اللقاء"
+        ]
+      },
+      "booking": {
+        "status": "draft-interest-only",
+        "label": "اهتمام مبدئي بلا دفع",
+        "provider": null,
+        "capacity": null,
+        "price": null,
+        "requestMode": "local-review-before-contact",
+        "publicAction": "أنشئ مسودة طلب"
+      },
       "localBenefit": "ربط الزيارة بمنتج محلي ومنفعة واضحة لصاحبه، بعد الموافقة.",
       "storyUrl": "https://solvanix.github.io/urban-sense-core/tourism/",
-      "nextEvidence": ["تحديد صاحب المنفعة", "فحص السلامة الغذائية", "تجربة تذوق محدودة"]
+      "nextEvidence": [
+        "تحديد صاحب المنفعة",
+        "فحص السلامة الغذائية",
+        "تجربة تذوق محدودة"
+      ],
+      "difficulty": "سهل",
+      "experienceType": "طعام",
+      "tags": [
+        "طعام",
+        "منتج محلي"
+      ]
     },
     {
       "id": "EIZ-ROUTE-005",
@@ -126,16 +308,58 @@
       "kicker": "شروق وإطلالة",
       "category": "طبيعة ومشهد",
       "location": "العيزرية — نقطة التجمع غير معلنة",
-      "duration": { "value": 75, "unit": "minutes", "label": "75 دقيقة" },
-      "audience": ["زائر صباحي", "مصور بموافقة", "مجموعة صغيرة"],
+      "duration": {
+        "value": 75,
+        "unit": "minutes",
+        "label": "75 دقيقة"
+      },
+      "audience": [
+        "زائر صباحي",
+        "مصور بموافقة",
+        "مجموعة صغيرة"
+      ],
       "description": "مسار فجر بطيء للضوء والهواء، مع نقطة تجمع تحتاج اعتمادًا ميدانيًا قبل الإعلان.",
       "contentStatus": "field-check-needed",
-      "confidence": { "level": "editorial", "label": "تصور مسار لا يثبت وجود إطلالة أو نقطة آمنة", "basis": ["SRC-WP-JOURNEY-001"] },
-      "access": { "status": "field-check-needed", "label": "يحتاج فحص توقيت وسلامة", "details": "لا يُنصح بالوصول المبكر إلى موقع غير معروف أو خاص.", "evidenceNeeded": ["نقطة تجمع", "إضاءة ومسار", "خطة طوارئ", "حق التصوير"] },
-      "booking": { "status": "not-available", "label": "لا يوجد حجز", "provider": null, "capacity": null, "price": null, "requestMode": "none", "publicAction": "احفظ للفكرة" },
+      "confidence": {
+        "level": "editorial",
+        "label": "تصور مسار لا يثبت وجود إطلالة أو نقطة آمنة",
+        "basis": [
+          "SRC-WP-JOURNEY-001"
+        ]
+      },
+      "access": {
+        "status": "field-check-needed",
+        "label": "يحتاج فحص توقيت وسلامة",
+        "details": "لا يُنصح بالوصول المبكر إلى موقع غير معروف أو خاص.",
+        "evidenceNeeded": [
+          "نقطة تجمع",
+          "إضاءة ومسار",
+          "خطة طوارئ",
+          "حق التصوير"
+        ]
+      },
+      "booking": {
+        "status": "not-available",
+        "label": "لا يوجد حجز",
+        "provider": null,
+        "capacity": null,
+        "price": null,
+        "requestMode": "none",
+        "publicAction": "احفظ للفكرة"
+      },
       "localBenefit": "حماية الهدوء وحقوق أصحاب المكان قبل أي تجربة تصوير.",
       "storyUrl": "https://solvanix.github.io/urban-sense-core/tourism/",
-      "nextEvidence": ["فحص ميداني نهاري", "مراجعة محلية للملكية", "تحديد شروط التصوير"]
+      "nextEvidence": [
+        "فحص ميداني نهاري",
+        "مراجعة محلية للملكية",
+        "تحديد شروط التصوير"
+      ],
+      "difficulty": "متوسط",
+      "experienceType": "طبيعة",
+      "tags": [
+        "طبيعة",
+        "تصوير"
+      ]
     },
     {
       "id": "EIZ-ROUTE-006",
@@ -144,22 +368,136 @@
       "kicker": "للعائلات",
       "category": "عائلة وتعليم",
       "location": "العيزرية — نشاط غير مرتبط بموقع خاص",
-      "duration": { "value": 50, "unit": "minutes", "label": "50 دقيقة" },
-      "audience": ["عائلات", "أطفال مع مرافق بالغ"],
+      "duration": {
+        "value": 50,
+        "unit": "minutes",
+        "label": "50 دقيقة"
+      },
+      "audience": [
+        "عائلات",
+        "أطفال مع مرافق بالغ"
+      ],
       "description": "مهمة عائلية من خمس ملاحظات ترسم علاقة الطفل بالمكان دون جمع بيانات شخصية.",
       "contentStatus": "editorial",
-      "confidence": { "level": "editorial", "label": "نشاط محتوى أولي يحتاج مراجعة تربوية", "basis": ["SRC-CULTURE-TOURISM-001"] },
-      "access": { "status": "not-verified", "label": "يحتاج مراجعة مسار عائلي", "details": "المرافق البالغ مسؤول عن الطفل؛ لا توجد خدمة إشراف أو رعاية.", "evidenceNeeded": ["اختبار عمر مناسب", "مراجعة السلامة", "نسخة قابلة للطباعة"] },
-      "booking": { "status": "not-available", "label": "نشاط ذاتي بلا حجز", "provider": null, "capacity": null, "price": null, "requestMode": "none", "publicAction": "اطبع دفتر الرحلة" },
+      "confidence": {
+        "level": "editorial",
+        "label": "نشاط محتوى أولي يحتاج مراجعة تربوية",
+        "basis": [
+          "SRC-CULTURE-TOURISM-001"
+        ]
+      },
+      "access": {
+        "status": "not-verified",
+        "label": "يحتاج مراجعة مسار عائلي",
+        "details": "المرافق البالغ مسؤول عن الطفل؛ لا توجد خدمة إشراف أو رعاية.",
+        "evidenceNeeded": [
+          "اختبار عمر مناسب",
+          "مراجعة السلامة",
+          "نسخة قابلة للطباعة"
+        ]
+      },
+      "booking": {
+        "status": "not-available",
+        "label": "نشاط ذاتي بلا حجز",
+        "provider": null,
+        "capacity": null,
+        "price": null,
+        "requestMode": "none",
+        "publicAction": "اطبع دفتر الرحلة"
+      },
       "localBenefit": "تعلم احترام المكان دون تصوير الأطفال أو جمع بياناتهم.",
       "storyUrl": "https://solvanix.github.io/urban-sense-core/tourism/",
-      "nextEvidence": ["مراجعة تربوية", "اختبار مع عائلة بموافقة", "تحسين نسخة الطباعة"]
+      "nextEvidence": [
+        "مراجعة تربوية",
+        "اختبار مع عائلة بموافقة",
+        "تحسين نسخة الطباعة"
+      ],
+      "difficulty": "سهل",
+      "experienceType": "عائلة",
+      "tags": [
+        "عائلة",
+        "تعليم"
+      ]
     }
   ],
   "passportStops": [
-    { "id": "EIZ-PASSPORT-001", "title": "الزيتونة", "routeIds": ["EIZ-ROUTE-004"], "status": "editorial", "summary": "حكاية الموسم والأرض والمنتج المحلي.", "evidenceNeeded": ["مضيف موافق", "قصة قابلة للنشر", "حق تصوير واضح"] },
-    { "id": "EIZ-PASSPORT-002", "title": "الطريق", "routeIds": ["EIZ-ROUTE-001", "EIZ-ROUTE-005"], "status": "field-check-needed", "summary": "أسماء المواضع ونقاط التوقف وحدود المرور.", "evidenceNeeded": ["مسار آمن", "نقطة توقف", "لا تصوير بلا إذن"] },
-    { "id": "EIZ-PASSPORT-003", "title": "المغارة", "routeIds": [], "status": "paused", "summary": "لا تُفتح قبل فحص السلامة والملكية وحق الوصول والبيئة الداخلية.", "evidenceNeeded": ["فحص ميداني", "حق وصول", "مرشد مؤهل", "عدد محدود"] },
-    { "id": "EIZ-PASSPORT-004", "title": "الاقتصاد المحلي", "routeIds": ["EIZ-ROUTE-004"], "status": "field-check-needed", "summary": "منفعة تصل إلى مزارع أو صاحب منتج أو حرفي أو مرشد.", "evidenceNeeded": ["موافقة واضحة", "منفعة محلية", "طريقة دفع أو إحالة موثقة"] }
-  ]
+    {
+      "id": "EIZ-PASSPORT-001",
+      "title": "الزيتونة",
+      "routeIds": [
+        "EIZ-ROUTE-004"
+      ],
+      "status": "editorial",
+      "summary": "حكاية الموسم والأرض والمنتج المحلي.",
+      "evidenceNeeded": [
+        "مضيف موافق",
+        "قصة قابلة للنشر",
+        "حق تصوير واضح"
+      ]
+    },
+    {
+      "id": "EIZ-PASSPORT-002",
+      "title": "الطريق",
+      "routeIds": [
+        "EIZ-ROUTE-001",
+        "EIZ-ROUTE-005"
+      ],
+      "status": "field-check-needed",
+      "summary": "أسماء المواضع ونقاط التوقف وحدود المرور.",
+      "evidenceNeeded": [
+        "مسار آمن",
+        "نقطة توقف",
+        "لا تصوير بلا إذن"
+      ]
+    },
+    {
+      "id": "EIZ-PASSPORT-003",
+      "title": "المغارة",
+      "routeIds": [],
+      "status": "paused",
+      "summary": "لا تُفتح قبل فحص السلامة والملكية وحق الوصول والبيئة الداخلية.",
+      "evidenceNeeded": [
+        "فحص ميداني",
+        "حق وصول",
+        "مرشد مؤهل",
+        "عدد محدود"
+      ]
+    },
+    {
+      "id": "EIZ-PASSPORT-004",
+      "title": "الاقتصاد المحلي",
+      "routeIds": [
+        "EIZ-ROUTE-004"
+      ],
+      "status": "field-check-needed",
+      "summary": "منفعة تصل إلى مزارع أو صاحب منتج أو حرفي أو مرشد.",
+      "evidenceNeeded": [
+        "موافقة واضحة",
+        "منفعة محلية",
+        "طريقة دفع أو إحالة موثقة"
+      ]
+    }
+  ],
+  "facets": {
+    "difficulty": [
+      "الكل",
+      "سهل",
+      "متوسط"
+    ],
+    "experienceType": [
+      "الكل",
+      "مشي",
+      "قصة",
+      "ورشة",
+      "طعام",
+      "طبيعة",
+      "عائلة"
+    ],
+    "duration": [
+      "الكل",
+      "أقل من ساعة",
+      "من ساعة إلى ساعتين",
+      "أكثر من ساعتين"
+    ]
+  }
 }
