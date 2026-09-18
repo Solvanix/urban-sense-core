@@ -9,6 +9,9 @@ function render(data) {
   $("#mabaPosition").textContent = data.positioning.maba;
   $("#layerRows").innerHTML = data.layers.map((item) => `<div class="layer-row"><span>${esc(item.sense_layer)}</span><span>${esc(item.maba_fit)}</span><span>${esc(item.owner)}</span><span>${esc(item.decision)}</span></div>`).join("");
   $("#requirementsGrid").innerHTML = data.functional_requirements.map((item) => `<article class="req-card"><span>${esc(item.id)} / ${esc(item.priority)}</span><h3>${esc(item.name)}</h3><p>المالك: ${esc(item.owner)}</p><small>معيار القبول: ${esc(item.acceptance)}</small></article>`).join("");
+  $("#domainGrid").innerHTML = data.domain_entities.map((item) => `<article class="domain-card"><span>${esc(item.name)}</span><strong>${esc(item.status)}</strong><p>${esc(item.purpose)}</p><small>${esc(item.fields)}</small></article>`).join("");
+  $("#guardrailNote").textContent = data.integration_guardrails.join(" · ");
+  $("#gateList").innerHTML = data.pilot_gates.map((item, index) => `<div class="gate-item"><b>0${index + 1}</b><div><strong>${esc(item.name)}</strong><p>${esc(item.acceptance)}</p></div><span>${esc(item.status)}</span></div>`).join("");
   const q = data.quotation_snapshot;
   const quoteItems = [["برمجيات MABA", money(q.software_items_usd), "عرض إرشادي"], ["نموذج بلدية واحدة", money(q.indicative_one_municipality_usd), "قبل إعادة التحقق"], ["بديل Validator اقتصادي", money(q.economy_validator_indicative_usd), "نموذج إرشادي"], ["الجدول المعلن", `${q.timeline_weeks} أسبوعاً`, `${q.validity_days} يوم صلاحية`]];
   $("#quoteGrid").innerHTML = quoteItems.map(([label, value, note]) => `<div class="quote-card"><span>${esc(label)}</span><strong>${esc(value)}</strong><small>${esc(note)}</small></div>`).join("");
