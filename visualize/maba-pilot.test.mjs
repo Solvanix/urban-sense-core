@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import { createPilotStore, issueDemoCard, revokeDemoCard, createDemoQrPayload, validateDemoQrPayload, queuePilotEvent, syncPilotEvents, serialisePilotStore, restorePilotStore } from './maba-pilot.js';
+
+const store = createPilotStore();
+const baseNow = Date.parse('2030-09-18T00:00:00Z');
+const card = issueDemoCard(store, { cardId: 'card-test-001', category: 'ACC' });
+assert.equal(card.state, 'active');
+const qr = createDemoQrPayload(store, card.id, baseNow);
+assert.equal(validateDemoQrPayload(store, qr, baseNow + 60_000).valid, true);
+assert.equal(validateDemoQrPayload(store, { ...qr, signature: 'tampered' }).reason, 'SIGNATURE_MISMATCH');
+assert.equal(validateDemoQrPayload(store, qr, baseNow + 6 * 60_000).reason, 'QR_EXPIRED');
+revokeDemoCard(store, card.id);
+assert.equal(validateDemoQrPayload(store, qr).reason, 'CARD_REVOKED_OR_UNKNOWN');
+const first = queuePilotEvent(store, { eventId: 'evt-001', type: 'demo.access.check', cardId: card.id });
+const duplicate = queuePilotEvent(store, { eventId: 'evt-001', type: 'demo.access.check', cardId: card.id });
+assert.deepEqual(first, { queued: true, duplicate: false });
+assert.deepEqual(duplicate, { queued: false, duplicate: true });
+assert.deepEqual(syncPilotEvents(store), { synced: ['evt-001'], rejected: [], remaining: 0 });
+assert.deepEqual(syncPilotEvents(store), { synced: [], rejected: [], remaining: 0 });
+const restored = restorePilotStore(serialisePilotStore(store));
+assert.equal(restored.acceptedEventIds.has('evt-001'), true);
+console.log('maba pilot checks: ok');
