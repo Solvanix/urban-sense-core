@@ -6,7 +6,7 @@ from datetime import date
 from pathlib import Path
 
 PATH = Path(__file__).resolve().parents[1] / "public-index/national/destinations.json"
-REQUIRED = {"id", "name", "cluster", "status", "statusLabel", "type", "region", "summary", "facts", "ownerStatus"}
+REQUIRED = {"id", "name", "cluster", "status", "statusLabel", "type", "region", "summary", "facts", "ownerStatus", "lastReviewed", "dataStatus", "sourceStatus", "reviewStatus", "accessStatus", "bookingStatus"}
 
 def fail(message: str) -> None:
     print(f"ERROR: {message}", file=sys.stderr)
@@ -39,13 +39,17 @@ for index, item in enumerate(data["destinations"], start=1):
     ids.add(item["id"])
     if item["status"] not in data["statusVocabulary"]:
         fail(f"{item['id']} uses unknown status: {item['status']}")
-    for field in ("id", "name", "cluster", "statusLabel", "type", "region", "summary", "ownerStatus"):
+    for field in ("id", "name", "cluster", "statusLabel", "type", "region", "summary", "ownerStatus", "dataStatus", "sourceStatus", "reviewStatus", "accessStatus", "bookingStatus"):
         if not isinstance(item[field], str) or not item[field].strip():
             fail(f"{item['id']} field {field} must be a non-empty string")
     if not isinstance(item["facts"], list) or not item["facts"]:
         fail(f"{item['id']} facts must be a non-empty list")
     if item.get("href") is not None and not isinstance(item["href"], str):
         fail(f"{item['id']} href must be a string or null")
+    try:
+        date.fromisoformat(item["lastReviewed"])
+    except ValueError:
+        fail(f"{item['id']} lastReviewed must use YYYY-MM-DD")
 
 try:
     reviewed = date.fromisoformat(data["lastReviewed"])

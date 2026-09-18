@@ -2,12 +2,124 @@
   "schemaVersion": "1.0.0",
   "datasetId": "sense-national-destinations",
   "lastReviewed": "2026-09-18",
-  "statusVocabulary": ["pilot", "candidate", "researching", "public", "paused"],
+  "statusVocabulary": [
+    "pilot",
+    "candidate",
+    "researching",
+    "public",
+    "paused"
+  ],
   "destinations": [
-    {"id":"DEST-EIZ-001","name":"العيزرية","cluster":"العنقود الأول","status":"pilot","statusLabel":"Pilot 01 · يعمل","type":"ذاكرة ومكان","region":"القدس/الضفة","summary":"مختبر القصة والمسار وبطاقة الثقة والخصوصية والوصول والعزل البلدي.","facts":["6 مسارات","4 محطات","حالة تجريبية"],"href":"../../tourism/","ownerStatus":"محتوى تجريبي مملوك للمشروع"},
-    {"id":"DEST-SAL-001","name":"سلفيت","cluster":"العنقود الأول","status":"candidate","statusLabel":"Candidate · قيد البحث","type":"طبيعة ومنتج محلي","region":"شمال الضفة","summary":"وجهة العنقود الأول لاختبار الطبيعة والمنتج المحلي والمسار الريفي دون نسخ محتوى العيزرية.","facts":["مصدر محلي مطلوب","مالك مراجعة مطلوب"],"href":null,"ownerStatus":"لا توجد شراكة مثبتة"},
-    {"id":"DEST-SAR-ABQ-001","name":"سردا وأبو قش","cluster":"العنقود الأول","status":"candidate","statusLabel":"Candidate · قيد البحث","type":"شبكة قرى","region":"رام الله والبيرة","summary":"شبكة قرى متجاورة لاختبار ما إذا كانت SENSE تعمل على مستوى شبكة وجهات لا موقع منفرد.","facts":["اختبار عزل مطلوب","موافقة نطاق مطلوبة"],"href":null,"ownerStatus":"لا توجد شراكة مثبتة"},
-    {"id":"DEST-BIR-001","name":"بيرزيت","cluster":"العنقود الأول","status":"candidate","statusLabel":"Candidate · قيد البحث","type":"ثقافة وتعليم","region":"رام الله والبيرة","summary":"وجهة ثقافية وتعليمية لاختبار مسارات المعرفة والطلاب والفعاليات.","facts":["مالك محلي مطلوب","مصدر ثقافي مطلوب"],"href":null,"ownerStatus":"لا توجد شراكة مثبتة"},
-    {"id":"DEST-RAM-001","name":"رام الله","cluster":"المرحلة الثانية","status":"researching","statusLabel":"Researching · لاحقًا","type":"ربط واستقطاب","region":"رام الله والبيرة","summary":"مرحلة ربط واستقطاب تأتي بعد اختبار العنقود الأول، مع نطاق محدد يمنع التحول إلى دليل عام غير قابل للتحقق.","facts":["نطاق واضح مطلوب","مراجع محلي مطلوب"],"href":null,"ownerStatus":"مرحلة لاحقة"}
+    {
+      "id": "DEST-EIZ-001",
+      "name": "العيزرية",
+      "cluster": "العنقود الأول",
+      "status": "pilot",
+      "statusLabel": "Pilot 01 · يعمل",
+      "type": "ذاكرة ومكان",
+      "region": "القدس/الضفة",
+      "summary": "مختبر القصة والمسار وبطاقة الثقة والخصوصية والوصول والعزل البلدي.",
+      "facts": [
+        "6 مسارات",
+        "4 محطات",
+        "حالة تجريبية"
+      ],
+      "href": "../../tourism/",
+      "ownerStatus": "محتوى تجريبي مملوك للمشروع",
+      "lastReviewed": "2026-09-18",
+      "dataStatus": "prototype",
+      "sourceStatus": "project-maintained pilot data",
+      "reviewStatus": "internal pilot review",
+      "accessStatus": "pilot access notes available",
+      "bookingStatus": "not available"
+    },
+    {
+      "id": "DEST-SAL-001",
+      "name": "سلفيت",
+      "cluster": "العنقود الأول",
+      "status": "candidate",
+      "statusLabel": "Candidate · قيد البحث",
+      "type": "طبيعة ومنتج محلي",
+      "region": "شمال الضفة",
+      "summary": "وجهة العنقود الأول لاختبار الطبيعة والمنتج المحلي والمسار الريفي دون نسخ محتوى العيزرية.",
+      "facts": [
+        "مصدر محلي مطلوب",
+        "مالك مراجعة مطلوب"
+      ],
+      "href": null,
+      "ownerStatus": "لا توجد شراكة مثبتة",
+      "lastReviewed": "2026-09-18",
+      "dataStatus": "prototype",
+      "sourceStatus": "local source required",
+      "reviewStatus": "not yet locally reviewed",
+      "accessStatus": "route access needs verification",
+      "bookingStatus": "not available"
+    },
+    {
+      "id": "DEST-SAR-ABQ-001",
+      "name": "سردا وأبو قش",
+      "cluster": "العنقود الأول",
+      "status": "candidate",
+      "statusLabel": "Candidate · قيد البحث",
+      "type": "شبكة قرى",
+      "region": "رام الله والبيرة",
+      "summary": "شبكة قرى متجاورة لاختبار ما إذا كانت SENSE تعمل على مستوى شبكة وجهات لا موقع منفرد.",
+      "facts": [
+        "اختبار عزل مطلوب",
+        "موافقة نطاق مطلوبة"
+      ],
+      "href": null,
+      "ownerStatus": "لا توجد شراكة مثبتة",
+      "lastReviewed": "2026-09-18",
+      "dataStatus": "prototype",
+      "sourceStatus": "local source required",
+      "reviewStatus": "not yet locally reviewed",
+      "accessStatus": "route access needs verification",
+      "bookingStatus": "not available"
+    },
+    {
+      "id": "DEST-BIR-001",
+      "name": "بيرزيت",
+      "cluster": "العنقود الأول",
+      "status": "candidate",
+      "statusLabel": "Candidate · قيد البحث",
+      "type": "ثقافة وتعليم",
+      "region": "رام الله والبيرة",
+      "summary": "وجهة ثقافية وتعليمية لاختبار مسارات المعرفة والطلاب والفعاليات.",
+      "facts": [
+        "مالك محلي مطلوب",
+        "مصدر ثقافي مطلوب"
+      ],
+      "href": null,
+      "ownerStatus": "لا توجد شراكة مثبتة",
+      "lastReviewed": "2026-09-18",
+      "dataStatus": "prototype",
+      "sourceStatus": "local source required",
+      "reviewStatus": "not yet locally reviewed",
+      "accessStatus": "route access needs verification",
+      "bookingStatus": "not available"
+    },
+    {
+      "id": "DEST-RAM-001",
+      "name": "رام الله",
+      "cluster": "المرحلة الثانية",
+      "status": "researching",
+      "statusLabel": "Researching · لاحقًا",
+      "type": "ربط واستقطاب",
+      "region": "رام الله والبيرة",
+      "summary": "مرحلة ربط واستقطاب تأتي بعد اختبار العنقود الأول، مع نطاق محدد يمنع التحول إلى دليل عام غير قابل للتحقق.",
+      "facts": [
+        "نطاق واضح مطلوب",
+        "مراجع محلي مطلوب"
+      ],
+      "href": null,
+      "ownerStatus": "مرحلة لاحقة",
+      "lastReviewed": "2026-09-18",
+      "dataStatus": "prototype",
+      "sourceStatus": "local source required",
+      "reviewStatus": "not yet locally reviewed",
+      "accessStatus": "route access needs verification",
+      "bookingStatus": "not available"
+    }
   ]
 }
