@@ -32,6 +32,27 @@
     { "id": "FR-07", "name": "الوصول الشامل", "priority": "Cross-cutting", "owner": "مشترك", "acceptance": "وصف وصول لكل نقطة واختبار مع مستخدمين" },
     { "id": "FR-08", "name": "لوحة بلدية", "priority": "MVP-2", "owner": "مشترك", "acceptance": "بلاغ/تجربة/مؤشر مع مالك وSLA وسجل تدقيق" }
   ],
+  "domain_entities": [
+    { "name": "TouristProfile", "status": "prototype", "purpose": "ملف تجربة السائح دون بيانات زائدة", "fields": "id · category · locale · accessibilityNeeds" },
+    { "name": "Card", "status": "prototype", "purpose": "هوية البطاقة لا محفظة مالية", "fields": "id · profileId · serial · state · validity" },
+    { "name": "Merchant / Offer", "status": "verified", "purpose": "ربط الشريك بالعرض والوجهة", "fields": "merchantId · eligibility · validity · source" },
+    { "name": "Trip / AccessPoint", "status": "prototype", "purpose": "تحويل القصة إلى مسار ونقطة وصول", "fields": "route · site · direction · accessibility" },
+    { "name": "Municipality", "status": "pilot", "purpose": "عزل الملكية والصلاحيات والتقارير", "fields": "id · owner · permissions · dataBoundary" }
+  ],
+  "integration_guardrails": [
+    "لا رصيد مالي حقيقي",
+    "لا أسرار أو مفاتيح في GitHub",
+    "كل معلومة لها مصدر ومالك وتاريخ",
+    "البيانات التجريبية موسومة بوضوح"
+  ],
+  "pilot_gates": [
+    { "name": "عقد المجال", "acceptance": "تعريف الكيانات والحالات والمالك دون تعارض مع WordPress", "status": "قيد التنفيذ" },
+    { "name": "العزل والصلاحيات", "acceptance": "لا يقرأ مستخدم بلدية بيانات بلدية أخرى وتوجد اختبارات رفض", "status": "قبل التجربة" },
+    { "name": "عدم الاتصال", "acceptance": "قراءة آخر نسخة ومزامنة مؤجلة ومنع تكرار الحدث", "status": "قبل الأجهزة" },
+    { "name": "بطاقة/QR تجريبية", "acceptance": "حدث موقّع تجريبي قابل للإبطال دون قيمة مالية", "status": "بعد العقد" },
+    { "name": "عينة الجهاز", "acceptance": "نجاح اختبارات الشريحة وSDK والاتصال والطاقة والأداء", "status": "قبل التوريد" },
+    { "name": "Pilot محدود", "acceptance": "شريك واحد ومسار واحد وموافقة مكتوبة وسجل تدقيق", "status": "قرار لاحق" }
+  ],
   "quotation_snapshot": {
     "software_items_usd": 15200,
     "indicative_one_municipality_usd": 37668,
