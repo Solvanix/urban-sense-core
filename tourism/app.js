@@ -59,7 +59,7 @@ function routeCard(route, index) {
     <div class="route-body"><span class="route-tag">${String(index + 1).padStart(2, "0")} · ${escapeHTML(route.kicker)}</span><h3>${escapeHTML(route.title)}</h3><p>${escapeHTML(route.description)}</p>
     <div class="route-meta"><span>◷ ${tags}</span></div>
     <div class="route-trust"><span>${escapeHTML(route.access.label)}</span><small>المصدر: ${escapeHTML(source)}</small><small>التالي: ${escapeHTML(evidence)}</small></div>
-    <button class="add-route" data-add="${escapeHTML(route.title)}">أضف إلى خطتي +</button></div></article>`;
+    <div class="route-actions"><button class="route-details" data-details="${escapeHTML(route.id)}">التفاصيل ↗</button><button class="add-route" data-add="${escapeHTML(route.title)}">أضف إلى خطتي +</button></div></div></article>`;
 }
 
 function renderRoutes() {
@@ -68,10 +68,36 @@ function renderRoutes() {
   if (!grid) return;
   grid.innerHTML = routes.length ? routes.map(routeCard).join("") : `<div class="no-routes">لا توجد مسارات بهذه الخيارات. جرّب إعادة الضبط أو مستوى مختلفًا.</div>`;
   grid.querySelectorAll("[data-add]").forEach((button) => button.addEventListener("click", () => addToPlan(button.dataset.add, button)));
+  grid.querySelectorAll("[data-details]").forEach((button) => button.addEventListener("click", () => showRouteDetails(button.dataset.details)));
   const result = document.querySelector("#filter-result");
   if (result) result.textContent = `يعرض ${routes.length} من ${activeDataset.routes.length} مسارات`;
   const count = document.querySelector("#route-count");
   if (count) count.textContent = routes.length;
+}
+
+function showRouteDetails(routeId) {
+  const route = activeDataset?.routes?.find((item) => item.id === routeId);
+  const drawer = document.querySelector("#route-drawer");
+  if (!route || !drawer) return;
+  const sourceLinks = (route.confidence?.basis || []).map((sourceId) => {
+    const source = activeDataset.sources?.find((item) => item.id === sourceId);
+    return source ? `<a href="${escapeHTML(source.url)}" target="_blank" rel="noreferrer">${escapeHTML(source.title)} ↗</a>` : `<span>${escapeHTML(sourceId)}</span>`;
+  }).join("");
+  drawer.querySelector(".route-drawer-kicker").textContent = `${route.experienceType || "تجربة"} · ${route.duration?.label || "المدة قيد التحديد"}`;
+  drawer.querySelector("h3").textContent = route.title;
+  drawer.querySelector(".route-drawer-description").textContent = route.description;
+  drawer.querySelector(".route-drawer-facts").innerHTML = `<div><b>الوصول</b><span>${escapeHTML(route.access.label)}</span></div><div><b>الحجز</b><span>${escapeHTML(route.booking.label)}</span></div><div><b>الصعوبة</b><span>${escapeHTML(route.difficulty || "قيد التحديد")}</span></div>`;
+  drawer.querySelector(".route-drawer-source").innerHTML = `<b>المصادر</b>${sourceLinks || "<span>لا يوجد مصدر مضاف بعد</span>"}`;
+  drawer.querySelector(".route-drawer-evidence").innerHTML = `<b>الخطوة التالية</b><span>${escapeHTML((route.nextEvidence || []).join(" · ") || "تحتاج مراجعة محلية")}</span>`;
+  const story = drawer.querySelector("[data-route-story]");
+  story.href = route.storyUrl || "#";
+  story.hidden = !route.storyUrl;
+  drawer.classList.add("open");
+  drawer.querySelector("[data-route-close]").focus();
+}
+
+function closeRouteDetails() {
+  document.querySelector("#route-drawer")?.classList.remove("open");
 }
 
 function renderPassport(dataset) {
@@ -103,6 +129,9 @@ function attachFilters() {
 function attachStaticInteractions() {
   document.querySelectorAll("[data-scroll]").forEach((button) => button.addEventListener("click", () => document.querySelector(button.dataset.scroll).scrollIntoView({ behavior: "smooth" })));
   document.querySelector("#print-plan").addEventListener("click", () => window.print());
+  document.querySelectorAll("[data-route-close]").forEach((button) => button.addEventListener("click", closeRouteDetails));
+  document.querySelector("#route-drawer")?.addEventListener("click", (event) => { if (event.target === event.currentTarget) closeRouteDetails(); });
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeRouteDetails(); });
   document.querySelectorAll("[data-booking]").forEach((button) => button.addEventListener("click", () => {
     document.querySelector("#booking-choice").value = button.dataset.booking;
     document.querySelector("#bookings").scrollIntoView({ behavior: "smooth", block: "center" });
