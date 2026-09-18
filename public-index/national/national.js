@@ -14,7 +14,7 @@ function render() {
   result.textContent = `يعرض ${items.length} من ${destinations.length} وجهات`;
 }
 async function load() {
-  try { const response = await fetch('./destinations.json', { cache: 'no-store' }); if (!response.ok) throw new Error(`destinations.json ${response.status}`); const data = await response.json(); destinations = data.destinations; render(); }
+  try { const response = await fetch('./destinations.json', { cache: 'no-store' }); if (!response.ok) throw new Error(`destinations.json ${response.status}`); const data = await response.json(); destinations = data.destinations; document.querySelector('#totalDestinations').textContent = destinations.length; document.querySelector('#pilotDestinations').textContent = destinations.filter((item) => item.status === 'pilot').length; document.querySelector('#candidateDestinations').textContent = destinations.filter((item) => item.status === 'candidate').length; document.querySelector('#researchDestinations').textContent = destinations.filter((item) => item.status === 'researching').length; render(); }
   catch (error) { result.textContent = 'تعذر تحميل عقد الوجهات؛ راجع نسخة GitHub.'; console.warn(error); }
 }
 document.querySelector('#stageFilter').addEventListener('change', (event) => { filters.stage = event.target.value; render(); });
