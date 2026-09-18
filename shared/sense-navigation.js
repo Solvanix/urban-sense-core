@@ -5,6 +5,7 @@
   const links = [
     ['home', '⌂', 'Home / المدخل العام', `${base}public-index/`],
     ['routes', '↗', 'SENSE Routes / السياحة', `${base}tourism/`],
+    ['national', '◎', 'SENSE National / الوجهات', `${base}public-index/national/`],
     ['visualize', '◈', 'Visualize / لوحة التشغيل', `${base}visualize/`],
     ['experience', '✦', 'تجربة الزائر', `${base}visualize/experience.html`],
     ['validation', '✓', 'مركز التحقق', `${base}visualize/validation.html`],
