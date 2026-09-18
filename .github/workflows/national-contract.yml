@@ -1,0 +1,32 @@
+name: Validate national destination contract
+
+on:
+  push:
+    paths:
+      - "public-index/national/destinations.json"
+      - "scripts/validate_national_contract.py"
+      - ".github/workflows/national-contract.yml"
+  pull_request:
+    paths:
+      - "public-index/national/destinations.json"
+      - "scripts/validate_national_contract.py"
+      - ".github/workflows/national-contract.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Validate JSON syntax
+        run: python3 -m json.tool public-index/national/destinations.json >/dev/null
+      - name: Validate destination contract
+        run: python3 scripts/validate_national_contract.py
+      - name: Validate browser scripts
+        run: |
+          node --check public-index/national/national.js
+          node --check public-index/national/destination.js
