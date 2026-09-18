@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.1.0",
+  "schemaVersion": "1.2.0",
   "datasetId": "sense-routes-al-eizariya",
   "title": "SENSE Routes — مسارات العيزرية",
   "description": "بيانات عامة لمسارات تحريرية وتجريبية. لا تمثل حجزًا أو اعتمادًا أو شراكة رسمية.",
@@ -121,7 +121,8 @@
       "tags": [
         "ذاكرة",
         "مشي"
-      ]
+      ],
+      "destinationId": "DEST-EIZ-001"
     },
     {
       "id": "EIZ-ROUTE-002",
@@ -180,7 +181,8 @@
       "tags": [
         "سرد",
         "ذاكرة"
-      ]
+      ],
+      "destinationId": "DEST-EIZ-001"
     },
     {
       "id": "EIZ-ROUTE-003",
@@ -239,7 +241,8 @@
       "tags": [
         "تعلم",
         "بحث"
-      ]
+      ],
+      "destinationId": "DEST-EIZ-001"
     },
     {
       "id": "EIZ-ROUTE-004",
@@ -299,7 +302,8 @@
       "tags": [
         "طعام",
         "منتج محلي"
-      ]
+      ],
+      "destinationId": "DEST-EIZ-001"
     },
     {
       "id": "EIZ-ROUTE-005",
@@ -359,7 +363,8 @@
       "tags": [
         "طبيعة",
         "تصوير"
-      ]
+      ],
+      "destinationId": "DEST-EIZ-001"
     },
     {
       "id": "EIZ-ROUTE-006",
@@ -417,7 +422,8 @@
       "tags": [
         "عائلة",
         "تعليم"
-      ]
+      ],
+      "destinationId": "DEST-EIZ-001"
     }
   ],
   "passportStops": [
@@ -499,5 +505,6 @@
       "من ساعة إلى ساعتين",
       "أكثر من ساعتين"
     ]
-  }
+  },
+  "destinationId": "DEST-EIZ-001"
 }

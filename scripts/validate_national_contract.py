@@ -58,4 +58,15 @@ except (KeyError, ValueError):
 if reviewed > date.today():
     fail("lastReviewed cannot be in the future")
 
+routes_path = PATH.parents[2] / "tourism/data/routes.json"
+try:
+    routes_data = json.loads(routes_path.read_text(encoding="utf-8"))
+except Exception as exc:
+    fail(f"cannot parse {routes_path}: {exc}")
+known_ids = {item["id"] for item in data["destinations"]}
+if routes_data.get("destinationId") not in known_ids:
+    fail("tourism routes destinationId must match a national destination id")
+if any(route.get("destinationId") != routes_data.get("destinationId") for route in routes_data.get("routes", [])):
+    fail("every tourism route must carry the dataset destinationId")
+
 print(f"OK: validated {len(data['destinations'])} destinations in {data['datasetId']}")

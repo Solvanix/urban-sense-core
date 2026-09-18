@@ -4,11 +4,13 @@ on:
   push:
     paths:
       - "public-index/national/destinations.json"
+      - "tourism/data/routes.json"
       - "scripts/validate_national_contract.py"
       - ".github/workflows/national-contract.yml"
   pull_request:
     paths:
       - "public-index/national/destinations.json"
+      - "tourism/data/routes.json"
       - "scripts/validate_national_contract.py"
       - ".github/workflows/national-contract.yml"
   workflow_dispatch:
