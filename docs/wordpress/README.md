@@ -8,6 +8,8 @@
 | [نموذج محتوى WordPress](./WP-CONTENT-MODEL.md) | الحقول وأنواع المواد وأوامر المساعد |
 | [خطة ربط AI Commander](./AI-COMMANDER-INTEGRATION-PLAN.md) | دورة الصوت إلى المسودة وحدود التكامل والأمان |
 | [جسر WordPress → GitHub Routes](./SENSE-WORDPRESS-GITHUB-CONTENT-BRIDGE.md) | مطابقة القصة مع بطاقة المسار والمصدر والوصول والحجز |
+| [مسودة الصفحة الرئيسية لـSENSE](./SENSE-HOMEPAGE-DRAFT-AR.md) | نص الصفحة الأولى بصوت SENSE وحدود النشر |
+| [نموذج قصة سياحية](./SENSE-TOURISM-STORY-TEMPLATE-AR.md) | قصة قابلة لإعادة الاستخدام مع بطاقة التحقق ومشتقات القنوات |
 | [النموذج القصصي الأول](../content-samples/STORY-01-VOICE-OF-THE-PLACE.md) | مثال بنيوي وإبداعي غير منشور |
 | [حزمة عتبة والعيزرية](../content-samples/ATABA-AL-EIZARIYA-PACKAGE.md) | القصة الدرامية والتقرير وميثاق التوثيق والوسائط |
 
