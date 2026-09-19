@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solvanix.github.io/urban-sense-core/schemas/sense-content-card.schema.json",
+  "title": "SENSE Content Card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "type", "title", "status", "facts", "source", "lastReviewed"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,80}$"},
+    "type": {"enum": ["place_story", "local_news", "destination", "route_stop", "local_product", "project_story", "operational_update"]},
+    "title": {"type": "string", "minLength": 3, "maxLength": 140},
+    "hook": {"type": "string", "maxLength": 280},
+    "place": {"type": "string", "maxLength": 160},
+    "question": {"type": "string", "maxLength": 280},
+    "humanDetail": {"type": "string", "maxLength": 1000},
+    "facts": {"type": "array", "items": {"type": "string"}},
+    "unknowns": {"type": "array", "items": {"type": "string"}},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "label"],
+      "properties": {
+        "kind": {"enum": ["document", "interview", "official_page", "repository", "field_review", "other"]},
+        "label": {"type": "string"},
+        "url": {"type": "string", "format": "uri"},
+        "accessedAt": {"type": "string", "format": "date"}
+      }
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text": {"enum": ["unknown", "cleared", "restricted"]},
+        "image": {"enum": ["none", "unknown", "cleared", "restricted"]},
+        "audio": {"enum": ["none", "unknown", "cleared", "restricted"]},
+        "consentNotes": {"type": "string"}
+      }
+    },
+    "access": {"type": "string", "maxLength": 1000},
+    "nextAction": {"type": "string", "maxLength": 280},
+    "cta": {"type": "string", "maxLength": 120},
+    "status": {"enum": ["draft", "needs_review", "verified", "published", "archived"]},
+    "lastReviewed": {"type": "string", "format": "date"},
+    "wordpress": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "slug": {"type": "string"},
+        "status": {"enum": ["not_started", "draft", "review", "published", "archived"]},
+        "url": {"type": "string", "format": "uri"}
+      }
+    },
+    "social": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "facebook": {"type": "string"},
+        "instagram": {"type": "string"},
+        "x": {"type": "string"},
+        "linkedin": {"type": "string"}
+      }
+    }
+  }
+}
