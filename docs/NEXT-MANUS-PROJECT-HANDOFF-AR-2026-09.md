@@ -375,9 +375,10 @@ LinkedIn قناة الشراكات والبلديات والجهات التعل�
 5. قراءة `content/stories/story-olive-to-cave.json` وملف Markdown المقابل.
 6. قراءة `docs/TIBYAN-URBANUP-DECK-REVIEW-AR-2026-09.md`.
 7. قراءة `docs/EXAM-TO-SENSE-EXECUTION-PLAN-AR-2026-09.md`.
-8. فحص حالة GitHub قبل تعديل أي ملف.
-9. إنشاء Issue للتغيير المطلوب.
-10. تنفيذ التغيير كمسودة، ثم طلب المراجعة قبل أي نشر خارجي.
+8. قراءة `docs/NEXT-MANUS-RESEARCH-BILIN-MONOPOLY-AR-2026-09.md`.
+9. فحص حالة GitHub قبل تعديل أي ملف.
+10. إنشاء Issue للتغيير المطلوب.
+11. تنفيذ التغيير كمسودة، ثم طلب المراجعة قبل أي نشر خارجي.
 
 ## 19. معيار النجاح النهائي
 
@@ -394,6 +395,7 @@ LinkedIn قناة الشراكات والبلديات والجهات التعل�
 - `content/stories/story-olive-to-cave.json`
 - `schemas/sense-content-card.schema.json`
 - `docs/wordpress-sense/SENSE-WordPress-content-brand-plan.md`
+- `docs/NEXT-MANUS-RESEARCH-BILIN-MONOPOLY-AR-2026-09.md`
 
 ## المخرج المطلوب من Manus القادم
 
