@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
+import { CommunityValidationPage } from "./CommunityValidationPage.js";
 import { SurveyFeatureGuidePage } from "./SurveyFeatureGuidePage.js";
 
-type PublicPage = "home" | "discover" | "booking" | "partners" | "vision" | "readiness" | "survey-guide";
+type PublicPage = "home" | "discover" | "booking" | "partners" | "vision" | "readiness" | "survey-guide" | "community";
 type Category = "الكل" | "تراث" | "طعام" | "طبيعة" | "حرفة";
 
 type Experience = {
@@ -79,6 +80,7 @@ export function getPublicPage(pathname: string): PublicPage {
   if (["/رؤية-مسؤولة", "/responsible-vision"].includes(decodedPath)) return "vision";
   if (["/جاهزية-المزود", "/provider-readiness"].includes(decodedPath)) return "readiness";
   if (["/دليل-الميزات", "/feature-guide"].includes(decodedPath)) return "survey-guide";
+  if (["/تحقق-مجتمعي", "/community-validation"].includes(decodedPath)) return "community";
   return "home";
 }
 
@@ -87,6 +89,7 @@ const publicLinks = [
   { href: "/اكتشف", label: "اكتشف" },
   { href: "/حجزي", label: "خطة يومي" },
   { href: "/للشركاء", label: "للشركاء" },
+  { href: "/تحقق-مجتمعي", label: "نختبر معًا" },
 ];
 
 export function TourismPublicSite({ pathname, onNavigate }: { pathname: string; onNavigate: (href: string) => void }) {
@@ -120,6 +123,7 @@ export function TourismPublicSite({ pathname, onNavigate }: { pathname: string; 
       {page === "vision" && <VisionPage onNavigate={onNavigate} />}
       {page === "readiness" && <ReadinessPage onNavigate={onNavigate} />}
       {page === "survey-guide" && <SurveyFeatureGuidePage onNavigate={onNavigate} />}
+      {page === "community" && <CommunityValidationPage onNavigate={onNavigate} />}
 
       <footer className="sense-footer">
         <div><span className="sense-footer-mark">س</span><div><strong>SENSE Experience</strong><p>العيزرية تُعاش، لا تُستهلك.</p></div></div>
@@ -148,7 +152,7 @@ function HomePage({ onNavigate, plan, updatePlan }: { onNavigate: (href: string)
 
     <section className="sense-journey-band"><div className="sense-journey-art"><span>02</span><div className="sense-journey-ring" /></div><div><span className="sense-section-label">خطتك، بطريقتك</span><h2>لا تحتاج برنامجًا<br /><em>مزدحمًا.</em></h2><p>أضف ما يعجبك إلى خطة يومك، ثم اطلب من شريك محلي مراجعة التفاصيل قبل أن تصل. لا دفع، لا حجز وهمي، ولا مفاجآت مخفية.</p><button className="sense-light-button" onClick={() => onNavigate("/حجزي")}>{plan.length ? `افتح خطتك (${plan.length})` : "ابنِ خطة يومك"} <span>←</span></button></div></section>
 
-    <section className="sense-trust-strip"><div><span>03</span><strong>القصة قبل البيع</strong><p>لا بطاقة بلا سياق.</p></div><div><span>04</span><strong>المعلومة لها مصدر</strong><p>نعرض ما نعرفه وما لم يُتحقق منه.</p></div><div><span>05</span><strong>المضيف شريك</strong><p>لا نشر دون موافقة ومراجعة.</p></div><button onClick={() => onNavigate("/للشركاء")}>هل لديك تجربة محلية؟ <span>↗</span></button></section>
+    <section className="sense-trust-strip"><div><span>03</span><strong>القصة قبل البيع</strong><p>لا بطاقة بلا سياق.</p></div><div><span>04</span><strong>المعلومة لها مصدر</strong><p>نعرض ما نعرفه وما لم يُتحقق منه.</p></div><div><span>05</span><strong>المضيف شريك</strong><p>لا نشر دون موافقة ومراجعة.</p></div><button onClick={() => onNavigate("/للشركاء")}>هل لديك تجربة محلية؟ <span>↗</span></button><button onClick={() => onNavigate("/تحقق-مجتمعي")}>ساعدنا على الاختبار <span>↗</span></button></section>
   </>;
 }
 
