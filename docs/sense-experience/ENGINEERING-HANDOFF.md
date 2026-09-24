@@ -37,6 +37,9 @@
 | واجهة المزوّد والمراجع لسجل الادعاءات | **مبني وينتظر تفعيلًا** | `src/ui/ClaimRegistryWorkspace.tsx`، المسار `/سجل-الادعاءات` | فحص واجهة حي بمسودة محلية فقط | لا تعُد واجهة Vite قبولًا حقيقيًا للبيانات؛ الإرسال الفعلي مقفل ببوابة الخادم. |
 | ترحيل سجل الادعاءات | **مولّد ولم يطبق** | `drizzle/migrations/0003_condemned_cerise.sql` | مراجعة SQL يدوية قبل التطبيق | لا تطبقه على قاعدة Urban-Sense أو أي قاعدة مشتركة. |
 | PWA للغلاف الثابت | **مبني محدودًا** | `public/manifest.webmanifest` و`public/service-worker.js` | بناء Vite | لا تخزّن API أو بيانات مزودين أو أدلة في Service Worker. |
+| عقد SENSE Live وحالة الزيارة | **مبني ومختبر محليًا** | `src/live/visitStatus.ts` و`src/ui/LiveVisitStatus.tsx` | `tests/visitStatus.test.ts` | إشارات عقدية تحفظية؛ لا مرور حي أو توافر أو اعتماد وصول قبل مصدر وبوابة تشغيل. |
+| طلب مقاعد الندوة البيئية | **مبني ومختبر محليًا** | `src/live/seminarBooking.ts` و`src/ui/SeminarBookingCard.tsx` | `tests/seminarBooking.test.ts` | مسودة محلية برقم مرجعي؛ ليست تذكرة أو حجزًا نهائيًا ولا مصدر سعة متعدد المستخدمين. |
+| مفتاح النطاق العيزرية/فلسطين | **مبني ومختبر محليًا** | `src/ui/TourismPublicSite.tsx` و`docs/sense-experience/PALESTINE-SCOPE-STRATEGY.md` | `src/ui/TourismPublicSite.test.ts` | فلسطين عدسة توسع؛ لا يضيف بطاقات أو بيانات وطنية غير موثقة. |
 
 ## 4. ما لم يُبنَ أو لا يجوز تفعيله بعد
 
