@@ -6,6 +6,11 @@ import { SeminarBookingCard } from "./SeminarBookingCard.js";
 
 type PublicPage = "home" | "discover" | "booking" | "partners" | "vision" | "readiness" | "survey-guide" | "community";
 type Category = "الكل" | "تراث" | "طعام" | "طبيعة" | "حرفة";
+export type ExperienceScope = "al-eizariya" | "palestine";
+
+export function scopeLabel(scope: ExperienceScope): string {
+  return scope === "al-eizariya" ? "العيزرية" : "فلسطين";
+}
 
 type Experience = {
   id: string;
@@ -96,6 +101,9 @@ const publicLinks = [
 
 export function TourismPublicSite({ pathname, onNavigate }: { pathname: string; onNavigate: (href: string) => void }) {
   const page = getPublicPage(pathname);
+  const [scope, setScope] = useState<ExperienceScope>(() => {
+    try { return localStorage.getItem("sense-experience-scope-v1") === "palestine" ? "palestine" : "al-eizariya"; } catch { return "al-eizariya"; }
+  });
   const [plan, setPlan] = useState<string[]>(() => {
     try { return JSON.parse(localStorage.getItem(planKey) || "[]") as string[]; } catch { return []; }
   });
@@ -105,21 +113,26 @@ export function TourismPublicSite({ pathname, onNavigate }: { pathname: string; 
     localStorage.setItem(planKey, JSON.stringify(next));
   }
 
+  function updateScope(next: ExperienceScope) {
+    setScope(next);
+    localStorage.setItem("sense-experience-scope-v1", next);
+  }
+
   return (
     <main id="main-content" tabIndex={-1} className="sense-platform" dir="rtl">
       <header className="sense-nav">
         <button className="sense-brand" onClick={() => onNavigate("/")} aria-label="العودة إلى SENSE">
           <span className="sense-brand-mark">س</span>
-          <span><b>SENSE</b><small>AL-EIZARIYA / EXPERIENCE</small></span>
+            <span><b>SENSE</b><small>{scope === "al-eizariya" ? "AL-EIZARIYA / EXPERIENCE" : "PALESTINE / EXPERIENCE"}</small></span>
         </button>
         <nav aria-label="التنقل الرئيسي">
           {publicLinks.map((link) => <a key={link.href} href={link.href} className={getPublicPage(link.href) === page ? "active" : ""} onClick={(event) => { event.preventDefault(); onNavigate(link.href); }}>{link.label}</a>)}
         </nav>
-        <button className="sense-nav-provider" onClick={() => onNavigate("/launchpad")}>جواز مشروعك <span>↗</span></button>
+        <div className="sense-nav-tools"><div className="sense-scope-switcher" aria-label="نطاق المنصة">{(["al-eizariya", "palestine"] as ExperienceScope[]).map((item) => <button key={item} className={scope === item ? "active" : ""} onClick={() => updateScope(item)}>{scopeLabel(item)}</button>)}</div><button className="sense-nav-provider" onClick={() => onNavigate("/launchpad")}>جواز مشروعك <span>↗</span></button></div>
       </header>
 
-      {page === "home" && <HomePage onNavigate={onNavigate} plan={plan} updatePlan={updatePlan} />}
-      {page === "discover" && <DiscoverPage onNavigate={onNavigate} plan={plan} updatePlan={updatePlan} />}
+      {page === "home" && <HomePage onNavigate={onNavigate} plan={plan} updatePlan={updatePlan} scope={scope} onScopeChange={updateScope} />}
+      {page === "discover" && <DiscoverPage onNavigate={onNavigate} plan={plan} updatePlan={updatePlan} scope={scope} />}
       {page === "booking" && <BookingPage onNavigate={onNavigate} plan={plan} />}
       {page === "partners" && <PartnersPage onNavigate={onNavigate} />}
       {page === "vision" && <VisionPage onNavigate={onNavigate} />}
@@ -135,15 +148,15 @@ export function TourismPublicSite({ pathname, onNavigate }: { pathname: string; 
   );
 }
 
-function HomePage({ onNavigate, plan, updatePlan }: { onNavigate: (href: string) => void; plan: string[]; updatePlan: (next: string[]) => void }) {
+function HomePage({ onNavigate, plan, updatePlan, scope, onScopeChange }: { onNavigate: (href: string) => void; plan: string[]; updatePlan: (next: string[]) => void; scope: ExperienceScope; onScopeChange: (scope: ExperienceScope) => void }) {
   return <>
     <section className="sense-hero">
       <div className="sense-hero-copy">
-        <p className="sense-kicker"><span className="sense-kicker-dot" /> SENSE / العيزرية</p>
+        <p className="sense-kicker"><span className="sense-kicker-dot" /> SENSE / {scopeLabel(scope)}</p>
         <h1>أنت لا تزور المكان.<br /><em>المكان يزورك.</em></h1>
         <p className="sense-hero-lead">منصة سياحية عربية تبني يومك حول القصص المحلية، المسارات الهادئة، والناس الذين يصنعون معنى المكان — لا حول قائمة مزدحمة من النقاط.</p>
         <div className="sense-hero-actions"><button className="sense-primary" onClick={() => onNavigate("/اكتشف")}>ابدأ من هنا <span>←</span></button><button className="sense-text-button" onClick={() => onNavigate("/رؤية-مسؤولة")}>كيف نبني التجربة؟ <span>↗</span></button></div>
-        <div className="sense-hero-proof"><div><strong>4</strong><span>مسارات أولية</span></div><div><strong>1</strong><span>بلدة، طبقات</span></div><div><strong>0</strong><span>وعود مصطنعة</span></div></div>
+        <div className="sense-hero-proof"><div><strong>4</strong><span>مسارات أولية</span></div><div><strong>{scope === "al-eizariya" ? "1" : "1+"}</strong><span>{scope === "al-eizariya" ? "بلدة، طبقات" : "فلسطين، بداية محلية"}</span></div><div><strong>0</strong><span>وعود مصطنعة</span></div></div>
       </div>
       <div className="sense-hero-media"><img src="/media/hero.jpg" alt="ممر حجري في البلدة القديمة" /><div className="sense-image-note"><span>01</span><strong>المشهد الأول</strong><small>بين الظل والنور تبدأ الحكاية</small></div><div className="sense-image-stamp">AL<br /><b>EIZARIYA</b></div></div>
     </section>
@@ -151,6 +164,8 @@ function HomePage({ onNavigate, plan, updatePlan }: { onNavigate: (href: string)
     <section className="sense-statement"><div><span className="sense-section-label">فكرة SENSE</span><h2>كل يوم هنا<br /><em>له إيقاعه.</em></h2></div><p>نرتب لك ما تحتاج معرفته قبل الوصول: قصة قصيرة، وقت واقعي، طريقة تواصل، ونقطة بداية يمكن التحقق منها. إذا كانت المعلومة غير مكتملة، نقول ذلك بوضوح.</p><div className="sense-statement-line" /></section>
 
     <LiveVisitStatus />
+
+    <ScopePanel scope={scope} onScopeChange={onScopeChange} />
 
     <SeminarBookingCard />
 
@@ -162,11 +177,15 @@ function HomePage({ onNavigate, plan, updatePlan }: { onNavigate: (href: string)
   </>;
 }
 
-function DiscoverPage({ onNavigate, plan, updatePlan }: { onNavigate: (href: string) => void; plan: string[]; updatePlan: (next: string[]) => void }) {
+function ScopePanel({ scope, onScopeChange }: { scope: ExperienceScope; onScopeChange: (scope: ExperienceScope) => void }) {
+  return <section className="sense-scope-panel"><div><span className="sense-section-label">من العيزرية إلى فلسطين</span><h2>نبدأ من مكان<br /><em>ونفتح نافذة.</em></h2><p>العيزرية هي مختبر SENSE الأول: نعرف المكان قبل أن نعمّم القصة. وعندما تتسع العدسة لفلسطين، نضيف المدن والقرى عبر مصادر محلية واضحة، لا عبر قوائم جاهزة أو صور بلا سياق.</p></div><div className="sense-scope-options"><button className={scope === "al-eizariya" ? "active" : ""} onClick={() => onScopeChange("al-eizariya")}><strong>العيزرية</strong><span>المنطقة الأولى · مسارات وإشارات محلية</span></button><button className={scope === "palestine" ? "active" : ""} onClick={() => onScopeChange("palestine")}><strong>فلسطين</strong><span>عدسة توسع · نضيفها بمصادر كل مكان</span></button></div></section>;
+}
+
+function DiscoverPage({ onNavigate, plan, updatePlan, scope }: { onNavigate: (href: string) => void; plan: string[]; updatePlan: (next: string[]) => void; scope: ExperienceScope }) {
   const [category, setCategory] = useState<Category>("الكل");
   const filtered = useMemo(() => category === "الكل" ? experiences : experiences.filter((item) => item.category === category), [category]);
   return <>
-    <section className="sense-page-hero"><div><span className="sense-section-label">دليل العيزرية</span><h1>اكتشف ما تريد<br /><em>أن تعيشه.</em></h1></div><p>ليست كل البطاقات حجوزات جاهزة. بعضها مسارات تحريرية قيد التحقق؛ نعرضها كما هي كي تعرف أين تبدأ وأين تحتاج أن تسأل.</p></section>
+    <section className="sense-page-hero"><div><span className="sense-section-label">دليل {scopeLabel(scope)}</span><h1>اكتشف ما تريد<br /><em>أن تعيشه.</em></h1></div><p>{scope === "al-eizariya" ? "نبدأ من العيزرية: قصص محلية، ومسارات صغيرة، وبيانات نراجعها قبل أن نعدك بها." : "فلسطين هي العدسة الأوسع، لكن العيزرية تبقى نقطة الاختبار الأولى؛ ما لا نملكه من مصدر لا نعرضه كحقيقة."}</p></section>
     <section className="sense-discover-layout"><aside className="sense-filter-panel"><span className="sense-section-label">صفِّ حسب المزاج</span><div className="sense-category-list">{categories.map((item) => <button key={item} className={category === item ? "active" : ""} onClick={() => setCategory(item)}>{item}<span>{item === "الكل" ? experiences.length : experiences.filter((experience) => experience.category === item).length}</span></button>)}</div><div className="sense-discover-note"><strong>ملاحظة مهمة</strong><p>الأوقات والأسعار والسعة تحتاج تأكيدًا من الشريك المحلي قبل الزيارة.</p></div></aside><div className="sense-discover-results"><div className="sense-results-top"><span>{filtered.length} مسارات ظاهرة</span><button onClick={() => onNavigate("/رؤية-مسؤولة")}>كيف نتحقق؟ ↗</button></div><div className="sense-experience-grid sense-discover-grid">{filtered.map((item, index) => <ExperienceCard key={item.id} item={item} index={index} selected={plan.includes(item.id)} onToggle={() => updatePlan(plan.includes(item.id) ? plan.filter((id) => id !== item.id) : [...plan, item.id])} />)}</div></div></section>
   </>;
 }

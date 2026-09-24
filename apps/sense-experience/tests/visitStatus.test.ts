@@ -30,7 +30,7 @@ describe("SENSE Live visit status", () => {
     expect(story?.sourceKind).toBe("official");
     expect(story?.sourceUrl).toBe("https://www.facebook.com/share/p/1CGU8veYoC/");
     expect(story?.status).toBe("needs_confirmation");
-    expect(story?.note).toContain("خارج نطاق تجربة العيزرية");
+    expect(story?.note).toContain("بطاقة مستقلة ضمن عدسة فلسطين");
   });
 
   it("treats an expired signal as not fresh", () => {
