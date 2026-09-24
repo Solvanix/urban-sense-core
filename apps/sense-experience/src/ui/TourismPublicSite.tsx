@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { CommunityValidationPage } from "./CommunityValidationPage.js";
 import { SurveyFeatureGuidePage } from "./SurveyFeatureGuidePage.js";
+import { LiveVisitStatus } from "./LiveVisitStatus.js";
 
 type PublicPage = "home" | "discover" | "booking" | "partners" | "vision" | "readiness" | "survey-guide" | "community";
 type Category = "الكل" | "تراث" | "طعام" | "طبيعة" | "حرفة";
@@ -147,6 +148,8 @@ function HomePage({ onNavigate, plan, updatePlan }: { onNavigate: (href: string)
     </section>
 
     <section className="sense-statement"><div><span className="sense-section-label">فكرة SENSE</span><h2>كل يوم هنا<br /><em>له إيقاعه.</em></h2></div><p>نرتب لك ما تحتاج معرفته قبل الوصول: قصة قصيرة، وقت واقعي، طريقة تواصل، ونقطة بداية يمكن التحقق منها. إذا كانت المعلومة غير مكتملة، نقول ذلك بوضوح.</p><div className="sense-statement-line" /></section>
+
+    <LiveVisitStatus />
 
     <section className="sense-featured"><div className="sense-section-head"><div><span className="sense-section-label">اختَر مزاج يومك</span><h2>مسارات تترك<br /><em>أثرًا خفيفًا.</em></h2></div><button className="sense-link-button" onClick={() => onNavigate("/اكتشف")}>شاهد كل المسارات <span>←</span></button></div><div className="sense-experience-grid">{experiences.slice(0, 3).map((item, index) => <ExperienceCard key={item.id} item={item} index={index} selected={plan.includes(item.id)} onToggle={() => updatePlan(plan.includes(item.id) ? plan.filter((id) => id !== item.id) : [...plan, item.id])} />)}</div></section>
 

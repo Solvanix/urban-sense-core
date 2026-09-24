@@ -63,5 +63,6 @@ pnpm dev:api
 - [عقد هوية المراجع](../../docs/sense-experience/REVIEWER-IDENTITY-CONTRACT.md)
 - [عقد بيانات الخدمة](../../docs/sense-experience/SERVICE-DATA-CONTRACT.md)
 - [حدود المنتج](../../docs/sense-experience/PRODUCT-BOUNDARIES.md)
+- [SENSE Live وخطة الطوارئ](../../docs/sense-experience/SENSE-LIVE-AND-EMERGENCY-PLAN.md)
 - [دليل التسليم الهندسي الحي](../../docs/sense-experience/ENGINEERING-HANDOFF.md)
 - [مدخل وثائق المنظومة](../../docs/README.md)
