@@ -11,6 +11,13 @@ describe("SENSE Live visit status", () => {
     expect(summary.headline).toContain("تحتاج");
   });
 
+  it("represents the municipal clearance campaign as a time-bounded limited signal", () => {
+    const campaign = demoVisitSignals.find((signal) => signal.id === "municipal-clearance-campaign");
+    expect(campaign?.sourceKind).toBe("official");
+    expect(campaign?.status).toBe("limited");
+    expect(campaign?.note).toContain("28/09/2026");
+  });
+
   it("treats an expired signal as not fresh", () => {
     expect(isSignalFresh({ ...demoVisitSignals[0], validUntil: "2026-09-23T12:00:00Z" }, now)).toBe(false);
   });

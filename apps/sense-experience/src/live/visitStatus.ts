@@ -46,6 +46,17 @@ export const demoVisitSignals: VisitSignal[] = [
     note: "لن نخمن حالة المرور أو الازدحام قبل اعتماد مصدر خرائط أو شريك تشغيل.",
   },
   {
+    id: "municipal-clearance-campaign",
+    label: "تنظيم الشوارع والأرصفة",
+    status: "limited",
+    statusLabel: "احتمال تأخير أو تغيير مؤقت يوم الحملة",
+    sourceLabel: "إعلان بلدية العيزرية — 24/09/2026",
+    sourceKind: "official",
+    observedAt: "2026-09-24T20:00:00Z",
+    validUntil: "2026-09-28T23:59:59Z",
+    note: "أعلنت البلدية حملة ميدانية بالتنسيق مع الشرطة الفلسطينية لإزالة المعيقات يوم الاثنين 28/09/2026. لا يعني الإعلان إغلاق كل الطرق؛ تحقق من المسار قبل الزيارة.",
+  },
+  {
     id: "accessibility",
     label: "الوصولية",
     status: "needs_confirmation",
