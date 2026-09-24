@@ -66,5 +66,6 @@ pnpm dev:api
 - [SENSE Live وخطة الطوارئ](../../docs/sense-experience/SENSE-LIVE-AND-EMERGENCY-PLAN.md)
 - [حجز مقاعد الندوات البيئية — MVP](../../docs/sense-experience/SEMINAR-BOOKING-MVP.md)
 - [استراتيجية النطاق: العيزرية أولًا، فلسطين تدريجيًا](../../docs/sense-experience/PALESTINE-SCOPE-STRATEGY.md)
+- [خارطة منصة SENSE للمدن والبلديات الفلسطينية](../../docs/sense-experience/PALESTINE-SENSE-PLATFORM-ROADMAP.md)
 - [دليل التسليم الهندسي الحي](../../docs/sense-experience/ENGINEERING-HANDOFF.md)
 - [مدخل وثائق المنظومة](../../docs/README.md)
