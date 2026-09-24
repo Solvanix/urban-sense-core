@@ -64,5 +64,6 @@ pnpm dev:api
 - [عقد بيانات الخدمة](../../docs/sense-experience/SERVICE-DATA-CONTRACT.md)
 - [حدود المنتج](../../docs/sense-experience/PRODUCT-BOUNDARIES.md)
 - [SENSE Live وخطة الطوارئ](../../docs/sense-experience/SENSE-LIVE-AND-EMERGENCY-PLAN.md)
+- [حجز مقاعد الندوات البيئية — MVP](../../docs/sense-experience/SEMINAR-BOOKING-MVP.md)
 - [دليل التسليم الهندسي الحي](../../docs/sense-experience/ENGINEERING-HANDOFF.md)
 - [مدخل وثائق المنظومة](../../docs/README.md)
