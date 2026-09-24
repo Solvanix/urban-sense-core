@@ -20,7 +20,7 @@ export function LiveVisitStatus({ mode = "normal", signals = demoVisitSignals }:
       <div><span className="sense-section-label">SENSE LIVE · حالة الزيارة</span><h2 id="live-visit-title">{summary.headline}</h2><p>{summary.detail}</p></div>
       <span className="live-visit-mode">{mode === "emergency" ? "طوارئ" : mode === "paused" ? "متوقفة" : "آخر حالة موثقة"}</span>
     </div>
-    <div className="live-visit-signals">{signals.map((signal) => <article key={signal.id} className="live-visit-signal"><span className="live-visit-signal-icon" aria-hidden="true">{signalIcon[signal.status]}</span><div><strong>{signal.label}</strong><span>{signal.statusLabel}</span><small>{signal.note}</small><small>المصدر: {signal.sourceLabel} · صالح حتى {new Date(signal.validUntil).toLocaleDateString("ar")}</small></div></article>)}</div>
+    <div className="live-visit-signals">{signals.map((signal) => <article key={signal.id} className="live-visit-signal"><span className="live-visit-signal-icon" aria-hidden="true">{signalIcon[signal.status]}</span><div><strong>{signal.label}</strong><span>{signal.statusLabel}</span><small>{signal.note}</small><small>المصدر: {signal.sourceUrl ? <a href={signal.sourceUrl} target="_blank" rel="noreferrer">{signal.sourceLabel} ↗</a> : signal.sourceLabel} · صالح حتى {new Date(signal.validUntil).toLocaleDateString("ar")}</small></div></article>)}</div>
     <p className="live-visit-boundary">هذه ليست قراءة مرور مباشرة ولا حجزًا نهائيًا. نعرض المصدر ووقت الصلاحية ونقول بوضوح عندما تحتاج المعلومة إلى تأكيد.</p>
   </section>;
 }

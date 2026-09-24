@@ -25,6 +25,14 @@ describe("SENSE Live visit status", () => {
     expect(seminar?.note).toContain("منتدى الخبرات");
   });
 
+  it("keeps Beitunia heritage content outside the Al-Eizariya experience scope", () => {
+    const story = demoVisitSignals.find((signal) => signal.id === "beitunia-bayt-onya-heritage-story");
+    expect(story?.sourceKind).toBe("official");
+    expect(story?.sourceUrl).toBe("https://www.facebook.com/share/p/1CGU8veYoC/");
+    expect(story?.status).toBe("needs_confirmation");
+    expect(story?.note).toContain("خارج نطاق تجربة العيزرية");
+  });
+
   it("treats an expired signal as not fresh", () => {
     expect(isSignalFresh({ ...demoVisitSignals[0], validUntil: "2026-09-23T12:00:00Z" }, now)).toBe(false);
   });

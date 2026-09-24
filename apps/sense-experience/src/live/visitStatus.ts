@@ -9,6 +9,7 @@ export type VisitSignal = {
   statusLabel: string;
   sourceLabel: string;
   sourceKind: SignalSourceKind;
+  sourceUrl?: string;
   observedAt: string;
   validUntil: string;
   note: string;
@@ -66,6 +67,18 @@ export const demoVisitSignals: VisitSignal[] = [
     observedAt: "2026-09-24T20:30:00Z",
     validUntil: "2026-09-26T20:00:00Z",
     note: "ندوة «استغوار كهوف فلسطين تحت الأرض… عالمٌ لم يُكتشف بعد» يقدمها الباحث البيئي خالد أبو علي ويديرها د. صافي صافي، السبت 26/09/2026 الساعة 17:00 في منتدى الخبرات.",
+  },
+  {
+    id: "beitunia-bayt-onya-heritage-story",
+    label: "قصة تراثية — بيتونيا",
+    status: "needs_confirmation",
+    statusLabel: "محتوى ثقافي يحتاج مصدرًا وتاريخًا",
+    sourceLabel: "منشور بلدية بيتونيا — 24/09/2026",
+    sourceKind: "official",
+    sourceUrl: "https://www.facebook.com/share/p/1CGU8veYoC/",
+    observedAt: "2026-09-25T00:15:00Z",
+    validUntil: "2026-10-25T00:15:00Z",
+    note: "يتحدث النص عن بيت أونيا، بيت أثري مرمم في بيتونيا، وجولة ضمن مهرجان «يلا على بيتونيا». لا يتضمن النص تاريخ الفعالية أو رابطًا أصليًا، كما أن بيتونيا خارج نطاق تجربة العيزرية الحالية.",
   },
   {
     id: "accessibility",
