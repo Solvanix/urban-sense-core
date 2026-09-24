@@ -18,6 +18,13 @@ describe("SENSE Live visit status", () => {
     expect(campaign?.note).toContain("28/09/2026");
   });
 
+  it("keeps the caves seminar as a partner announcement requiring confirmation", () => {
+    const seminar = demoVisitSignals.find((signal) => signal.id === "palestine-caves-seminar");
+    expect(seminar?.sourceKind).toBe("partner");
+    expect(seminar?.status).toBe("needs_confirmation");
+    expect(seminar?.note).toContain("منتدى الخبرات");
+  });
+
   it("treats an expired signal as not fresh", () => {
     expect(isSignalFresh({ ...demoVisitSignals[0], validUntil: "2026-09-23T12:00:00Z" }, now)).toBe(false);
   });
