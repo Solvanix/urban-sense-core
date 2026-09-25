@@ -42,6 +42,7 @@ pnpm start
 - [`حزمة مشروع التخرج والوسائط`](docs/graduation/README.md)
 - [`إطار السياحة المجتمعية وريادة الأعمال والإعلام`](docs/strategy/SENSE-TOURISM-COMMUNITY-ENTREPRENEURSHIP-FRAMEWORK-AR.md)
 - [`الإطار الإخباري والدلتا الحية`](docs/strategy/LIVE-NEWS-AND-DELTA-ARCHITECTURE-AR.md)
+- [`خارطة التنفيذ العميقة لـ SENSE`](docs/strategy/SENSE-DEEP-EXECUTION-ROADMAP-AR.md)
 - [`docs/sense-experience/PRODUCT-BOUNDARIES.md`](docs/sense-experience/PRODUCT-BOUNDARIES.md)
 - [`docs/sense-experience/ENGINEERING-HANDOFF.md`](docs/sense-experience/ENGINEERING-HANDOFF.md)
 - [`apps/sense-experience/README.md`](apps/sense-experience/README.md)
