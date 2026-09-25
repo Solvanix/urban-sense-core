@@ -40,6 +40,7 @@ pnpm start
 ## الوثائق
 
 - [`حزمة مشروع التخرج والوسائط`](docs/graduation/README.md)
+- [`إطار السياحة المجتمعية وريادة الأعمال والإعلام`](docs/strategy/SENSE-TOURISM-COMMUNITY-ENTREPRENEURSHIP-FRAMEWORK-AR.md)
 - [`docs/sense-experience/PRODUCT-BOUNDARIES.md`](docs/sense-experience/PRODUCT-BOUNDARIES.md)
 - [`docs/sense-experience/ENGINEERING-HANDOFF.md`](docs/sense-experience/ENGINEERING-HANDOFF.md)
 - [`apps/sense-experience/README.md`](apps/sense-experience/README.md)
