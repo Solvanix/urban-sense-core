@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solvanix.github.io/urban-sense-core/schemas/sense-source.schema.json",
+  "title": "SENSE Source Reference",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kind", "label"],
+  "properties": {
+    "kind": {"enum": ["official_page", "document", "interview", "field_review", "repository", "community_note", "other"]},
+    "label": {"type": "string", "minLength": 2, "maxLength": 300},
+    "url": {"type": "string", "format": "uri"},
+    "accessedAt": {"type": "string", "format": "date"},
+    "independence": {"enum": ["primary", "independent", "secondary", "unknown"]},
+    "evidenceNote": {"type": "string", "maxLength": 500}
+  }
+}

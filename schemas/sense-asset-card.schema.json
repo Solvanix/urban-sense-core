@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solvanix.github.io/urban-sense-core/schemas/sense-asset-card.schema.json",
+  "title": "SENSE Destination Asset Card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "kind", "name", "place", "ownerOrSteward", "status", "source", "lastReviewed"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,80}$"},
+    "kind": {"enum": ["place", "heritage", "faith_site", "street", "craft", "food", "service", "event"]},
+    "name": {"type": "string", "minLength": 2, "maxLength": 160},
+    "place": {"type": "string", "maxLength": 160},
+    "summary": {"type": "string", "maxLength": 600},
+    "ownerOrSteward": {"type": "string", "maxLength": 240},
+    "rightsAndSensitivity": {"type": "array", "items": {"type": "string", "maxLength": 300}},
+    "accessNotes": {"type": "array", "items": {"type": "string", "maxLength": 300}},
+    "facts": {"type": "array", "items": {"type": "string"}},
+    "unknowns": {"type": "array", "items": {"type": "string"}},
+    "status": {"enum": ["idea", "needs_review", "verified", "temporarily_unavailable", "archived"]},
+    "source": {"$ref": "sense-source.schema.json"},
+    "lastReviewed": {"type": "string", "format": "date"},
+    "reviewDue": {"type": "string", "format": "date"}
+  }
+}
