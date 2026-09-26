@@ -1,4 +1,5 @@
 const planKey = "sense-routes-plan-v1";
+const questKey = "sense-quest-eizariya-v1";
 const list = document.querySelector("#plan-list");
 const empty = document.querySelector("#plan-empty");
 let plan = JSON.parse(localStorage.getItem(planKey) || "[]");
@@ -113,6 +114,42 @@ function renderPassport(dataset) {
   grid.querySelectorAll("[data-passport-index]").forEach((button) => button.addEventListener("click", () => show(Number(button.dataset.passportIndex))));
 }
 
+function renderQuest(dataset) {
+  const quest = dataset.quest;
+  const steps = document.querySelector("#quest-steps");
+  const rules = document.querySelector("#quest-rules-list");
+  const checks = document.querySelector("#quest-checks");
+  if (!quest || !steps || !rules || !checks) return;
+  document.querySelector("#quest-title").textContent = quest.title;
+  document.querySelector("#quest-description").textContent = quest.description;
+  document.querySelector("#quest-reward-copy").textContent = quest.rewardPolicy.join(" · ");
+  steps.innerHTML = quest.steps.map((step, index) => `<article class="quest-step"><span>${String(index + 1).padStart(2, "0")}</span><div><strong>${escapeHTML(step.title)}</strong><p>${escapeHTML(step.action)}</p><small>الإثبات: ${escapeHTML(step.proof)}</small></div></article>`).join("");
+  rules.innerHTML = quest.rules.map((rule) => `<p class="quest-rule"><span>✓</span>${escapeHTML(rule)}</p>`).join("");
+  let state = JSON.parse(localStorage.getItem(questKey) || "null") || { started: false, completed: [] };
+  const tracker = document.querySelector("#quest-tracker");
+  const start = document.querySelector("#quest-start");
+  const progress = document.querySelector("#quest-progress");
+  const fill = document.querySelector("#quest-progress-fill");
+  const paint = () => {
+    tracker.hidden = !state.started;
+    start.textContent = state.started ? "المغامرة مستمرة" : "ابدأ بطاقة شخصية";
+    start.disabled = state.started;
+    const count = state.completed.length;
+    progress.textContent = `${count} من ${quest.steps.length}`;
+    fill.style.width = `${(count / quest.steps.length) * 100}%`;
+    checks.innerHTML = quest.steps.map((step) => `<button type="button" class="quest-check ${state.completed.includes(step.id) ? "done" : ""}" data-quest-step="${escapeHTML(step.id)}"><span>${state.completed.includes(step.id) ? "✓" : ""}</span>${escapeHTML(step.title)}</button>`).join("");
+    checks.querySelectorAll("[data-quest-step]").forEach((button) => button.addEventListener("click", () => {
+      const id = button.dataset.questStep;
+      state.completed = state.completed.includes(id) ? state.completed.filter((item) => item !== id) : [...state.completed, id];
+      localStorage.setItem(questKey, JSON.stringify(state));
+      paint();
+    }));
+  };
+  start.addEventListener("click", () => { state.started = true; localStorage.setItem(questKey, JSON.stringify(state)); paint(); tracker.scrollIntoView({ behavior: "smooth", block: "center" }); });
+  document.querySelector("#quest-reset")?.addEventListener("click", () => { state = { started: false, completed: [] }; localStorage.removeItem(questKey); paint(); });
+  paint();
+}
+
 function attachFilters() {
   const fields = { duration: "#duration-filter", difficulty: "#difficulty-filter", type: "#type-filter" };
   Object.entries(fields).forEach(([key, selector]) => document.querySelector(selector)?.addEventListener("change", (event) => {
@@ -158,6 +195,7 @@ async function loadRoutes() {
     activeDataset = await response.json();
     renderRoutes();
     renderPassport(activeDataset);
+    renderQuest(activeDataset);
     document.body.dataset.routesLoaded = "true";
   } catch (error) {
     console.warn("SENSE Routes data contract unavailable; keeping editorial fallback.", error);

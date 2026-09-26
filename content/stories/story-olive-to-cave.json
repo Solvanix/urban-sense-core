@@ -48,5 +48,13 @@
     "instagram": "من الزيتونة إلى الطريق، لا نبحث عن أكبر عدد من الصور؛ نبحث عن قصة نفهمها وأثر نتركه بحذر.",
     "x": "ليست كل نقطة جميلة جاهزة للزيارة. نقرأ المكان ببطء، ونوضح ما نعرفه وما يحتاج إلى إذن أو تحقق. اقرأ القصة، ثم اسأل قبل الزيارة.",
     "linkedin": "القصة السياحية الجيدة لا تبيع مكانًا قبل أن تعرف شروط الوصول إليه. هذا النموذج يربط السرد بالمصدر والخصوصية والوصول وحالة المسار."
+  },
+  "mediaManifest": {
+    "path": "content/stories/story-olive-to-cave.media.json",
+    "status": "in_production",
+    "video": "not_recorded",
+    "audio": "not_recorded",
+    "photoStory": "in_production",
+    "posterOrInfographic": "in_production"
   }
 }
