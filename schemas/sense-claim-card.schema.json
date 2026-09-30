@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solvanix.github.io/urban-sense-core/schemas/sense-claim-card.schema.json",
+  "title": "SENSE Claim Card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "claim", "kind", "status", "source", "observedAt"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,80}$"},
+    "claim": {"type": "string", "minLength": 5, "maxLength": 500},
+    "kind": {"enum": ["news", "service_alert", "testimony", "official_statement", "analysis", "correction"]},
+    "place": {"type": "string", "maxLength": 160},
+    "observedAt": {"type": "string", "format": "date-time"},
+    "expiresAt": {"type": "string", "format": "date-time"},
+    "status": {"enum": ["confirmed", "probable", "needs_review", "conflicting", "false", "expired"]},
+    "source": {"$ref": "sense-source.schema.json"},
+    "counterEvidence": {"type": "array", "items": {"type": "string", "maxLength": 400}},
+    "publicWording": {"type": "string", "maxLength": 500},
+    "sensitivity": {"enum": ["low", "moderate", "high", "critical"]},
+    "reviewNote": {"type": "string", "maxLength": 500}
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "delta-al-eizariya-access-review",
+  "entityId": "al-eizariya-listening-walk",
+  "field": "accessStatus",
+  "previousValue": "unknown",
+  "newValue": "needs_local_review",
+  "observedAt": "2026-09-26T00:00:00Z",
+  "source": {
+    "kind": "repository",
+    "label": "سجل تحقق مفهوم SENSE وخارطة التنفيذ العميقة",
+    "url": "https://github.com/Solvanix/urban-sense-core",
+    "accessedAt": "2026-09-26",
+    "independence": "secondary",
+    "evidenceNote": "لا يثبت هذا السجل حالة طريق أو فتح موقع؛ يثبت فقط أن التحقق المحلي شرط قبل التشغيل."
+  },
+  "confidence": "high",
+  "publicSummary": "التجربة غير متاحة حاليًا؛ تحتاج تحققًا محليًا من الوصول والجهات المسؤولة قبل أي دعوة.",
+  "impact": "منع تحويل نموذج تصميم إلى وعد زيارة أو حجز.",
+  "reviewStatus": "verified",
+  "reviewNote": "دلتا منهجية/تحريرية وليست بلاغًا ميدانيًا حيًا."
+}

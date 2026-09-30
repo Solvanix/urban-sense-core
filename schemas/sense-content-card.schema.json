@@ -59,6 +59,19 @@
         "x": {"type": "string"},
         "linkedin": {"type": "string"}
       }
+    },
+    "mediaManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "status"],
+      "properties": {
+        "path": {"type": "string", "pattern": "^content/"},
+        "status": {"enum": ["not_started", "in_production", "needs_review", "ready", "published"]},
+        "video": {"enum": ["not_recorded", "draft", "needs_review", "ready", "published"]},
+        "audio": {"enum": ["not_recorded", "draft", "needs_review", "ready", "published"]},
+        "photoStory": {"enum": ["not_started", "in_production", "needs_review", "ready", "published"]},
+        "posterOrInfographic": {"enum": ["not_started", "in_production", "needs_review", "ready", "published"]}
+      }
     }
   }
 }
