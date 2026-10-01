@@ -2,6 +2,7 @@ import { StrictMode, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 import "./accessibility.css";
+import "./inclusive-tourism.css";
 import { AccessibilityControls } from "./ui/AccessibilityControls.js";
 import { AccessPlanner } from "./ui/AccessPlanner.js";
 import { ClaimRegistryWorkspace } from "./ui/ClaimRegistryWorkspace.js";
