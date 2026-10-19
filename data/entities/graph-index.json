@@ -1,0 +1,257 @@
+[
+  {
+    "id": "destination-al-eizariya",
+    "entityType": "destination",
+    "slug": "al-eizariya",
+    "name": {
+      "ar": "العيزرية",
+      "en": "Al-Eizariya"
+    },
+    "municipalityId": "municipality-al-eizariya",
+    "type": "town",
+    "summary": {
+      "ar": "بوابة سياحية تجمع الذاكرة والمجتمع والحرف المحلية.",
+      "en": "A tourism gateway connecting memory, community and local crafts."
+    },
+    "relatedRouteIds": [
+      "route-al-eizariya-memory",
+      "route-al-eizariya-crafts"
+    ],
+    "relatedStoryIds": [
+      "story-al-eizariya-main",
+      "story-hands-that-remember"
+    ],
+    "relatedProductIds": [
+      "product-olive-wood-demo"
+    ],
+    "status": "prototype",
+    "visibility": "public",
+    "createdAt": "2026-10-20T00:00:00Z",
+    "updatedAt": "2026-10-20T00:00:00Z",
+    "version": 1
+  },
+  {
+    "id": "municipality-al-eizariya",
+    "entityType": "municipality",
+    "slug": "al-eizariya",
+    "name": {
+      "ar": "بلدية العيزرية",
+      "en": "Al-Eizariya Municipality"
+    },
+    "region": "Jerusalem Governorate",
+    "country": "Palestine",
+    "status": "prototype",
+    "visibility": "public",
+    "createdAt": "2026-10-20T00:00:00Z",
+    "updatedAt": "2026-10-20T00:00:00Z",
+    "version": 1
+  },
+  {
+    "id": "route-al-eizariya-memory",
+    "entityType": "route",
+    "slug": "al-eizariya-memory-route",
+    "name": {
+      "ar": "مسار ذاكرة العيزرية",
+      "en": "Al-Eizariya Memory Route"
+    },
+    "destinationIds": [
+      "destination-al-eizariya"
+    ],
+    "category": "heritage",
+    "durationMinutes": 180,
+    "difficulty": "easy",
+    "featuredStoryIds": [
+      "story-al-eizariya-main"
+    ],
+    "status": "prototype",
+    "visibility": "public",
+    "createdAt": "2026-10-20T00:00:00Z",
+    "updatedAt": "2026-10-20T00:00:00Z",
+    "version": 1
+  },
+  {
+    "id": "route-al-eizariya-crafts",
+    "entityType": "route",
+    "slug": "al-eizariya-crafts-route",
+    "name": {
+      "ar": "مسار الحرف والمنتج المحلي",
+      "en": "Al-Eizariya Crafts Route"
+    },
+    "destinationIds": [
+      "destination-al-eizariya"
+    ],
+    "category": "craft",
+    "durationMinutes": 150,
+    "difficulty": "easy",
+    "featuredStoryIds": [
+      "story-hands-that-remember"
+    ],
+    "featuredProductIds": [
+      "product-olive-wood-demo"
+    ],
+    "status": "prototype",
+    "visibility": "public",
+    "createdAt": "2026-10-20T00:00:00Z",
+    "updatedAt": "2026-10-20T00:00:00Z",
+    "version": 1
+  },
+  {
+    "id": "experience-olive-wood-workshop",
+    "entityType": "experience",
+    "slug": "olive-wood-workshop",
+    "name": {
+      "ar": "ورشة الخشب والزيتون",
+      "en": "Olive Wood Workshop"
+    },
+    "destinationId": "destination-al-eizariya",
+    "merchantId": "merchant-local-crafts-demo",
+    "category": "craft",
+    "durationMinutes": 90,
+    "bookingRequired": false,
+    "status": "prototype",
+    "visibility": "public",
+    "createdAt": "2026-10-20T00:00:00Z",
+    "updatedAt": "2026-10-20T00:00:00Z",
+    "version": 1
+  },
+  {
+    "id": "artisan-local-crafts-demo",
+    "entityType": "artisan",
+    "slug": "local-crafts-demo",
+    "displayName": {
+      "ar": "حرف العيزرية المحلية",
+      "en": "Al-Eizariya Local Crafts"
+    },
+    "municipalityId": "municipality-al-eizariya",
+    "craftType": "olive_wood",
+    "storyIds": [
+      "story-hands-that-remember"
+    ],
+    "productIds": [
+      "product-olive-wood-demo"
+    ],
+    "verificationStatus": "demo_verified",
+    "status": "prototype",
+    "visibility": "public",
+    "createdAt": "2026-10-20T00:00:00Z",
+    "updatedAt": "2026-10-20T00:00:00Z",
+    "version": 1
+  },
+  {
+    "id": "merchant-local-crafts-demo",
+    "entityType": "merchant",
+    "slug": "local-crafts-demo",
+    "businessName": {
+      "ar": "كتالوج الحرف المحلية",
+      "en": "Local Crafts Catalogue"
+    },
+    "merchantType": "artisan_store",
+    "municipalityId": "municipality-al-eizariya",
+    "ownerEntityId": "artisan-local-crafts-demo",
+    "paymentEnabled": false,
+    "catalogStatus": "prototype",
+    "status": "prototype",
+    "visibility": "public",
+    "createdAt": "2026-10-20T00:00:00Z",
+    "updatedAt": "2026-10-20T00:00:00Z",
+    "version": 1
+  },
+  {
+    "id": "product-olive-wood-demo",
+    "entityType": "product",
+    "sku": "SENSE-ALZ-DEMO-001",
+    "slug": "olive-wood-demo",
+    "name": {
+      "ar": "قطعة خشبية تجريبية من خشب الزيتون",
+      "en": "Demo Olive Wood Piece"
+    },
+    "merchantId": "merchant-local-crafts-demo",
+    "artisanId": "artisan-local-crafts-demo",
+    "originDestinationId": "destination-al-eizariya",
+    "municipalityId": "municipality-al-eizariya",
+    "category": "handicraft",
+    "commerceStatus": "catalog_only",
+    "pricing": {
+      "displayMode": "catalog_only",
+      "amount": null,
+      "currency": null
+    },
+    "relatedStoryIds": [
+      "story-hands-that-remember"
+    ],
+    "status": "prototype",
+    "visibility": "public",
+    "createdAt": "2026-10-20T00:00:00Z",
+    "updatedAt": "2026-10-20T00:00:00Z",
+    "version": 1
+  },
+  {
+    "id": "story-al-eizariya-main",
+    "entityType": "story",
+    "slug": "al-eizariya-main-story",
+    "title": {
+      "ar": "العيزرية: من المعلم إلى التجربة",
+      "en": "Al-Eizariya: From Landmark to Experience"
+    },
+    "storyType": "destination_story",
+    "lead": {
+      "ar": "قصة سياحية تربط المكان بالناس والمسار والمنتج المحلي.",
+      "en": "A tourism story connecting place, people, route and local product."
+    },
+    "destinationIds": [
+      "destination-al-eizariya"
+    ],
+    "relatedRouteIds": [
+      "route-al-eizariya-memory"
+    ],
+    "mediaIds": [
+      "media-al-eizariya-hero"
+    ],
+    "accessibility": {
+      "audioAvailable": true,
+      "transcriptAvailable": true,
+      "imageAltTextComplete": true
+    },
+    "status": "prototype",
+    "visibility": "public",
+    "createdAt": "2026-10-20T00:00:00Z",
+    "updatedAt": "2026-10-20T00:00:00Z",
+    "version": 1
+  },
+  {
+    "id": "story-hands-that-remember",
+    "entityType": "story",
+    "slug": "hands-that-remember",
+    "title": {
+      "ar": "أيادٍ تحفظ الذاكرة",
+      "en": "Hands That Remember"
+    },
+    "storyType": "artisan_profile",
+    "lead": {
+      "ar": "قصة الحرفة المحلية بوصفها مدخلًا لتجربة سياحية ومنتج وطني.",
+      "en": "A local craft story as a gateway to tourism and a national product."
+    },
+    "destinationIds": [
+      "destination-al-eizariya"
+    ],
+    "artisanId": "artisan-local-crafts-demo",
+    "relatedProductIds": [
+      "product-olive-wood-demo"
+    ],
+    "relatedRouteIds": [
+      "route-al-eizariya-crafts"
+    ],
+    "mediaIds": [
+      "media-artisan-demo"
+    ],
+    "rights": {
+      "license": "project_permission",
+      "consentDocumentId": null
+    },
+    "status": "prototype",
+    "visibility": "public",
+    "createdAt": "2026-10-20T00:00:00Z",
+    "updatedAt": "2026-10-20T00:00:00Z",
+    "version": 1
+  }
+]
