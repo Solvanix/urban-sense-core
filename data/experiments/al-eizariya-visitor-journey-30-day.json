@@ -9,6 +9,17 @@
   "destinationId": "destination-al-eizariya",
   "status": "proposed",
   "visibility": "public",
+  "visitStatus": "planning",
+  "verification": {
+    "status": "field_verification_required",
+    "lastCheckedAt": null,
+    "checkedBy": null,
+    "dataOwner": "SENSE pilot team",
+    "note": {
+      "ar": "تحتاج معلومات الساحة والمسار والمزودين إلى تحقق ميداني قبل نشرها كإرشاد تشغيلي.",
+      "en": "Access point, route and provider details require field verification before operational guidance is published."
+    }
+  },
   "purpose": {
     "ar": "اختبار الربط بين صفحة الوجهة والساحة والمسار والتجربة والكتالوج المحلي قبل التوسع.",
     "en": "Test the connection between destination discovery, an access point, a route, an experience and the local catalogue before scaling."
