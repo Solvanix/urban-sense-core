@@ -9,6 +9,7 @@ on:
       - "apps/pizza-hot/**"
       - "apps/executive-visualization/**"
       - "tourism/**"
+      - "data/**"
       - "shared/**"
       - ".github/workflows/publish-index-pages.yml"
   workflow_dispatch:
@@ -77,6 +78,9 @@ jobs:
           mkdir -p _site/tourism
           cp -R tourism/. _site/tourism/
           test -f _site/tourism/index.html
+          mkdir -p _site/data
+          cp -R data/. _site/data/
+          test -f _site/data/entities/graph-index.json
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

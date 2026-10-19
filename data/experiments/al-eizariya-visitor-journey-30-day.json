@@ -1,0 +1,37 @@
+{
+  "id": "experiment-al-eizariya-visitor-journey-30-day",
+  "entityType": "visitor_journey_experiment",
+  "slug": "al-eizariya-visitor-journey-30-day",
+  "name": {
+    "ar": "تجربة رحلة زائر العيزرية — 30 يومًا",
+    "en": "Al-Eizariya Visitor Journey — 30-Day Pilot"
+  },
+  "destinationId": "destination-al-eizariya",
+  "status": "proposed",
+  "visibility": "public",
+  "purpose": {
+    "ar": "اختبار الربط بين صفحة الوجهة والساحة والمسار والتجربة والكتالوج المحلي قبل التوسع.",
+    "en": "Test the connection between destination discovery, an access point, a route, an experience and the local catalogue before scaling."
+  },
+  "phases": [
+    {"days":"01–05","name":{"ar":"تثبيت النطاق","en":"Scope"},"output":{"ar":"ساحة ومسار ونقاط زيارة محددة","en":"Defined access point, route and stops"}},
+    {"days":"06–10","name":{"ar":"إتاحة الرحلة","en":"Publish"},"output":{"ar":"صفحة مسار ورابط أو QR","en":"Route page and link or QR"}},
+    {"days":"11–20","name":{"ar":"تجربة ميدانية","en":"Field test"},"output":{"ar":"ملاحظات استخدام وتصحيحات","en":"Usage notes and corrections"}},
+    {"days":"21–26","name":{"ar":"تحسين مركز","en":"Focused improvement"},"output":{"ar":"إصلاح العوائق الأعلى أثرًا","en":"Fix highest-impact friction"}},
+    {"days":"27–30","name":{"ar":"قرار التكرار","en":"Decision"},"output":{"ar":"قرار توسع أو تعديل أو إيقاف","en":"Scale, adjust or stop decision"}}
+  ],
+  "metrics": [
+    "route_started",
+    "map_opened",
+    "visit_point_reached",
+    "provider_contacted",
+    "catalog_opened",
+    "information_corrected",
+    "journey_clarity_feedback"
+  ],
+  "commerceStatus": "catalog_only",
+  "productionClaims": false,
+  "createdAt": "2026-10-20T00:00:00Z",
+  "updatedAt": "2026-10-20T00:00:00Z",
+  "version": 1
+}
