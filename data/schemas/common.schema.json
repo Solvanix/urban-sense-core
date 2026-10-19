@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sense.example/schema/common.json",
+  "title": "SENSE Common Entity",
+  "type": "object",
+  "required": ["id", "entityType", "slug", "status", "createdAt", "updatedAt"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "entityType": {"type": "string"},
+    "slug": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "name": {"$ref": "#/$defs/localized"},
+    "status": {"enum": ["draft", "review", "approved", "published", "archived", "prototype"]},
+    "visibility": {"enum": ["public", "private", "internal"], "default": "public"},
+    "municipalityId": {"type": ["string", "null"]},
+    "createdAt": {"type": "string", "format": "date-time"},
+    "updatedAt": {"type": "string", "format": "date-time"},
+    "version": {"type": "integer", "minimum": 1}
+  },
+  "$defs": {
+    "localized": {"type": "object", "required": ["ar", "en"], "properties": {"ar": {"type": "string"}, "en": {"type": "string"}}, "additionalProperties": false},
+    "idList": {"type": "array", "items": {"type": "string"}}
+  }
+}
