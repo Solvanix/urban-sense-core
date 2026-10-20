@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sensecity.local/schemas/sense-region.schema.json",
+  "title": "SENSE Region",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "countryCode", "status", "sourceIds", "updatedAt"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "name": { "type": "string", "minLength": 2 },
+    "countryCode": { "type": "string", "pattern": "^[A-Z]{2}$" },
+    "municipalityId": { "type": ["string", "null"] },
+    "status": { "enum": ["draft", "review", "published", "paused", "archived"] },
+    "scopeNote": { "type": "string" },
+    "sourceIds": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  }
+}

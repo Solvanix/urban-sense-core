@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sensecity.local/schemas/sense-event-booking.schema.json",
+  "title": "SENSE Event and Booking Request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["event", "request", "consent"],
+  "properties": {
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "status", "sourceId"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "regionId": { "type": ["string", "null"] },
+        "startsAt": { "type": ["string", "null"], "format": "date-time" },
+        "endsAt": { "type": ["string", "null"], "format": "date-time" },
+        "status": { "enum": ["draft", "review", "published", "paused", "cancelled"] },
+        "sourceId": { "type": "string" },
+        "capacityStatus": { "enum": ["unknown", "reported", "confirmed"] }
+      }
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "eventId", "status", "partySize", "createdAt"],
+      "properties": {
+        "id": { "type": "string" },
+        "eventId": { "type": "string" },
+        "status": { "enum": ["draft", "submitted", "acknowledged", "confirmed", "declined", "withdrawn"] },
+        "partySize": { "type": "integer", "minimum": 1, "maximum": 20 },
+        "contactChannel": { "enum": ["email", "phone", "local_form", "none"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "consent": { "type": "object", "required": ["publicDisplay", "contactUse"], "properties": { "publicDisplay": { "type": "boolean" }, "contactUse": { "type": "boolean" } }, "additionalProperties": false }
+  }
+}

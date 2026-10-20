@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sensecity.local/schemas/sense-audit-event.schema.json",
+  "title": "SENSE Audit Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "actorType", "action", "resourceType", "resourceId", "decision", "occurredAt"],
+  "properties": {
+    "id": { "type": "string" },
+    "actorType": { "enum": ["system", "admin", "reviewer", "provider", "municipality", "visitor"] },
+    "actorId": { "type": ["string", "null"] },
+    "action": { "enum": ["create", "update", "submit", "review", "publish", "pause", "archive", "export"] },
+    "resourceType": { "enum": ["region", "claim", "source", "signal", "event", "booking_request", "media_asset"] },
+    "resourceId": { "type": "string" },
+    "decision": { "enum": ["allowed", "denied", "needs_review"] },
+    "reasonCode": { "type": ["string", "null"] },
+    "occurredAt": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  }
+}
