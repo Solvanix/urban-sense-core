@@ -103,6 +103,7 @@ const publicLinks = [
   { href: "/للشركاء", label: "للشركاء" },
   { href: "/تحقق-مجتمعي", label: "نختبر معًا" },
   { href: "/خطة-الوصول", label: "خطة الوصول" },
+  { href: "/أطلس-المنظومة", label: "أطلس المنظومة" },
 ];
 
 export function TourismPublicSite({ pathname, onNavigate }: { pathname: string; onNavigate: (href: string) => void }) {
