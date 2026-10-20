@@ -12,6 +12,7 @@ import { TourismPublicSite } from "./ui/TourismPublicSite.js";
 import { TourismReadinessPage } from "./ui/TourismReadinessPage.js";
 import { TourismLaunchpadPage } from "./ui/TourismLaunchpadPage.js";
 import { TourismCampaignLabPage } from "./ui/TourismCampaignLabPage.js";
+import { EcosystemAtlasPage } from "./ui/EcosystemAtlasPage.js";
 import { normalizePathname, resolveSenseRoute } from "./routing.js";
 
 const root = document.getElementById("root");
@@ -40,6 +41,7 @@ function AppRouter() {
               : route === "tourism-readiness" ? <TourismReadinessPage onNavigate={navigate} />
               : route === "tourism-launchpad" ? <TourismLaunchpadPage onNavigate={navigate} />
               : route === "tourism-campaign-lab" ? <TourismCampaignLabPage onNavigate={navigate} />
+              : route === "ecosystem-atlas" ? <EcosystemAtlasPage onNavigate={navigate} />
               : <TourismPublicSite pathname={pathname} onNavigate={navigate} />;
 
   return <><a className="skip-link" href="#main-content">انتقل إلى المحتوى الرئيسي</a><AccessibilityControls />{content}</>;
