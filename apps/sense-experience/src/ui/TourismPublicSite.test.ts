@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getPublicPage } from "./TourismPublicSite.js";
+import { getPublicPage, scopeLabel } from "./TourismPublicSite.js";
 
 describe("getPublicPage", () => {
   it("routes the responsible-vision Arabic and Latin URLs to the public vision page", () => {
@@ -16,5 +16,10 @@ describe("getPublicPage", () => {
     expect(getPublicPage("/اكتشف")).toBe("discover");
     expect(getPublicPage("/للشركاء")).toBe("partners");
     expect(getPublicPage("/")).toBe("home");
+  });
+
+  it("keeps Al-Eizariya as the default product lens while naming Palestine as the expansion lens", () => {
+    expect(scopeLabel("al-eizariya")).toBe("العيزرية");
+    expect(scopeLabel("palestine")).toBe("فلسطين");
   });
 });
