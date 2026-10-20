@@ -26,3 +26,7 @@ The `SENSE Go Android APK` workflow creates an installable Android debug APK whe
 After a successful run, open the workflow run in GitHub Actions and download the `sense-go-android-debug-apk` artifact. This debug build is for testing and is not a Play Store release. A production release still requires a production signing setup and a separate release workflow.
 
 The app intentionally does not claim live booking or payment. Those flows remain behind the SENSE Experience review and provider verification boundary.
+
+## وضع مساكن الخير — بيرزيت
+
+يتضمن التطبيق الآن تبويبًا تجريبيًا يجمع السكن الطلابي والنقل والتوصيل في مسار واحد. البطاقات تجريبية ومحفوظة محليًا، ولا يوجد حجز أو دفع أو نشر لرقم مقدم خدمة غير مؤكد. تفاصيل النموذج موجودة في `docs/strategy/BIRZEIT-HOUSING-MOBILITY-SLICE-AR.md`.
