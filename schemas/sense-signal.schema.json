@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sensecity.local/schemas/sense-signal.schema.json",
+  "title": "SENSE Signal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "kind", "status", "sourceId", "observedAt", "expiresAt", "confidence"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "kind": { "enum": ["visit_status", "municipal_notice", "access_note", "availability", "traffic"] },
+    "status": { "enum": ["normal", "paused", "emergency", "unknown"] },
+    "regionId": { "type": ["string", "null"] },
+    "sourceId": { "type": "string", "minLength": 2 },
+    "observedAt": { "type": "string", "format": "date-time" },
+    "expiresAt": { "type": "string", "format": "date-time" },
+    "confidence": { "enum": ["unverified", "community_review", "verified"] },
+    "publicNote": { "type": "string" },
+    "freezeReason": { "type": ["string", "null"] }
+  }
+}
