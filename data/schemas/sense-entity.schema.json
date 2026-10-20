@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sense.example/schema/sense-entity.json",
+  "title": "SENSE Entity Contract",
+  "description": "Portable contract for the SENSE tourism platform and national store MVP.",
+  "oneOf": [
+    {"$ref": "#/$defs/destination"}, {"$ref": "#/$defs/route"}, {"$ref": "#/$defs/experience"},
+    {"$ref": "#/$defs/artisan"}, {"$ref": "#/$defs/merchant"}, {"$ref": "#/$defs/product"},
+    {"$ref": "#/$defs/story"}, {"$ref": "#/$defs/media"}, {"$ref": "#/$defs/municipality"}
+  ],
+  "$defs": {
+    "base": {"type": "object", "required": ["id", "entityType", "slug", "status", "createdAt", "updatedAt"], "properties": {"id": {"type":"string"}, "entityType": {"type":"string"}, "slug": {"type":"string"}, "status": {"enum":["draft","review","approved","published","archived","prototype"]}, "visibility": {"enum":["public","private","internal"]}, "createdAt": {"type":"string"}, "updatedAt": {"type":"string"}, "version": {"type":"integer"}}, "additionalProperties": true},
+    "localized": {"type":"object", "required":["ar","en"], "properties":{"ar":{"type":"string"},"en":{"type":"string"}},"additionalProperties":false},
+    "destination": {"allOf":[{"$ref":"#/$defs/base"},{"type":"object","required":["entityType","name","municipalityId"],"properties":{"entityType":{"const":"destination"},"name":{"$ref":"#/$defs/localized"},"municipalityId":{"type":"string"},"relatedRouteIds":{"type":"array","items":{"type":"string"}},"relatedStoryIds":{"type":"array","items":{"type":"string"}},"relatedProductIds":{"type":"array","items":{"type":"string"}}}}]},
+    "route": {"allOf":[{"$ref":"#/$defs/base"},{"type":"object","required":["entityType","name","destinationIds"],"properties":{"entityType":{"const":"route"},"name":{"$ref":"#/$defs/localized"},"destinationIds":{"type":"array","items":{"type":"string"}},"featuredStoryIds":{"type":"array","items":{"type":"string"}},"featuredProductIds":{"type":"array","items":{"type":"string"}}}}]},
+    "experience": {"allOf":[{"$ref":"#/$defs/base"},{"type":"object","required":["entityType","name","destinationId"],"properties":{"entityType":{"const":"experience"},"name":{"$ref":"#/$defs/localized"},"destinationId":{"type":"string"},"merchantId":{"type":["string","null"]}}}]},
+    "artisan": {"allOf":[{"$ref":"#/$defs/base"},{"type":"object","required":["entityType","displayName","municipalityId"],"properties":{"entityType":{"const":"artisan"},"displayName":{"$ref":"#/$defs/localized"},"municipalityId":{"type":"string"},"productIds":{"type":"array","items":{"type":"string"}},"storyIds":{"type":"array","items":{"type":"string"}}}}]},
+    "merchant": {"allOf":[{"$ref":"#/$defs/base"},{"type":"object","required":["entityType","businessName","municipalityId"],"properties":{"entityType":{"const":"merchant"},"businessName":{"$ref":"#/$defs/localized"},"municipalityId":{"type":"string"},"ownerEntityId":{"type":["string","null"]},"paymentEnabled":{"type":"boolean"}}}]},
+    "product": {"allOf":[{"$ref":"#/$defs/base"},{"type":"object","required":["entityType","name","merchantId","originDestinationId","commerceStatus"],"properties":{"entityType":{"const":"product"},"name":{"$ref":"#/$defs/localized"},"merchantId":{"type":"string"},"artisanId":{"type":["string","null"]},"originDestinationId":{"type":"string"},"municipalityId":{"type":["string","null"]},"commerceStatus":{"enum":["catalog_only","preorder","available_for_sale","out_of_stock","not_for_sale","archived"]},"relatedStoryIds":{"type":"array","items":{"type":"string"}}}}]},
+    "story": {"allOf":[{"$ref":"#/$defs/base"},{"type":"object","required":["entityType","title","storyType"],"properties":{"entityType":{"const":"story"},"title":{"$ref":"#/$defs/localized"},"storyType":{"type":"string"},"destinationIds":{"type":"array","items":{"type":"string"}},"artisanId":{"type":["string","null"]},"relatedProductIds":{"type":"array","items":{"type":"string"}},"mediaIds":{"type":"array","items":{"type":"string"}}}}]},
+    "media": {"allOf":[{"$ref":"#/$defs/base"},{"type":"object","required":["entityType","mediaType","altText"],"properties":{"entityType":{"const":"media"},"mediaType":{"enum":["image","video","audio","map","document"]},"altText":{"$ref":"#/$defs/localized"},"fileUrl":{"type":"string"}}}]},
+    "municipality": {"allOf":[{"$ref":"#/$defs/base"},{"type":"object","required":["entityType","name"],"properties":{"entityType":{"const":"municipality"},"name":{"$ref":"#/$defs/localized"}}}]}
+  }
+}

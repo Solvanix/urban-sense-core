@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solvanix.github.io/urban-sense-core/schemas/sense-quest-checkin.schema.json",
+  "title": "SENSE Quest Check-in Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["eventId", "passId", "questId", "stopId", "checkinId", "tokenHash", "verifiedAt", "verificationMethod", "reviewStatus"],
+  "properties": {
+    "eventId": {"type": "string", "pattern": "^evt_[A-Za-z0-9_-]{8,80}$"},
+    "passId": {"type": "string", "pattern": "^pass_[A-Za-z0-9_-]{8,80}$"},
+    "questId": {"type": "string", "pattern": "^[A-Z0-9-]{6,80}$"},
+    "stopId": {"type": "string", "pattern": "^[A-Z0-9-]{6,80}$"},
+    "checkinId": {"type": "string", "pattern": "^chk_[A-Za-z0-9_-]{8,80}$"},
+    "tokenHash": {"type": "string", "pattern": "^(sha256|hmac-sha256):[A-Fa-f0-9]{32,128}$"},
+    "verifiedAt": {"type": "string", "format": "date-time"},
+    "verificationMethod": {"enum": ["nfc_or_qr", "manual_fallback", "reviewer_console"]},
+    "reviewStatus": {"enum": ["pending_review", "approved", "rejected", "awarded"]},
+    "evidenceRef": {"type": "string", "maxLength": 120},
+    "notes": {"type": "string", "maxLength": 500}
+  }
+}

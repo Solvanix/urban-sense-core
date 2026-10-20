@@ -1,0 +1,68 @@
+name: SENSE Go Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "apps/sense-go/**"
+      - ".github/workflows/sense-go-android.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "apps/sense-go/**"
+      - ".github/workflows/sense-go-android.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build-android-apk:
+    name: Build installable Android debug APK
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10.4.1
+          run_install: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: apps/sense-go/pnpm-lock.yaml
+
+      - name: Set up Java
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v4
+
+      - name: Install locked JavaScript dependencies
+        working-directory: apps/sense-go
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate the Android native project
+        working-directory: apps/sense-go
+        run: pnpm exec expo prebuild --platform android --no-install
+
+      - name: Build the debug APK
+        working-directory: apps/sense-go/android
+        run: ./gradlew --no-daemon assembleDebug
+
+      - name: Upload the APK artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: sense-go-android-debug-apk
+          path: apps/sense-go/android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14

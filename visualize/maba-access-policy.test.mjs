@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import { ROLES, authorize, filterVisibleResources } from './maba-access-policy.js';
+
+const municipalManager = { role: ROLES.MUNICIPALITY_MANAGER, municipalityId: 'al-eizariya' };
+const ownMerchant = { type: 'merchant', municipalityId: 'al-eizariya' };
+const otherMerchant = { type: 'merchant', municipalityId: 'bethlehem' };
+assert.equal(authorize(municipalManager, 'read', ownMerchant).allowed, true);
+assert.equal(authorize(municipalManager, 'read', otherMerchant).reason, 'MUNICIPALITY_ISOLATION');
+assert.equal(authorize(municipalManager, 'read', { type: 'card', municipalityId: 'al-eizariya' }).reason, 'MUNICIPALITY_RESOURCE_RESTRICTED');
+assert.equal(authorize({ role: ROLES.ISSUANCE_OFFICER, municipalityId: 'al-eizariya' }, 'issue', { type: 'card', municipalityId: 'al-eizariya' }).allowed, true);
+assert.equal(authorize({ role: ROLES.ISSUANCE_OFFICER, municipalityId: 'al-eizariya' }, 'issue', { type: 'card', municipalityId: 'bethlehem' }).allowed, false);
+assert.equal(authorize({ role: ROLES.AUDITOR }, 'read', { type: 'report' }).allowed, true);
+assert.equal(authorize({ role: ROLES.AUDITOR }, 'update', { type: 'report' }).reason, 'AUDITOR_READ_ONLY');
+assert.equal(authorize({ role: ROLES.MERCHANT, merchantId: 'pizza-hot' }, 'read', { type: 'merchant_transaction', merchantId: 'pizza-hot' }).allowed, true);
+assert.equal(authorize({ role: ROLES.MERCHANT, merchantId: 'pizza-hot' }, 'read', { type: 'merchant_transaction', merchantId: 'other-merchant' }).allowed, false);
+assert.equal(authorize({ role: ROLES.GATE_OFFICER, accessPointId: 'gate-1' }, 'read', { type: 'access_point', accessPointId: 'gate-1' }).allowed, true);
+assert.equal(authorize({ role: ROLES.GATE_OFFICER, accessPointId: 'gate-1' }, 'update', { type: 'access_point', accessPointId: 'gate-1' }).allowed, false);
+const visible = filterVisibleResources(municipalManager, [ownMerchant, otherMerchant]);
+assert.deepEqual(visible, [ownMerchant]);
+console.log('maba access policy checks: ok');

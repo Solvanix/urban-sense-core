@@ -1,0 +1,33 @@
+{
+  "storyId": "story-olive-to-cave",
+  "graduationCriteria": {
+    "text": {"targetWords": "900-1200", "status": "needs_field_interview_and_fact_review"},
+    "video": {"durationSeconds": "60-120", "status": "not_recorded"},
+    "audio": {"durationSeconds": "60-180", "status": "needs_consented_speaker"},
+    "photoStory": {"imageCount": 7, "status": "needs_original_or_cleared_images"},
+    "posterOrInfographic": {"status": "brief_ready_design_not_final"}
+  },
+  "production": {
+    "videoAspectRatios": ["16:9", "9:16"],
+    "captions": "Arabic captions required",
+    "audioFormat": "WAV master plus compressed delivery copy",
+    "imageRequirements": "captions, alt text, source, rights status, consent notes",
+    "motion": "slow editorial transitions; no motion-only meaning",
+    "interactive": "route card, verification badges, and one CTA"
+  },
+  "shotList": [
+    {"order": 1, "subject": "مدخل الطريق", "function": "وضع المشاهد في المكان", "rights": "needs_field_capture"},
+    {"order": 2, "subject": "تفصيل زيتونة أو موسم", "function": "ربط المكان بالعمل والذاكرة", "rights": "needs_field_capture"},
+    {"order": 3, "subject": "حجر أو عتبة", "function": "إظهار طبقة عمرانية دون كشف خصوصية", "rights": "needs_field_capture"},
+    {"order": 4, "subject": "مضيف أو صاحب تجربة", "function": "إدخال صوت إنساني", "rights": "consent_required"},
+    {"order": 5, "subject": "تدرج الطريق أو عائق الوصول", "function": "شرح تجربة الزائر بصدق", "rights": "needs_field_capture"},
+    {"order": 6, "subject": "المغارة من الخارج أو منطقة آمنة", "function": "شرح حدود الوصول والحماية", "rights": "safety_review_required"},
+    {"order": 7, "subject": "منتج أو عمل محلي", "function": "إظهار المنفعة المحلية", "rights": "owner_consent_required"}
+  ],
+  "wordpress": {
+    "status": "draft",
+    "site": "sense133.wordpress.com",
+    "slug": "stories/olive-to-cave",
+    "publishGate": "human_review_and_wordpress_access"
+  }
+}
