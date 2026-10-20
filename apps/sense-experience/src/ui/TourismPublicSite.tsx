@@ -22,6 +22,7 @@ type Experience = {
   level: string;
   image: string;
   status: string;
+  accessStatus: "unverified" | "community_review" | "verified";
   accent: string;
 };
 
@@ -36,6 +37,7 @@ const experiences: Experience[] = [
     level: "سهل",
     image: "/media/hero.jpg",
     status: "قيد التحقق المحلي",
+    accessStatus: "unverified",
     accent: "gold",
   },
   {
@@ -48,6 +50,7 @@ const experiences: Experience[] = [
     level: "للجميع",
     image: "/media/stone.jpg",
     status: "نبحث عن مضيفين",
+    accessStatus: "unverified",
     accent: "terracotta",
   },
   {
@@ -60,6 +63,7 @@ const experiences: Experience[] = [
     level: "متوسط",
     image: "/media/map.jpg",
     status: "نسخة تجريبية",
+    accessStatus: "community_review",
     accent: "teal",
   },
   {
@@ -72,6 +76,7 @@ const experiences: Experience[] = [
     level: "متوسط",
     image: "/media/hero.jpg",
     status: "بانتظار اعتماد المسار",
+    accessStatus: "unverified",
     accent: "sage",
   },
 ];
@@ -97,6 +102,7 @@ const publicLinks = [
   { href: "/حجزي", label: "خطة يومي" },
   { href: "/للشركاء", label: "للشركاء" },
   { href: "/تحقق-مجتمعي", label: "نختبر معًا" },
+  { href: "/خطة-الوصول", label: "خطة الوصول" },
 ];
 
 export function TourismPublicSite({ pathname, onNavigate }: { pathname: string; onNavigate: (href: string) => void }) {
@@ -154,7 +160,7 @@ function HomePage({ onNavigate, plan, updatePlan, scope, onScopeChange }: { onNa
       <div className="sense-hero-copy">
         <p className="sense-kicker"><span className="sense-kicker-dot" /> SENSE / {scopeLabel(scope)}</p>
         <h1>أنت لا تزور المكان.<br /><em>المكان يزورك.</em></h1>
-        <p className="sense-hero-lead">منصة سياحية عربية تبني يومك حول القصص المحلية، المسارات الهادئة، والناس الذين يصنعون معنى المكان — لا حول قائمة مزدحمة من النقاط.</p>
+        <p className="sense-hero-lead">منصة سياحة شاملة تساعدك على اكتشاف المكان والتخطيط للوصول إليه بوضوح وكرامة — مع قصص محلية، مسارات هادئة، ومعلومات تقول ما نعرفه وما لم نتحقق منه بعد.</p>
         <div className="sense-hero-actions"><button className="sense-primary" onClick={() => onNavigate("/اكتشف")}>ابدأ من هنا <span>←</span></button><button className="sense-text-button" onClick={() => onNavigate("/رؤية-مسؤولة")}>كيف نبني التجربة؟ <span>↗</span></button></div>
         <div className="sense-hero-proof"><div><strong>4</strong><span>مسارات أولية</span></div><div><strong>{scope === "al-eizariya" ? "1" : "1+"}</strong><span>{scope === "al-eizariya" ? "بلدة، طبقات" : "فلسطين، بداية محلية"}</span></div><div><strong>0</strong><span>وعود مصطنعة</span></div></div>
       </div>
@@ -162,6 +168,8 @@ function HomePage({ onNavigate, plan, updatePlan, scope, onScopeChange }: { onNa
     </section>
 
     <section className="sense-statement"><div><span className="sense-section-label">فكرة SENSE</span><h2>كل يوم هنا<br /><em>له إيقاعه.</em></h2></div><p>نرتب لك ما تحتاج معرفته قبل الوصول: قصة قصيرة، وقت واقعي، طريقة تواصل، ونقطة بداية يمكن التحقق منها. إذا كانت المعلومة غير مكتملة، نقول ذلك بوضوح.</p><div className="sense-statement-line" /></section>
+
+    <section className="sense-inclusion-band"><div><span className="sense-section-label">التمكين الشامل</span><h2>الوصول ليس<br /><em>إضافة جانبية.</em></h2></div><p>نصمم SENSE مع الأشخاص ذوي الإعاقة ومرافقيهم، لنحوّل معلومات الوصول من وعد عام إلى تفاصيل عملية تساعد على اتخاذ قرار مستقل قبل الزيارة.</p><button className="sense-light-button" onClick={() => onNavigate("/خطة-الوصول")}>ابنِ خطة وصولك <span>←</span></button></section>
 
     <LiveVisitStatus />
 
@@ -185,13 +193,14 @@ function DiscoverPage({ onNavigate, plan, updatePlan, scope }: { onNavigate: (hr
   const [category, setCategory] = useState<Category>("الكل");
   const filtered = useMemo(() => category === "الكل" ? experiences : experiences.filter((item) => item.category === category), [category]);
   return <>
-    <section className="sense-page-hero"><div><span className="sense-section-label">دليل {scopeLabel(scope)}</span><h1>اكتشف ما تريد<br /><em>أن تعيشه.</em></h1></div><p>{scope === "al-eizariya" ? "نبدأ من العيزرية: قصص محلية، ومسارات صغيرة، وبيانات نراجعها قبل أن نعدك بها." : "فلسطين هي العدسة الأوسع، لكن العيزرية تبقى نقطة الاختبار الأولى؛ ما لا نملكه من مصدر لا نعرضه كحقيقة."}</p></section>
+    <section className="sense-page-hero"><div><span className="sense-section-label">دليل {scopeLabel(scope)} · سياحة شاملة</span><h1>اكتشف ما تريد<br /><em>أن تعيشه بثقة.</em></h1></div><p>{scope === "al-eizariya" ? "نبدأ من العيزرية: قصص محلية، ومسارات صغيرة، وبيانات نراجعها قبل أن نعدك بها." : "فلسطين هي العدسة الأوسع، لكن العيزرية تبقى نقطة الاختبار الأولى؛ ما لا نملكه من مصدر لا نعرضه كحقيقة."} نعرض حالة التحقق وحالة معلومات الوصول كما هي، كي تعرف أين تبدأ وأين تحتاج أن تسأل قبل الزيارة.</p></section>
     <section className="sense-discover-layout"><aside className="sense-filter-panel"><span className="sense-section-label">صفِّ حسب المزاج</span><div className="sense-category-list">{categories.map((item) => <button key={item} className={category === item ? "active" : ""} onClick={() => setCategory(item)}>{item}<span>{item === "الكل" ? experiences.length : experiences.filter((experience) => experience.category === item).length}</span></button>)}</div><div className="sense-discover-note"><strong>ملاحظة مهمة</strong><p>الأوقات والأسعار والسعة تحتاج تأكيدًا من الشريك المحلي قبل الزيارة.</p></div></aside><div className="sense-discover-results"><div className="sense-results-top"><span>{filtered.length} مسارات ظاهرة</span><button onClick={() => onNavigate("/رؤية-مسؤولة")}>كيف نتحقق؟ ↗</button></div><div className="sense-experience-grid sense-discover-grid">{filtered.map((item, index) => <ExperienceCard key={item.id} item={item} index={index} selected={plan.includes(item.id)} onToggle={() => updatePlan(plan.includes(item.id) ? plan.filter((id) => id !== item.id) : [...plan, item.id])} />)}</div></div></section>
   </>;
 }
 
 function ExperienceCard({ item, index, selected, onToggle }: { item: Experience; index: number; selected: boolean; onToggle: () => void }) {
-  return <article className={`sense-experience-card accent-${item.accent}`}><div className="sense-card-image"><img src={item.image} alt="" /><span className="sense-card-index">0{index + 1}</span><span className="sense-card-status">{item.status}</span></div><div className="sense-card-body"><span className="sense-card-eyebrow">{item.eyebrow}</span><h3>{item.title}</h3><p>{item.description}</p><div className="sense-card-meta"><span>◷ {item.duration}</span><span>◌ {item.level}</span></div><button className={selected ? "selected" : ""} onClick={onToggle}>{selected ? "أضيفت إلى خطة يومي ✓" : "أضف إلى خطة يومي +"}</button></div></article>;
+  const accessLabel = item.accessStatus === "verified" ? "وصول متحقق" : item.accessStatus === "community_review" ? "وصول قيد المراجعة المجتمعية" : "معلومات الوصول غير متحققة";
+  return <article className={`sense-experience-card accent-${item.accent}`}><div className="sense-card-image"><img src={item.image} alt="" /><span className="sense-card-index">0{index + 1}</span><span className="sense-card-status">{item.status}</span></div><div className="sense-card-body"><span className="sense-card-eyebrow">{item.eyebrow}</span><h3>{item.title}</h3><p>{item.description}</p><div className="sense-card-meta"><span>◷ {item.duration}</span><span>◌ {item.level}</span></div><p className={`sense-access-label access-${item.accessStatus}`}><strong>الوصول:</strong> {accessLabel}</p><button className={selected ? "selected" : ""} onClick={onToggle}>{selected ? "أضيفت إلى خطة يومي ✓" : "أضف إلى خطة يومي +"}</button></div></article>;
 }
 
 function BookingPage({ onNavigate, plan }: { onNavigate: (href: string) => void; plan: string[] }) {
