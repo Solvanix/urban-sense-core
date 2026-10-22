@@ -6,6 +6,7 @@ on:
     paths:
       - "public-index/**"
       - "visualize/**"
+      - "data/**"
       - "apps/pizza-hot/**"
       - "apps/executive-visualization/**"
       - "tourism/**"
@@ -67,6 +68,9 @@ jobs:
           cp -R visualize/. _site/visualize/
           test -f _site/visualize/index.html
           test -f _site/visualize/data/dashboard.json
+          mkdir -p _site/data
+          cp -R data/. _site/data/
+          test -f _site/data/entities/graph-index.json
           mkdir -p _site/executive
           cp -R apps/executive-visualization/dist/public/. _site/executive/
           test -f _site/executive/index.html
