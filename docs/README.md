@@ -18,6 +18,7 @@
 | تشغيل واختبار نسخة SENSE Routes العامة | [دليل SENSE Routes](../tourism/README.md) |
 | معرفة حالة تسليم مشروع Digital Marketing | [سجل حالة التسليم](delivery/DIGITAL-MARKETING-DELIVERY-STATUS-2026-09-16.md) |
 | تشغيل SENSE Experience بأمان | [بوابة جاهزية البيانات الحقيقية](sense-experience/REAL-DATA-READINESS.md) |
+| مراجعة تجربة بُرهان الميدانية ومؤشراتها | [حزمة تجربة بُرهان](sense-experience/BURHAN-PILOT-IMPLEMENTATION-STATUS-AR.md) |
 | مراجعة حوكمة SENSE المرحلية | [إطار الحوكمة](SENSE-PHASED-GOVERNANCE-FRAMEWORK-2026-08-20.md) |
 | مراجعة اسم «عَنان | ANAN» المقترح | [حزمة الرسائل](ANAN-PROPOSED-BRAND-MESSAGING-2026-08-20.md) |
 | مراجعة فحص اسم نطاق قصير | [مسودة فحص الدومين](DOMAIN-SHORT-NAME-RESEARCH-2026-08-20.md) |

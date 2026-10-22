@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Solvanix/urban-sense-core/blob/main/schemas/burhan-pilot-kpi-snapshot.schema.json",
+  "title": "Burhan Pilot KPI Snapshot",
+  "description": "Aggregated KPI snapshot for internal pilot dashboards. Must not contain respondent-level or direct identifying data.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["snapshotId", "periodStart", "periodEnd", "computedAt", "environment", "metrics"],
+  "properties": {
+    "snapshotId": { "type": "string", "format": "uuid" },
+    "pilotSiteCode": { "type": "string", "maxLength": 40 },
+    "periodStart": { "type": "string", "format": "date-time" },
+    "periodEnd": { "type": "string", "format": "date-time" },
+    "computedAt": { "type": "string", "format": "date-time" },
+    "environment": { "type": "string", "enum": ["synthetic_demo", "pilot"] },
+    "metrics": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["metricKey", "numerator", "denominator", "unit", "status"],
+        "properties": {
+          "metricKey": { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,63}$" },
+          "numerator": { "type": "number", "minimum": 0 },
+          "denominator": { "type": "number", "minimum": 0 },
+          "value": { "type": ["number", "null"] },
+          "unit": { "type": "string", "enum": ["count", "percent", "seconds", "minutes", "hours"] },
+          "status": { "type": "string", "enum": ["on_track", "attention", "blocked", "not_enough_data"] },
+          "evidenceReference": { "type": "string", "maxLength": 160 }
+        }
+      }
+    }
+  }
+}
