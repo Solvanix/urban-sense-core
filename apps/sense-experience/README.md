@@ -60,6 +60,9 @@ pnpm dev:api
 ## الوثائق الملزمة قبل التشغيل
 
 - [جاهزية البيانات الحقيقية](../../docs/sense-experience/REAL-DATA-READINESS.md)
+- [حالة تطبيق تجربة بُرهان وحدودها التقنية](../../docs/sense-experience/BURHAN-PILOT-IMPLEMENTATION-STATUS-AR.md)
+- [خطة المراحل والبوابات](../../docs/sense-experience/BURHAN-FIELD-PILOT-PHASE-PLAN-AR.md)
+- [نماذج التقييم ومواصفات لوحة المؤشرات](../../docs/sense-experience/BURHAN-EVALUATION-FORMS-AND-DASHBOARD-AR.md)
 - [عقد هوية المراجع](../../docs/sense-experience/REVIEWER-IDENTITY-CONTRACT.md)
 - [عقد بيانات الخدمة](../../docs/sense-experience/SERVICE-DATA-CONTRACT.md)
 - [حدود المنتج](../../docs/sense-experience/PRODUCT-BOUNDARIES.md)

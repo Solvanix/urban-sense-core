@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Solvanix/urban-sense-core/blob/main/schemas/burhan-pilot-evaluation-response.schema.json",
+  "title": "Burhan Pilot Evaluation Response",
+  "description": "Contract for a minimized, pseudonymous pilot evaluation record. Contact details must be stored separately and are intentionally excluded.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["responseId", "respondentType", "consent", "submittedAt", "answers"],
+  "properties": {
+    "responseId": { "type": "string", "format": "uuid" },
+    "respondentType": { "type": "string", "enum": ["user", "partner"] },
+    "consent": { "type": "boolean", "const": true },
+    "submittedAt": { "type": "string", "format": "date-time" },
+    "pilotSiteCode": { "type": "string", "maxLength": 40 },
+    "answers": {
+      "type": "object",
+      "description": "Question IDs map to a 1-5 rating, a defined choice, or a short free-text answer. Do not place personal or sensitive details in free text.",
+      "propertyNames": { "pattern": "^[a-z][a-z0-9_]{1,63}$" },
+      "additionalProperties": {
+        "anyOf": [
+          { "type": "integer", "minimum": 1, "maximum": 5 },
+          { "type": "string", "enum": ["not_applicable", "yes", "partly", "no", "very_easy", "easy", "neutral", "difficult", "very_difficult"] },
+          { "type": "string", "maxLength": 1000 }
+        ]
+      }
+    },
+    "followUpRequested": { "type": "boolean", "default": false }
+  }
+}
